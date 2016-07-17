@@ -3,11 +3,47 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular2-material': 'vendor/@angular2-material'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  '@angular2-material/core': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'core.js'
+  },
+  '@angular2-material/button': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'button.js'
+  },
+  '@angular2-material/checkbox': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'checkbox.js'
+  },
+  // And so on...
 };
+
+// const materialPackages: string[] = [
+//   'core',
+//   'button',
+//   'checkbox'
+// ]
+
+// const packages: any = createCustomConfig(materialPackages);
+
+// function createCustomConfig(packages: string[]) : any {
+//   return packages.reduce((packageConfig: any, packageName: string) => {
+//     packageConfig['@angular2-material/${packageName}'] = {
+//     format: 'cjs',
+//     defaultExtension: 'js',
+//     main: packageName
+//   };
+//   return packageConfig;
+//   }, {});
+// };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
