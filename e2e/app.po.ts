@@ -1,4 +1,4 @@
-export class FinanceWebUiPage {
+export class AngularCliAppPage {
   navigateTo() {
     return browser.get('/');
   }

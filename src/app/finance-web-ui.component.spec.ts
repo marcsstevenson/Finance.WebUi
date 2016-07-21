@@ -1,16 +1,18 @@
+/* tslint:disable:no-unused-variable */
+
+import { By }           from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { FinanceWebUiAppComponent } from '../app/finance-web-ui.component';
+import { FinanceWebUiAppComponent } from './finance-web-ui.component';
 
-beforeEachProviders(() => [FinanceWebUiAppComponent]);
+describe('Component: FinanceWebUi', () => {
+  it('should create an instance', () => {
+    let component = new FinanceWebUiAppComponent();
+    expect(component).toBeTruthy();
+  });
 
-describe('App: FinanceWebUi', () => {
-  it('should create the app',
-      inject([FinanceWebUiAppComponent], (app: FinanceWebUiAppComponent) => {
-    expect(app).toBeTruthy();
-  }));
-
-  it('should have as title \'finance-web-ui works!\'',
-      inject([FinanceWebUiAppComponent], (app: FinanceWebUiAppComponent) => {
-    expect(app.title).toEqual('finance-web-ui works!');
-  }));
+  it('should have as title \'finance-web-ui works!\'', () => {
+    let component = new FinanceWebUiAppComponent();
+    expect(component.title).toEqual('finance-web-ui works!');
+  });
 });

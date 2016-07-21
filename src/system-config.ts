@@ -36,6 +36,9 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/shared/header',
+  'app/shared/footer',
+  'app/finance-web-ui',
   /** @cli-barrel */
 ];
 
