@@ -1,10 +1,4 @@
-import {
-  beforeEachProviders,
-  describe,
-  expect,
-  it,
-  inject
-} from '@angular/core/testing';
+import { addProviders, async, inject } from '@angular/core/testing';
 import { FinanceWebUiAppComponent } from '../app/finance-web-ui.component';
 
 beforeEachProviders(() => [FinanceWebUiAppComponent]);
