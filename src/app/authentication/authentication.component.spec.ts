@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { HeaderComponent } from './header.component';
+import { AuthenticationComponent } from './authentication.component';
 
-describe('Component: Header', () => {
+describe('Component: Authentication', () => {
   it('should create an instance', () => {
-    let component = new HeaderComponent();
+    let component = new AuthenticationComponent();
     expect(component).toBeTruthy();
   });
 });

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 // import { CORE_DIRECTIVES } from '@angular/common';
 // import { FORM_DIRECTIVES} from '@angular/forms';
+
 import * as moment from 'moment';
 import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+
+import { FinanceWebUiHeaderComponent } from './shared/components/index';
 // MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, 
 
 @Component({
@@ -13,7 +16,8 @@ import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap
   templateUrl: 'finance-web-ui.component.html',
   styleUrls: ['finance-web-ui.component.css'],
   directives: [
-      AlertComponent, DATEPICKER_DIRECTIVES, BUTTON_DIRECTIVES
+      AlertComponent, DATEPICKER_DIRECTIVES, BUTTON_DIRECTIVES,
+      FinanceWebUiHeaderComponent
   ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
