@@ -7,7 +7,7 @@ import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
-import { FinanceWebUiHeaderComponent } from './shared/components/index';
+import { FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent } from './shared/components/index';
 // MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, 
 
 @Component({
@@ -17,7 +17,7 @@ import { FinanceWebUiHeaderComponent } from './shared/components/index';
   styleUrls: ['finance-web-ui.component.css'],
   directives: [
       AlertComponent, DATEPICKER_DIRECTIVES, BUTTON_DIRECTIVES,
-      FinanceWebUiHeaderComponent
+      FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent
   ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
