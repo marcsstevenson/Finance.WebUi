@@ -1,10 +1,10 @@
-import { AngularCliAppPage } from './app.po';
+import { FinanceWebUiPage } from './app.po';
 
 describe('finance-web-ui App', function() {
-  let page: AngularCliAppPage;
+  let page: FinanceWebUiPage;
 
   beforeEach(() => {
-    page = new AngularCliAppPage();
+    page = new FinanceWebUiPage();
   });
 
   it('should display message saying app works', () => {
