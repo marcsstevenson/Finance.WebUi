@@ -1,11 +1,8 @@
 <fwui-app-header></fwui-app-header>
 
-<h1>
+<fwui-app-navigation></fwui-app-navigation>
+<!--<h1>
   {{title}}
-
-  <!--<button md-raised-button color='primary'>this is a magical button</button>
-
-  <md-checkbox></md-checkbox>-->
 </h1>
 
 <h2>{{currentTime}}</h2>
@@ -26,7 +23,8 @@
 <alert type="info">Hello from ng2-bootstrap  {{ date.toDateString() }}</alert>
 <div style="display:inline-block; min-height:290px;">
   <datepicker [(ngModel)]="date" showWeeks="true"></datepicker>
-</div>
+</div>-->
 
+<router-outlet></router-outlet>
 
 <fwui-app-footer></fwui-app-footer>

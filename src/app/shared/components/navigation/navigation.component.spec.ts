@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { NavigationComponent } from './navigation.component';
+import { FinanceWebUiNavigationComponent } from './navigation.component';
 
 describe('Component: Navigation', () => {
   it('should create an instance', () => {
-    let component = new NavigationComponent();
+    let component = new FinanceWebUiNavigationComponent();
     expect(component).toBeTruthy();
   });
 });
