@@ -4,10 +4,48 @@
 
 /* global require, module */
 
-var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+'use strict';
+
+const Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+const compiileSass = require('broccoli-sass');
+const mergeTrees = require('broccoli-merge-trees');
+const _ = require('lodash');
+const glob = require('glob');
+const compileCSS = require('broccoli-postcss');
+const cssnext = require('postcss-cssnext');
+const cssnano = require('cssnano');
+
+var options =  {
+  plugins: [
+    {
+      module: cssnext,
+      options: {
+          browsers: ['> 1%'],
+          warnForDuplicates: false
+      }
+    },
+    {
+      module: cssnano,
+      options: {
+          safe: true,
+          sourcemap: true
+      }
+    }
+  ]
+};
 
 module.exports = function(defaults) {
-  return new Angular2App(defaults, {
+  let sass = mergeTrees(_.map(glob.sync('src/**/*.scss'), function complileAllFoundSass(sassFile) {
+    sassFile = sassFile.replace('src/', '');
+    return compiileSass(['src'], sassFile, sassFile.replace(/.scss$/, '.css'));
+  }))
+
+  let appTree = new Angular2App(defaults, {
+    sassCompiler: {
+      includePaths: [
+        'src/assets/styles'
+      ]
+    },
     vendorNpmFiles: [
       'systemjs/dist/system-polyfills.js',
       'systemjs/dist/system.src.js',
@@ -21,4 +59,8 @@ module.exports = function(defaults) {
       'bootstrap/dist/**',
     ]
   });
+    
+  let css = compileCSS(sass, options);
+
+  return mergeTrees([appTree, sass, css], { overwrite: true }); 
 };
