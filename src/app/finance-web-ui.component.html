@@ -1,6 +1,5 @@
 <fwui-app-header></fwui-app-header>
 
-<fwui-app-navigation></fwui-app-navigation>
 <!--<h1>
   {{title}}
 </h1>
@@ -24,8 +23,8 @@
 <div style="display:inline-block; min-height:290px;">
   <datepicker [(ngModel)]="date" showWeeks="true"></datepicker>
 </div>-->
-
-<div class="container body-content">
+<div>
+  <fwui-app-navigation></fwui-app-navigation>
   <router-outlet></router-outlet>
 </div>
 <fwui-app-footer></fwui-app-footer>

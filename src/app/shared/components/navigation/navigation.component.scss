@@ -1,5 +1,58 @@
-// @import '../../../../../assets/custom';
+@import '../../../../assets/styles/main';
 
-nav {
+$sideNavBarWidth: $topNavBarHeight;
+
+div.left-side {
     background-color: orange;
+    width: $topNavBarHeight;
+    background: #353e49;
+    white-space: nowrap;
+    position: fixed;
+    left: 0;
+    top: $topNavBarHeight;
+    height: 100%;   
+    border-radius: 0;
+    padding: 10px 0 10px 0;
+    
+    li a {
+        text-align: center;
+        position: relative;
+        display: block;
+        padding: 10px;
+
+        &:hover {
+            background-color: black;
+            // color: white;
+            border-left: 3px solid #3c8dbc;
+        }
+
+        &.active {
+            border-left-color: #3c8dbc; 
+        }
+    }
+
+    li i {
+        display: block;
+        font-size: 24px;
+        color: white;
+        // height: $sideNavBarWidth;
+        // width: $sideNavBarWidth;
+    }
+
+    // li.nav-item.home i {
+        
+    //     background: url("assets/images/icons/ic_home_white_24px.svg"), none;
+    // }
+
+    // li.nav-item.customer {
+    //     background: url("assets/images/icons/ic_person_white_24px.svg"), none;
+    // }
+
+    // li.nav-item.dealer {
+    //     background: url("assets/images/icons/ic_library_books_white_24px.svg"), none;
+    // }
+
+    // li.nav-item.deal {
+    //     background: url("assets/images/icons/ic_work_white_24px.svg"), none;
+    // }
 }
