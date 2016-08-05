@@ -10,7 +10,8 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'moment': 'vendor/moment/moment.js',
-  'ng2-bootstrap': 'vendor/ng2-bootstrap'
+  'ng2-bootstrap': 'vendor/ng2-bootstrap',
+  'ng2-table': 'vendor/ng2-table'
 };
 
 /** User packages configuration. */
@@ -22,6 +23,11 @@ const packages: any = {
     format: 'cjs',
     defaultExtension: 'js',
     main: 'ng2-bootstrap.js'
+  },
+  'ng2-table': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'ng2-table.js'
   }
 };
 

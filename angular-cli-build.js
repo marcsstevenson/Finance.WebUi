@@ -19,6 +19,7 @@ module.exports = function(defaults) {
       'bootstrap/dist/**',
       'moment/moment.js',
       'ng2-bootstrap/**/*.js',
+      'ng2-table/**/*.js'
     ]
   });
 };
