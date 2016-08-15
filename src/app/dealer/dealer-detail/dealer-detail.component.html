@@ -1,7 +1,78 @@
 <div class="container body-content fwui">
 
   <p>
-    dealer-detail works! {{(dealer$ | async).Name}}
+    dealer-detail works! {{dealer.Name}}
   </p>
 
-</div>
+  <div class="card">
+    <!--<img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>-->
+
+    <div class="card-block">
+      <dl>
+        <div class="property-row property-is-empty" data-onboarding="sidebar-property-editor" data-profile-property="numberofemployees"
+          data-reactid=".a.$1.0.0.2.$numberofemployees">
+          <dt class="col-xs-4" data-reactid=".a.$1.0.0.2.$numberofemployees.0">
+            <span class="property-label" data-reactid=".a.$1.0.0.2.$numberofemployees.0.0">Number of Employees</span>
+          </dt>
+          <dd class="col-xs-6 p-x-0" data-reactid=".a.$1.0.0.2.$numberofemployees.1">
+            <div class="input">
+              <input data-field="numberofemployees" type="text" class="form-control PropertyInput form-control edit-in-place property-input">
+            </div>
+          </dd>
+          <button class="btn-reset-default property-buttons col-xs-2" title="View property history" type="button" data-reactid=".a.$1.0.0.2.$numberofemployees.2">
+            <i name="clock" class="icon icon-clock" data-reactid=".a.$1.0.0.2.$numberofemployees.2.0"></i>
+          </button>
+        </div>
+         
+        CellArea: '021', CellCountry: 'New Zealand', CellNumber: '335 5560', ContactName: 'Tim Hong', DateCreated:
+        new Date(), DateModified: new Date(), Email: '123@123.com', FaxArea: '03', FaxCountry: 'New Zealand', FaxNumber:
+        '335 6679', IsEnabled: true, Name: 'Jetski Imports Limited', PhoneArea: '03', PhoneCountry: 'New Zealand', PhoneNumber:
+        '335 6677', Website: 'http://www.jetskiimportsltd.co.nz/',
+        <div>
+          <dt></dt>
+          <dd></dd>
+        </div>
+
+      </dl>
+    </div>
+
+    <div class="card bank-details">
+      <div class="card-block">
+        <dl>
+          <div>
+            <dt>BankAccountName</dt>
+            <dd>
+              <input [(ngModel)]=dealer.BankAccountName type="text" 
+              class="">
+            </dd>
+          </div>
+          <div>
+            <dt>BankAccountNumber</dt>
+            <dd>
+              <input [(ngModel)]="dealer.BankAccountNumber" type="text" 
+              class="">
+            </dd>
+          </div>
+          <div>
+            <dt>BankBranchName</dt>
+            <dd>
+              <input [(ngModel)]="dealer.BankBranchName" type="text" 
+              class="">
+            </dd>
+          </div>
+          <div>
+            <dt>BankingCompany</dt>
+            <dd>
+              <input [(ngModel)]="dealer.BankingCompany" type="text" 
+              class="">
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>

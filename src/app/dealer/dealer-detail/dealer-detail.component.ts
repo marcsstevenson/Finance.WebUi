@@ -3,6 +3,7 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DealerService, Dealer } from '../dealer.service';
+import { DealersData } from '../mockup-data';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { DealerService, Dealer } from '../dealer.service';
 })
 export class DealerDetailComponent implements OnInit, OnDestroy {
 
-  dealer: Dealer;
+  private dealer: any = DealersData[0];
   private sub: Subscription;
 
   constructor(
@@ -24,15 +25,16 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      let id = +params['id'];
-      this.dealerService.getDealer(id).then(
-        dealer => {
-          this.dealer = dealer;
-          console.log(this.dealer);
-        }
-      );
-    });
+
+    // this.sub = this.route.params.subscribe(params => {
+    //   let id = +params['id'];
+    //   this.dealerService.getDealer(id).then(
+    //     dealer => {
+    //       this.dealer = dealer;
+    //       console.log(this.dealer);
+    //     }
+    //   );
+    // });
   }
 
   ngOnDestroy() {
