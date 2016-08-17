@@ -20,14 +20,10 @@ div.left-side {
         display: block;
         padding: 10px;
 
-        &:hover {
+        &:hover, &.active {
             background-color: black;
             // color: white;
             border-left: 3px solid #3c8dbc;
-        }
-
-        &.active {
-            border-left-color: #3c8dbc; 
         }
     }
 
