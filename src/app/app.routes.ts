@@ -4,12 +4,14 @@ import { CustomersRoute } from './customer/index';
 import { DealersRoute } from './dealer/index';
 import { HomeRoute } from './home/index';
 import { LoginRoute } from './login/index';
+import { DealRoute } from './deal/index';
 import { AUTH_PROVIDERS } from './shared/services/index';
 
 const routes: RouterConfig = [
     ...HomeRoute,
     ...CustomersRoute,
     ...DealersRoute,
+    ...DealRoute,
     ...LoginRoute
 ];
 
