@@ -53,6 +53,7 @@ const barrels: string[] = [
   'app',
   'app/finance-web-ui',
   'app/customer',
+  'app/customer/customer-detail',
   'app/dealer',
   'app/dealer/dealer-detail',
   'app/home',
@@ -62,6 +63,7 @@ const barrels: string[] = [
   'app/shared/components/footer',
   'app/shared/components/navigation',
   'app/shared/services',
+  'app/customer/customer-detail',
   /** @cli-barrel */
 ];
 

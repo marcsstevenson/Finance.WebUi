@@ -3,13 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { DealerDetailComponent } from './dealer-detail.component';
+import { CustomerDetailComponent } from './customer-detail.component';
 
-
-describe('Component: DealerDetail', () => {
+describe('Component: CustomerDetail', () => {
   it('should create an instance', () => {
-    // todo: fix the test
-    // let component = new DealerDetailComponent(ActivatedRoute, Router, DealerService);
-    // expect(component).toBeTruthy();
+    let component = new CustomerDetailComponent();
+    expect(component).toBeTruthy();
   });
 });
