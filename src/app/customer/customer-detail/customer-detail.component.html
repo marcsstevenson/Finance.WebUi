@@ -13,12 +13,20 @@
       <div class="media-body">
         <div class="uiEditableControls">
           <h4 class="m-bottom-0">
-            <span class="uiUnstyledInput">
-              <a aria-labelledby="" 
+            <span class="uiUnstyledInput"
                   class="" 
                   contenteditable="true" role="textbox" tabindex="0" 
-                  title="Company Name" [textContent]="dealer.Name">
-              </a>
+                  title="First Name" [textContent]="customer.FirstName">
+              <!--<a aria-labelledby="" 
+                  class="" 
+                  contenteditable="true" role="textbox" tabindex="0" 
+                  title="Company Name" [textContent]="customer.Name">
+              </a>-->
+            </span>
+            <span class="uiUnstyledInput"
+                  class="" 
+                  contenteditable="true" role="textbox" tabindex="0" 
+                  title="First Name" [textContent]="customer.LastName">
             </span>
           </h4>
 
@@ -28,14 +36,14 @@
 
         <div class="uiEditableControls">
           <p>
-            <a target="_blank" class="" [href]="dealer.Website">
+            <a target="_blank" class="" [href]="customer.Website">
               <i name="globe" class="icon icon-globe"></i>
             </a>
             <span>
                 <a aria-labelledby="" class="" 
                    contenteditable="true" role="textbox" 
-                   tabindex="0" title="Domain"
-                   [textContent]="dealer.Website"></a>
+                   tabindex="0" title="Email"
+                   [textContent]="customer.Email"></a>
               </span>
           </p>
           <div class="uiEditableControlsStage">
@@ -60,41 +68,41 @@
         <div>
           <dt>Mobile Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.CellCountry type="text" class="">
-            <input [(ngModel)]=dealer.CellArea type="text" class="">
-            <input [(ngModel)]=dealer.CellNumber type="text" class="">
+            <input [(ngModel)]=customer.CellCountry type="text" class="">
+            <input [(ngModel)]=customer.CellArea type="text" class="">
+            <input [(ngModel)]=customer.CellNumber type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>Phone Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.PhoneCountry type="text" class="">
-            <input [(ngModel)]=dealer.PhoneArea type="text" class="">
-            <input [(ngModel)]=dealer.PhoneNumber type="text" class="">
+            <input [(ngModel)]=customer.PhoneCountry type="text" class="">
+            <input [(ngModel)]=customer.PhoneArea type="text" class="">
+            <input [(ngModel)]=customer.PhoneNumber type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>Fax Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.FaxCountry type="text" class="">
-            <input [(ngModel)]=dealer.FaxArea type="text" class="">
-            <input [(ngModel)]=dealer.FaxNumber type="text" class="">
+            <input [(ngModel)]=customer.FaxCountry type="text" class="">
+            <input [(ngModel)]=customer.FaxArea type="text" class="">
+            <input [(ngModel)]=customer.FaxNumber type="text" class="">
           </dd>
         </div>
 
         <div>
-          <dt>ContactName</dt>
+          <dt>Customer Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.ContactName type="text" class="">
+            <input [(ngModel)]=customer.Number type="text" class="">
           </dd>
         </div>
 
         <div>
-          <dt>Email</dt>
+          <dt>Skype</dt>
           <dd>
-            <input [(ngModel)]=dealer.Email type="text" class="">
+            <input [(ngModel)]=customer.SkypeName type="text" class="">
           </dd>
         </div>
       </dl>
@@ -107,25 +115,25 @@
         <div>
           <dt>BankAccountName</dt>
           <dd>
-            <input [(ngModel)]=dealer.BankAccountName type="text" class="">
+            <input [(ngModel)]=customer.BankAccountName type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankAccountNumber</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankAccountNumber" type="text" class="">
+            <input [(ngModel)]="customer.BankAccountNumber" type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankBranchName</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankBranchName" type="text" class="">
+            <input [(ngModel)]="customer.BankBranchName" type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankingCompany</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankingCompany" type="text" class="">
+            <input [(ngModel)]="customer.BankingCompany" type="text" class="">
           </dd>
         </div>
       </dl>

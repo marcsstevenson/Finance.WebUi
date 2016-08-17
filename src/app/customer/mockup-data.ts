@@ -10,7 +10,7 @@ export const CustomersData: Array<any> = [
     CellNumber: '335 5560',
     DateCreated: new Date(),
     DateModified: new Date(),
-    DriversLicenceNumber: '',
+    DriversLicenceNumber: 'DD330001',
     Email: '123@123.com',
     FaxArea: '03',
     FaxCountry: '+64',
@@ -18,11 +18,11 @@ export const CustomersData: Array<any> = [
     FirstName: 'Tim',
     Gender: 'Male',
     LastName: 'Hong',
-    Number: '',
+    Number: 'C00001',
     PhoneArea: '03',
     PhoneCountry: '+64',
     PhoneNumber: '',
-    SkypeName: '',
+    SkypeName: 'tigertim719',
     Website: 'http://address.cool/',
     Addresses: [
       {
