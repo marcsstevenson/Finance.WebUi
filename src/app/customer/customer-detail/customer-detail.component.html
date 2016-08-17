@@ -140,6 +140,52 @@
     </div>
   </div>
 
-  <div class="card address-details">
-    
+  <div *ngFor="let address of customer.Addresses" class="card address-details">
+    <span *ngIf="address.IsDefault"  class="tag tag-pill tag-success">Default</span>
+    <dl>
+      <div>
+        <dt>
+          Name
+        </dt>
+          <input [(ngModel)]="address.Name" type="text" class="">
+        <dd>
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          Address Line 1
+        </dt>
+          <input [(ngModel)]="address.AddressLine1" type="text" class="">
+        <dd>
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          Region
+        </dt>
+          <input [(ngModel)]="address.Region" type="text" class="">
+        <dd>
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          City
+        </dt>
+          <input [(ngModel)]="address.City" type="text" class="">
+        <dd>
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          Postcode
+        </dt>
+          <input [(ngModel)]="address.Postcode" type="text" class="">
+        <dd>
+        </dd>
+      </div>
+    </dl>
   </div>

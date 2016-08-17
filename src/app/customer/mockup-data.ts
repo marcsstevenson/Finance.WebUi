@@ -40,6 +40,22 @@ export const CustomersData: Array<any> = [
         Postcode: '0930',
         Region: 'Gulf Harbour',
         Type: ''
+      },
+      {
+        Id: 3,
+        AddressLine1: '146a Lichfield Street',
+        AddressLine2: '',
+        AddressLine3: '',
+        City: 'Christchurch',
+        ContactPhoneNumber: '',
+        DateCreated: new Date(),
+        DateModified: new Date(),
+        IsDefault: false,
+        Name: 'Office',
+        OtherInformation: '',
+        Postcode: '8042',
+        Region: 'Central City',
+        Type: ''
       }
     ],
     Notes: [
