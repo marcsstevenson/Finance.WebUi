@@ -1,3 +1,137 @@
-<p>
-  customer-detail works!
-</p>
+<div class="container body-content fwui">
+
+  DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,
+
+  <div class="card basic-info">
+    <div class="media">
+      <div class="pull-left">
+        <div class="">
+          <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
+        </div>
+      </div>
+
+      <div class="media-body">
+        <div class="uiEditableControls">
+          <h4 class="m-bottom-0">
+            <span class="uiUnstyledInput">
+              <a aria-labelledby="" 
+                  class="" 
+                  contenteditable="true" role="textbox" tabindex="0" 
+                  title="Company Name" [textContent]="dealer.Name">
+              </a>
+            </span>
+          </h4>
+
+          <div class="uiEditableControlsStage">
+          </div>
+        </div>
+
+        <div class="uiEditableControls">
+          <p>
+            <a target="_blank" class="" [href]="dealer.Website">
+              <i name="globe" class="icon icon-globe"></i>
+            </a>
+            <span>
+                <a aria-labelledby="" class="" 
+                   contenteditable="true" role="textbox" 
+                   tabindex="0" title="Domain"
+                   [textContent]="dealer.Website"></a>
+              </span>
+          </p>
+          <div class="uiEditableControlsStage">
+          </div>
+        </div>
+      </div>
+
+      <span class="tag tag-pill tag-success">Success</span>
+    </div>
+  </div>
+
+  <div class="card contact-details">
+    <!--<img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>-->
+
+    <div class="card-block">
+      <dl>
+        <div>
+          <dt>Mobile Number</dt>
+          <dd>
+            <input [(ngModel)]=dealer.CellCountry type="text" class="">
+            <input [(ngModel)]=dealer.CellArea type="text" class="">
+            <input [(ngModel)]=dealer.CellNumber type="text" class="">
+          </dd>
+        </div>
+
+        <div>
+          <dt>Phone Number</dt>
+          <dd>
+            <input [(ngModel)]=dealer.PhoneCountry type="text" class="">
+            <input [(ngModel)]=dealer.PhoneArea type="text" class="">
+            <input [(ngModel)]=dealer.PhoneNumber type="text" class="">
+          </dd>
+        </div>
+
+        <div>
+          <dt>Fax Number</dt>
+          <dd>
+            <input [(ngModel)]=dealer.FaxCountry type="text" class="">
+            <input [(ngModel)]=dealer.FaxArea type="text" class="">
+            <input [(ngModel)]=dealer.FaxNumber type="text" class="">
+          </dd>
+        </div>
+
+        <div>
+          <dt>ContactName</dt>
+          <dd>
+            <input [(ngModel)]=dealer.ContactName type="text" class="">
+          </dd>
+        </div>
+
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <input [(ngModel)]=dealer.Email type="text" class="">
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="card bank-details">
+    <div class="card-block">
+      <dl>
+        <div>
+          <dt>BankAccountName</dt>
+          <dd>
+            <input [(ngModel)]=dealer.BankAccountName type="text" class="">
+          </dd>
+        </div>
+        <div>
+          <dt>BankAccountNumber</dt>
+          <dd>
+            <input [(ngModel)]="dealer.BankAccountNumber" type="text" class="">
+          </dd>
+        </div>
+        <div>
+          <dt>BankBranchName</dt>
+          <dd>
+            <input [(ngModel)]="dealer.BankBranchName" type="text" class="">
+          </dd>
+        </div>
+        <div>
+          <dt>BankingCompany</dt>
+          <dd>
+            <input [(ngModel)]="dealer.BankingCompany" type="text" class="">
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="card address-details">
+    
+  </div>
