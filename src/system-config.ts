@@ -11,7 +11,8 @@
 const map: any = {
   'moment': 'vendor/moment/moment.js',
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
-  'ng2-table': 'vendor/ng2-table'
+  'ng2-table': 'vendor/ng2-table',
+  'tinymce': 'vendor/tinymce',
 };
 
 /** User packages configuration. */
@@ -28,6 +29,11 @@ const packages: any = {
     format: 'cjs',
     defaultExtension: 'js',
     main: 'ng2-table.js'
+  },
+  'tinymce': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'tinymce.js'
   }
 };
 

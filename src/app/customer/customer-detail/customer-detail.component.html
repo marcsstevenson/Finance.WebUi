@@ -2,190 +2,201 @@
 
   DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,
 
-  <div class="card basic-info">
-    <div class="media">
-      <div class="pull-left">
-        <div class="">
-          <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
-        </div>
-      </div>
-
-      <div class="media-body">
-        <div class="uiEditableControls">
-          <h4 class="m-bottom-0">
-            <span class="uiUnstyledInput"
-                  class="" 
-                  contenteditable="true" role="textbox" tabindex="0" 
-                  title="First Name" [textContent]="customer.FirstName">
-              <!--<a aria-labelledby="" 
-                  class="" 
-                  contenteditable="true" role="textbox" tabindex="0" 
-                  title="Company Name" [textContent]="customer.Name">
-              </a>-->
-            </span>
-            <span class="uiUnstyledInput"
-                  class="" 
-                  contenteditable="true" role="textbox" tabindex="0" 
-                  title="First Name" [textContent]="customer.LastName">
-            </span>
-          </h4>
-
-          <div class="uiEditableControlsStage">
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="card basic-info">
+        <div class="media card-block">
+          <div class="pull-left">
+            <div class="">
+              <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
+            </div>
           </div>
-        </div>
 
-        <div class="uiEditableControls">
-          <p>
-            <a target="_blank" class="" [href]="customer.Website">
-              <i name="globe" class="icon icon-globe"></i>
-            </a>
-            <span>
-                <a aria-labelledby="" class="" 
-                   contenteditable="true" role="textbox" 
-                   tabindex="0" title="Email"
-                   [textContent]="customer.Email"></a>
-              </span>
-          </p>
-          <div class="uiEditableControlsStage">
+          <div class="media-body">
+            <div class="uiEditableControls">
+              <h4 class="m-bottom-0">
+                <span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" tabindex="0" title="First Name" [textContent]="customer.FirstName">
+                  <!--<a aria-labelledby="" 
+                      class="" 
+                      contenteditable="true" role="textbox" tabindex="0" 
+                      title="Company Name" [textContent]="customer.Name">
+                  </a>-->
+                </span>
+                <span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" tabindex="0" title="First Name" [textContent]="customer.LastName">
+                </span>
+              </h4>
+
+              <div class="uiEditableControlsStage">
+              </div>
+            </div>
+
+            <div class="uiEditableControls">
+              <p>
+                <a target="_blank" class="" [href]="customer.Website">
+                  <i name="globe" class="icon icon-globe"></i>
+                </a>
+                <span>
+                    <a aria-labelledby="" class="" 
+                      contenteditable="true" role="textbox" 
+                      tabindex="0" title="Email"
+                      [textContent]="customer.Email"></a>
+                  </span>
+              </p>
+              <div class="uiEditableControlsStage">
+              </div>
+            </div>
           </div>
+
+          <span class="tag tag-pill tag-success">Success</span>
         </div>
       </div>
 
-      <span class="tag tag-pill tag-success">Success</span>
+      <div class="card contact-details">
+        <!--<img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>-->
+
+        <div class="card-block">
+          <dl>
+            <div>
+              <dt>Mobile Number</dt>
+              <dd>
+                <input [(ngModel)]=customer.CellCountry type="text" class="">
+                <input [(ngModel)]=customer.CellArea type="text" class="">
+                <input [(ngModel)]=customer.CellNumber type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>Phone Number</dt>
+              <dd>
+                <input [(ngModel)]=customer.PhoneCountry type="text" class="">
+                <input [(ngModel)]=customer.PhoneArea type="text" class="">
+                <input [(ngModel)]=customer.PhoneNumber type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>Fax Number</dt>
+              <dd>
+                <input [(ngModel)]=customer.FaxCountry type="text" class="">
+                <input [(ngModel)]=customer.FaxArea type="text" class="">
+                <input [(ngModel)]=customer.FaxNumber type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>Customer Number</dt>
+              <dd>
+                <input [(ngModel)]=customer.Number type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>Skype</dt>
+              <dd>
+                <input [(ngModel)]=customer.SkypeName type="text" class="">
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card bank-details">
+        <div class="card-block">
+          <dl>
+            <div>
+              <dt>BankAccountName</dt>
+              <dd>
+                <input [(ngModel)]=customer.BankAccountName type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankAccountNumber</dt>
+              <dd>
+                <input [(ngModel)]="customer.BankAccountNumber" type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankBranchName</dt>
+              <dd>
+                <input [(ngModel)]="customer.BankBranchName" type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankingCompany</dt>
+              <dd>
+                <input [(ngModel)]="customer.BankingCompany" type="text" class="">
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div *ngFor="let address of customer.Addresses" class="card address-details">
+        <div class="card-block">
+          <span *ngIf="address.IsDefault" class="tag tag-pill tag-success">Default</span>
+          <dl>
+            <div>
+              <dt>
+                Name
+              </dt>
+              <input [(ngModel)]="address.Name" type="text" class="">
+              <dd>
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Address Line 1
+              </dt>
+              <input [(ngModel)]="address.AddressLine1" type="text" class="">
+              <dd>
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Region
+              </dt>
+              <input [(ngModel)]="address.Region" type="text" class="">
+              <dd>
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                City
+              </dt>
+              <input [(ngModel)]="address.City" type="text" class="">
+              <dd>
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Postcode
+              </dt>
+              <input [(ngModel)]="address.Postcode" type="text" class="">
+              <dd>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-7">
+      <div class="editor">
+        <textarea class="note" [htmlEditor]></textarea>
+      </div>
+
+      <div class="history">
+      </div>
     </div>
   </div>
 
-  <div class="card contact-details">
-    <!--<img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>-->
-
-    <div class="card-block">
-      <dl>
-        <div>
-          <dt>Mobile Number</dt>
-          <dd>
-            <input [(ngModel)]=customer.CellCountry type="text" class="">
-            <input [(ngModel)]=customer.CellArea type="text" class="">
-            <input [(ngModel)]=customer.CellNumber type="text" class="">
-          </dd>
-        </div>
-
-        <div>
-          <dt>Phone Number</dt>
-          <dd>
-            <input [(ngModel)]=customer.PhoneCountry type="text" class="">
-            <input [(ngModel)]=customer.PhoneArea type="text" class="">
-            <input [(ngModel)]=customer.PhoneNumber type="text" class="">
-          </dd>
-        </div>
-
-        <div>
-          <dt>Fax Number</dt>
-          <dd>
-            <input [(ngModel)]=customer.FaxCountry type="text" class="">
-            <input [(ngModel)]=customer.FaxArea type="text" class="">
-            <input [(ngModel)]=customer.FaxNumber type="text" class="">
-          </dd>
-        </div>
-
-        <div>
-          <dt>Customer Number</dt>
-          <dd>
-            <input [(ngModel)]=customer.Number type="text" class="">
-          </dd>
-        </div>
-
-        <div>
-          <dt>Skype</dt>
-          <dd>
-            <input [(ngModel)]=customer.SkypeName type="text" class="">
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </div>
-
-  <div class="card bank-details">
-    <div class="card-block">
-      <dl>
-        <div>
-          <dt>BankAccountName</dt>
-          <dd>
-            <input [(ngModel)]=customer.BankAccountName type="text" class="">
-          </dd>
-        </div>
-        <div>
-          <dt>BankAccountNumber</dt>
-          <dd>
-            <input [(ngModel)]="customer.BankAccountNumber" type="text" class="">
-          </dd>
-        </div>
-        <div>
-          <dt>BankBranchName</dt>
-          <dd>
-            <input [(ngModel)]="customer.BankBranchName" type="text" class="">
-          </dd>
-        </div>
-        <div>
-          <dt>BankingCompany</dt>
-          <dd>
-            <input [(ngModel)]="customer.BankingCompany" type="text" class="">
-          </dd>
-        </div>
-      </dl>
-    </div>
-  </div>
-
-  <div *ngFor="let address of customer.Addresses" class="card address-details">
-    <span *ngIf="address.IsDefault"  class="tag tag-pill tag-success">Default</span>
-    <dl>
-      <div>
-        <dt>
-          Name
-        </dt>
-          <input [(ngModel)]="address.Name" type="text" class="">
-        <dd>
-        </dd>
-      </div>
-
-      <div>
-        <dt>
-          Address Line 1
-        </dt>
-          <input [(ngModel)]="address.AddressLine1" type="text" class="">
-        <dd>
-        </dd>
-      </div>
-
-      <div>
-        <dt>
-          Region
-        </dt>
-          <input [(ngModel)]="address.Region" type="text" class="">
-        <dd>
-        </dd>
-      </div>
-
-      <div>
-        <dt>
-          City
-        </dt>
-          <input [(ngModel)]="address.City" type="text" class="">
-        <dd>
-        </dd>
-      </div>
-
-      <div>
-        <dt>
-          Postcode
-        </dt>
-          <input [(ngModel)]="address.Postcode" type="text" class="">
-        <dd>
-        </dd>
-      </div>
-    </dl>
-  </div>
+</div>

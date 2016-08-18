@@ -13,6 +13,10 @@ import {
   FinanceWebUiFooterComponent,
   FinanceWebUiNavigationComponent
 } from './shared/components/index';
+
+import {
+  TinyEditor
+} from './shared/directives/index';
 // MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, 
 
 @Component({
@@ -24,7 +28,7 @@ import {
       AlertComponent, DATEPICKER_DIRECTIVES, BUTTON_DIRECTIVES,
       FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
       FinanceWebUiNavigationComponent,
-      ROUTER_DIRECTIVES
+      ROUTER_DIRECTIVES, TinyEditor
   ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
