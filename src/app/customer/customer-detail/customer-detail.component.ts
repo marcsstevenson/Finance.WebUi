@@ -5,13 +5,14 @@ import { CustomerService } from '../customer.service';
 import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
 
 import { CustomersData } from '../mockup-data';
+declare var tinymce: any;
 
 @Component({
   moduleId: module.id,
   selector: 'app-customer-detail',
   templateUrl: 'customer-detail.component.html',
   styleUrls: ['customer-detail.component.css'],
-  directives: [TinyEditor],
+  // directives: [TinyEditor],
   providers: [CustomerService]
 })
 export class CustomerDetailComponent implements OnInit {
@@ -25,6 +26,10 @@ export class CustomerDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    tinymce.init(
+      {
+        selector: "#test",
+      })
   }
 
 }

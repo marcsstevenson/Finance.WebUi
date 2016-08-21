@@ -8,7 +8,7 @@ declare var tinymce: any;
 export class TinyEditor {
   constructor() {
     tinymce.init({
-      selector: 'textarea.note',
+      selector: '#test',
       schema: 'html5'
     });
   }
