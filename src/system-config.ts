@@ -72,6 +72,8 @@ const barrels: string[] = [
   'app/customer/customer-detail',
   'app/deal/deals',
   'app/deal/deal-detail',
+  'app/shared/components/history',
+  'app/shared/components/time-line',
   /** @cli-barrel */
 ];
 
