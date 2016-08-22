@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
-import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
-import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
+// import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+// import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
 import { TableData } from '../mockup-data';
 
 
@@ -10,7 +10,7 @@ import { TableData } from '../mockup-data';
   selector: 'app-dealers',
   templateUrl: 'dealers.component.html',
   styleUrls: ['dealers.component.css'],
-  directives: [NG_TABLE_DIRECTIVES, PAGINATION_DIRECTIVES,
+  directives: [
     NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class DealersComponent implements OnInit {

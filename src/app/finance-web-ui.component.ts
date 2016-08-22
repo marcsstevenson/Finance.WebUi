@@ -4,9 +4,9 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 // import { FORM_DIRECTIVES} from '@angular/forms';
 
 import * as moment from 'moment';
-import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+// import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
-import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+// import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 import {
   FinanceWebUiHeaderComponent,
@@ -25,7 +25,6 @@ import {
   templateUrl: 'finance-web-ui.component.html',
   styleUrls: ['finance-web-ui.component.css'],
   directives: [
-      AlertComponent, DATEPICKER_DIRECTIVES, BUTTON_DIRECTIVES,
       FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
       FinanceWebUiNavigationComponent,
       ROUTER_DIRECTIVES, TinyEditor

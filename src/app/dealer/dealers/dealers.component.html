@@ -1,12 +1,12 @@
 <div class="container body-content fwui">
-  <input *ngIf="config.filtering" placeholder="Filter"
+  <!--<input *ngIf="config.filtering" placeholder="Filter"
        [ngTableFiltering]="config.filtering"
        (tableChanged)="onChangeTable(config)"/>
 
   <ng-table [config]="config.sorting"
             (tableChanged)="onChangeTable(config)"
             [rows]="rows" [columns]="columns">
-  </ng-table>
+  </ng-table>-->
   <!--<pagination *ngIf="config.paging"
               class="pagination-sm"
               [(ngModel)]="page"
@@ -18,5 +18,5 @@
               (pageChanged)="onChangeTable(config, $event)"
               (numPages)="numPages = $event">
   </pagination>-->
-  <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+  <!--<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>-->
 </div>
