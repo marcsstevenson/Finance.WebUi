@@ -11,7 +11,8 @@ import * as moment from 'moment';
 import {
   FinanceWebUiHeaderComponent,
   FinanceWebUiFooterComponent,
-  FinanceWebUiNavigationComponent
+  FinanceWebUiNavigationComponent,
+  FinanceWebUiTimeLineComponent
 } from './shared/components/index';
 
 import {
@@ -26,7 +27,7 @@ import {
   styleUrls: ['finance-web-ui.component.css'],
   directives: [
       FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
-      FinanceWebUiNavigationComponent,
+      FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,
       ROUTER_DIRECTIVES, TinyEditor
   ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
