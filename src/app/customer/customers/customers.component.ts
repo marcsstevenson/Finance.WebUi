@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
+
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
+
+// import { Angular2DataTableModule } from 'angular2-data-table';
+
+// import {
+//   TableOptions,
+//   SelectionType,
+//   TableColumn,
+//   ColumnMode
+// } from 'angular2-data-table';
+
 
 import { CustomersData } from '../mockup-data';
 
@@ -22,6 +33,21 @@ export class CustomersComponent implements OnInit {
     { title: 'Date of Birth', name: 'DateOfBirth', sort: false },
     { title: 'Email', name: 'Email', sort: 'asc' },
   ];
+
+  // public options = new TableOptions({
+  //   columnMode: ColumnMode.force,
+  //   headerHeight: 50,
+  //   footerHeight: 50,
+  //   limit: 10,
+  //   rowHeight: 'auto',
+  //   selectionType: SelectionType.multi,
+  //   columns: [
+  //     new TableColumn({ name: 'FirstName' }),
+  //     new TableColumn({ name: 'LastName'}),
+  //     new TableColumn({ name: 'DateOfBirth'}),
+  //     new TableColumn({ name: 'Email'}),
+  //   ]
+  // });
   public page: number = 1;
   public itemsPerPage: number = 10;
   public maxSize: number = 5;
@@ -42,6 +68,7 @@ export class CustomersComponent implements OnInit {
 
   public ngOnInit(): void {
     this.onChangeTable(this.config);
+    this.rows = this.data;
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {

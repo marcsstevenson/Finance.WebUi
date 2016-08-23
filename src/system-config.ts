@@ -13,6 +13,7 @@ const map: any = {
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
   'ng2-table': 'vendor/ng2-table',
   'tinymce': 'vendor/tinymce',
+  'angular2-data-table': 'vendor/angular2-data-table',
 };
 
 /** User packages configuration. */
@@ -34,6 +35,11 @@ const packages: any = {
     format: 'cjs',
     defaultExtension: 'js',
     main: 'tinymce.js'
+  },
+  'angular2-data-table': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'release/angular2-data-table.js'
   }
 };
 

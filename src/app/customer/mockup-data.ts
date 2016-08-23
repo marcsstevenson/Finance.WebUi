@@ -94,7 +94,7 @@ export const CustomersData: Array<any> = [
   Gender: 'Male',
   LastName: 'Stevenson',
   IsEnabled: true,
-  Number: '',
+  Number: 'C00002',
   PhoneArea: '09',
   PhoneCountry: 'New Zealand',
   PhoneNumber: '2706522',

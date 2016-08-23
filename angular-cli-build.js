@@ -20,6 +20,7 @@ module.exports = function(defaults) {
       'moment/moment.js',
       'ng2-bootstrap/**/*.js',
       'ng2-table/**/*.js',
+      'angular2-data-table/**/*.js',
       'tinymce/**/*.js'
     ]
   });
