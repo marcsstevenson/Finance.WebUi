@@ -18,7 +18,10 @@ declare var tinymce: any;
 export class CustomerDetailComponent implements OnInit {
 
   private customer: any = CustomersData[0];
-  private notes: any;
+  public notes: Array<any>;
+  myText: string = 'my text';
+
+  public note: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +39,7 @@ export class CustomerDetailComponent implements OnInit {
       {
         UserName: 'Tim',
         CreatedAt: new Date(),
-        Content: '<h1>Tim Content</h1>'
+        Content: '<h1>Tim Content</h1>\n more text a;alsdkfjal;sdfjasl;dfj  \n a;sldfjasl;kfj'
       },
       {
         UserName: 'Marc',
@@ -44,6 +47,12 @@ export class CustomerDetailComponent implements OnInit {
         Content: '<h1>Marc Content</h1>'
       }
     ];
+
+    this.note = {
+      UserName: 'Tim',
+      CreatedAt: new Date(),
+      Content: '<h1>Tim Content</h1>'
+    };
   }
 
 }

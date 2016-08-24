@@ -8,21 +8,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FinanceWebUiTimeLineComponent implements OnInit {
 
-  @Input()
-  notes: any;
+  @Input() notes: Array<any>;
+  @Input() myText: string;
+
 
   constructor() { }
 
   ngOnInit() {
 
     console.log('time line has been generated!');
-    if (!this.notes) {
-      this.notes = [{
-        UserName: 'Default User',
-        CreatedAt: new Date(),
-        Content: '<h1>Default Header Content</h1>'
-      }];
-    }
+    console.log(this.notes);
+    // if (!this.notes) {
+    //   this.notes = [{
+    //     UserName: 'Default User',
+    //     CreatedAt: new Date(),
+    //     Content: '<h1>Default Header Content</h1>'
+    //   }];
+    // }
   }
 
 }

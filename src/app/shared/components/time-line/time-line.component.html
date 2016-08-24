@@ -1,12 +1,17 @@
-<div class="time-line">
+<div class="col-xs-12">
   <!--*ngIf="note"-->
-  <div *ngFor="let note of notes">
-    <div class="">
-      <div class="vertial-line top"></div>
-      <i class=""></i>
-      <div class="vertial-line bottom"></div>
+  <div class="time-line" *ngFor="let note of notes">
+    <div class="visual col-xs-1">
+      <div class="vertical-line top"></div>
+       
+      <div class="content">
+        <i class="icon"></i>
+      </div>
+
+      <div class="vertical-line bottom"></div>  
     </div>
-    <div class="detail">
+
+    <div class="detail col-xs-11">
       <div class="header">
         <span>{{note.UserName}}</span>
         <span>{{note.AddedAt}}</span>
