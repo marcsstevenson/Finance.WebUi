@@ -1,6 +1,6 @@
-<div class="col-xs-12">
+<div class="col-xs-12 p-x-0">
   <!--*ngIf="note"-->
-  <div class="time-line" *ngFor="let note of notes">
+  <div class="time-line" *ngFor="let note of notes; let isLast = first">
     <div class="visual col-xs-1">
       <div class="vertical-line top"></div>
        
@@ -8,16 +8,16 @@
         <i class="icon"></i>
       </div>
 
-      <div class="vertical-line bottom"></div>  
+      <div *ngIf="isLast" class="vertical-line bottom"></div>  
     </div>
 
-    <div class="detail col-xs-11">
-      <div class="header">
+    <div class="detail col-xs-11 p-x-0">
+      <div class="header col-xs-12 p-x-1 p-y-1">
         <span>{{note.UserName}}</span>
         <span>{{note.AddedAt}}</span>
       </div>
-      <div class="content">
-        {{note.Content}}
+      <div class="content col-xs-12 p-x-1 p-y-1"
+          [innerHTML]="note.Content">
       </div>
     </div>
   </div>

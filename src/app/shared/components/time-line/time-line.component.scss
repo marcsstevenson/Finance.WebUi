@@ -1,5 +1,6 @@
 .time-line {
     display: flex;
+
     // align-items: stretch;
     // flex-wrap: wrap;
     padding: 0px;
@@ -17,7 +18,7 @@
 
             &.top {
                 flex-grow: 0;
-                height: 10px;
+                height: 1rem;
             }
         }
 
@@ -44,5 +45,20 @@
             align-items: center;
             display: flex;
         }
+    }
+
+    .detail {
+        border-radius: 3px;
+        background: white;
+        border: 1px solid #e6e6e6;
+        box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+        position: relative;
+        margin: 10px 0px 0px 20px;
+
+        .header, content {
+            border-bottom: 1px solid #e6e6e6;
+            word-break: break-word;
+        }
+
     }
 }

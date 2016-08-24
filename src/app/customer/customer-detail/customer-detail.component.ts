@@ -39,12 +39,12 @@ export class CustomerDetailComponent implements OnInit {
       {
         UserName: 'Tim',
         CreatedAt: new Date(),
-        Content: '<h1>Tim Content</h1>\n more text a;alsdkfjal;sdfjasl;dfj  \n a;sldfjasl;kfj'
+        Content: '<h3>Tim Content</h3>\n more text a;alsdkfjal;sdfjasl;dfj  \n a;sldfjasl;kfj'
       },
       {
         UserName: 'Marc',
         CreatedAt: new Date(),
-        Content: '<h1>Marc Content</h1>'
+        Content: '<h3>Marc Content</h3>'
       }
     ];
 
