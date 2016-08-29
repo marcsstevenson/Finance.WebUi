@@ -1,0 +1,26 @@
+<div class="col-xs-12">
+  <div *ngFor="let deal of deals;">
+    <h5>
+      <a href=""><span> {{ deal.secureDescription }}</span>
+      </a>
+    </h5>
+    <p>
+      <strong>Status: </strong>
+      <span>{{ deal.status }}</span>
+    </p>
+    
+    <p>
+      <strong>Net Income: </strong>
+      <span> {{ deal.netIncome}} </span>
+    </p>
+  </div>
+
+  <div class="text-center">
+    <button data-onboarding="profile-create-deal-button" 
+            class="btn uiButton uiButtonHuge btn-lg btn-default profileModuleAddButton btn-block" 
+            tabindex="0" type="button" aria-disabled="false">
+      <i name="plus" class="icon icon-plus"></i>
+      <span>New deal</span>
+    </button>
+  </div>
+</div>
