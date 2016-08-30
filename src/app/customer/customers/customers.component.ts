@@ -15,6 +15,7 @@ import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common'
 
 
 import { CustomersData } from '../mockup-data';
+import { CustomerService } from '../customer.service';
 
 @Component({
   moduleId: module.id,
@@ -22,7 +23,9 @@ import { CustomersData } from '../mockup-data';
   templateUrl: 'customers.component.html',
   styleUrls: ['customers.component.css'],
   directives: [
-    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES]
+    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES
+  ],
+  providers: [ CustomerService ]
 })
 export class CustomersComponent implements OnInit {
 
@@ -62,13 +65,23 @@ export class CustomersComponent implements OnInit {
 
   private data: Array<any> = CustomersData;
 
-  public constructor() {
+  public constructor(private _customerService: CustomerService) {
     this.length = this.data.length;
   }
 
   public ngOnInit(): void {
     this.onChangeTable(this.config);
     this.rows = this.data;
+
+    this._customerService.getCustomers()
+    .then((customers) => {
+      this.rows = customers;
+      console.log(this.rows);
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
+    });
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {

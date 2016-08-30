@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+// import { Response } from '@angular/http';
 
 import { CustomerService } from '../customer.service';
 import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
@@ -19,7 +20,7 @@ declare var tinymce: any;
 })
 export class CustomerDetailComponent implements OnInit {
 
-  private customer: any = CustomersData[0];
+  private customer: any;
   public notes: Array<any>;
   public deals: Array<any>;
 
@@ -28,7 +29,7 @@ export class CustomerDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private customerService: CustomerService
+    private _customerSerivce: CustomerService
   ) { }
 
   ngOnInit() {
@@ -36,6 +37,21 @@ export class CustomerDetailComponent implements OnInit {
       {
         selector: "#test",
       });
+
+
+    
+    
+    
+    
+    let customerId = this.route.snapshot.params['id'];
+    this.customer = this._customerSerivce.getCustomer(customerId)
+    .then((customer) => {
+      this.customer = customer;
+      console.log(this.customer);
+    })
+    .catch((err) => {
+      console.log(err); // dont do this, show the user a nice message
+    });
 
     this.notes = [
       {
@@ -62,6 +78,21 @@ export class CustomerDetailComponent implements OnInit {
         netIncome: '375.55'
       }
     ];
+  }
+
+  save() {
+    // this._customerSerivce.saveCustomer()
+  }
+
+  delete() {
+    this._customerSerivce.deleteCustomer(this.customer.Id)
+    .then((response) => {
+      console.log('Deleted successfully: ' + response);
+      this.router.navigateByUrl('/customer');
+    })
+    .catch((err) => {
+      console.log(err); // dont do this, show the user a nice message
+    });
   }
 
 }
