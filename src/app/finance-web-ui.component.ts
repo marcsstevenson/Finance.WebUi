@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { HTTP_PROVIDERS } from '@angular/http';
 // import { CORE_DIRECTIVES } from '@angular/common';
 // import { FORM_DIRECTIVES} from '@angular/forms';
 
@@ -29,7 +30,8 @@ import {
       FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
       FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,
       ROUTER_DIRECTIVES, TinyEditor
-  ]
+  ],
+  providers: [ HTTP_PROVIDERS ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 
