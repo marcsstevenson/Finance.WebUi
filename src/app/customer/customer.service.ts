@@ -33,15 +33,15 @@ export class CustomerService {
     .catch((err: any) => this.handleError(err));
   }
 
-  addCustomer (customer: any) {
-    return this._http.post(BASE_API_URL, customer, { headers: this.headers})
-    .map((response: Response) => response.json())
-    .toPromise()
-    .catch((err: any) => this.handleError(err));
-  }
+  // addCustomer (customer: any) {
+  //   return this._http.post(BASE_API_URL, customer, { headers: this.headers})
+  //   .map((response: Response) => response.json())
+  //   .toPromise()
+  //   .catch((err: any) => this.handleError(err));
+  // }
 
-  saveCustomer (customer: any) {
-    return this._http.put(BASE_API_URL, customer, { headers: this.headers})
+  addOrSaveCustomer (customer: any) {
+    return this._http.post(BASE_API_URL + '/Customer', customer, { headers: this.headers})
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));

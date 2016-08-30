@@ -81,13 +81,20 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   save() {
-    // this._customerSerivce.saveCustomer()
+    this._customerSerivce.addOrSaveCustomer(this.customer)
+    .then((response) => {
+      console.log('Saved successfully: ', response);
+      // this.router.navigateByUrl('/customer');
+    })
+    .catch((err) => {
+      console.log(err); // dont do this, show the user a nice message
+    });
   }
 
   delete() {
     this._customerSerivce.deleteCustomer(this.customer.Id)
     .then((response) => {
-      console.log('Deleted successfully: ' + response);
+      console.log('Deleted successfully: ', response);
       this.router.navigateByUrl('/customer');
     })
     .catch((err) => {
