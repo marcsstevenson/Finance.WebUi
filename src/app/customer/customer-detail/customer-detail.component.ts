@@ -38,11 +38,6 @@ export class CustomerDetailComponent implements OnInit {
         selector: "#test",
       });
 
-
-    
-    
-    
-    
     let customerId = this.route.snapshot.params['id'];
     this.customer = this._customerSerivce.getCustomer(customerId)
     .then((customer) => {

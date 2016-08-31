@@ -69,7 +69,7 @@ export class CustomersComponent implements OnInit {
     this.length = this.data.length;
   }
 
-  public ngOnInit(): void {
+  public ngOnInit() {
     this.onChangeTable(this.config);
     this.rows = this.data;
 
@@ -82,6 +82,11 @@ export class CustomersComponent implements OnInit {
       //todo: show err message to users later
       console.log(err);
     });
+  }
+
+
+  public addCustomer () {
+
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
