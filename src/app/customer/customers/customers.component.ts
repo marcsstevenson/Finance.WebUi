@@ -66,6 +66,7 @@ export class CustomersComponent implements OnInit {
   };
 
   private data: Array<any> = CustomersData;
+  
 
   public constructor(
     private router: Router,

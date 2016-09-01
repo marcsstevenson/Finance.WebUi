@@ -1,5 +1,46 @@
 <div class="container body-content fwui">
-  <p>
-    deals works!
-  </p>
+    <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="deal number, name or mobile">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Search</button>
+        </span>
+      </div>
+
+      <!--<button type="button" 
+              class="btn btn-danger" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="icon-user icon-white"></i> Delete
+      </button>-->
+
+
+      <button type="button" class="btn btn-success" (click)="addDeal()">
+          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add
+      </button>
+
+      <!--<input type="text" class="form-control" placeholder="">
+      <button type="button" class="btn btn-default">Search</button>-->
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Deals Number</th>
+        <th>Deal Status</th>
+        <th>Date Created</th>
+        <th>Customer Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let deal of rows">
+        <td><a [routerLink]="['/deal', deal.Id]">{{deal.Number}}</a></td>
+        <td>{{deal.DealStatus}}</td>
+        <td>{{deal.DateCreated}}</td>
+        <td>{{deal.CustomerName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
