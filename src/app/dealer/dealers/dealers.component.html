@@ -19,4 +19,50 @@
               (numPages)="numPages = $event">
   </pagination>-->
   <!--<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="dealership number, name or mobile">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Search</button>
+        </span>
+      </div>
+
+      <!--<button type="button" 
+              class="btn btn-danger" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="icon-user icon-white"></i> Delete
+      </button>-->
+
+
+      <button type="button" class="btn btn-success" (click)="addDealership()">
+          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add
+      </button>
+
+      <!--<input type="text" class="form-control" placeholder="">
+      <button type="button" class="btn btn-default">Search</button>-->
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Dealership Name</th>
+        <th>Contact Name</th>
+        <th>Phone</th>
+        <th>Mobile</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let dealership of rows">
+        <td><a [routerLink]="['/dealership', dealership.Id]"> {{dealership.Name}} </a></td>
+        <td>{{dealership.ContactName}}</td>
+        <td>{{ dealership.PhoneCountry }} {{ dealership.PhoneArea }} {{ dealership.PhoneNumber }}</td>
+        <td>{{ dealership.CellCountry }} {{ dealership.CellArea }} {{ dealership.CellNumber }}</td>
+        <td>{{ dealership.Email}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
-import { TableData } from '../mockup-data';
+import { DealershipData } from '../mockup-data';
 
 
 @Component({
@@ -36,14 +36,16 @@ export class DealersComponent implements OnInit {
     filtering: { filterString: '', columnName: 'position' }
   };
 
-  private data: Array<any> = TableData;
+  private data: Array<any> = DealershipData;
 
   public constructor() {
     this.length = this.data.length;
   }
 
   public ngOnInit(): void {
-    this.onChangeTable(this.config);
+    // this.onChangeTable(this.config);
+
+    this.rows = this.data;
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
