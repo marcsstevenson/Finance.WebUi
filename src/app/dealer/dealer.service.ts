@@ -1,151 +1,56 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Http, Response, Headers} from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
+// const BASE_API_URL = 'http://financeplatform.azurewebsites.net/api';
 
-export class Address {
-  constructor(
-    public Id: number,
-    public AddressLine1: string,
-    public AddressLine2: string,
-    public AddressLine3: string,
-    public City: string,
-    public ContactPhoneNumber: string,
-    public DateCreated: Date,
-    public DateModified: Date,
-    public IsDefault: boolean,
-    public Name: string,
-    public OtherInformation: string,
-    public Postcode: string,
-    public Region: string,
-    public Type: string
-  ) {
-
-  }
-}
-
-export class Dealer {
-  constructor(
-    public id: number,
-    public BankAccountName: string,
-    public BankAccountNumber: string,
-    public BankBranchName: string,
-    public BankingCompany: string,
-    public CellArea: string,
-    public CellCountry: string,
-    public CellNumber: string,
-    public ContactName: string,
-    public DateCreated: Date,
-    public DateModified: Date,
-    public Email: string,
-    public FaxArea: string,
-    public FaxCountry: string,
-    public FaxNumber: string,
-    public IsEnabled: boolean,
-    public Name: string,
-    public PhoneArea: string,
-    public PhoneCountry: string,
-    public PhoneNumber: string,
-    public Website: string,
-    public Addresses: Array<Address>
-    ) {
-
-  }
-}
-
-let mockDealers = [
-  {
-    id: 1,
-    BankAccountName: 'bank account name',
-    BankAccountNumber: '03-0131-0567783-000',
-    BankBranchName: 'Riccarton',
-    BankingCompany: 'ANZ',
-    CellArea: '021',
-    CellCountry: 'New Zealand',
-    CellNumber: '335 5560',
-    ContactName: 'Tim Hong',
-    DateCreated: new Date(),
-    DateModified: new Date(),
-    Email: '123@123.com',
-    FaxArea: '03',
-    FaxCountry: 'New Zealand',
-    FaxNumber: '335 6679',
-    IsEnabled: true,
-    Name: 'Jetski Imports Limited',
-    PhoneArea: '03',
-    PhoneCountry: 'New Zealand',
-    PhoneNumber: '335 6677',
-    Website: 'http://www.jetskiimportsltd.co.nz/',
-    Addresses: [
-      {
-        Id: 2,
-        AddressLine1: '228 Alec Craig Way',
-        AddressLine2: '',
-        AddressLine3: '',
-        City: 'Whangaparaoa',
-        ContactPhoneNumber: '',
-        DateCreated: new Date(),
-        DateModified: new Date(),
-        IsDefault: true,
-        Name: 'Head Quarter',
-        OtherInformation: '',
-        Postcode: '0930',
-        Region: 'Gulf Harbour',
-        Type: ''
-      }
-    ]
-},
-{
-  id: 2,
-  BankAccountName: 'bank account name',
-  BankAccountNumber: '08-0131-0567783-000',
-  BankBranchName: 'Bush Inn',
-  BankingCompany: 'BNZ',
-  CellArea: '021',
-  CellCountry: 'New Zealand',
-  CellNumber: '335 5560',
-  ContactName: 'Marc Stevenson',
-  DateCreated: new Date(),
-  DateModified: new Date(),
-  Email: '222@123.com',
-  FaxArea: '03',
-  FaxCountry: 'New Zealand',
-  FaxNumber: '335 6679',
-  IsEnabled: true,
-  Name: 'JJ Motors',
-  PhoneArea: '09',
-  PhoneCountry: 'New Zealand',
-  PhoneNumber: '2706522',
-  Website: '',
-  Addresses: [
-    {
-      Id: 1,
-      AddressLine1: '3 Hans Street 1062 ',
-      AddressLine2: '',
-      AddressLine3: '',
-      City: 'Auckland',
-      ContactPhoneNumber: '',
-      DateCreated: new Date(),
-      DateModified: new Date(),
-      IsDefault: true,
-      Name: 'Head Quarter',
-      OtherInformation: '',
-      Postcode: '0930',
-      Region: 'Otahuhu',
-      Type: ''
-    }
-  ]
-}];
-
-let dealersPromise = Promise.resolve(mockDealers);
+const BASE_API_URL = 'http://192.168.1.42:1319/api';
 
 @Injectable()
 export class DealerService {
-  constructor() { }
-  getDealers() {
-    return dealersPromise;
+  private headers: Headers;
+
+  constructor(private _http: Http) {
+
   }
 
-  getDealer(id: number | string) {
-    return dealersPromise
-    .then(dealers => dealers.find(dealer => dealer.id === +id));
+  OnInit () {
+    this.headers = new Headers;
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Accept', 'application/json');
+  }
+
+  getDealerships () {
+    return this._http.get(BASE_API_URL +  '/Dealership')
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  getDealership (id: string) {
+    return this._http.get(BASE_API_URL + '/Dealership?id=' + id)
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  addOrSaveDealership (dealership: any) {
+    console.log('the dealership obj is: ', dealership);
+
+    return this._http.post(BASE_API_URL + '/Dealership', dealership, { headers: this.headers})
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  deleteDealership (id: string) {
+    return this._http.delete(BASE_API_URL + '/Dealership?id=' + id)
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  private handleError (err: any) {
+    console.log(err);
+    return Promise.reject(err);
   }
 }

@@ -4,6 +4,8 @@ import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common'
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
 import { DealershipData } from '../mockup-data';
 
+import { DealerService } from '../dealer.service';
+
 
 @Component({
   moduleId: module.id,
@@ -11,7 +13,9 @@ import { DealershipData } from '../mockup-data';
   templateUrl: 'dealers.component.html',
   styleUrls: ['dealers.component.css'],
   directives: [
-    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES]
+    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES
+  ],
+  providers: [DealerService]
 })
 export class DealersComponent implements OnInit {
 
@@ -38,14 +42,27 @@ export class DealersComponent implements OnInit {
 
   private data: Array<any> = DealershipData;
 
-  public constructor() {
+  public constructor(
+    private _dealershipService: DealerService
+  ) {
     this.length = this.data.length;
   }
 
   public ngOnInit(): void {
     // this.onChangeTable(this.config);
 
-    this.rows = this.data;
+    // this.rows = this.data;
+
+    this._dealershipService.getDealerships()
+    .then((dealers) => {
+      this.rows = dealers;
+      console.log(this.rows);
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
+    });
+
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
