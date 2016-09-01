@@ -47,7 +47,7 @@ export const DealershipData: Array<any> = [
   BankBranchName: 'Bush Inn',
   BankingCompany: 'BNZ',
   CellArea: '021',
-  CellCountry: 'New Zealand',
+  CellCountry: '+64',
   CellNumber: '335 5560',
   ContactName: 'Marc Stevenson',
   DateCreated: new Date(),
@@ -59,7 +59,7 @@ export const DealershipData: Array<any> = [
   IsEnabled: true,
   Name: 'JJ Motors',
   PhoneArea: '09',
-  PhoneCountry: 'New Zealand',
+  PhoneCountry: '+64',
   PhoneNumber: '2706522',
   Website: '',
   Addresses: [

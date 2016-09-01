@@ -1,6 +1,13 @@
 <div class="container body-content fwui">
 
-  DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,
+  <!--todo: the follow data are not binded to the view yet-->
+  <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
+    <button class="btn btn-success" type="button" (click)="save()">
+    <span class="glyphicon glyphicon-align-left"></span> Save
+  </button>
+  <button class="btn btn-success" type="button" (click)="delete()">
+    <span class="glyphicon glyphicon-align-left"></span> Delete
+  </button>
 
   <div class="card basic-info">
     <div class="media">
@@ -17,7 +24,7 @@
               <a aria-labelledby="" 
                   class="" 
                   contenteditable="true" role="textbox" tabindex="0" 
-                  title="Company Name" [textContent]="dealer.Name">
+                  title="Company Name" [textContent]="dealership.Name">
               </a>
             </span>
           </h4>
@@ -28,14 +35,14 @@
 
         <div class="uiEditableControls">
           <p>
-            <a target="_blank" class="" [href]="dealer.Website">
+            <a target="_blank" class="" [href]="dealership.Website">
               <i name="globe" class="icon icon-globe"></i>
             </a>
             <span>
                 <a aria-labelledby="" class="" 
                    contenteditable="true" role="textbox" 
                    tabindex="0" title="Domain"
-                   [textContent]="dealer.Website"></a>
+                   [textContent]="dealership.Website"></a>
               </span>
           </p>
           <div class="uiEditableControlsStage">
@@ -60,41 +67,41 @@
         <div>
           <dt>Mobile Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.CellCountry type="text" class="">
-            <input [(ngModel)]=dealer.CellArea type="text" class="">
-            <input [(ngModel)]=dealer.CellNumber type="text" class="">
+            <input [(ngModel)]=dealership.CellCountry type="text" class="">
+            <input [(ngModel)]=dealership.CellArea type="text" class="">
+            <input [(ngModel)]=dealership.CellNumber type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>Phone Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.PhoneCountry type="text" class="">
-            <input [(ngModel)]=dealer.PhoneArea type="text" class="">
-            <input [(ngModel)]=dealer.PhoneNumber type="text" class="">
+            <input [(ngModel)]=dealership.PhoneCountry type="text" class="">
+            <input [(ngModel)]=dealership.PhoneArea type="text" class="">
+            <input [(ngModel)]=dealership.PhoneNumber type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>Fax Number</dt>
           <dd>
-            <input [(ngModel)]=dealer.FaxCountry type="text" class="">
-            <input [(ngModel)]=dealer.FaxArea type="text" class="">
-            <input [(ngModel)]=dealer.FaxNumber type="text" class="">
+            <input [(ngModel)]=dealership.FaxCountry type="text" class="">
+            <input [(ngModel)]=dealership.FaxArea type="text" class="">
+            <input [(ngModel)]=dealership.FaxNumber type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>ContactName</dt>
           <dd>
-            <input [(ngModel)]=dealer.ContactName type="text" class="">
+            <input [(ngModel)]=dealership.ContactName type="text" class="">
           </dd>
         </div>
 
         <div>
           <dt>Email</dt>
           <dd>
-            <input [(ngModel)]=dealer.Email type="text" class="">
+            <input [(ngModel)]=dealership.Email type="text" class="">
           </dd>
         </div>
       </dl>
@@ -107,25 +114,25 @@
         <div>
           <dt>BankAccountName</dt>
           <dd>
-            <input [(ngModel)]=dealer.BankAccountName type="text" class="">
+            <input [(ngModel)]=dealership.BankAccountName type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankAccountNumber</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankAccountNumber" type="text" class="">
+            <input [(ngModel)]="dealership.BankAccountNumber" type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankBranchName</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankBranchName" type="text" class="">
+            <input [(ngModel)]="dealership.BankBranchName" type="text" class="">
           </dd>
         </div>
         <div>
           <dt>BankingCompany</dt>
           <dd>
-            <input [(ngModel)]="dealer.BankingCompany" type="text" class="">
+            <input [(ngModel)]="dealership.BankingCompany" type="text" class="">
           </dd>
         </div>
       </dl>

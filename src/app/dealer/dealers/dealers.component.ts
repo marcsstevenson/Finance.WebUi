@@ -51,17 +51,20 @@ export class DealersComponent implements OnInit {
   public ngOnInit(): void {
     // this.onChangeTable(this.config);
 
-    // this.rows = this.data;
+    this.rows = this.data;
 
-    this._dealershipService.getDealerships()
-    .then((dealers) => {
-      this.rows = dealers;
-      console.log(this.rows);
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+    //todo: uncomment the code below and change the base api url contant in the file,
+    // the api integration should just work
+    
+    // this._dealershipService.getDealerships()
+    // .then((dealers) => {
+    //   this.rows = dealers;
+    //   console.log(this.rows);
+    // })
+    // .catch((err) => {
+    //   //todo: show err message to users later
+    //   console.log(err);
+    // });
 
   }
 

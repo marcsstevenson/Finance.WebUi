@@ -29,7 +29,7 @@ export class CustomerDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private _customerSerivce: CustomerService
+    private _customerService: CustomerService
   ) { }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class CustomerDetailComponent implements OnInit {
       });
 
     let customerId = this.route.snapshot.params['id'];
-    this.customer = this._customerSerivce.getCustomer(customerId)
+    this.customer = this._customerService.getCustomer(customerId)
     .then((customer) => {
       this.customer = customer;
       console.log(this.customer);
@@ -76,7 +76,7 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   save() {
-    this._customerSerivce.addOrSaveCustomer(this.customer)
+    this._customerService.addOrSaveCustomer(this.customer)
     .then((response) => {
       console.log('Saved successfully: ', response);
       // this.router.navigateByUrl('/customer');
@@ -87,7 +87,7 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   delete() {
-    this._customerSerivce.deleteCustomer(this.customer.Id)
+    this._customerService.deleteCustomer(this.customer.Id)
     .then((response) => {
       console.log('Deleted successfully: ', response);
       this.router.navigateByUrl('/customer');
