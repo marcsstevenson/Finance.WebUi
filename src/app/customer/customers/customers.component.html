@@ -32,9 +32,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="customer number, name or mobile">
+        <input type="text" [(ngModel)]="searchQuery" class="form-control" placeholder="customer number, name or mobile">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Search</button>
+          <button class="btn btn-default" type="button" (click)="searchCustomer(searchQuery)">Search</button>
         </span>
       </div>
 

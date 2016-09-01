@@ -39,6 +39,8 @@ export class CustomersComponent implements OnInit {
     { title: 'Email', name: 'Email', sort: 'asc' },
   ];
 
+  public searchQuery: string;
+
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
   //   headerHeight: 50,
@@ -68,14 +70,14 @@ export class CustomersComponent implements OnInit {
   private data: Array<any> = CustomersData;
   
 
-  public constructor(
+  constructor(
     private router: Router,
     private _customerService: CustomerService
     ) {
     this.length = this.data.length;
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.onChangeTable(this.config);
     this.rows = this.data;
 
@@ -91,8 +93,31 @@ export class CustomersComponent implements OnInit {
   }
 
 
-  public addCustomer () {
+  addCustomer () {
     this.router.navigate(['/customer', 'new']);
+  }
+
+  searchCustomer (searchQuery: string) {
+    let searchObj = {
+      NameContains: searchQuery,
+      // NumberContains: searchQuery,
+      // CellContains: searchQuery,
+      // DriversLicenceNumberContains: searchQuery,
+      OrderBy: 'Name'
+    };
+
+    console.log("The searchObj is: ", searchObj);
+
+    this._customerService.searchCustomer(searchObj)
+    .then((response) => {
+      console.log("The response is: ", response);
+      this.rows = response.SearchResults;
+      
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
+    });
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
