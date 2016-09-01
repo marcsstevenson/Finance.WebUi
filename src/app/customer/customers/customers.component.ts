@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
 
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
@@ -65,7 +67,10 @@ export class CustomersComponent implements OnInit {
 
   private data: Array<any> = CustomersData;
 
-  public constructor(private _customerService: CustomerService) {
+  public constructor(
+    private router: Router,
+    private _customerService: CustomerService
+    ) {
     this.length = this.data.length;
   }
 
@@ -86,7 +91,7 @@ export class CustomersComponent implements OnInit {
 
 
   public addCustomer () {
-
+    this.router.navigate(['/customer', 'new']);
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {

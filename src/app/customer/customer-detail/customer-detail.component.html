@@ -21,15 +21,16 @@
           <div class="media-body">
             <div class="uiEditableControls">
               <h4 class="m-bottom-0">
-                <span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" tabindex="0" title="First Name" [textContent]="customer.FirstName">
-                  <!--<a aria-labelledby="" 
-                      class="" 
-                      contenteditable="true" role="textbox" tabindex="0" 
-                      title="Company Name" [textContent]="customer.Name">
-                  </a>-->
-                </span>
-                <span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" tabindex="0" title="First Name" [textContent]="customer.LastName">
-                </span>
+                <!--<span class="uiUnstyledInput" class="" contenteditable="true" role="textbox"
+                      tabindex="0" title="First Name" 
+                      [textContent]="customer.FirstName">
+                </span>-->
+                <!--<span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" 
+                      tabindex="0" title="First Name" 
+                      [textContent]="customer.LastName">
+                </span>-->
+                <input [(ngModel)]="customer.FirstName" type="text" class="">
+                <input [(ngModel)]="customer.LastName" type="text" class="">
               </h4>
 
               <div class="uiEditableControlsStage">
