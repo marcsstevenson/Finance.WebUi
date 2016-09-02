@@ -22,17 +22,17 @@ export class DealsComponent implements OnInit {
     private _dealService: DealService) { }
 
   ngOnInit() {
-    this.rows = this.data;
+    // this.rows = this.data;
 
-    // this._dealService.getDeals()
-    // .then((deals) => {
-    //   this.rows = deals;
-    //   console.log(this.rows);
-    // })
-    // .catch((err) => {
-    //   //todo: show err message to users later
-    //   console.log(err);
-    // });
+    this._dealService.getDeals()
+    .then((deals) => {
+      this.rows = deals;
+      console.log(this.rows);
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
+    });
   }
 
   public addDeal () {
