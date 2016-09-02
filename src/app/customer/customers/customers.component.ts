@@ -81,15 +81,7 @@ export class CustomersComponent implements OnInit {
     this.onChangeTable(this.config);
     this.rows = this.data;
 
-    this._customerService.getCustomers()
-    .then((customers) => {
-      this.rows = customers;
-      console.log(this.rows);
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+    this.loadCustomers();
   }
 
 
@@ -112,7 +104,6 @@ export class CustomersComponent implements OnInit {
     .then((response) => {
       console.log("The response is: ", response);
       this.rows = response.SearchResults;
-      
     })
     .catch((err) => {
       //todo: show err message to users later
@@ -120,11 +111,23 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  public changePage(page: any, data: Array<any> = this.data): Array<any> {
+  public changePage (page: any, data: Array<any> = this.data): Array<any> {
     console.log(page);
     let start = (page.page - 1) * page.itemsPerPage;
     let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
     return data.slice(start, end);
+  }
+
+  private loadCustomers () {
+    this._customerService.getCustomers()
+    .then((customers) => {
+      this.rows = customers;
+      console.log(this.rows);
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
+    });
   }
 
   public changeSort(data: any, config: any): any {

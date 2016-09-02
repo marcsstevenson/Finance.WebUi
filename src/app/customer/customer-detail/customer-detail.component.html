@@ -201,9 +201,16 @@
     </div>
 
     <div class="col-xs-7">
-      <div class="editor">
-        <textarea class="note" id="test"></textarea>
-      </div>
+      <!--<div class="editor">
+        <textarea class="note" id="test" [(ngModel)]="note"></textarea>
+      </div>-->
+
+      <textarea [tinymce]="tinymce" class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
+      
+      <!--<span>The note content is: {{note}}</span>-->
+      <button class="btn btn-success" type="button" (click)="addNote(note)">
+        <span class="glyphicon glyphicon-align-left"></span> Save
+      </button>
 
       <div class="history">
         <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>
