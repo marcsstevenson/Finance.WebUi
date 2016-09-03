@@ -1,6 +1,6 @@
 <div class="col-xs-12 p-x-0">
   <!--*ngIf="note"-->
-  <div class="time-line" *ngFor="let note of notes | orderBy : ['DateCreated'] ; let isLast = last">
+  <div class="time-line" *ngFor="let note of notes; let isLast = last">
     <div class="visual col-xs-1">
       <div class="vertical-line top"></div>
        
