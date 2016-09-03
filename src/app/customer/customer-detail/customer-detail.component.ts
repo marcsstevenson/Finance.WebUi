@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CustomerService } from '../customer.service';
 // import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
-import { TinyMceValueAccessorDirective } from '../../shared/directives/tinymce.directive';
+//import { TinyMceValueAccessorDirective } from '../../shared/directives/tinymce.directive';
 
 import { CustomerDealsComponent } from './customer-deals/customer-deals.component';
 
@@ -16,7 +16,7 @@ declare var tinymce: any;
   selector: 'app-customer-detail',
   templateUrl: 'customer-detail.component.html',
   styleUrls: ['customer-detail.component.css'],
-  directives: [CustomerDealsComponent, TinyMceValueAccessorDirective],
+  directives: [CustomerDealsComponent, /*TinyMceValueAccessorDirective*/],
   providers: [CustomerService]
 })
 export class CustomerDetailComponent implements OnInit {
