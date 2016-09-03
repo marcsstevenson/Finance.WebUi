@@ -1,1 +1,2 @@
-export * from './tiny-editor/tiny-editor.directive';
+export * from './tinymce.directive';
+export * from './tiny-editor/index';

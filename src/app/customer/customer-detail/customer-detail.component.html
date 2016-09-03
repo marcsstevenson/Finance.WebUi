@@ -205,7 +205,8 @@
         <textarea class="note" id="test" [(ngModel)]="note"></textarea>
       </div>-->
 
-      <textarea [tinymce]="tinymce" class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
+      <!--[tinymce]="tinymce"-->
+      <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
       
       <!--<span>The note content is: {{note}}</span>-->
       <button class="btn btn-success" type="button" (click)="addNote(note)">
