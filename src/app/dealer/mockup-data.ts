@@ -1,6 +1,6 @@
 export const DealershipData: Array<any> = [
   {
-    id: 1,
+    Id: 1,
     BankAccountName: 'bank account name',
     BankAccountNumber: '03-0131-0567783-000',
     BankBranchName: 'Riccarton',
@@ -41,7 +41,7 @@ export const DealershipData: Array<any> = [
     ]
 },
 {
-  id: 2,
+  Id: 2,
   BankAccountName: 'bank account name',
   BankAccountNumber: '08-0131-0567783-000',
   BankBranchName: 'Bush Inn',

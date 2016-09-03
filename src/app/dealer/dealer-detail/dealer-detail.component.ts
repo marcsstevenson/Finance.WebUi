@@ -40,6 +40,13 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
   }
 
   save() {
+    //todo: need to get customer number to make this save work properly
+    if (this.dealership.Number == null) {
+      // default dealership number for now. 
+      // will discuss what this number does here later.
+      this.dealership.Number = '1';
+    }
+
     this._dealershipService.addOrSaveDealership(this.dealership)
     .then((response) => {
       console.log('Saved successfully: ', response);

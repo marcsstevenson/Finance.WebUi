@@ -1,7 +1,7 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
 import { CustomersRoute } from './customer/index';
-import { DealersRoute } from './dealer/index';
+import { DealershipRoute } from './dealer/index';
 import { HomeRoute } from './home/index';
 import { LoginRoute } from './login/index';
 import { DealRoute } from './deal/index';
@@ -10,7 +10,7 @@ import { AUTH_PROVIDERS } from './shared/services/index';
 const routes: RouterConfig = [
     ...HomeRoute,
     ...CustomersRoute,
-    ...DealersRoute,
+    ...DealershipRoute,
     ...DealRoute,
     ...LoginRoute
 ];

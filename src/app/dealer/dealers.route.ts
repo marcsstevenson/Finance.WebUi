@@ -3,13 +3,13 @@ import { RouterConfig } from '@angular/router';
 import { DealersComponent } from './index';
 import { DealerDetailComponent } from './index';
 
-export const DealersRoute: RouterConfig = [
+export const DealershipRoute: RouterConfig = [
     {
-        path: 'dealer',
+        path: 'dealership',
         component: DealersComponent
     },
     {
-        path: 'dealer/:id',
+        path: 'dealership/:id',
         component: DealerDetailComponent
     }
 ];

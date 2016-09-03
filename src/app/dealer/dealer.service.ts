@@ -2,9 +2,9 @@ import { Injectable, OnInit } from '@angular/core';
 import { Http, Response, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-// const BASE_API_URL = 'http://financeplatform.azurewebsites.net/api';
+const BASE_API_URL = 'http://financeplatform.azurewebsites.net/api';
 
-const BASE_API_URL = 'http://192.168.1.42:1319/api';
+// const BASE_API_URL = 'http://192.168.1.42:1319/api';
 
 @Injectable()
 export class DealerService {
