@@ -1,5 +1,165 @@
 <div class="container body-content fwui">
-  <p>
-    deal-detail works!
-  </p>
+
+  DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,
+  <button class="btn btn-success" type="button" (click)="save()">
+    <span class="glyphicon glyphicon-align-left"></span> Save
+  </button>
+  <button class="btn btn-success" type="button" (click)="delete()">
+    <span class="glyphicon glyphicon-align-left"></span> Delete
+  </button>
+
+  <div class="column col-xs-12">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>TermInMonths</th>
+            <th>Rate</th>
+            <th>FinanceVolume</th>
+            <th>Commission</th>
+            <th>DocumentationFee</th>
+            <th>GuaranteedAssetProtection</th>
+            <th>MechanicalBreakDownInsurance</th>
+            <th>OtherInsurance</th>
+            <th>DealershipCommission</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!--<th scope="row">1</th>-->
+            <td>{{deal.TermInMonths}}</td>
+            <td>{{deal.Rate}}</td>
+            <td>{{deal.FinanceVolume}}</td>
+            <td>{{deal.Commission}}</td>
+            <td>{{deal.DocumentationFee}}</td>
+            <td>{{deal.GuaranteedAssetProtection}}</td>
+            <td>{{deal.MechanicalBreakDownInsurance}}</td>
+            <td>{{deal.OtherInsurance}}</td>
+            <td>{{deal.DealershipCommission}}</td>
+          </tr>
+          <!--<tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="card basic-info">
+        <div class="media card-block">
+
+
+<!--todo: other unused property-->
+<!--DateModified-->
+
+<!--todo: understand that following property-->
+<!--DealershipClawbackNotes-->
+<!--AssignedToId-->
+
+<!--todo: find out what the rest of the property do-->
+<!--Number (Might be Cash manager reference?)-->
+<!--OtherInsuranceNote (can't find this in the excel file)-->
+
+
+
+          <div class="media-body">
+            <div class="uiEditableControls">              
+              <label>Customer Id (Name in future)</label>
+              <input [(ngModel)]="deal.CustomerId" type="text" class="">
+
+              <label>Cash Manager Reference</label>
+              <input [(ngModel)]="deal.CashManagerReference" type="text" class="">
+
+              <label>Date Created</label>
+              <input [(ngModel)]="deal.DateCreated" type="text" class="">
+
+              <label>Deal Status</label>
+              <input [(ngModel)]="deal.DealStatus" type="text" class="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="card contact-details">
+        <div class="card-block">
+          <dl>
+            <div>
+              <dt>Security Description</dt>
+              <dd>
+                <input [(ngModel)]="deal.SecurityDescription" type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>SourceId</dt>
+              <dd>
+                <input [(ngModel)]="deal.SourceId" type="text" class="">
+              </dd>
+            </div>
+
+            <div>
+              <dt>Fax Number</dt>
+              <dd>
+                <input [(ngModel)]="deal.FinanceCompanyId" type="text" class="">
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+
+      <!--<div class="card bank-details">
+        <div class="card-block">
+          <dl>
+            <div>
+              <dt>BankAccountName</dt>
+              <dd>
+                <input [(ngModel)]=deal.BankAccountName type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankAccountNumber</dt>
+              <dd>
+                <input [(ngModel)]="deal.BankAccountNumber" type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankBranchName</dt>
+              <dd>
+                <input [(ngModel)]="deal.BankBranchName" type="text" class="">
+              </dd>
+            </div>
+            <div>
+              <dt>BankingCompany</dt>
+              <dd>
+                <input [(ngModel)]="deal.BankingCompany" type="text" class="">
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>-->
+
+      
+    </div>
+
+    <div class="col-xs-7">
+      
+      <div class="editor">
+        <textarea class="note" id="test"></textarea>
+      </div>
+
+      <div class="history">
+        <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>
+      </div>
+    </div>
+  </div>
+
 </div>
