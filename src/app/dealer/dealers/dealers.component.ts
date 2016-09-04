@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
+import { Router } from '@angular/router';
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
 import { DealershipData } from '../mockup-data';
@@ -43,6 +44,7 @@ export class DealersComponent implements OnInit {
   private data: Array<any> = DealershipData;
 
   public constructor(
+    private router: Router,
     private _dealershipService: DealerService
   ) {
     this.length = this.data.length;
@@ -55,17 +57,23 @@ export class DealersComponent implements OnInit {
 
     //todo: uncomment the code below and change the base api url contant in the file,
     // the api integration should just work
-    
-    // this._dealershipService.getDealerships()
-    // .then((dealers) => {
-    //   this.rows = dealers;
-    //   console.log(this.rows);
-    // })
-    // .catch((err) => {
-    //   //todo: show err message to users later
-    //   console.log(err);
-    // });
+    this.loadDealership();
+  }
 
+public addDealership () {
+    this.router.navigate(['/dealership', 'new']);
+  }
+
+  private loadDealership() {
+    this._dealershipService.getDealerships()
+      .then((dealers) => {
+        this.rows = dealers;
+        console.log(this.rows);
+      })
+      .catch((err) => {
+        //todo: show err message to users later
+        console.log(err);
+      });
   }
 
   public changePage(page: any, data: Array<any> = this.data): Array<any> {
