@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+
 
 const BASE_API_URL = 'http://financeplatform.azurewebsites.net/api';
 
@@ -11,32 +12,40 @@ export class CustomerService {
 
   private headers: Headers;
 
-  constructor(private _http: Http) {
-
-  }
+  constructor(
+    private _http: Http
+    ) {
+      // todo: move this to OnInit later.
+      this.headers = new Headers();
+      this.headers.append('Accept', 'application/json');
+      this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
+    }
 
   OnInit () {
-    this.headers = new Headers;
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Accept', 'application/json');
   }
 
   getCustomers () {
-    return this._http.get(BASE_API_URL +  '/Customer')
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL +  '/Customer',  options )
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   getCustomer (id: string) {
-    return this._http.get(BASE_API_URL + '/Customer?id=' + id)
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL + '/Customer?id=' + id, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   getCustomerNotes (id: string) {
-    return this._http.get(BASE_API_URL + '/CustomerNote/GetForCustomer?customerId=' + id)
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL + '/CustomerNote/GetForCustomer?customerId=' + id, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
@@ -44,34 +53,43 @@ export class CustomerService {
 
   addOrSaveCustomer (customer: any) {
     console.log('the customer obj is: ', customer);
+    let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.post(BASE_API_URL + '/Customer', customer, { headers: this.headers})
+    return this._http.post(BASE_API_URL + '/Customer', customer, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   addOrSaveCustomerNote (customerNote: any) {
-    return this._http.post(BASE_API_URL + '/CustomerNote', customerNote, { headers: this.headers })
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/CustomerNote', customerNote, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   deleteCustomer (id: string) {
-    return this._http.delete(BASE_API_URL + '/Customer?id=' + id)
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.delete(BASE_API_URL + '/Customer?id=' + id , options)
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   deleteCustomerNote (id: string) {
-    return this._http.delete(BASE_API_URL + '/CustomerNote' + id)
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.delete(BASE_API_URL + '/CustomerNote' + id, options)
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
   searchCustomer (searchObj: any) {
-    return this._http.post(BASE_API_URL + '/CustomerSearch', searchObj, { headers: this.headers})
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/CustomerSearch', searchObj,  options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));

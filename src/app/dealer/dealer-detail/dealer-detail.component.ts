@@ -35,7 +35,7 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
       console.log(this.dealership);
     })
     .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
+      console.log(err); //todo: show the user a nice message
     });
   }
 

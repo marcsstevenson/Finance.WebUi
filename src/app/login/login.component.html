@@ -15,7 +15,7 @@
             <label class="col-md-2 control-label" for="Email">Email</label>
             <div class="col-md-10">
               <input class="form-control" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address."
-                data-val-required="The Email field is required." id="Email" name="Email" value="">
+                data-val-required="The Email field is required." id="Email" name="Email" [(ngModel)]="userName">
               <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
             </div>
           </div>
@@ -23,7 +23,7 @@
             <label class="col-md-2 control-label" for="Password">Password</label>
             <div class="col-md-10">
               <input class="form-control" type="password" data-val="true" data-val-required="The Password field is required." id="Password"
-                name="Password">
+                name="Password" [(ngModel)]="password">
               <span class="text-danger field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
             </div>
           </div>
@@ -39,7 +39,7 @@
           </div>
           <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-              <button type="submit" class="btn btn-default">Log in</button>
+              <button type="button" (click)="login()" class="btn btn-default">Log in</button>
             </div>
           </div>
           <!--<p>
