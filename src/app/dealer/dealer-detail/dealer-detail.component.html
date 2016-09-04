@@ -21,11 +21,12 @@
         <div class="uiEditableControls">
           <h4 class="m-bottom-0">
             <span class="uiUnstyledInput">
-              <a aria-labelledby="" 
+              <!--<a aria-labelledby="" 
                   class="" 
                   contenteditable="true" role="textbox" tabindex="0" 
                   title="Company Name" [textContent]="dealership.Name">
-              </a>
+              </a>-->
+              <input [(ngModel)]="dealership.Name" type="text" class="" placeholder="Dealer Name">
             </span>
           </h4>
 
@@ -39,10 +40,12 @@
               <i name="globe" class="icon icon-globe"></i>
             </a>
             <span>
-                <a aria-labelledby="" class="" 
+                <!--<a aria-labelledby="" class="" 
                    contenteditable="true" role="textbox" 
                    tabindex="0" title="Domain"
                    [textContent]="dealership.Website"></a>
+                -->
+                <input [(ngModel)]="dealership.Website" type="text" class="" placeholder="Dealer Web Site Url">
               </span>
           </p>
           <div class="uiEditableControlsStage">
