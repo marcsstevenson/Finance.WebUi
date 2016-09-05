@@ -10,10 +10,11 @@ export const DealRoute: RouterConfig = [
     {
         path: 'deal',
         component: DealsComponent,
-        // canActivate: [AuthorisationService]
+        canActivate: [AuthorisationService]
     },
     {
         path: 'deal/:id',
-        component: DealDetailComponent
+        component: DealDetailComponent,
+        canActivate: [AuthorisationService]
     }
 ];

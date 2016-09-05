@@ -34,6 +34,8 @@ export class AuthenticationService {
 
             let authDataObj = JSON.parse(response._body);
             localStorage.setItem(ACCESS_TOKEN, authDataObj.access_token);
+
+            this.isLoggedIn = true;
             console.log(response._body);
         })
         .toPromise()

@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
     this._authService.login(this.userName, this.password)
     .then((response: any) => {
       //todo: change this to home page in future?
-      //this.router.navigate(['/customer']); 
+      this.router.navigate(['/customer']);
 
-      let authData = response._body;
+      // let authData = response._body;
       
     })
     .catch((err) => {

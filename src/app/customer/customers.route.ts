@@ -10,10 +10,11 @@ export const CustomersRoute: RouterConfig = [
     {
         path: 'customer',
         component: CustomersComponent,
-        // canActivate: [AuthorisationService]
+        canActivate: [AuthorisationService]
     },
     {
         path: 'customer/:id',
-        component: CustomerDetailComponent
+        component: CustomerDetailComponent,
+        canActivate: [AuthorisationService]
     }
 ];
