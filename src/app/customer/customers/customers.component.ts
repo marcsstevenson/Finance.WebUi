@@ -69,7 +69,6 @@ export class CustomersComponent implements OnInit {
   };
 
   private data: Array<any> = CustomersData;
-  
 
   constructor(
     private router: Router,
@@ -92,10 +91,7 @@ export class CustomersComponent implements OnInit {
 
   searchCustomer (searchQuery: string) {
     let searchObj = {
-      NameContains: searchQuery,
-      // NumberContains: searchQuery,
-      // CellContains: searchQuery,
-      // DriversLicenceNumberContains: searchQuery,
+      SearchTerm: searchQuery,
       OrderBy: 'Name'
     };
 

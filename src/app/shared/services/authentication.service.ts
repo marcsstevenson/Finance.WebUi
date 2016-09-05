@@ -5,8 +5,10 @@ import { Observable } from 'rxjs/Rx';
 // import 'rxjs/add/observable/of';
 // import 'rxjs/add/operator/do';
 // import 'rxjs/add/operator/delay';
+import { GlobalVarables } from '../../global-variables';
 
-const BASE_API_URL = 'http://financeplatform.azurewebsites.net/';
+const BASE_API_URL = GlobalVarables.BASE_API_URL;
+
 const AUTH_DATA_NAME = 'authData';
 const ACCESS_TOKEN = 'accessToken';
 
