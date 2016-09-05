@@ -10,11 +10,11 @@ export const DealershipRoute: RouterConfig = [
     {
         path: 'dealership',
         component: DealersComponent,
-        // canActivate: [AuthorisationService]
+        canActivate: [AuthorisationService]
     },
     {
         path: 'dealership/:id',
         component: DealerDetailComponent,
-        // canActivate: [AuthorisationService]
+        canActivate: [AuthorisationService]
     }
 ];

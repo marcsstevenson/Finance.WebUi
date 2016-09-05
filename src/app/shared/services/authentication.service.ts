@@ -14,7 +14,7 @@ const ACCESS_TOKEN = 'accessToken';
 
 @Injectable()
 export class AuthenticationService {
-    isLoggedIn: boolean = false;
+    // isLoggedIn: boolean = false;
     redirectUrl: string;
 
     private headers: Headers;
@@ -35,7 +35,7 @@ export class AuthenticationService {
             let authDataObj = JSON.parse(response._body);
             localStorage.setItem(ACCESS_TOKEN, authDataObj.access_token);
 
-            this.isLoggedIn = true;
+            // this.isLoggedIn = true;
             console.log(response._body);
         })
         .toPromise()
@@ -43,7 +43,7 @@ export class AuthenticationService {
     }
 
     logout() {
-        this.isLoggedIn = false;
+        // this.isLoggedIn = false;
         localStorage.removeItem(AUTH_DATA_NAME);
         localStorage.removeItem(ACCESS_TOKEN);
         this.router.navigate(['login']);
@@ -57,6 +57,10 @@ export class AuthenticationService {
             accessToken = authData.access_token;
         }
         return accessToken;
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem(AUTH_DATA_NAME) != null;
     }
 
     private handleError (err: any) {
