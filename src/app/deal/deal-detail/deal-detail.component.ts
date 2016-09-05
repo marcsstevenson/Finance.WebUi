@@ -17,6 +17,7 @@ declare var tinymce: any;
 export class DealDetailComponent implements OnInit {
 
   private deal: any;
+  private customerId: string;
   public notes: Array<any>;
 
   constructor(
@@ -33,6 +34,7 @@ export class DealDetailComponent implements OnInit {
       });
 
     let dealId = this.route.snapshot.params['id'];
+    this.customerId = this.route.snapshot.params['customerId'];
     this.deal = this._dealService.getDeal(dealId)
     .then((deal) => {
       this.deal = deal;

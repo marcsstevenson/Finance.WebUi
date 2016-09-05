@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -9,10 +10,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CustomerDealsComponent implements OnInit {
 
   @Input() deals: Array<any>;
+  @Input() customerId: string;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  addDeal () {
+    this.router.navigate(['deal']);
   }
 
 }

@@ -49,6 +49,15 @@ export class CustomerService {
     .catch((err: any) => this.handleError(err));
   }
 
+  getCustomerDeals (id: string) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL + '/Deal/GetForCustomer?customerId=' + id, options)
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
   addOrSaveCustomer (customer: any) {
     console.log('the customer obj is: ', customer);
     let options = new RequestOptions({ headers: this.headers });

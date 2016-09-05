@@ -7,8 +7,10 @@ import { CustomerService } from '../customer.service';
 // import { TinyMceValueAccessorDirective } from '../../shared/directives/tinymce.directive';
 
 import { CustomerDealsComponent } from './customer-deals/customer-deals.component';
+import { GlobalVarables } from '../../global-variables';
 
 import { CustomersData } from '../mockup-data';
+import * as moment from 'moment';
 declare var tinymce: any;
 
 @Component({
@@ -42,21 +44,6 @@ export class CustomerDetailComponent implements OnInit {
     this.loadCustomer(customerId);
     this.loadNotes(customerId);
 
-    // this.notes = [
-    //   {
-    //     EnteredBy: 'Tim',
-    //     DateCreated: new Date(),
-    //     DateModified:  new Date(),
-    //     Note: '<h3>Tim Content</h3>\n more text a;alsdkfjal;sdfjasl;dfj  \n a;sldfjasl;kfj'
-    //   },
-    //   {
-    //     EnteredBy: 'Marc',
-    //     DateCreated: new Date(),
-    //     DateModified:  new Date(),
-    //     Note: '<h3>Marc Content</h3>'
-    //   }
-    // ];
-
     this.deals = [
       {
         secureDescription: '02 Audi A3',
@@ -69,13 +56,17 @@ export class CustomerDetailComponent implements OnInit {
         netIncome: '375.55'
       }
     ];
+
+    this.loadDeals(customerId);
   }
 
   save() {
+    this.setDefaulCustomerDates();
+
     this._customerService.addOrSaveCustomer(this.customer)
     .then((response) => {
       console.log('Saved successfully: ', response);
-      // this.router.navigateByUrl('/customer');
+      this.router.navigate(['/customer', response.CommittedId ]);
     })
     .catch((err) => {
       console.log(err); //todo: show the user a nice message
@@ -146,6 +137,20 @@ export class CustomerDetailComponent implements OnInit {
     });
   }
 
+  private setDefaulCustomerDates () {
+    if (this.customer.DateOfBirth === undefined) {
+      this.customer.DateOfBirth = GlobalVarables.MIN_BIRTH_DATE;
+    }
+
+    // if (this.customer.DateCreated === undefined) {
+    //   this.customer.DateOfBirth = moment().utc();
+    // }
+
+    // if (this.customer.DateModified === undefined) {
+    //   this.customer.DateOfBirth = moment().utc();
+    // }
+  }
+
   private loadNotes (customerId) {
     this._customerService.getCustomerNotes(customerId)
     .then((notes) => {
@@ -157,4 +162,14 @@ export class CustomerDetailComponent implements OnInit {
     });
   }
 
+  private loadDeals (customerId) {
+    this._customerService.getCustomerDeals(customerId)
+    .then((deals) => {
+      this.deals = deals;
+      console.log('The deal:', deals);
+    })
+    .catch((err) => {
+      console.log(err); //todo: show the user a nice message
+    });
+  }
 }
