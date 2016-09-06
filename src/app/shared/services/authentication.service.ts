@@ -28,7 +28,7 @@ export class AuthenticationService {
 
     login(userName: string, password: string) {
         let authQueryString = 'userName=' + userName + '&password=' + password + "&grant_type=password";
-        return this.http.post(BASE_API_URL + '/Token?', authQueryString)
+        return this.http.post(BASE_API_URL + 'Token?', authQueryString)
         .map((response: any) => {
             response.json();
 
@@ -45,10 +45,21 @@ export class AuthenticationService {
     }
 
     logout() {
-        // this.isLoggedIn = false;
         localStorage.removeItem(AUTH_DATA_NAME);
         localStorage.removeItem(ACCESS_TOKEN);
+
         this.router.navigate(['login']);
+
+        // return this.http.post(BASE_API_URL + 'api/Account/Logout', {})
+        // .map((response: any) => {
+        //     response.json();
+
+        //     this.router.navigate(['login']);
+        //     // this.isLoggedIn = true;
+        //     console.log(response._body);
+        // })
+        // .toPromise()
+        // .catch((err: any) => this.handleError(err));
     }
 
     getAuthToken() {
@@ -62,7 +73,10 @@ export class AuthenticationService {
     }
 
     isLoggedIn() {
-        return localStorage.getItem(AUTH_DATA_NAME) != null;
+        let isLoggedIn = !!localStorage.getItem(AUTH_DATA_NAME);
+
+        // console.log('User is logged in: ', isLoggedIn);
+        return isLoggedIn;
     }
 
     private handleError (err: any) {

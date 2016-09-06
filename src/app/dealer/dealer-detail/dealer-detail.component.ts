@@ -68,6 +68,11 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  private setDealershipDefault() {
+    if (this.dealership.IsEnabled === undefined) {
+      this.dealership.IsEnabled = true;
+    }
+  }
   ngOnDestroy() {
     // this.sub.unsubscribe();
   }

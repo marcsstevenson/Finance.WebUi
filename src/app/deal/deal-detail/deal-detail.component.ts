@@ -4,6 +4,7 @@ import { DealService } from '../deal.service';
 // import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
 
 import { DealsData } from '../mockup-data';
+import * as moment from 'moment';
 
 declare var tinymce: any;
 
@@ -35,20 +36,31 @@ export class DealDetailComponent implements OnInit {
 
     let dealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
-    this.deal = this._dealService.getDeal(dealId)
-    .then((deal) => {
-      this.deal = deal;
-      console.log(this.deal);
-    })
-    .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
-    });
+    if (this.customerId !== undefined || this.customerId !== null) {
+      this.deal = {};
+      this.deal.CustomerId = this.customerId;
+    }
+    else{
+      this._dealService.getDeal(dealId)
+      .then((deal) => {
+        this.deal = deal;
+        console.log(this.deal);
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
+    }
   }
 
   save() {
+    this.setDefaultData();
     this._dealService.addOrSaveDeal(this.deal)
     .then((response) => {
       console.log('Saved successfully: ', response);
+
+      if (this.customerId != null) {
+        this.router.navigate(['/customer', this.customerId]);
+      }
       // this.router.navigateByUrl('/deal');
     })
     .catch((err) => {
@@ -65,6 +77,26 @@ export class DealDetailComponent implements OnInit {
     .catch((err) => {
       console.log(err); // dont do this, show the user a nice message
     });
+  }
+
+  private setDefaultData() {
+    // this.deal.
+
+    if (this.deal.DateCreated === undefined) {
+      this.deal.DateCreated = moment().utc();
+    }
+
+    if (this.deal.DateModified === undefined) {
+      this.deal.DateModified = moment().utc();
+    }
+
+    if (this.deal.Number === undefined) {
+      this.deal.Number = '0';
+    }
+
+    if (this.deal.DealStatus === undefined) {
+      this.deal.DealStatus = '2'; //pending sign up
+    }
   }
 
 }

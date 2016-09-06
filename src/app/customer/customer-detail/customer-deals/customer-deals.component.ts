@@ -20,7 +20,7 @@ export class CustomerDealsComponent implements OnInit {
   }
 
   addDeal () {
-    this.router.navigate(['deal']);
+    this.router.navigate(['/deal/new', { customerId: this.customerId }]);
   }
 
 }
