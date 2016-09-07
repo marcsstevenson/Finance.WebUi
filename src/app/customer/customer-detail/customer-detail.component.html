@@ -2,12 +2,16 @@
 
   <!--todo: find out where to put the following properties-->
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
-  <button class="btn btn-success" type="button" (click)="save()">
+  <!--<button class="btn btn-success" type="button" (click)="save()">
     <span class="glyphicon glyphicon-align-left"></span> Save
-  </button>
-  <button class="btn btn-success" type="button" (click)="delete()">
-    <span class="glyphicon glyphicon-align-left"></span> Delete
-  </button>
+  </button>-->
+
+  <div class="card actions text-xs-right">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()">
+      <span class="glyphicon glyphicon-align-left"></span> Delete
+    </button>
+  </div>
+  
 
   <div class="row">
     <div class="col-xs-5">
@@ -43,9 +47,14 @@
             </div>
           </div>
         </div>
+
+        <div class="actions text-xs-center">
+            <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+        </div>
       </div>
 
-      <div class="card contact-details col-xs-12">
+      <div class="card contact-details">
         <div class="card-block">
           <dl>
             <div class="row">
@@ -90,6 +99,11 @@
             </div>
           </dl>
         </div>
+
+        <div class="actions text-xs-center">
+            <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+        </div>
       </div>
 
 
@@ -125,6 +139,10 @@
               </dd>
             </div>
           </dl>
+        </div>
+        <div class="actions text-xs-center">
+            <button type="button" class="btn btn-success" (click)="save()">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
         </div>
       </div>
 
