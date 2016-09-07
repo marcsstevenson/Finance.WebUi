@@ -7,7 +7,6 @@ import { CustomerDetailComponent } from './customer-detail.component';
 
 describe('Component: CustomerDetail', () => {
   it('should create an instance', () => {
-
     // todo: fix the test later
     // let component = new CustomerDetailComponent();
     // expect(component).toBeTruthy();

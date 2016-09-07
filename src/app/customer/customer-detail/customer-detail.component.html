@@ -1,6 +1,6 @@
 <div class="container body-content fwui">
 
-<!--todo: find out where to put the following properties-->
+  <!--todo: find out where to put the following properties-->
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
   <button class="btn btn-success" type="button" (click)="save()">
     <span class="glyphicon glyphicon-align-left"></span> Save
@@ -12,101 +12,80 @@
   <div class="row">
     <div class="col-xs-5">
       <div class="card basic-info">
-        <div class="media card-block">
-          <div class="pull-left">
-            <div class="">
-              <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
-            </div>
+        <div class="card-block">
+          <div class="media col-xs-4 card-block">
+            <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
           </div>
-
-          <div class="media-body">
-            <div class="uiEditableControls">
-              <h4 class="m-bottom-0">
-                <!--<span class="uiUnstyledInput" class="" contenteditable="true" role="textbox"
-                      tabindex="0" title="First Name" 
-                      [textContent]="customer.FirstName">
-                </span>-->
-                <!--<span class="uiUnstyledInput" class="" contenteditable="true" role="textbox" 
-                      tabindex="0" title="First Name" 
-                      [textContent]="customer.LastName">
-                </span>-->
-                <input [(ngModel)]="customer.FirstName" type="text" class="" placeholder="First Name" required>
-                <input [(ngModel)]="customer.LastName" type="text" class="" placeholder="Last Name" required>
-              </h4>
-
-              <div class="uiEditableControlsStage">
+          <div class="col-xs-8">
+            <!--<div class="media-body">-->
+              <!--<div class="uiEditableControls">-->
+              <div class="row">
+                <input class="name" [(ngModel)]="customer.FirstName" type="text" placeholder="First Name" required>
+                <input class="name" [(ngModel)]="customer.LastName" type="text" placeholder="Last Name" required>
               </div>
-            </div>
-
-            <div class="uiEditableControls">
-              <p>
-                <a target="_blank" class="" [href]="customer.Website">
+              <div class="row">
+                <input class="email" [(ngModel)]="customer.Email" type="email" placeholder="Email" required>
+              </div>
+              <!--<p>
+                <a target="_blank" [href]="customer.Website">
                   <i name="globe" class="icon icon-globe"></i>
                 </a>
                 <span>
-                    <a aria-labelledby="" class="" 
+                    <a aria-labelledby="" 
                       contenteditable="true" role="textbox" 
                       tabindex="0" title="Email"
                       [textContent]="customer.Email"></a>
                   </span>
-              </p>
-              <div class="uiEditableControlsStage">
-              </div>
+              </p>-->
+            <!--</div>-->
+            <div class="row">
+              <span class="tag tag-pill tag-success">Active</span>
             </div>
           </div>
-
-          <span class="tag tag-pill tag-success">Active</span>
         </div>
       </div>
 
-      <div class="card contact-details">
-        <!--<img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-block">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>-->
-
+      <div class="card contact-details col-xs-12">
         <div class="card-block">
           <dl>
-            <div>
-              <dt>Mobile Number</dt>
-              <dd>
-                <input [(ngModel)]=customer.CellCountry type="text" class="">
-                <input [(ngModel)]=customer.CellArea type="text" class="">
-                <input [(ngModel)]=customer.CellNumber type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Mobile</dt>
+              <dd class="col-xs-8">
+                <input class="country" [(ngModel)]=customer.CellCountry type="text">
+                <input class="area" [(ngModel)]=customer.CellArea type="text">
+                <input class="number" [(ngModel)]=customer.CellNumber type="text">
               </dd>
             </div>
 
-            <div>
-              <dt>Phone Number</dt>
-              <dd>
-                <input [(ngModel)]=customer.PhoneCountry type="text" class="">
-                <input [(ngModel)]=customer.PhoneArea type="text" class="">
-                <input [(ngModel)]=customer.PhoneNumber type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Phone</dt>
+              <dd class="col-xs-8">
+                <input class="country" [(ngModel)]=customer.PhoneCountry type="text">
+                <input class="area" [(ngModel)]=customer.PhoneArea type="text">
+                <input class="number" [(ngModel)]=customer.PhoneNumber type="text">
               </dd>
             </div>
 
-            <div>
-              <dt>Fax Number</dt>
-              <dd>
-                <input [(ngModel)]=customer.FaxCountry type="text" class="">
-                <input [(ngModel)]=customer.FaxArea type="text" class="">
-                <input [(ngModel)]=customer.FaxNumber type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Fax</dt>
+              <dd class="col-xs-8">
+                <input class="country" [(ngModel)]=customer.FaxCountry type="text">
+                <input class="area" [(ngModel)]=customer.FaxArea type="text">
+                <input class="number" [(ngModel)]=customer.FaxNumber type="text">
               </dd>
             </div>
 
-            <div>
-              <dt>Customer Number</dt>
-              <dd>
-                <input [(ngModel)]=customer.Number type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Customer Number</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]=customer.Number type="text">
               </dd>
             </div>
 
-            <div>
-              <dt>Skype</dt>
-              <dd>
-                <input [(ngModel)]=customer.SkypeName type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Skype</dt>
+              <dd class="col-xs-8"> 
+                <input [(ngModel)]=customer.SkypeName type="text">
               </dd>
             </div>
           </dl>
@@ -119,29 +98,30 @@
 
       <div class="card bank-details">
         <div class="card-block">
+          <h4 class="row col-xs-12 text-xs-center">Bank Details</h4>
           <dl>
-            <div>
-              <dt>BankAccountName</dt>
-              <dd>
-                <input [(ngModel)]=customer.BankAccountName type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Account Name</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]=customer.BankAccountName type="text">
               </dd>
             </div>
-            <div>
-              <dt>BankAccountNumber</dt>
-              <dd>
-                <input [(ngModel)]="customer.BankAccountNumber" type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Account Number</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]="customer.BankAccountNumber" type="text">
               </dd>
             </div>
-            <div>
-              <dt>BankBranchName</dt>
-              <dd>
-                <input [(ngModel)]="customer.BankBranchName" type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Branch Name</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]="customer.BankBranchName" type="text">
               </dd>
             </div>
-            <div>
-              <dt>BankingCompany</dt>
-              <dd>
-                <input [(ngModel)]="customer.BankingCompany" type="text" class="">
+            <div class="row">
+              <dt class="col-xs-4 p-x-0">Bank Name</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]="customer.BankingCompany" type="text">
               </dd>
             </div>
           </dl>
@@ -156,7 +136,7 @@
               <dt>
                 Name
               </dt>
-              <input [(ngModel)]="address.Name" type="text" class="">
+              <input [(ngModel)]="address.Name" type="text">
               <dd>
               </dd>
             </div>
@@ -165,7 +145,7 @@
               <dt>
                 Address Line 1
               </dt>
-              <input [(ngModel)]="address.AddressLine1" type="text" class="">
+              <input [(ngModel)]="address.AddressLine1" type="text">
               <dd>
               </dd>
             </div>
@@ -174,7 +154,7 @@
               <dt>
                 Region
               </dt>
-              <input [(ngModel)]="address.Region" type="text" class="">
+              <input [(ngModel)]="address.Region" type="text">
               <dd>
               </dd>
             </div>
@@ -183,7 +163,7 @@
               <dt>
                 City
               </dt>
-              <input [(ngModel)]="address.City" type="text" class="">
+              <input [(ngModel)]="address.City" type="text">
               <dd>
               </dd>
             </div>
@@ -192,7 +172,7 @@
               <dt>
                 Postcode
               </dt>
-              <input [(ngModel)]="address.Postcode" type="text" class="">
+              <input [(ngModel)]="address.Postcode" type="text">
               <dd>
               </dd>
             </div>
@@ -208,7 +188,7 @@
 
       <!--[tinymce]="tinymce"-->
       <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
-      
+
       <!--<span>The note content is: {{note}}</span>-->
       <button class="btn btn-success" type="button" (click)="addNote(note)">
         <span class="glyphicon glyphicon-align-left"></span> Save

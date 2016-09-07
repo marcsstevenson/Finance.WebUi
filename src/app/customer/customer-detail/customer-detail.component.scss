@@ -1,3 +1,33 @@
 .card {
     overflow: auto;
 }
+
+.media img{
+     padding: 0;
+     width: 58px;
+     height: 58px;
+}
+
+input{
+    margin: 0;
+    padding: 0;
+    &.country {
+        width: 2.5em;
+    }
+
+    &.area {
+        width: 2.5em;
+    }
+
+    &.number {
+        width: 8em;
+    }
+    &.name {
+        width: auto;
+        max-width: 6em;
+    }
+}
+
+dt {
+    text-align: right;
+}

@@ -1,4 +1,8 @@
-@import '../assets/styles/custom';
+@import './color';
+
+body {
+    background: $gray-my-lightest;
+}
 
 .body-content.fwui {
     margin-top: 88px;

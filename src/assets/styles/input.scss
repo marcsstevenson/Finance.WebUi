@@ -1,0 +1,12 @@
+input {
+    // border: 0;
+
+    &:focus{
+        outline: none;
+        border-bottom: solid 1px;
+    }
+
+    &.empty {
+
+    }
+}
