@@ -205,13 +205,20 @@
       </div>-->
 
       <!--[tinymce]="tinymce"-->
+
+      <div class="column ">
       <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
 
       <!--<span>The note content is: {{note}}</span>-->
-      <button class="btn btn-success" type="button" (click)="addNote(note)">
-        <span class="glyphicon glyphicon-align-left"></span> Save
-      </button>
-
+      <div class="actions text-xs-center col-xs-12">
+        <button class="btn btn-success" type="button" (click)="addNote(note)">
+          <span class="glyphicon glyphicon-align-left"></span> Save
+        </button>
+            <!--<button type="button" class="btn btn-success" (click)="save()">Save</button>-->
+        <button type="button" class="btn btn-default">Cancel</button>
+      </div>
+      
+      </div>
       <div class="history">
         <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>
       </div>

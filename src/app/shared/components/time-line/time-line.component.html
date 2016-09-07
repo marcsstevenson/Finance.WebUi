@@ -15,13 +15,13 @@
     <div class="detail col-xs-11 p-x-0">
       <div class="header col-xs-12 p-x-1 p-y-1">
         <span>{{note.EnteredBy}}</span>
-        <span>Created at {{note.DateCreated}}</span>
+        <span class="pull-xs-right">Created at {{note.DateCreated | date: 'medium'}}</span>
       </div>
       <div class="content col-xs-12 p-x-1 p-y-1"
           [innerHTML]="note.Note">
       </div>
       <div class="footer col-xs-12 p-x-1 p-y-1">
-        <span>Last edited at {{note.DateModified}}</span>
+        <span class="pull-xs-right">Edited at {{note.DateModified | date:'medium'}}</span>
       </div>
     </div>
   </div>

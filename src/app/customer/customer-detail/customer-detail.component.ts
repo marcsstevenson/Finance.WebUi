@@ -88,7 +88,7 @@ export class CustomerDetailComponent implements OnInit {
     let noteObj = {
       Note: note,
       CustomerId: this.customer.Id,
-      EnteredBy: 'Tim', //todo: need to get this user name
+      EnteredBy: 'You', //todo: need to get this user name
       DateCreated: new Date(),
       DateModified: new Date()
     };
