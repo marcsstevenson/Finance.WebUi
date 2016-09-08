@@ -2,6 +2,7 @@
 
 input {
     border: 0;
+    color: $input-text-color;
 
     &:focus{
         outline: none;

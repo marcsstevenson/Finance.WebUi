@@ -7,6 +7,7 @@ body {
 .body-content.fwui {
     margin-top: 88px;
     position: relative;
+    color: $normal-content-color;
     // background-color: $brand-primary;
 }
 
@@ -14,4 +15,13 @@ body {
     color: #333;
     background-color: transparent;
     border-color: $gray-light;
+}
+
+.controls {
+    padding: 6px 12px;
+}
+
+h1, h2, h3, h4 {
+    color: $gray-light;
+    margin-bottom: 1.5em;
 }

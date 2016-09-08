@@ -115,30 +115,30 @@
           <h4 class="row col-xs-12">Bank Details</h4>
           <dl>
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Account Name</dt>
+              <dt class="col-xs-4 p-x-0 controls">Account Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]=customer.BankAccountName 
+                <input class="controls" [(ngModel)]=customer.BankAccountName 
                        placeholder="Account Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Account Number</dt>
+              <dt class="col-xs-4 p-x-0 controls">Account Number</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankAccountNumber" 
+                <input class="controls" [(ngModel)]="customer.BankAccountNumber" 
                        placeholder="Account Number" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Branch Name</dt>
+              <dt class="col-xs-4 p-x-0 controls">Branch Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankBranchName" 
+                <input class="controls" [(ngModel)]="customer.BankBranchName" 
                        placeholder="Branch Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Bank Name</dt>
+              <dt class="col-xs-4 p-x-0 controls">Bank Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankingCompany" 
+                <input class="controls" [(ngModel)]="customer.BankingCompany" 
                        placeholder="Bank Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
