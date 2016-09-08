@@ -2,16 +2,13 @@
 
   <!--todo: find out where to put the following properties-->
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
-  <!--<button class="btn btn-success" type="button" (click)="save()">
-    <span class="glyphicon glyphicon-align-left"></span> Save
-  </button>-->
 
   <div class="card actions text-xs-right">
     <button class="btn btn-outline-danger" type="button" (click)="delete()">
       <span class="glyphicon glyphicon-align-left"></span> Delete
     </button>
   </div>
-  
+
 
   <div class="row">
     <div class="col-xs-5">
@@ -21,36 +18,28 @@
             <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
           </div>
           <div class="col-xs-8">
-            <!--<div class="media-body">-->
-              <!--<div class="uiEditableControls">-->
-              <div class="row">
-                <input class="name" [(ngModel)]="customer.FirstName" type="text" placeholder="First Name" required>
-                <input class="name" [(ngModel)]="customer.LastName" type="text" placeholder="Last Name" required>
-              </div>
-              <div class="row">
-                <input class="email" [(ngModel)]="customer.Email" type="email" placeholder="Email" required>
-              </div>
-              <!--<p>
-                <a target="_blank" [href]="customer.Website">
-                  <i name="globe" class="icon icon-globe"></i>
-                </a>
-                <span>
-                    <a aria-labelledby="" 
-                      contenteditable="true" role="textbox" 
-                      tabindex="0" title="Email"
-                      [textContent]="customer.Email"></a>
-                  </span>
-              </p>-->
-            <!--</div>-->
+            <div class="row">
+              <input class="name" [(ngModel)]="customer.FirstName" 
+                     (ngModelChange)="contactbasicInfoChanged = true"
+                     type="text" placeholder="First Name" required>
+              <input class="name" [(ngModel)]="customer.LastName" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="text" placeholder="Last Name" required>
+            </div>
+            <div class="row">
+              <input class="email" [(ngModel)]="customer.Email" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="email" placeholder="Email" required>
+            </div>
             <div class="row">
               <span class="tag tag-pill tag-success">Active</span>
             </div>
           </div>
         </div>
 
-        <div class="actions text-xs-center">
-            <button type="button" class="btn btn-success" (click)="save()">Save</button>
-            <button type="button" class="btn btn-default">Cancel</button>
+        <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>
       </div>
 
@@ -60,49 +49,60 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0">Mobile</dt>
               <dd class="col-xs-8">
-                <input class="country" [(ngModel)]=customer.CellCountry type="text">
-                <input class="area" [(ngModel)]=customer.CellArea type="text">
-                <input class="number" [(ngModel)]=customer.CellNumber type="text">
+                <input class="country" [(ngModel)]=customer.CellCountry 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="area" [(ngModel)]=customer.CellArea 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="number" [(ngModel)]=customer.CellNumber 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
             <div class="row">
               <dt class="col-xs-4 p-x-0">Phone</dt>
               <dd class="col-xs-8">
-                <input class="country" [(ngModel)]=customer.PhoneCountry type="text">
-                <input class="area" [(ngModel)]=customer.PhoneArea type="text">
-                <input class="number" [(ngModel)]=customer.PhoneNumber type="text">
+                <input class="country" [(ngModel)]=customer.PhoneCountry 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="area" [(ngModel)]=customer.PhoneArea 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="number" [(ngModel)]=customer.PhoneNumber 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
             <div class="row">
               <dt class="col-xs-4 p-x-0">Fax</dt>
               <dd class="col-xs-8">
-                <input class="country" [(ngModel)]=customer.FaxCountry type="text">
-                <input class="area" [(ngModel)]=customer.FaxArea type="text">
-                <input class="number" [(ngModel)]=customer.FaxNumber type="text">
+                <input class="country" [(ngModel)]=customer.FaxCountry 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="area" [(ngModel)]=customer.FaxArea 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                <input class="number" [(ngModel)]=customer.FaxNumber 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
             <div class="row">
               <dt class="col-xs-4 p-x-0">Customer Number</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]=customer.Number type="text">
+                <input [(ngModel)]=customer.Number (ngModelChange)="contactDetailsChanged = true" 
+                       type="text">
               </dd>
             </div>
 
             <div class="row">
               <dt class="col-xs-4 p-x-0">Skype</dt>
-              <dd class="col-xs-8"> 
-                <input [(ngModel)]=customer.SkypeName type="text">
+              <dd class="col-xs-8">
+                <input [(ngModel)]=customer.SkypeName 
+                       (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
           </dl>
         </div>
 
-        <div class="actions text-xs-center">
-            <button type="button" class="btn btn-success" (click)="save()">Save</button>
-            <button type="button" class="btn btn-default">Cancel</button>
+        <div *ngIf="contactDetailsChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>
       </div>
 
@@ -117,32 +117,36 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0">Account Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]=customer.BankAccountName type="text">
+                <input [(ngModel)]=customer.BankAccountName 
+                       (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Account Number</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankAccountNumber" type="text">
+                <input [(ngModel)]="customer.BankAccountNumber" 
+                       (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Branch Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankBranchName" type="text">
+                <input [(ngModel)]="customer.BankBranchName" 
+                       (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Bank Name</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="customer.BankingCompany" type="text">
+                <input [(ngModel)]="customer.BankingCompany" 
+                       (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
           </dl>
         </div>
-        <div class="actions text-xs-center">
-            <button type="button" class="btn btn-success" (click)="save()">Save</button>
-            <button type="button" class="btn btn-default">Cancel</button>
+        <div *ngIf="bankDetailsChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>
       </div>
 
@@ -207,17 +211,19 @@
       <!--[tinymce]="tinymce"-->
 
       <div class="column ">
-      <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"></textarea>
+        <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"
+                  (ngModelChange)="noteChanged = true" 
+                  rows="6">
+        </textarea>
 
-      <!--<span>The note content is: {{note}}</span>-->
-      <div class="actions text-xs-center col-xs-12">
-        <button class="btn btn-success" type="button" (click)="addNote(note)">
-          <span class="glyphicon glyphicon-align-left"></span> Save
-        </button>
-            <!--<button type="button" class="btn btn-success" (click)="save()">Save</button>-->
-        <button type="button" class="btn btn-default">Cancel</button>
-      </div>
-      
+        <!--<span>The note content is: {{note}}</span>-->
+        <div *ngIf="noteChanged" class="actions text-xs-center col-xs-12">
+          <button class="btn btn-success" type="button" (click)="addNote(note)">
+            <span class="glyphicon glyphicon-align-left"></span> Save
+          </button>
+          <button type="button" class="btn btn-default" (click)="cancelNote()">Cancel</button>
+        </div>
+
       </div>
       <div class="history">
         <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>

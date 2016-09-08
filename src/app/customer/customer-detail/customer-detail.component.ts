@@ -26,7 +26,12 @@ export class CustomerDetailComponent implements OnInit {
   public deals: Array<any>;
 
   private customer: any = {};
+  private copyCustomer: any = {};
   private note: string;
+  private basicInfoChanged = false;
+  private contactDetailsChanged = false;
+  private bankDetailsChanged = false;
+  private noteChanged = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,18 +49,18 @@ export class CustomerDetailComponent implements OnInit {
     this.loadCustomer(customerId);
     this.loadNotes(customerId);
 
-    this.deals = [
-      {
-        secureDescription: '02 Audi A3',
-        status: 'Settled /Paid',
-        netIncome: '1,226.73'
-      },
-      {
-        secureDescription: '15 Dorado',
-        status: 'Settled Awaiting Commission',
-        netIncome: '375.55'
-      }
-    ];
+    // this.deals = [
+    //   {
+    //     secureDescription: '02 Audi A3',
+    //     status: 'Settled /Paid',
+    //     netIncome: '1,226.73'
+    //   },
+    //   {
+    //     secureDescription: '15 Dorado',
+    //     status: 'Settled Awaiting Commission',
+    //     netIncome: '375.55'
+    //   }
+    // ];
 
     this.loadDeals(customerId);
   }
@@ -64,24 +69,29 @@ export class CustomerDetailComponent implements OnInit {
     this.setDefaulCustomerDates();
 
     this._customerService.addOrSaveCustomer(this.customer)
-    .then((response) => {
-      console.log('Saved successfully: ', response);
-      this.router.navigate(['/customer', response.CommittedId ]);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((response) => {
+        console.log('Saved successfully: ', response);
+        this.router.navigate(['/customer', response.CommittedId]);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  cancel() {
+    this.resetAllChangedStatus();
+    this.customer = Object.assign({}, this.copyCustomer);
   }
 
   delete() {
     this._customerService.deleteCustomer(this.customer.Id)
-    .then((response) => {
-      console.log('Deleted successfully: ', response);
-      this.router.navigateByUrl('/customer');
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((response) => {
+        console.log('Deleted successfully: ', response);
+        this.router.navigateByUrl('/customer');
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
   addNote(note: string) {
@@ -94,50 +104,57 @@ export class CustomerDetailComponent implements OnInit {
     };
 
     this._customerService.addOrSaveCustomerNote(noteObj)
-    .then((response) => {
-      console.log('Saved successfully: ', response);
-      this.note = '';
-      this.notes.push(noteObj);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((response) => {
+        console.log('Saved successfully: ', response);
+        this.note = '';
+        this.notes.push(noteObj);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
   saveNote(noteObj: any) {
     noteObj.DateModified = new Date();
 
     this._customerService.addOrSaveCustomerNote(noteObj)
-    .then((response) => {
-      console.log('Saved successfully: ', response);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((response) => {
+        this.resetAllChangedStatus();
+        console.log('Saved successfully: ', response);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
   deleteNote(noteId: string) {
     this._customerService.deleteCustomerNote(noteId)
-    .then((response) => {
-      console.log('Deleted successfully: ', response);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((response) => {
+        console.log('Deleted successfully: ', response);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
-  private loadCustomer (customerId) {
+  cancelNote() {
+    this.noteChanged = false;
+    this.note = '';
+  }
+
+  private loadCustomer(customerId) {
     this._customerService.getCustomer(customerId)
-    .then((customer) => {
-      this.customer = customer;
-      console.log(this.customer);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((customer) => {
+        this.customer = customer;
+        this.copyCustomer = Object.assign({}, customer);
+        console.log(this.customer);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
-  private setDefaulCustomerDates () {
+  private setDefaulCustomerDates() {
     if (this.customer.DateOfBirth === undefined) {
       this.customer.DateOfBirth = GlobalVarables.MIN_BIRTH_DATE;
     }
@@ -151,25 +168,31 @@ export class CustomerDetailComponent implements OnInit {
     // }
   }
 
-  private loadNotes (customerId) {
+  private loadNotes(customerId) {
     this._customerService.getCustomerNotes(customerId)
-    .then((notes) => {
-      this.notes = notes;
-      console.log('The notes:', notes);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((notes) => {
+        this.notes = notes;
+        console.log('The notes:', notes);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
   }
 
-  private loadDeals (customerId) {
+  private loadDeals(customerId) {
     this._customerService.getCustomerDeals(customerId)
-    .then((deals) => {
-      this.deals = deals;
-      console.log('The deal:', deals);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+      .then((deals) => {
+        this.deals = deals;
+        console.log('The deal:', deals);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  private resetAllChangedStatus() {
+    this.basicInfoChanged = false;
+    this.contactDetailsChanged = false;
+    this.bankDetailsChanged = false;
   }
 }

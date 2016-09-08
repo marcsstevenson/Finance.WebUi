@@ -1,7 +1,7 @@
-<div class="col-xs-12">
+<div class="card col-xs-12">
   <div *ngFor="let deal of deals;">
     <h5>
-      <a href=""><span> {{ deal.SecureDescription }}</span>
+      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.SecureDescription }}</span>
       </a>
     </h5>
     <p>
@@ -15,9 +15,8 @@
     </p>
   </div>
 
-  <div class="text-center">
-    <button data-onboarding="profile-create-deal-button" 
-            class="btn uiButton uiButtonHuge btn-lg btn-default profileModuleAddButton btn-block" 
+  <div class="text-center p-x-1 p-y-1">
+    <button class="btn btn-lg btn-default btn-block" 
             tabindex="0" type="button" aria-disabled="false"
             (click)="addDeal()">
       <i name="plus" class="icon icon-plus"></i>

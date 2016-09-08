@@ -9,3 +9,9 @@ body {
     position: relative;
     // background-color: $brand-primary;
 }
+
+.btn-default {
+    color: #333;
+    background-color: transparent;
+    border-color: $gray-light;
+}
