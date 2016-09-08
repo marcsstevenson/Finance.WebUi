@@ -60,8 +60,12 @@ export class DealersComponent implements OnInit {
     this.loadDealership();
   }
 
-public addDealership () {
+  public addDealership() {
     this.router.navigate(['/dealership', 'new']);
+  }
+
+  public searchDealership(searchQuery) {
+
   }
 
   private loadDealership() {
