@@ -15,7 +15,7 @@
       <div class="card basic-info">
         <div class="card-block">
           <div class="media col-xs-4 card-block">
-            <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
+            <img alt="" class="img-rounded" src="assets/images/icons/ic_person_black_216x216.png">
           </div>
           <div class="col-xs-8">
             <div class="row">
@@ -43,18 +43,22 @@
         </div>
       </div>
 
+      <fwui-customer-deals [deals]="deals" [customerId]="customer.Id"></fwui-customer-deals>
+
       <div class="card contact-details">
         <div class="card-block">
+          <h4 class="row col-xs-12">Contact Details</h4>
           <dl>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Mobile</dt>
               <dd class="col-xs-8">
                 <input class="country" [(ngModel)]=customer.CellCountry 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       (ngModelChange)="contactDetailsChanged = true" 
+                       placeholder="00" type="text">
                 <input class="area" [(ngModel)]=customer.CellArea 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="00" (ngModelChange)="contactDetailsChanged = true" type="text">
                 <input class="number" [(ngModel)]=customer.CellNumber 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
@@ -62,11 +66,11 @@
               <dt class="col-xs-4 p-x-0">Phone</dt>
               <dd class="col-xs-8">
                 <input class="country" [(ngModel)]=customer.PhoneCountry 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="00" (ngModelChange)="contactDetailsChanged = true" type="text">
                 <input class="area" [(ngModel)]=customer.PhoneArea 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="00" (ngModelChange)="contactDetailsChanged = true" type="text">
                 <input class="number" [(ngModel)]=customer.PhoneNumber 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
@@ -74,11 +78,11 @@
               <dt class="col-xs-4 p-x-0">Fax</dt>
               <dd class="col-xs-8">
                 <input class="country" [(ngModel)]=customer.FaxCountry 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="00" (ngModelChange)="contactDetailsChanged = true" type="text">
                 <input class="area" [(ngModel)]=customer.FaxArea 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="00" (ngModelChange)="contactDetailsChanged = true" type="text">
                 <input class="number" [(ngModel)]=customer.FaxNumber 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
@@ -86,7 +90,7 @@
               <dt class="col-xs-4 p-x-0">Customer Number</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]=customer.Number (ngModelChange)="contactDetailsChanged = true" 
-                       type="text">
+                       placeholder="Customer Number" type="text">
               </dd>
             </div>
 
@@ -94,7 +98,7 @@
               <dt class="col-xs-4 p-x-0">Skype</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]=customer.SkypeName 
-                       (ngModelChange)="contactDetailsChanged = true" type="text">
+                       placeholder="Skype" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
           </dl>
@@ -106,40 +110,36 @@
         </div>
       </div>
 
-
-      <fwui-customer-deals [deals]="deals" [customerId]="customer.Id"></fwui-customer-deals>
-
-
       <div class="card bank-details">
         <div class="card-block">
-          <h4 class="row col-xs-12 text-xs-center">Bank Details</h4>
+          <h4 class="row col-xs-12">Bank Details</h4>
           <dl>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Account Name</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]=customer.BankAccountName 
-                       (ngModelChange)="bankDetailsChanged = true" type="text">
+                       placeholder="Account Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Account Number</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="customer.BankAccountNumber" 
-                       (ngModelChange)="bankDetailsChanged = true" type="text">
+                       placeholder="Account Number" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Branch Name</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="customer.BankBranchName" 
-                       (ngModelChange)="bankDetailsChanged = true" type="text">
+                       placeholder="Branch Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0">Bank Name</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="customer.BankingCompany" 
-                       (ngModelChange)="bankDetailsChanged = true" type="text">
+                       placeholder="Bank Name" (ngModelChange)="bankDetailsChanged = true" type="text">
               </dd>
             </div>
           </dl>
@@ -213,6 +213,7 @@
       <div class="column ">
         <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"
                   (ngModelChange)="noteChanged = true" 
+                  placeholder="Write notes here" 
                   rows="6">
         </textarea>
 

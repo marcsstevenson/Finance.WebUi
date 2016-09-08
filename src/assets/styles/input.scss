@@ -1,12 +1,22 @@
+@import './color';
+
 input {
-    // border: 0;
+    border: 0;
 
     &:focus{
         outline: none;
-        border-bottom: solid 1px;
+        border-bottom: $blue-light solid 2px;
     }
 
     &.empty {
 
     }
+
+    &:placeholder-shown {
+        background-color: $gray-lightest;
+    } 
+}
+
+textarea.note {
+
 }
