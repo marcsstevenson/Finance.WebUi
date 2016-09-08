@@ -39,4 +39,8 @@ export class DealsComponent implements OnInit {
     this.router.navigate(['/deal', 'new']);
   }
 
+  public searchDeal () {
+    
+  }
+
 }
