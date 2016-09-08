@@ -26,17 +26,12 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     // load mock datat to test bindings
     // this.dealership = DealershipData[0];
 
-
     //todo: need to fix bad request. Likely issue from api side
     let dealershipId = this.route.snapshot.params['id'];
-    this.dealership = this._dealershipService.getDealership(dealershipId)
-    .then((dealership) => {
-      this.dealership = dealership;
-      console.log(this.dealership);
-    })
-    .catch((err) => {
-      console.log(err); //todo: show the user a nice message
-    });
+
+    if (dealershipId !== 'new') {
+      this.loadDealership(dealershipId);
+    }
   }
 
   save() {
@@ -48,24 +43,24 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     }
 
     this._dealershipService.addOrSaveDealership(this.dealership)
-    .then((response) => {
-      console.log('Saved successfully: ', response);
-      // this.router.navigateByUrl('/deal');
-    })
-    .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
-    });
+      .then((response) => {
+        console.log('Saved successfully: ', response);
+        // this.router.navigateByUrl('/deal');
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
   }
 
   delete() {
     this._dealershipService.deleteDealership(this.dealership.Id)
-    .then((response) => {
-      console.log('Deleted successfully: ', response);
-      this.router.navigateByUrl('/deal');
-    })
-    .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
-    });
+      .then((response) => {
+        console.log('Deleted successfully: ', response);
+        this.router.navigateByUrl('/deal');
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
   }
 
   private setDealershipDefault() {
@@ -73,6 +68,18 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
       this.dealership.IsEnabled = true;
     }
   }
+
+  private loadDealership(dealershipId) {
+    this._dealershipService.getDealership(dealershipId)
+      .then((dealership) => {
+        this.dealership = dealership;
+        console.log(this.dealership);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
   ngOnDestroy() {
     // this.sub.unsubscribe();
   }

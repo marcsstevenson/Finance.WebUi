@@ -17,9 +17,10 @@ declare var tinymce: any;
 })
 export class DealDetailComponent implements OnInit {
 
-  private deal: any;
-  private customerId: string;
   public notes: Array<any>;
+
+  private deal: any = {};
+  private customerId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,47 +37,41 @@ export class DealDetailComponent implements OnInit {
 
     let dealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
-    if (this.customerId !== undefined || this.customerId !== null) {
+
+    if (dealId !== 'new') {
+      this.loadDeal(dealId);
+    }
+    else if (this.customerId) {
       this.deal = {};
       this.deal.CustomerId = this.customerId;
-    }
-    else{
-      this._dealService.getDeal(dealId)
-      .then((deal) => {
-        this.deal = deal;
-        console.log(this.deal);
-      })
-      .catch((err) => {
-        console.log(err); // dont do this, show the user a nice message
-      });
     }
   }
 
   save() {
     this.setDefaultData();
     this._dealService.addOrSaveDeal(this.deal)
-    .then((response) => {
-      console.log('Saved successfully: ', response);
+      .then((response) => {
+        console.log('Saved successfully: ', response);
 
-      if (this.customerId != null) {
-        this.router.navigate(['/customer', this.customerId]);
-      }
-      // this.router.navigateByUrl('/deal');
-    })
-    .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
-    });
+        if (this.customerId != null) {
+          this.router.navigate(['/customer', this.customerId]);
+        }
+        // this.router.navigateByUrl('/deal');
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
   }
 
   delete() {
     this._dealService.deleteDeal(this.deal.Id)
-    .then((response) => {
-      console.log('Deleted successfully: ', response);
-      this.router.navigateByUrl('/deal');
-    })
-    .catch((err) => {
-      console.log(err); // dont do this, show the user a nice message
-    });
+      .then((response) => {
+        console.log('Deleted successfully: ', response);
+        this.router.navigateByUrl('/deal');
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
   }
 
   private setDefaultData() {
@@ -97,6 +92,19 @@ export class DealDetailComponent implements OnInit {
     if (this.deal.DealStatus === undefined) {
       this.deal.DealStatus = '2'; //pending sign up
     }
+  }
+
+  private loadDeal(dealId) {
+
+    this._dealService.getDeal(dealId)
+      .then((deal) => {
+        this.deal = deal;
+        console.log(this.deal);
+      })
+      .catch((err) => {
+        console.log(err); // dont do this, show the user a nice message
+      });
+
   }
 
 }

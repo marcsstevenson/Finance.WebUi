@@ -46,23 +46,11 @@ export class CustomerDetailComponent implements OnInit {
 
     let customerId = this.route.snapshot.params['id'];
 
-    this.loadCustomer(customerId);
-    this.loadNotes(customerId);
-
-    // this.deals = [
-    //   {
-    //     secureDescription: '02 Audi A3',
-    //     status: 'Settled /Paid',
-    //     netIncome: '1,226.73'
-    //   },
-    //   {
-    //     secureDescription: '15 Dorado',
-    //     status: 'Settled Awaiting Commission',
-    //     netIncome: '375.55'
-    //   }
-    // ];
-
-    this.loadDeals(customerId);
+    if (customerId !== 'new') {
+      this.loadCustomer(customerId);
+      this.loadNotes(customerId);
+      this.loadDeals(customerId);
+    }
   }
 
   save() {
