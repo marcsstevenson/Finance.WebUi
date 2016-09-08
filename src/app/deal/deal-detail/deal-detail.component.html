@@ -27,6 +27,7 @@
               <dt class="col-xs-4 p-x-0 controls">Customer Id *</dt>
               <dd class="col-xs-8">
                 <input class="controls" [(ngModel)]="deal.CustomerId" 
+                       (ngModelChange)="basicInfoChanged = true"
                        placeholder="Customer Id" type="text" required>
               </dd>
             </div>
@@ -35,6 +36,7 @@
               <dt class="col-xs-4 p-x-0 controls">Cash Manager Reference *</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.CashManagerReference" 
+                       (ngModelChange)="basicInfoChanged = true"
                        placeholder="Reference Number" 
                        type="text" class="controls" required>
               </dd>
@@ -44,6 +46,7 @@
               <dt class="col-xs-4 p-x-0 controls">Date Created</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.DateCreated" 
+                       (ngModelChange)="basicInfoChanged = true"
                        placeholder="Date created" 
                        type="text" class="controls">
               </dd>
@@ -53,12 +56,18 @@
               <dt class="col-xs-4 p-x-0 controls">Deal Status</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.DealStatus" 
+                       (ngModelChange)="basicInfoChanged = true"
                        placeholder="Deal status" 
                        type="text" class="controls">
               </dd>
             </div>
 
           </dl>
+        </div>
+
+        <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>
       </div>
 
@@ -69,6 +78,7 @@
               <dt class="col-xs-4 p-x-0 controls">Security Description</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.SecurityDescription" 
+                       (ngModelChange)="descriptionChanged = true"
                        placeholder="Description" type="text" class="controls">
               </dd>
             </div>
@@ -77,6 +87,7 @@
               <dt class="col-xs-4 p-x-0 controls">SourceId</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.SourceId" 
+                       (ngModelChange)="descriptionChanged = true"
                        placeholder="Source Id" type="text" class="controls">
               </dd>
             </div>
@@ -85,11 +96,18 @@
               <dt class="col-xs-4 p-x-0 controls">Finance Company Id</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.FinanceCompanyId" 
+                       (ngModelChange)="descriptionChanged = true"
                        placeholder="Finance Company Id" type="text" class="controls">
               </dd>
             </div>
           </dl>
         </div>
+
+        <div *ngIf="descriptionChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+        </div>
+        
       </div>
 
 
@@ -100,6 +118,7 @@
               <dt class="col-xs-4 p-x-0 controls">Term In Months</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.TermInMonths" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Months" type="text" class="controls">
               </dd>
             </div>
@@ -108,6 +127,7 @@
               <dt class="col-xs-4 p-x-0 controls">Rate</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.Rate" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Rate" type="text" class="controls">
               </dd>
             </div>
@@ -116,6 +136,7 @@
               <dt class="col-xs-4 p-x-0 controls">Finance Volume</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.FinanceVolume" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Volume" type="text" class="controls">
               </dd>
             </div>
@@ -124,6 +145,7 @@
               <dt class="col-xs-4 p-x-0 controls">Commission</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.Commission" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Commission" type="text" class="controls">
               </dd>
             </div>
@@ -132,6 +154,7 @@
               <dt class="col-xs-4 p-x-0 controls">Documentation  Fee</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.DocumentationFee" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Fee" type="text" class="controls">
               </dd>
             </div>
@@ -140,6 +163,7 @@
               <dt class="col-xs-4 p-x-0 controls">Guaranteed Asset Protection</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.GuaranteedAssetProtection" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Asset" type="text" class="controls">
               </dd>
             </div>
@@ -148,6 +172,7 @@
               <dt class="col-xs-4 p-x-0 controls">Mechanical Break Down Insurance</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.MechanicalBreakDownInsurance" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Mechnical Insurance" type="text" class="controls">
               </dd>
             </div>
@@ -156,6 +181,7 @@
               <dt class="col-xs-4 p-x-0 controls">Other Insurance</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.OtherInsurance" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Other Insurance" type="text" class="controls">
               </dd>
             </div>
@@ -164,10 +190,16 @@
               <dt class="col-xs-4 p-x-0 controls">Dealership Commission</dt>
               <dd class="col-xs-8">
                 <input [(ngModel)]="deal.DealershipCommission" 
+                       (ngModelChange)="financeChanged = true"
                        placeholder="Dealership Commission" type="text" class="controls">
               </dd>
             </div>
           </dl>
+        </div>
+
+        <div *ngIf="financeChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>
       </div>
 

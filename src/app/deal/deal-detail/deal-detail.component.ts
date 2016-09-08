@@ -20,7 +20,12 @@ export class DealDetailComponent implements OnInit {
   public notes: Array<any>;
 
   private deal: any = {};
+  private copyDeal: any = {};
+  private note: string;
   private customerId: string;
+  private basicInfoChanged = false;
+  private descriptionChanged = false;
+  private financeChanged = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +54,7 @@ export class DealDetailComponent implements OnInit {
 
   save() {
     this.setDefaultData();
+
     this._dealService.addOrSaveDeal(this.deal)
       .then((response) => {
         console.log('Saved successfully: ', response);
@@ -61,6 +67,12 @@ export class DealDetailComponent implements OnInit {
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
       });
+  }
+
+  cancel() {
+    this.resetAllChangedStatus();
+    this.deal = Object.assign({}, this.copyDeal);
+    this.deal.CustomerId = this.customerId;
   }
 
   delete() {
@@ -99,12 +111,18 @@ export class DealDetailComponent implements OnInit {
     this._dealService.getDeal(dealId)
       .then((deal) => {
         this.deal = deal;
+        this.copyDeal = Object.assign({}, deal);
         console.log(this.deal);
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
       });
+  }
 
+  private resetAllChangedStatus () {
+    this.basicInfoChanged = false;
+    this.descriptionChanged = false;
+    this.financeChanged = false;
   }
 
 }
