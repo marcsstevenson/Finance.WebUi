@@ -31,11 +31,26 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="input-group">
-        <input type="text" [(ngModel)]="searchQuery" class="form-control" placeholder="customer number, name or mobile">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button" (click)="searchCustomer(searchQuery)">Search</button>
-        </span>
+      <div class="actions">
+
+        <!--todo: make the search query only fires after 300 to 400 milliseconds-->
+
+        <div class="search">
+          <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="searchCustomer(searchQuery)" class="form-control" placeholder="customer number, name or mobile">
+        </div>
+
+        <div class="buttons text-md-right">
+          <button type="button" class="btn btn-success" (click)="addCustomer()">
+            <i name="add" class="icon icon-plus">
+              <img src="assets/images/icons/ic_add_white_24px.svg">
+            </i>
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add customer
+          </button>
+        </div>
+
+        <!--<span class="input-group-btn">
+          <button class="btn btn-default" type="button" >Search</button>
+        </span>-->
       </div>
 
       <!--<button type="button" 
@@ -43,11 +58,6 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="icon-user icon-white"></i> Delete
       </button>-->
-
-
-      <button type="button" class="btn btn-success" (click)="addCustomer()">
-          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add
-      </button>
 
       <!--<input type="text" class="form-control" placeholder="">
       <button type="button" class="btn btn-default">Search</button>-->
