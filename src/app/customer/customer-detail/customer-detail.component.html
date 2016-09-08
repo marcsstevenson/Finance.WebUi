@@ -19,15 +19,15 @@
           </div>
           <div class="col-xs-8">
             <div class="row">
-              <input class="name" [(ngModel)]="customer.FirstName" 
+              <input class="name controls" [(ngModel)]="customer.FirstName" 
                      (ngModelChange)="contactbasicInfoChanged = true"
                      type="text" placeholder="First Name" required>
-              <input class="name" [(ngModel)]="customer.LastName" 
+              <input class="name controls" [(ngModel)]="customer.LastName" 
                      (ngModelChange)="basicInfoChanged = true"
                      type="text" placeholder="Last Name" required>
             </div>
             <div class="row">
-              <input class="email" [(ngModel)]="customer.Email" 
+              <input class="email controls" [(ngModel)]="customer.Email" 
                      (ngModelChange)="basicInfoChanged = true"
                      type="email" placeholder="Email" required>
             </div>
