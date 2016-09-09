@@ -24,7 +24,7 @@ export class CustomerDealsComponent implements OnInit {
   }
 
   netIncome (deal) {
-    return 1;
+    // return deal.;
   }
 
 }

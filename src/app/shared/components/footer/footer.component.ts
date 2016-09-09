@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthenticationService } from '../../services/index';
+
 @Component({
   moduleId: module.id,
   selector: 'fwui-app-footer',
   templateUrl: 'footer.component.html',
-  styleUrls: ['footer.component.css']
+  styleUrls: ['footer.component.css'],
+  providers: [ AuthenticationService]
 })
 export class FinanceWebUiFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthenticationService
+  ) { }
 
   ngOnInit() {
   }

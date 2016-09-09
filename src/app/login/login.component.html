@@ -1,8 +1,23 @@
-<div class="container body-content fwui">
-  <h2>Log in.</h2>
+<div class="container body-content fwui login-page">
+
+  <div class="login">
+    <h1>Login</h1>
+    <!--<form *ngSubmit="">-->
+      <input type="email" id="Email" name="Email" placeholder="Email"
+             [(ngModel)]="userName" required="required"/>
+      <input type="password" name="Password" placeholder="Password"
+             [(ngModel)]="password"  required="required"/>
+      <button type="submit" class="btn btn-primary btn-block btn-large" 
+              (click)="login()">Login</button>
+    <!--</form>-->
+  </div>
+
+
+  <!--<h2>Log in.</h2>
   <div class="row">
     <div class="col-md-8">
       <section>
+
         <form method="post" class="form-horizontal" action="/Account/Login" novalidate="novalidate">
           <h4>Use a local account to log in.</h4>
           <hr>
@@ -48,11 +63,12 @@
             <p>
               <a href="/Account/ForgotPassword">Forgot your password?</a>
             </p>-->
-          <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Lb5dsKp2eFGtDvzwTgAcDMjJ2WpmwCLqAP4qaho4sG23TMkyFyQTaD5PQBnmml_a_rN44uNDKwMc4Ph-cmZrZ5iD6_uBreJZId5Y9Vje999d-9CxOtD0rU86B-E2s9lXMlM40SyGTv2YJxaDAZMvk0">
+          <!--<input name="__RequestVerificationToken" type="hidden" value="CfDJ8Lb5dsKp2eFGtDvzwTgAcDMjJ2WpmwCLqAP4qaho4sG23TMkyFyQTaD5PQBnmml_a_rN44uNDKwMc4Ph-cmZrZ5iD6_uBreJZId5Y9Vje999d-9CxOtD0rU86B-E2s9lXMlM40SyGTv2YJxaDAZMvk0">
           <input name="RememberMe" type="hidden" value="false"></form>
       </section>
     </div>
-    <div class="col-md-4">
+
+    <!--<div class="col-md-4">
       <section>
         <h4>Use another service to log in.</h4>
         <hr>
@@ -62,11 +78,11 @@
           </p>
         </div>
       </section>
-    </div>
-  </div>
+    </div>-->
+  <!--</div>-->
 
 
-  <hr>
+  <!--<hr>-->
 </div>
 
 
@@ -80,9 +96,5 @@
 
 <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-
-
-
-
 
 <script type="text/javascript">(function (){return window.SIG_EXT={}})()</script>

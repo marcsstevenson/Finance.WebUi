@@ -102,6 +102,7 @@ export class DealDetailComponent implements OnInit {
         console.log('Saved successfully: ', response);
         this.note = '';
         this.notes.push(noteObj);
+        this.clearNote();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
