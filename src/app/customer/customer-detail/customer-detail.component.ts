@@ -109,6 +109,7 @@ export class CustomerDetailComponent implements OnInit {
       .then((response) => {
         this.resetAllChangedStatus();
         console.log('Saved successfully: ', response);
+        this.clearNote();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -125,7 +126,7 @@ export class CustomerDetailComponent implements OnInit {
       });
   }
 
-  cancelNote() {
+  clearNote() {
     this.noteChanged = false;
     this.note = '';
   }
