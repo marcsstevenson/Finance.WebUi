@@ -1,18 +1,18 @@
 <div class="card col-xs-12">
-  <div *ngFor="let deal of deals;">
+  <div class="p-y-1" *ngFor="let deal of deals;">
     <h5>
-      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.SecureDescription }}</span>
+      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.SecurityDescription }}</span>
       </a>
     </h5>
     <p>
       <strong>Status: </strong>
-      <span>{{ deal.Status }}</span>
+      <span>{{ deal.DealStatus }}</span>
     </p>
     
-    <p>
+    <!--<p>
       <strong>Net Income: </strong>
       <span> {{ deal.NetIncome}} </span>
-    </p>
+    </p>-->
   </div>
 
   <div class="text-center p-x-1 p-y-1">

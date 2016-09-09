@@ -23,4 +23,8 @@ export class CustomerDealsComponent implements OnInit {
     this.router.navigate(['/deal/new', { customerId: this.customerId }]);
   }
 
+  netIncome (deal) {
+    return 1;
+  }
+
 }
