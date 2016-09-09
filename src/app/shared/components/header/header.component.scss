@@ -2,6 +2,17 @@
 
 nav {
     // margin-bottom: 30px
+    .navbar-header.logo {
+        a {
+            padding: 0;
+            img {
+                height: 2em;
+                width: 2em;
+                display: inline-block;
+            }
+        }
+    }
+
     a {
         color: $header-link-color;
         line-height: 2em;
