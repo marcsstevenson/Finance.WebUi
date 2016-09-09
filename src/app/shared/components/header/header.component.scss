@@ -1,0 +1,9 @@
+@import '../../../../assets/styles/color';
+
+nav {
+    // margin-bottom: 30px
+    a {
+        color: $header-link-color;
+        line-height: 2em;
+    }
+}

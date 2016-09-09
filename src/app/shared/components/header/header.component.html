@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+<nav *ngIf="authService.isLoggedIn()" class="navbar navbar-dark navbar-fixed-top bg-inverse">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
@@ -14,7 +14,12 @@
     </div>
 
     <ul class="nav nav-pills pull-xs-right">
-      <li *ngIf="authService.isLoggedIn()"><a href="#" (click)="logOut($event)">Log out</a></li>
+      <li>
+        <a href="#" (click)="logOut($event)">
+          <i class="dealer fa fa-sign-out "></i>
+          <span>Log out</span>
+        </a>
+      </li>
     </ul>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">

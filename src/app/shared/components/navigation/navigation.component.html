@@ -1,4 +1,4 @@
-<div id="page-leftbar" class="navbar navbar-dark left-side">
+<div *ngIf="authService.isLoggedIn()" id="page-leftbar" class="navbar navbar-dark left-side">
   <ul class="nav nav-pills nav-stacked">
     <li class="nav-item home ">
       <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
