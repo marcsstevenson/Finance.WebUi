@@ -26,6 +26,7 @@ export class DealDetailComponent implements OnInit {
   private basicInfoChanged = false;
   private descriptionChanged = false;
   private financeChanged = false;
+  private noteChanged = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,16 +36,17 @@ export class DealDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    tinymce.init(
-      {
-        selector: "#test",
-      });
+    // tinymce.init(
+    //   {
+    //     selector: "#test",
+    //   });
 
     let dealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
 
     if (dealId !== 'new') {
       this.loadDeal(dealId);
+      this.loadNotes(dealId);
     }
     else if (this.customerId) {
       this.deal = {};
@@ -86,6 +88,46 @@ export class DealDetailComponent implements OnInit {
       });
   }
 
+  addNote(note: string) {
+    let noteObj = {
+      Note: note,
+      DealId: this.deal.Id,
+      EnteredBy: 'You', //todo: need to get this user name
+      DateCreated: new Date(),
+      DateModified: new Date()
+    };
+
+    this._dealService.addOrSaveDealNote(noteObj)
+      .then((response) => {
+        console.log('Saved successfully: ', response);
+        this.note = '';
+        this.notes.push(noteObj);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  saveNote(noteObj: any) {
+    noteObj.DateModified = new Date();
+
+    this._dealService.addOrSaveDealNote(noteObj)
+      .then((response) => {
+        this.resetAllChangedStatus();
+        console.log('Saved successfully: ', response);
+        this.clearNote();
+
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  clearNote() {
+    this.noteChanged = false;
+    this.note = '';
+  }
+
   private setDefaultData() {
     // this.deal.
 
@@ -116,6 +158,17 @@ export class DealDetailComponent implements OnInit {
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
+      });
+  }
+
+  private loadNotes(dealId) {
+    this._dealService.getDealNotes(dealId)
+      .then((notes) => {
+        this.notes = notes;
+        console.log('The notes:', notes);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
       });
   }
 

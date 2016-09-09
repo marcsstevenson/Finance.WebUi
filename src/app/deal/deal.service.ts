@@ -40,6 +40,14 @@ export class DealService {
       .catch((err: any) => this.handleError(err));
   }
 
+  getDealNotes (id: string) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL + '/DealNote/GetForDeal?customerId=' + id, options)
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
   addOrSaveDeal(deal: any) {
     let options = new RequestOptions({ headers: this.headers });
 
@@ -50,10 +58,27 @@ export class DealService {
       .catch((err: any) => this.handleError(err));
   }
 
+  addOrSaveDealNote(customerNote: any) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/DealNote', customerNote, options)
+      .map((response: Response) => response.json())
+      .toPromise()
+      .catch((err: any) => this.handleError(err));
+  }
+
   deleteDeal(id: string) {
     let options = new RequestOptions({ headers: this.headers });
 
     return this._http.delete(BASE_API_URL + '/Deal?id=' + id, options)
+      .toPromise()
+      .catch((err: any) => this.handleError(err));
+  }
+
+  deleteDealNote(id: string) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.delete(BASE_API_URL + '/DealNote' + id, options)
       .toPromise()
       .catch((err: any) => this.handleError(err));
   }
