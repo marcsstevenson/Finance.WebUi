@@ -61,7 +61,7 @@ export class CustomerDetailComponent implements OnInit {
         console.log('Saved successfully: ', response);
         this.router.navigate(['/customer', response.CommittedId]);
         this.resetAllChangedStatus();
-        this.copyCustomer = Object.assign({}, this.copyCustomer);
+        this.copyCustomer = Object.assign({}, this.customer);
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message

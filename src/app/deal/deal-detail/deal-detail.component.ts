@@ -64,6 +64,8 @@ export class DealDetailComponent implements OnInit {
         if (this.customerId != null) {
           this.router.navigate(['/customer', this.customerId]);
         }
+
+        this.copyDeal = Object.assign({}, this.deal);
         // this.router.navigateByUrl('/deal');
       })
       .catch((err) => {

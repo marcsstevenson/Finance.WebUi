@@ -2,146 +2,164 @@
 
   <!--todo: the follow data are not binded to the view yet-->
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
-    <button class="btn btn-success" type="button" (click)="save()">
-    <span class="glyphicon glyphicon-align-left"></span> Save
-  </button>
-  <button class="btn btn-success" type="button" (click)="delete()">
-    <span class="glyphicon glyphicon-align-left"></span> Delete
-  </button>
+
+  <div class="card actions text-xs-right">
+    <button class="btn btn-success" type="button" (click)="delete()">
+      <span class="glyphicon glyphicon-align-left"></span> Delete
+    </button>
+  </div>
 
   <div class="card basic-info">
-    <div class="media">
-      <div class="pull-left">
-        <div class="">
-          <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
-        </div>
+    <div class="card-block">
+      <div class="media col-xs-4 card-block">
+        <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
       </div>
 
-      <div class="media-body">
-        <div class="uiEditableControls">
-          <h4 class="m-bottom-0">
-            <span class="uiUnstyledInput">
-              <!--<a aria-labelledby="" 
-                  class="" 
-                  contenteditable="true" role="textbox" tabindex="0" 
-                  title="Company Name" [textContent]="dealership.Name">
-              </a>-->
-              <input [(ngModel)]="dealership.Name" type="text" class="" placeholder="Dealer Name">
-            </span>
-          </h4>
-
-          <div class="uiEditableControlsStage">
-          </div>
+      <div class="col-xs-8">
+        <div class="row">
+          <input class="name controls" [(ngModel)]="dealership.Name" 
+                 (ngModelChange)="basicInfoChanged = true" 
+                 type="text" placeholder="Dealer Name">
         </div>
 
-        <div class="uiEditableControls">
-          <p>
-            <a target="_blank" class="" [href]="dealership.Website">
-              <i name="globe" class="icon icon-globe"></i>
-            </a>
-            <span>
-                <!--<a aria-labelledby="" class="" 
-                   contenteditable="true" role="textbox" 
-                   tabindex="0" title="Domain"
-                   [textContent]="dealership.Website"></a>
-                -->
-                <input [(ngModel)]="dealership.Website" type="text" class="" placeholder="Dealer Web Site Url">
-              </span>
-          </p>
-          <div class="uiEditableControlsStage">
-          </div>
+        <div class="row">
+          <input class="name controls" [(ngModel)]="dealership.Website" 
+                 (ngModelChange)="basicInfoChanged = true" 
+                 type="text" placeholder="Dealer Web Site Url">
+        </div>
+
+        <div class="row">
+          <span class="tag tag-pill tag-success">Active</span>
         </div>
       </div>
+    </div>
 
-      <span class="tag tag-pill tag-success">Success</span>
+    <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>
   </div>
 
   <div class="card contact-details">
-    <!--<img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-block">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>-->
-
-    <div class="card-block">
+      <h4 class="row col-xs-12">Contact Details</h4>
       <dl>
-        <div>
-          <dt>Mobile Number</dt>
-          <dd>
-            <input [(ngModel)]=dealership.CellCountry type="text" class="">
-            <input [(ngModel)]=dealership.CellArea type="text" class="">
-            <input [(ngModel)]=dealership.CellNumber type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Mobile</dt>
+          <dd class="col-xs-8">
+            <input class="country controls" [(ngModel)]=dealership.CellCountry 
+                   (ngModelChange)="contactDetailsChanged = true"
+                   placeholder="00" type="text" >
+            <input class="area controls" [(ngModel)]=dealership.CellArea 
+                   (ngModelChange)="contactDetailsChanged = true"
+                   placeholder="00" type="text">
+            <input class="number controls" [(ngModel)]=dealership.CellNumber 
+                   (ngModelChange)="contactDetailsChanged = true"
+                   placeholder="Number" type="text">
           </dd>
         </div>
 
-        <div>
-          <dt>Phone Number</dt>
-          <dd>
-            <input [(ngModel)]=dealership.PhoneCountry type="text" class="">
-            <input [(ngModel)]=dealership.PhoneArea type="text" class="">
-            <input [(ngModel)]=dealership.PhoneNumber type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Phone</dt>
+          <dd class="col-xs-8">
+            <input class="country controls" [(ngModel)]=dealership.PhoneCountry 
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
+            <input class="area controls" [(ngModel)]=dealership.PhoneArea 
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
+                   type="text" >
+            <input class="number controls" [(ngModel)]=dealership.PhoneNumber 
+                   placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
 
-        <div>
-          <dt>Fax Number</dt>
-          <dd>
-            <input [(ngModel)]=dealership.FaxCountry type="text" class="">
-            <input [(ngModel)]=dealership.FaxArea type="text" class="">
-            <input [(ngModel)]=dealership.FaxNumber type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Fax</dt>
+          <dd class="col-xs-8">
+            <input class="country controls" [(ngModel)]=dealership.FaxCountry 
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
+                   type="text" >
+            <input class="area controls" [(ngModel)]=dealership.FaxArea
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
+            <input class="number controls" [(ngModel)]=dealership.FaxNumber 
+                   placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
 
-        <div>
-          <dt>ContactName</dt>
-          <dd>
-            <input [(ngModel)]=dealership.ContactName type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Contact Name</dt>
+          <dd class="col-xs-8">
+            <input class="contact-name controls" [(ngModel)]=dealership.ContactName 
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
 
-        <div>
-          <dt>Email</dt>
-          <dd>
-            <input [(ngModel)]=dealership.Email type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Email</dt>
+          <dd class="col-xs-8">
+            <input class="email controls" [(ngModel)]=dealership.Email 
+                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
       </dl>
+    </div>
+
+    <div *ngIf="contactDetailsChanged" class="actions text-xs-center">
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>
   </div>
 
   <div class="card bank-details">
     <div class="card-block">
+      <h4 class="row col-xs-12">Bank Details</h4>
       <dl>
-        <div>
-          <dt>BankAccountName</dt>
-          <dd>
-            <input [(ngModel)]=dealership.BankAccountName type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Account Name</dt>
+          <dd class="col-xs-8">
+            <input class="controls" [(ngModel)]=dealership.BankAccountName 
+                   placeholder="Account Name" (ngModelChange)="bankDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
-        <div>
-          <dt>BankAccountNumber</dt>
-          <dd>
-            <input [(ngModel)]="dealership.BankAccountNumber" type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Account Number</dt>
+          <dd class="col-xs-8">
+            <input class="controls" [(ngModel)]="dealership.BankAccountNumber" 
+                   placeholder="Account Number" (ngModelChange)="bankDetailsChanged = true"
+                   type="text" >
           </dd>
         </div>
-        <div>
-          <dt>BankBranchName</dt>
-          <dd>
-            <input [(ngModel)]="dealership.BankBranchName" type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Branch Name</dt>
+          <dd class="col-xs-8">
+            <input class="controls" [(ngModel)]="dealership.BankBranchName" 
+                   placeholder="Branch Name" (ngModelChange)="bankDetailsChanged = true" 
+                   type="text">
           </dd>
         </div>
-        <div>
-          <dt>BankingCompany</dt>
-          <dd>
-            <input [(ngModel)]="dealership.BankingCompany" type="text" class="">
+        <div class="row">
+          <dt class="col-xs-4 p-x-0">Bank Name</dt>
+          <dd class="col-xs-8">
+            <input class="controls" [(ngModel)]="dealership.BankingCompany"
+                   placeholder="Bank Name" (ngModelChange)="bankDetailsChanged = true" 
+                   type="text">
           </dd>
         </div>
       </dl>
     </div>
+
+    <div *ngIf="bankDetailsChanged" class="actions text-xs-center">
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
   </div>
 
   <div class="card address-details">
-    
+
   </div>

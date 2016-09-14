@@ -14,7 +14,12 @@ import { DealershipData } from '../mockup-data';
 })
 export class DealerDetailComponent implements OnInit, OnDestroy {
 
-  private dealership: any;
+  private dealership: any = {};
+  private copyDealership: any = {};
+  private basicInfoChanged = false;
+  private contactDetailsChanged = false;
+  private bankDetailsChanged = false;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -44,12 +49,20 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
 
     this._dealershipService.addOrSaveDealership(this.dealership)
       .then((response) => {
+        this.resetAllChangedStatus();
         console.log('Saved successfully: ', response);
+
+        this.copyDealership = Object.assign({}, this.dealership);
         // this.router.navigateByUrl('/deal');
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
       });
+  }
+
+  cancel() {
+    this.resetAllChangedStatus();
+    this.dealership = Object.assign({}, this.copyDealership);
   }
 
   delete() {
@@ -73,11 +86,18 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     this._dealershipService.getDealership(dealershipId)
       .then((dealership) => {
         this.dealership = dealership;
+        this.copyDealership = Object.assign({}, dealership);
         console.log(this.dealership);
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
       });
+  }
+
+  private resetAllChangedStatus() {
+    this.basicInfoChanged = false;
+    this.contactDetailsChanged = false;
+    this.bankDetailsChanged = false;
   }
 
   ngOnDestroy() {
