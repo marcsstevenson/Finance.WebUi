@@ -1,17 +1,21 @@
-// import { APP_BASE_HREF } from '@angular/common';
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-import { environment, FinanceWebUiAppComponent } from './app/';
-import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+platformBrowserDynamic().bootstrapModule(AppModule);
 
-if (environment.production) {
-  enableProdMode();
-}
+// import { bootstrap } from '@angular/platform-browser-dynamic';
+// import { enableProdMode } from '@angular/core';
+// import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
-bootstrap(FinanceWebUiAppComponent, [
-  disableDeprecatedForms(),
-  provideForms(),
-  APP_ROUTER_PROVIDERS
-]);
+// import { environment, FinanceWebUiAppComponent } from './app/';
+// import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+
+// if (environment.production) {
+//   enableProdMode();
+// }
+
+// bootstrap(FinanceWebUiAppComponent, [
+//   disableDeprecatedForms(),
+//   provideForms(),
+//   APP_ROUTER_PROVIDERS
+// ]);
