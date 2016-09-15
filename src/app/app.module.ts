@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { FinanceWebUiAppComponent } from './index';
 
 import {
   FinanceWebUiHeaderComponent,
   FinanceWebUiFooterComponent,
-  FinanceWebUiNavigationComponent,
-  // FinanceWebUiTimeLineComponent
+  FinanceWebUiNavigationComponent
 } from './shared/components/index';
 
 import { routing,
@@ -25,6 +25,8 @@ import { LoginModule } from './Login/login.module';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    JsonpModule,
     LoginModule,
     CustomerModule,
     DealModule,
