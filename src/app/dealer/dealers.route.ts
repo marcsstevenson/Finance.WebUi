@@ -1,4 +1,4 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DealersComponent } from './index';
 
@@ -6,7 +6,7 @@ import { DealerDetailComponent } from './index';
 
 import { AuthorisationService } from '../shared/services/index';
 
-export const DealershipRoute: RouterConfig = [
+const dealerRoute: Routes = [
     {
         path: 'dealership',
         component: DealersComponent,
@@ -18,3 +18,6 @@ export const DealershipRoute: RouterConfig = [
         canActivate: [AuthorisationService]
     }
 ];
+
+export const DealerRoute = RouterModule.forChild(dealerRoute);
+

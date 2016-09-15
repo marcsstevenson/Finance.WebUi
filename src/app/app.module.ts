@@ -16,13 +16,20 @@ import { routing,
 
 import { CustomerModule } from './customer/customer.module';
 import { DealModule } from './deal/deal.module';
+import { DealerModule } from './dealer/dealer.module';
+import { HomeModule } from './home/home.module';
+import { LoginComponent } from './Login/index';
+import { LoginModule } from './Login/login.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    LoginModule,
     CustomerModule,
     DealModule,
+    DealerModule,
+    HomeModule,
     routing
     ],
   providers: [
@@ -33,6 +40,7 @@ import { DealModule } from './deal/deal.module';
     FinanceWebUiHeaderComponent,
     FinanceWebUiFooterComponent,
     FinanceWebUiNavigationComponent,
+    // LoginComponent
     // FinanceWebUiTimeLineComponent
   ],
   bootstrap: [FinanceWebUiAppComponent]
