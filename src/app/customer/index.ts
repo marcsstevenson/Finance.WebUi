@@ -1,4 +1,4 @@
-export * from './customers/customers.component';
-export * from './customer-detail/customer-detail.component';
+export * from './customers/index';
+export * from './customer-detail/index';
 export * from './customer.service';
-export * from './customers.route';
+export * from './customer.route';

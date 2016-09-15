@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { Http } from '@angular/http';
 
-import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
+// import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
 
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
@@ -26,7 +26,7 @@ import { CustomerService } from '../customer.service';
   templateUrl: 'customers.component.html',
   styleUrls: ['customers.component.css'],
   directives: [
-    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES
+    
   ],
   providers: [ CustomerService ]
 })

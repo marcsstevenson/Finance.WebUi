@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CustomersRoute } from './customer/index';
+import { CustomerRoute } from './customer/index';
 import { DealershipRoute } from './dealer/index';
 import { HomeRoute } from './home/index';
 import { LoginRoute } from './login/index';
@@ -10,9 +10,9 @@ import { authProviders } from './shared/services/index';
 
 const routes: Routes = [
     ...HomeRoute,
-    ...CustomersRoute,
+    // ...CustomerRoute,
     ...DealershipRoute,
-    ...DealRoute,
+    // ...DealRoute,
     ...LoginRoute
 ];
 

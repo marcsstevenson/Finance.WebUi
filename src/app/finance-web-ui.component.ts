@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+// import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 // import { CORE_DIRECTIVES } from '@angular/common';
 // import { FORM_DIRECTIVES} from '@angular/forms';
@@ -9,12 +9,12 @@ import * as moment from 'moment';
 
 // import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
-import {
-  FinanceWebUiHeaderComponent,
-  FinanceWebUiFooterComponent,
-  FinanceWebUiNavigationComponent,
-  FinanceWebUiTimeLineComponent
-} from './shared/components/index';
+// import {
+//   FinanceWebUiHeaderComponent,
+//   FinanceWebUiFooterComponent,
+//   FinanceWebUiNavigationComponent,
+//   FinanceWebUiTimeLineComponent
+// } from './shared/components/index';
 
 import {
   TinyEditor
@@ -26,11 +26,11 @@ import {
   selector: 'finance-web-ui-app',
   templateUrl: 'finance-web-ui.component.html',
   styleUrls: ['finance-web-ui.component.css'],
-  directives: [
-      FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
-      FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,
-      ROUTER_DIRECTIVES, TinyEditor
-  ],
+  // directives: [
+  //     FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
+  //     FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,
+      // ROUTER_DIRECTIVES, TinyEditor
+  // ],
   providers: [ HTTP_PROVIDERS ]
   // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })

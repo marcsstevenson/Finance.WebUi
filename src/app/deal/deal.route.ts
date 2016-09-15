@@ -1,4 +1,5 @@
-import { RouterConfig } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DealsComponent } from './index';
 
@@ -6,7 +7,7 @@ import { DealDetailComponent } from './index';
 
 import { AuthorisationService } from '../shared/services/index';
 
-export const DealRoute: RouterConfig = [
+const dealRoute: Routes = [
     {
         path: 'deal',
         component: DealsComponent,
@@ -18,3 +19,5 @@ export const DealRoute: RouterConfig = [
         canActivate: [AuthorisationService]
     }
 ];
+
+export const DealRoute: ModuleWithProviders = RouterModule.forChild(dealRoute);

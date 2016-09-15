@@ -3,37 +3,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { FinanceWebUiAppComponent } from './index';
+
+import {
+  FinanceWebUiHeaderComponent,
+  FinanceWebUiFooterComponent,
+  FinanceWebUiNavigationComponent,
+  // FinanceWebUiTimeLineComponent
+} from './shared/components/index';
+
 import { routing,
          appRoutingProviders } from './app.routes';
 
+import { CustomerModule } from './customer/customer.module';
+import { DealModule } from './deal/deal.module';
+
 @NgModule({
-  declarations: [FinanceWebUiAppComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    CustomerModule,
+    DealModule,
     routing
     ],
   providers: [
     appRoutingProviders
   ],
+  declarations: [
+    FinanceWebUiAppComponent,
+    FinanceWebUiHeaderComponent,
+    FinanceWebUiFooterComponent,
+    FinanceWebUiNavigationComponent,
+    // FinanceWebUiTimeLineComponent
+  ],
   bootstrap: [FinanceWebUiAppComponent]
 })
 export class AppModule {}
-
-
-
-// import { enableProdMode } from '@angular/core';
-// import { disableDeprecatedForms, provideForms } from '@angular/forms';
-
-// import { environment, FinanceWebUiAppComponent } from './app/';
-// import { APP_ROUTER_PROVIDERS } from './app/app.routes';
-
-// if (environment.production) {
-//   enableProdMode();
-// }
-
-// bootstrap(FinanceWebUiAppComponent, [
-//   disableDeprecatedForms(),
-//   provideForms(),
-//   APP_ROUTER_PROVIDERS
-// ]);
