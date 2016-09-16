@@ -19,6 +19,19 @@ module.exports = function (config) {
     files: [
       { pattern: 'dist/vendor/es6-shim/es6-shim.js', included: true, watched: false },
       { pattern: 'dist/vendor/zone.js/dist/zone.js', included: true, watched: false },
+      
+      // Reflect and Zone.js
+      // 'node_modules/reflect-metadata/Reflect.js',
+      // 'node_modules/zone.js/dist/zone.js',
+      // 'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      // 'node_modules/zone.js/dist/proxy.js',
+      // 'node_modules/zone.js/dist/sync-test.js',
+      // 'node_modules/zone.js/dist/jasmine-patch.js',
+      // 'node_modules/zone.js/dist/async-test.js',
+      // 'node_modules/zone.js/dist/fake-async-test.js',
+
+
+
       { pattern: 'dist/vendor/reflect-metadata/Reflect.js', included: true, watched: false },
       { pattern: 'dist/vendor/systemjs/dist/system-polyfills.js', included: true, watched: false },
       { pattern: 'dist/vendor/systemjs/dist/system.src.js', included: true, watched: false },

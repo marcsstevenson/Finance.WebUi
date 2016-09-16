@@ -10,6 +10,7 @@
 /** Map relative paths to URLs. */
 const map: any = {
   "@angular": "vendor/@angular",
+  "rxjs": "vendor/rxjs",
   'moment': 'vendor/moment/moment.js',
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
   'ng2-table': 'vendor/ng2-table',
@@ -20,29 +21,34 @@ const map: any = {
 /** User packages configuration. */
 const packages: any = {
   "@angular/core": {
-        main: "bundles/core.umd.js" //use the ESM entry point for bundling tools
-    },
-    "@angular/common": {
-        main: "bundles/common.umd.js" //use the ESM entry point for bundling tools
-    },
-    "@angular/compiler": {
-        main: "bundles/compiler.umd.js" //use the ESM entry point for bundling tools
-    },
-    "@angular/forms": {
-        main: "bundles/forms.umd.js"
-    },
-    "@angular/http": {
-        main: "bundles/http.umd.js"
-    },
-    "@angular/platform-browser": {
-        main: "bundles/platform-browser.umd.js" //use the ESM entry point for bundling tools
-    },
-    "@angular/platform-browser-dynamic": {
-        main: "bundles/platform-browser-dynamic.umd.js" //use the ESM entry point for bundling tools
-    },
-    "@angular/router": {
-        main: "bundles/router.umd.js" //use the ESM entry point for bundling tools
-    },
+    main: "bundles/core.umd.js" //use the ESM entry point for bundling tools
+  },
+  "@angular/common": {
+    main: "bundles/common.umd.js" //use the ESM entry point for bundling tools
+  },
+  "@angular/compiler": {
+    main: "bundles/compiler.umd.js" //use the ESM entry point for bundling tools
+  },
+  "@angular/forms": {
+    main: "bundles/forms.umd.js"
+  },
+  "@angular/http": {
+    main: "bundles/http.umd.js"
+  },
+  "@angular/platform-browser": {
+    main: "bundles/platform-browser.umd.js" //use the ESM entry point for bundling tools
+  },
+  "@angular/platform-browser-dynamic": {
+    main: "bundles/platform-browser-dynamic.umd.js" //use the ESM entry point for bundling tools
+  },
+  "@angular/router": {
+    main: "bundles/router.umd.js" //use the ESM entry point for bundling tools
+  },
+  'Rx': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'Rx.js'
+  },
   'moment': {
     format: 'cjs'
   },
