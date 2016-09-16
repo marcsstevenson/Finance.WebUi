@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+// import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AuthenticationService } from '../../services/index';
 
@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../services/index';
   selector: 'fwui-app-navigation',
   templateUrl: 'navigation.component.html',
   styleUrls: ['navigation.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  // directives: [ROUTER_DIRECTIVES],
   providers: [ AuthenticationService]
 })
 export class FinanceWebUiNavigationComponent implements OnInit {

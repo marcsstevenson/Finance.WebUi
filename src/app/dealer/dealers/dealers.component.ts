@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
+// import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
 import { Router } from '@angular/router';
 // import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 // import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
@@ -13,9 +13,6 @@ import { DealerService } from '../dealer.service';
   selector: 'app-dealers',
   templateUrl: 'dealers.component.html',
   styleUrls: ['dealers.component.css'],
-  directives: [
-    NgClass, NgIf, CORE_DIRECTIVES, FORM_DIRECTIVES
-  ],
   providers: [DealerService]
 })
 export class DealersComponent implements OnInit {

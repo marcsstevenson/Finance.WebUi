@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, async, inject } from '@angular/core/testing';
+import { async, inject } from '@angular/core/testing';
 import { DealerService } from './dealer.service';
 
 describe('Service: Dealer', () => {
   beforeEach(() => {
-    addProviders([DealerService]);
+    // addProviders([DealerService]);
   });
 
   it('should ...',

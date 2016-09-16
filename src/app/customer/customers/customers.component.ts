@@ -25,9 +25,6 @@ import { CustomerService } from '../customer.service';
   selector: 'fwui-customers',
   templateUrl: 'customers.component.html',
   styleUrls: ['customers.component.css'],
-  directives: [
-    
-  ],
   providers: [ CustomerService ]
 })
 export class CustomersComponent implements OnInit {
