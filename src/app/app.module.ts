@@ -18,8 +18,8 @@ import { CustomerModule } from './customer/customer.module';
 import { DealModule } from './deal/deal.module';
 import { DealerModule } from './dealer/dealer.module';
 import { HomeModule } from './home/home.module';
-import { LoginComponent } from './Login/index';
-import { LoginModule } from './Login/login.module';
+import { LoginComponent } from './login/index';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   imports: [
