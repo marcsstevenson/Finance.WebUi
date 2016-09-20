@@ -15,7 +15,7 @@ const map: any = {
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
   'ng2-table': 'vendor/ng2-table',
   'tinymce': 'vendor/tinymce',
-  'angular2-data-table': 'vendor/angular2-data-table',
+  'angular2-data-table': 'vendor/angular2-data-table/release',
 };
 
 /** User packages configuration. */
@@ -68,9 +68,7 @@ const packages: any = {
     main: 'tinymce.js'
   },
   'angular2-data-table': {
-    format: 'cjs',
-    defaultExtension: 'js',
-    main: 'release/angular2-data-table.js'
+    main: 'angular2-data-table.js'
   }
 };
 
@@ -91,6 +89,7 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
+  
 
   // App specific barrels.
   'app',

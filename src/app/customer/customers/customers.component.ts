@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 
 // import { Angular2DataTableModule } from 'angular2-data-table';
 
-// import {
-//   TableOptions,
-//   SelectionType,
-//   TableColumn,
-//   ColumnMode
-// } from 'angular2-data-table';
+import {
+  TableOptions,
+  SelectionType,
+  TableColumn,
+  ColumnMode
+} from 'angular2-data-table';
 
 
 import { CustomersData } from '../mockup-data';
@@ -30,29 +30,33 @@ import { CustomerService } from '../customer.service';
 export class CustomersComponent implements OnInit {
 
   public rows: Array<any> = [];
+  public selections = [];
   public columns: Array<any> = [
+    { title: 'Customer Number', name: 'Number' },
     { title: 'First Name', name: 'FirstName' },
     { title: 'Last Name', name: 'LastName' },
-    { title: 'Date of Birth', name: 'DateOfBirth', sort: false },
-    { title: 'Email', name: 'Email', sort: 'asc' },
+    { title: 'Email', name: 'Email', sort: false },
+    { title: 'Mobile', name: 'CellNumber', sort: 'asc' },
   ];
 
   public searchQuery: string;
 
-  // public options = new TableOptions({
-  //   columnMode: ColumnMode.force,
-  //   headerHeight: 50,
-  //   footerHeight: 50,
-  //   limit: 10,
-  //   rowHeight: 'auto',
-  //   selectionType: SelectionType.multi,
-  //   columns: [
-  //     new TableColumn({ name: 'FirstName' }),
-  //     new TableColumn({ name: 'LastName'}),
-  //     new TableColumn({ name: 'DateOfBirth'}),
-  //     new TableColumn({ name: 'Email'}),
-  //   ]
-  // });
+  public options = new TableOptions({
+    columnMode: ColumnMode.force,
+    headerHeight: 50,
+    footerHeight: 50,
+    limit: 10,
+    rowHeight: 'auto',
+    selectionType: SelectionType.multi,
+    columns: [
+      new TableColumn({ name: 'Number' }),
+      new TableColumn({ name: 'FirstName' }),
+      new TableColumn({ name: 'LastName'}),
+      new TableColumn({ name: 'Email'}),
+      new TableColumn({ name: 'CellNumber'}),
+    ]
+  });
+
   public page: number = 1;
   public itemsPerPage: number = 10;
   public maxSize: number = 5;
@@ -76,7 +80,7 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
     this.onChangeTable(this.config);
-    this.rows = this.data;
+    // this.rows = this.data;
 
     this.loadCustomers();
   }
