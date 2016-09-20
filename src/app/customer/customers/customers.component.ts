@@ -31,43 +31,24 @@ export class CustomersComponent implements OnInit {
 
   public rows: Array<any> = [];
   public selections = [];
-  public columns: Array<any> = [
-    { title: 'Customer Number', name: 'Number' },
-    { title: 'First Name', name: 'FirstName' },
-    { title: 'Last Name', name: 'LastName' },
-    { title: 'Email', name: 'Email', sort: false },
-    { title: 'Mobile', name: 'CellNumber', sort: 'asc' },
-  ];
 
   public searchQuery: string;
 
   public options = new TableOptions({
     columnMode: ColumnMode.force,
-    headerHeight: 50,
+    headerHeight: 42,
     footerHeight: 50,
     limit: 10,
     rowHeight: 'auto',
     selectionType: SelectionType.multi,
     columns: [
-      new TableColumn({ name: 'Number' }),
-      new TableColumn({ name: 'FirstName' }),
-      new TableColumn({ name: 'LastName'}),
-      new TableColumn({ name: 'Email'}),
-      new TableColumn({ name: 'CellNumber'}),
+      new TableColumn({ prop: 'Number', name: 'Customer Number' }),
+      new TableColumn({ prop: 'FirstName', name: 'First Name' }),
+      new TableColumn({ prop: 'LastName', name: 'Last Name' }),
+      new TableColumn({ prop: 'CellNumber', name: 'Cell Number' }),
+      new TableColumn({ prop: 'DriversLicenceNumber', name: 'Drivers Licence' }),
     ]
   });
-
-  public page: number = 1;
-  public itemsPerPage: number = 10;
-  public maxSize: number = 5;
-  public numPages: number = 1;
-  public length: number = 0;
-
-  public config: any = {
-    paging: true,
-    sorting: { columns: this.columns },
-    filtering: { filterString: '', columnName: 'FirstName' }
-  };
 
   private data: Array<any> = CustomersData;
 
@@ -75,19 +56,20 @@ export class CustomersComponent implements OnInit {
     private router: Router,
     private _customerService: CustomerService
     ) {
-    this.length = this.data.length;
   }
 
   ngOnInit() {
-    this.onChangeTable(this.config);
-    // this.rows = this.data;
-
-    this.loadCustomers();
+    // this.loadCustomers();
+    //using this function to get pagination details
+    this.loadCustomersBySearch();
   }
-
 
   addCustomer () {
     this.router.navigate(['/customer', 'new']);
+  }
+
+  sorter (sortedBy) {
+    console.log(sortedBy);
   }
 
   searchCustomer (searchQuery: string) {
@@ -98,10 +80,11 @@ export class CustomersComponent implements OnInit {
 
     console.log("The searchObj is: ", searchObj);
 
-    this._customerService.searchCustomer(searchObj)
+    return this._customerService.searchCustomer(searchObj)
     .then((response) => {
       console.log("The response is: ", response);
       this.rows = response.SearchResults;
+      return response;
     })
     .catch((err) => {
       //todo: show err message to users later
@@ -109,11 +92,14 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  public changePage (page: any, data: Array<any> = this.data): Array<any> {
-    console.log(page);
-    let start = (page.page - 1) * page.itemsPerPage;
-    let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
-    return data.slice(start, end);
+  onSelectionChange(selected) {
+    this.router.navigate(['/customer', selected[0].Id]);
+  }
+
+  private loadCustomersBySearch () {
+    this.searchCustomer('').then((response) => {
+      this.options.count = response.TotalResultCount;
+    });
   }
 
   private loadCustomers () {
@@ -128,60 +114,67 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  public changeSort(data: any, config: any): any {
-    if (!config.sorting) {
-      return data;
-    }
+  // public changePage (page: any, data: Array<any> = this.data): Array<any> {
+  //   console.log(page);
+  //   let start = (page.page - 1) * page.itemsPerPage;
+  //   let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
+  //   return data.slice(start, end);
+  // }
 
-    let columns = this.config.sorting.columns || [];
-    let columnName: string = void 0;
-    let sort: string = void 0;
+  // public changeSort(data: any, config: any): any {
+  //   if (!config.sorting) {
+  //     return data;
+  //   }
 
-    for (let i = 0; i < columns.length; i++) {
-      if (columns[i].sort !== '') {
-        columnName = columns[i].name;
-        sort = columns[i].sort;
-      }
-    }
+  //   let columns = this.config.sorting.columns || [];
+  //   let columnName: string = void 0;
+  //   let sort: string = void 0;
 
-    if (!columnName) {
-      return data;
-    }
+  //   for (let i = 0; i < columns.length; i++) {
+  //     if (columns[i].sort !== '') {
+  //       columnName = columns[i].name;
+  //       sort = columns[i].sort;
+  //     }
+  //   }
 
-    // simple sorting
-    return data.sort((previous: any, current: any) => {
-      if (previous[columnName] > current[columnName]) {
-        return sort === 'desc' ? -1 : 1;
-      } else if (previous[columnName] < current[columnName]) {
-        return sort === 'asc' ? -1 : 1;
-      }
-      return 0;
-    });
-  }
+  //   if (!columnName) {
+  //     return data;
+  //   }
 
-  public changeFilter(data: any, config: any): any {
-    if (!config.filtering) {
-      return data;
-    }
+  //   // simple sorting
+  //   return data.sort((previous: any, current: any) => {
+  //     if (previous[columnName] > current[columnName]) {
+  //       return sort === 'desc' ? -1 : 1;
+  //     } else if (previous[columnName] < current[columnName]) {
+  //       return sort === 'asc' ? -1 : 1;
+  //     }
+  //     return 0;
+  //   });
+  // }
 
-    let filteredData: Array<any> = data.filter((item: any) =>
-      item[config.filtering.columnName].match(this.config.filtering.filterString));
+  // public changeFilter(data: any, config: any): any {
+  //   if (!config.filtering) {
+  //     return data;
+  //   }
 
-    return filteredData;
-  }
+  //   let filteredData: Array<any> = data.filter((item: any) =>
+  //     item[config.filtering.columnName].match(this.config.filtering.filterString));
 
-  public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
-    if (config.filtering) {
-      Object.assign(this.config.filtering, config.filtering);
-    }
-    if (config.sorting) {
-      Object.assign(this.config.sorting, config.sorting);
-    }
+  //   return filteredData;
+  // }
 
-    let filteredData = this.changeFilter(this.data, this.config);
-    let sortedData = this.changeSort(filteredData, this.config);
-    this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
-    this.length = sortedData.length;
-  }
+  // public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
+  //   if (config.filtering) {
+  //     Object.assign(this.config.filtering, config.filtering);
+  //   }
+  //   if (config.sorting) {
+  //     Object.assign(this.config.sorting, config.sorting);
+  //   }
+
+  //   let filteredData = this.changeFilter(this.data, this.config);
+  //   let sortedData = this.changeSort(filteredData, this.config);
+  //   this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
+  //   this.length = sortedData.length;
+  // }
 
 }

@@ -1,34 +1,4 @@
 <div class="container body-content fwui">
-  <!--<input *ngIf="config.filtering" placeholder="Filter"
-       [ngTableFiltering]="config.filtering"
-       (tableChanged)="onChangeTable(config)"/>
-
-  <ng-table [config]="config.sorting"
-            (tableChanged)="onChangeTable(config, $event)"
-            [rows]="rows" [columns]="columns">
-  </ng-table>-->
-  <!--<pagination *ngIf="config.paging"
-              class="pagination-sm"
-              [(ngModel)]="page"
-              [totalItems]="length"
-              [itemsPerPage]="itemsPerPage"
-              [maxSize]="maxSize"
-              [boundaryLinks]="true"
-              [rotate]="false"
-              (pageChanged)="onChangeTable(config, $event)"
-              (numPages)="numPages = $event">
-  </pagination>-->
-
-  <!--<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>-->
-
-  <datatable
-    class='material'
-    [rows]='rows'
-    [selected]='selections'
-    [options]='options'
-    (onSelectionChange)='onSelectionChange($event)'>
-  </datatable>
-
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
@@ -65,7 +35,17 @@
       <button type="button" class="btn btn-default">Search</button>-->
     </div>
   </div>
-  <table class="table table-striped">
+  <datatable
+    class='material'
+    [rows]='rows'
+    [options]='options'
+    (onSelectionChange)='onSelectionChange($event)'>
+  </datatable>
+
+  <!--<template #link let-row="row" let-value="customer" let-i="index">
+    <a [routerLink]="['/customer', customer.Id]">{{customer.Number}}</a>    
+  </template>-->
+  <!--<table class="table table-striped">
     <thead>
       <tr>
         <th>Customer Number</th>
@@ -85,7 +65,7 @@
         <td>{{customer.CellCountry}} {{ customer.CellArea }} {{ customer.CellNumber }}</td>
       </tr>
     </tbody>
-  </table>
+  </table>-->
 
   <!--<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
