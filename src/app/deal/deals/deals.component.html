@@ -23,17 +23,17 @@
           <button class="btn btn-default" type="button" >Search</button>
         </span>-->
       </div>
-
-      <!--<button type="button" 
-              class="btn btn-danger" 
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="icon-user icon-white"></i> Delete
-      </button>-->
-
-      <!--<input type="text" class="form-control" placeholder="">
-      <button type="button" class="btn btn-default">Search</button>-->
     </div>
   </div>
+
+  <datatable
+    class='material'
+    [rows]='rows'
+    [options]='options'
+    (onSelectionChange)='onSelectionChange($event)'
+    (onPageChange)='onPageChange($event)'>
+  </datatable>
+  
   <table class="table table-striped">
     <thead>
       <tr>

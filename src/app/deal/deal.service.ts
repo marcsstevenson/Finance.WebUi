@@ -83,6 +83,15 @@ export class DealService {
       .catch((err: any) => this.handleError(err));
   }
 
+  searchDeal(searchObj: any) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/DealSearch', searchObj,  options)
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
   private handleError(err: any) {
     console.log(err);
     return Promise.reject(err);
