@@ -12,6 +12,8 @@ import {
 import { CustomersData } from '../mockup-data';
 import { CustomerService } from '../customer.service';
 
+const SORT_ASC = 'asc';
+
 @Component({
   moduleId: module.id,
   selector: 'fwui-customers',
@@ -28,6 +30,8 @@ export class CustomersComponent implements OnInit {
   private pageSize = 5;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
+  private currentlyOrderBy = 'Number';
+  private sortAsc = true;
 
   public options = new TableOptions({
     columnMode: ColumnMode.force,
@@ -37,15 +41,13 @@ export class CustomersComponent implements OnInit {
     rowHeight: 'auto',
     selectionType: SelectionType.multi,
     columns: [
-      new TableColumn({ prop: 'Number', name: 'Customer Number' }),
-      new TableColumn({ prop: 'FirstName', name: 'First Name' }),
-      new TableColumn({ prop: 'LastName', name: 'Last Name' }),
-      new TableColumn({ prop: 'CellNumber', name: 'Cell Number' }),
-      new TableColumn({ prop: 'DriversLicenceNumber', name: 'Drivers Licence' }),
+      new TableColumn({ prop: 'Number', name: 'Customer Number', comparator: this.sorter.bind(this) }),
+      new TableColumn({ prop: 'FirstName', name: 'First Name', comparator: this.sortedByName.bind(this) }),
+      new TableColumn({ prop: 'LastName', name: 'Last Name' , comparator: this.sortedByName.bind(this) }),
+      new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorterByCell.bind(this) }),
+      new TableColumn({ prop: 'DriversLicenceNumber', name: 'Drivers Licence', comparator: this.sorter.bind(this) }),
     ]
   });
-
-  private data: Array<any> = CustomersData;
 
   constructor(
     private router: Router,
@@ -63,14 +65,37 @@ export class CustomersComponent implements OnInit {
     this.router.navigate(['/customer', 'new']);
   }
 
-  sorter (sortedBy) {
-    console.log(sortedBy);
+  sorter (rows, dirs, sortedBy?) {
+    console.log('sorting server side: ', rows, dirs);
+
+    this.currentlyOrderBy = sortedBy || dirs[0].prop;
+    this.sortAsc = dirs[0].dir === SORT_ASC;
+
+    let searchObj = {
+      SearchTerm: this.searchQuery,
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
+      PageSize: this.numOfReturnedResult
+    };
+
+    this.searchCustomerByOjb(searchObj).then((response) => {
+      this.populateCurrentTablePage(response);
+    });
+  }
+
+  sortedByName (rows, dirs) {
+    this.sorter(rows, dirs, 'Name');
+  }
+
+  sorterByCell (rows, dirs) {
+    this.sorter(rows, dirs, 'Cell');
   }
 
   searchCustomer (searchQuery: string) {
     let searchObj = {
       SearchTerm: searchQuery,
-      OrderBy: 'Name',
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
       PageSize: this.numOfReturnedResult
     };
 
@@ -84,7 +109,8 @@ export class CustomersComponent implements OnInit {
   onPageChange(pageOptions) {
     let searchObj = {
       SearchTerm: '',
-      OrderBy: 'Name',
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
       CurrentPage: pageOptions.offset + 1,
       PageSize: this.pageSize
     };
@@ -97,7 +123,7 @@ export class CustomersComponent implements OnInit {
   private loadCustomersBySearch () {
     let searchObj = {
       SearchTerm: '',
-      OrderBy: 'Name',
+      OrderBy: this.currentlyOrderBy,
       PageSize: this.numOfReturnedResult
     };
 

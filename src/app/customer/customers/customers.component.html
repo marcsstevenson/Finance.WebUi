@@ -19,20 +19,7 @@
             <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add customer
           </button>
         </div>
-
-        <!--<span class="input-group-btn">
-          <button class="btn btn-default" type="button" >Search</button>
-        </span>-->
       </div>
-
-      <!--<button type="button" 
-              class="btn btn-danger" 
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="icon-user icon-white"></i> Delete
-      </button>-->
-
-      <!--<input type="text" class="form-control" placeholder="">
-      <button type="button" class="btn btn-default">Search</button>-->
     </div>
   </div>
   <datatable
@@ -42,47 +29,4 @@
     (onSelectionChange)='onSelectionChange($event)'
     (onPageChange)='onPageChange($event)'>
   </datatable>
-
-  <!--<template #link let-row="row" let-value="customer" let-i="index">
-    <a [routerLink]="['/customer', customer.Id]">{{customer.Number}}</a>    
-  </template>-->
-  <!--<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Customer Number</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Mobile</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let customer of rows">
-        <td><a [routerLink]="['/customer', customer.Id]">{{customer.Number}}</a></td>
-        <td>{{customer.FirstName}}</td>
-        <td>{{customer.LastName}}</td>
-        <td>{{customer.Email}}</td>
-        <td>{{customer.CellCountry}} {{ customer.CellArea }} {{ customer.CellNumber }}</td>
-      </tr>
-    </tbody>
-  </table>-->
-
-  <!--<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-          <h4 class="modal-title">Large modal</h4>
-        </div>
-        <div class="modal-body">
-          Test
-        </div>
-      </div>
-    </div>
-  </div>-->
-
-
 </div>
