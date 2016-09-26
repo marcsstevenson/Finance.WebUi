@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { Http } from '@angular/http';
-
-// import { CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass, NgIf} from '@angular/common';
-
-// import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
-// import { NG_TABLE_DIRECTIVES } from 'ng2-table/ng2-table';
-
-// import { Angular2DataTableModule } from 'angular2-data-table';
 
 import {
   TableOptions,
@@ -31,14 +23,17 @@ export class CustomersComponent implements OnInit {
 
   public rows: Array<any> = [];
   public selections = [];
-
   public searchQuery: string;
+
+  private pageSize = 5;
+  private loadNumOfPages = 3;
+  private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
 
   public options = new TableOptions({
     columnMode: ColumnMode.force,
     headerHeight: 42,
     footerHeight: 50,
-    limit: 10,
+    limit: this.pageSize,
     rowHeight: 'auto',
     selectionType: SelectionType.multi,
     columns: [
@@ -75,30 +70,67 @@ export class CustomersComponent implements OnInit {
   searchCustomer (searchQuery: string) {
     let searchObj = {
       SearchTerm: searchQuery,
-      OrderBy: 'Name'
+      OrderBy: 'Name',
+      PageSize: this.numOfReturnedResult
     };
 
-    console.log("The searchObj is: ", searchObj);
-
-    return this._customerService.searchCustomer(searchObj)
-    .then((response) => {
-      console.log("The response is: ", response);
-      this.rows = response.SearchResults;
-      return response;
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+    this.searchCustomerByOjb(searchObj);
   }
 
   onSelectionChange(selected) {
     this.router.navigate(['/customer', selected[0].Id]);
   }
 
+  onPageChange(pageOptions) {
+    let searchObj = {
+      SearchTerm: '',
+      OrderBy: 'Name',
+      CurrentPage: pageOptions.offset + 1,
+      PageSize: this.pageSize
+    };
+
+    this.searchCustomerByOjb(searchObj).then((response) => {
+      this.populateCurrentTablePage(response);
+    });
+  }
+
   private loadCustomersBySearch () {
-    this.searchCustomer('').then((response) => {
+    let searchObj = {
+      SearchTerm: '',
+      OrderBy: 'Name',
+      PageSize: this.numOfReturnedResult
+    };
+
+    this.searchCustomerByOjb(searchObj).then((response) => {
+      // this.rows = response.SearchResults;
       this.options.count = response.TotalResultCount;
+      this.rows = this.createEmtpyArray(this.options.count, {});
+      this.populateCurrentTablePage(response);
+    });
+  }
+
+  private populateCurrentTablePage (data) {
+      let start = this.options.offset * this.options.limit;
+      let end = start + data.SearchResults.length;
+
+      // update the current page record
+      for (let i = start; i < end; i++) {
+        this.rows[i] = data.SearchResults[i - start];
+      }
+  }
+
+
+  private searchCustomerByOjb (searchObj) {
+    console.log("The searchObj is: ", searchObj);
+
+    return this._customerService.searchCustomer(searchObj)
+    .then((response) => {
+      console.log("The response is: ", response);
+      return response;
+    })
+    .catch((err) => {
+      //todo: show err message to users later
+      console.log(err);
     });
   }
 
@@ -114,67 +146,13 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  // public changePage (page: any, data: Array<any> = this.data): Array<any> {
-  //   console.log(page);
-  //   let start = (page.page - 1) * page.itemsPerPage;
-  //   let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
-  //   return data.slice(start, end);
-  // }
+  private createEmtpyArray (length, obj) {
+    let array = [];
 
-  // public changeSort(data: any, config: any): any {
-  //   if (!config.sorting) {
-  //     return data;
-  //   }
+    for (let i = 0; i < length; i++) {
+      array.push({});
+    }
 
-  //   let columns = this.config.sorting.columns || [];
-  //   let columnName: string = void 0;
-  //   let sort: string = void 0;
-
-  //   for (let i = 0; i < columns.length; i++) {
-  //     if (columns[i].sort !== '') {
-  //       columnName = columns[i].name;
-  //       sort = columns[i].sort;
-  //     }
-  //   }
-
-  //   if (!columnName) {
-  //     return data;
-  //   }
-
-  //   // simple sorting
-  //   return data.sort((previous: any, current: any) => {
-  //     if (previous[columnName] > current[columnName]) {
-  //       return sort === 'desc' ? -1 : 1;
-  //     } else if (previous[columnName] < current[columnName]) {
-  //       return sort === 'asc' ? -1 : 1;
-  //     }
-  //     return 0;
-  //   });
-  // }
-
-  // public changeFilter(data: any, config: any): any {
-  //   if (!config.filtering) {
-  //     return data;
-  //   }
-
-  //   let filteredData: Array<any> = data.filter((item: any) =>
-  //     item[config.filtering.columnName].match(this.config.filtering.filterString));
-
-  //   return filteredData;
-  // }
-
-  // public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
-  //   if (config.filtering) {
-  //     Object.assign(this.config.filtering, config.filtering);
-  //   }
-  //   if (config.sorting) {
-  //     Object.assign(this.config.sorting, config.sorting);
-  //   }
-
-  //   let filteredData = this.changeFilter(this.data, this.config);
-  //   let sortedData = this.changeSort(filteredData, this.config);
-  //   this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
-  //   this.length = sortedData.length;
-  // }
-
+    return array;
+  }
 }
