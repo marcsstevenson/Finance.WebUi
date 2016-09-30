@@ -4,7 +4,7 @@
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
 
   <div class="card actions text-xs-right">
-    <button class="btn btn-success" type="button" (click)="delete()">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()">
       <span class="glyphicon glyphicon-align-left"></span> Delete
     </button>
   </div>
@@ -47,12 +47,12 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0">Mobile</dt>
           <dd class="col-xs-8">
-            <input class="country controls" [(ngModel)]=dealership.CellCountry 
+            <!--<input class="country controls" [(ngModel)]=dealership.CellCountry 
                    (ngModelChange)="contactDetailsChanged = true"
                    placeholder="00" type="text" >
             <input class="area controls" [(ngModel)]=dealership.CellArea 
                    (ngModelChange)="contactDetailsChanged = true"
-                   placeholder="00" type="text">
+                   placeholder="00" type="text">-->
             <input class="number controls" [(ngModel)]=dealership.CellNumber 
                    (ngModelChange)="contactDetailsChanged = true"
                    placeholder="Number" type="text">
@@ -62,12 +62,12 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0">Phone</dt>
           <dd class="col-xs-8">
-            <input class="country controls" [(ngModel)]=dealership.PhoneCountry 
+            <!--<input class="country controls" [(ngModel)]=dealership.PhoneCountry 
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
             <input class="area controls" [(ngModel)]=dealership.PhoneArea 
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
-                   type="text" >
+                   type="text" >-->
             <input class="number controls" [(ngModel)]=dealership.PhoneNumber 
                    placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
@@ -77,12 +77,12 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0">Fax</dt>
           <dd class="col-xs-8">
-            <input class="country controls" [(ngModel)]=dealership.FaxCountry 
+            <!--<input class="country controls" [(ngModel)]=dealership.FaxCountry 
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
                    type="text" >
             <input class="area controls" [(ngModel)]=dealership.FaxArea
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true"
-                   type="text" >
+                   type="text" >-->
             <input class="number controls" [(ngModel)]=dealership.FaxNumber 
                    placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
@@ -93,7 +93,7 @@
           <dt class="col-xs-4 p-x-0">Contact Name</dt>
           <dd class="col-xs-8">
             <input class="contact-name controls" [(ngModel)]=dealership.ContactName 
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   placeholder="Input name here" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
           </dd>
         </div>
@@ -102,7 +102,7 @@
           <dt class="col-xs-4 p-x-0">Email</dt>
           <dd class="col-xs-8">
             <input class="email controls" [(ngModel)]=dealership.Email 
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
+                   placeholder="Email address here" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
           </dd>
         </div>
