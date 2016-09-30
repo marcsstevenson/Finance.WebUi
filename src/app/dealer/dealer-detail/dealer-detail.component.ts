@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 
+import * as moment from 'moment';
+
 import { DealerService } from '../dealer.service';
 import { DealershipData } from '../mockup-data';
 
@@ -47,13 +49,16 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
       this.dealership.Number = '1';
     }
 
+    this.dealership.IsEnabled = this.dealership.IsEnabled || true;
+
     this._dealershipService.addOrSaveDealership(this.dealership)
       .then((response) => {
-        this.resetAllChangedStatus();
         console.log('Saved successfully: ', response);
 
+        this.router.navigate(['/dealership', response.CommittedId]);
+        this.dealership.Id = response.CommittedId;
+        this.resetAllChangedStatus();
         this.copyDealership = Object.assign({}, this.dealership);
-        // this.router.navigateByUrl('/deal');
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
@@ -98,6 +103,18 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     this.basicInfoChanged = false;
     this.contactDetailsChanged = false;
     this.bankDetailsChanged = false;
+  }
+
+  private setDefaultData() {
+    // this.deal.
+
+    if (this.dealership.DateCreated === undefined) {
+      this.dealership.DateCreated = moment().utc();
+    }
+
+    if (this.dealership.DateModified === undefined) {
+      this.dealership.DateModified = moment().utc();
+    }
   }
 
   ngOnDestroy() {

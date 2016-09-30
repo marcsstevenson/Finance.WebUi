@@ -45,7 +45,6 @@ export class DealersComponent implements OnInit {
       new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) }),
       new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' , comparator: this.sorter.bind(this) }),
       new TableColumn({ prop: 'Email', name: 'Email' , comparator: this.sorter.bind(this) })
-
     ]
   });
 
@@ -87,7 +86,7 @@ export class DealersComponent implements OnInit {
       PageSize: this.numOfReturnedResult
     };
 
-    this.searchDealerByOjb(searchObj).then((response) => {
+    this.searchDealershipByOjb(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
     });
   }
@@ -100,11 +99,25 @@ export class DealersComponent implements OnInit {
       PageSize: this.numOfReturnedResult
     };
 
-    this.searchDealerByOjb(searchObj);
+    this.searchDealershipByOjb(searchObj);
   }
 
   public onSelectionChange(selected) {
     this.router.navigate(['/dealership', selected[0].Id]);
+  }
+
+  public onPageChange(pageOptions) {
+    let searchObj = {
+      SearchTerm: '',
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
+      CurrentPage: pageOptions.offset + 1,
+      PageSize: this.pageSize
+    };
+
+    this.searchDealershipByOjb(searchObj).then((response) => {
+      this.populateCurrentTablePage(response);
+    });
   }
 
   private loadDealsBySearch () {
@@ -114,7 +127,7 @@ export class DealersComponent implements OnInit {
       PageSize: this.numOfReturnedResult
     };
 
-    this.searchDealerByOjb(searchObj).then((response) => {
+    this.searchDealershipByOjb(searchObj).then((response) => {
       // this.rows = response.SearchResults;
       this.options.count = response.TotalResultCount;
       this.rows = this.createEmtpyArray(this.options.count, {});
@@ -122,7 +135,7 @@ export class DealersComponent implements OnInit {
     });
   }
 
-  private searchDealerByOjb (searchObj) {
+  private searchDealershipByOjb (searchObj) {
     console.log("The searchObj is: ", searchObj);
 
     return this._dealershipService.searchDealership(searchObj)
