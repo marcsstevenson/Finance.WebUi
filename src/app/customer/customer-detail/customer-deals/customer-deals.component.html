@@ -1,12 +1,18 @@
 <div class="card col-xs-12">
   <div class="p-y-1" *ngFor="let deal of deals;">
     <h5>
-      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.SecurityDescription }}</span>
+      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.Number }}</span>
       </a>
     </h5>
+
     <p>
       <strong>Status: </strong>
       <span>{{ deal.DealStatus }}</span>
+    </p>
+
+    <p>
+      <strong>Security Description: </strong>
+      <span>{{ deal.SecurityDescription }} </span>
     </p>
     
     <!--<p>

@@ -60,6 +60,7 @@ export class CustomerDetailComponent implements OnInit {
       .then((response) => {
         console.log('Saved successfully: ', response);
         this.router.navigate(['/customer', response.CommittedId]);
+        this.customer.Id = response.CommittedId;
         this.resetAllChangedStatus();
         this.copyCustomer = Object.assign({}, this.customer);
       })
