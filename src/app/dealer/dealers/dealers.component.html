@@ -1,25 +1,4 @@
 <div class="container body-content fwui">
-  <!--<input *ngIf="config.filtering" placeholder="Filter"
-       [ngTableFiltering]="config.filtering"
-       (tableChanged)="onChangeTable(config)"/>
-
-  <ng-table [config]="config.sorting"
-            (tableChanged)="onChangeTable(config)"
-            [rows]="rows" [columns]="columns">
-  </ng-table>-->
-  <!--<pagination *ngIf="config.paging"
-              class="pagination-sm"
-              [(ngModel)]="page"
-              [totalItems]="length"
-              [itemsPerPage]="itemsPerPage"
-              [maxSize]="maxSize"
-              [boundaryLinks]="true"
-              [rotate]="false"
-              (pageChanged)="onChangeTable(config, $event)"
-              (numPages)="numPages = $event">
-  </pagination>-->
-  <!--<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>-->
-
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
@@ -43,18 +22,18 @@
           <button class="btn btn-default" type="button" >Search</button>
         </span>-->
       </div>
-
-      <!--<button type="button" 
-              class="btn btn-danger" 
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="icon-user icon-white"></i> Delete
-      </button>-->
-
-      <!--<input type="text" class="form-control" placeholder="">
-      <button type="button" class="btn btn-default">Search</button>-->
     </div>
   </div>
-  <table class="table table-striped">
+
+  <datatable
+    class='material'
+    [rows]='rows'
+    [options]='options'
+    (onSelectionChange)='onSelectionChange($event)'
+    (onPageChange)='onPageChange($event)'>
+  </datatable>
+
+  <!--<table class="table table-striped">
     <thead>
       <tr>
         <th>Dealership Name</th>
@@ -67,12 +46,12 @@
 
     <tbody>
       <tr *ngFor="let dealership of rows">
-        <td><a [routerLink]="['/dealership', dealership.Id]"> {{dealership.Name}} </a></td>
-        <td>{{dealership.ContactName}}</td>
-        <td>{{ dealership.PhoneCountry }} {{ dealership.PhoneArea }} {{ dealership.PhoneNumber }}</td>
-        <td>{{ dealership.CellCountry }} {{ dealership.CellArea }} {{ dealership.CellNumber }}</td>
+        <td><a [routerLink]="['/dealership', dealership.Id]"> {{ dealership.Name }} </a></td>
+        <td>{{ dealership.ContactName }}</td>
+        <td>{{ dealership.PhoneNumber }}</td>
+        <td>{{ dealership.CellNumber }}</td>
         <td>{{ dealership.Email}}</td>
       </tr>
     </tbody>
-  </table>
+  </table>-->
 </div>
