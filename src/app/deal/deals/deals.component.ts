@@ -41,8 +41,8 @@ export class DealsComponent implements OnInit {
     columns: [
       new TableColumn({ prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) }),
       new TableColumn({ prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'DateCreated', name: 'Date Created' , comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'DealName', name: 'Deal Name', comparator: this.sorter.bind(this) }),
+      new TableColumn({ prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) }),
+      new TableColumn({ prop: 'DateCreated', name: 'Date Created' , comparator: this.sorter.bind(this) })
     ]
   });
 
@@ -54,15 +54,17 @@ export class DealsComponent implements OnInit {
   ngOnInit() {
     //todo: after implementing search api call for deals, call loadDealsBySearch
 
-    this._dealService.getDeals()
-    .then((deals) => {
-      this.rows = deals;
-      console.log(this.rows);
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+    // this._dealService.getDeals()
+    // .then((deals) => {
+    //   this.rows = deals;
+    //   console.log(this.rows);
+    // })
+    // .catch((err) => {
+    //   //todo: show err message to users later
+    //   console.log(err);
+    // });
+
+    this.loadDealsBySearch();
   }
 
   public addDeal () {
@@ -80,6 +82,35 @@ export class DealsComponent implements OnInit {
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
       PageSize: this.numOfReturnedResult
+    };
+
+    this.searchDealByOjb(searchObj).then((response) => {
+      this.populateCurrentTablePage(response);
+    });
+  }
+
+  public searchDeal (searchQuery: string) {
+    let searchObj = {
+      SearchTerm: searchQuery,
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
+      PageSize: this.numOfReturnedResult
+    };
+
+    this.searchDealByOjb(searchObj);
+  }
+
+  public onSelectionChange(selected) {
+    this.router.navigate(['/deal', selected[0].Id]);
+  }
+
+  public onPageChange(pageOptions) {
+    let searchObj = {
+      SearchTerm: '',
+      OrderBy: this.currentlyOrderBy,
+      OrderByAscending: this.sortAsc,
+      CurrentPage: pageOptions.offset + 1,
+      PageSize: this.pageSize
     };
 
     this.searchDealByOjb(searchObj).then((response) => {
