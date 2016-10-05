@@ -53,9 +53,11 @@ export class FinanceCompaniesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.loadfinanceCompanys();
+
+    this.loadFinanceCompanies();
+
     // using this function to get pagination details
-    this.loadFinanceCompanysBySearch();
+    // this.loadFinanceCompanysBySearch();
   }
 
   addFinanceCompany () {
@@ -148,7 +150,7 @@ export class FinanceCompaniesComponent implements OnInit {
     });
   }
 
-  private loadFinanceCompanys () {
+  private loadFinanceCompanies () {
     this._financeCompanyService.getFinanceCompanies()
     .then((financeCompanies) => {
       this.rows = financeCompanies;

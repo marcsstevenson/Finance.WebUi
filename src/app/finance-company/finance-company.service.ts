@@ -43,26 +43,26 @@ export class FinanceCompanyService {
   getFinanceCompanyNotes (id: string) {
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.get(BASE_API_URL + '/FinanceCompanyNote/GetForFinanceCompany?customerId=' + id, options)
+    return this._http.get(BASE_API_URL + '/FinanceCompanyNote/GetForFinanceCompany?financeCompanyId=' + id, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
-  addOrSaveFinanceCompany (customer: any) {
-    console.log('the customer obj is: ', customer);
+  addOrSaveFinanceCompany (financeCompany: any) {
+    console.log('the financeCompany obj is: ', financeCompany);
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.post(BASE_API_URL + '/FinanceCompany', customer, options)
+    return this._http.post(BASE_API_URL + '/FinanceCompany', financeCompany, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }
 
-  addOrSaveFinanceCompanyNote (customerNote: any) {
+  addOrSaveFinanceCompanyNote (financeCompanyNote: any) {
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.post(BASE_API_URL + '/FinanceCompanyNote', customerNote, options)
+    return this._http.post(BASE_API_URL + '/FinanceCompanyNote', financeCompanyNote, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));

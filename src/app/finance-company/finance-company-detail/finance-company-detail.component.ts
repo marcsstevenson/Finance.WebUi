@@ -134,11 +134,11 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   private setDefaulCustomerDates() {
     if (this.financeCompany.DateCreated === undefined) {
-      this.financeCompany.DateOfBirth = moment().utc();
+      this.financeCompany.DateCreated = moment().utc();
     }
 
     if (this.financeCompany.DateModified === undefined) {
-      this.financeCompany.DateOfBirth = moment().utc();
+      this.financeCompany.DateModified = moment().utc();
     }
   }
 
