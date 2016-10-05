@@ -1,0 +1,17 @@
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .search {
+    width: 100%
+  }
+
+  .buttons {
+    margin-left: 1em; 
+
+    i img {
+      margin-top: -3px;
+    }
+  }
+}

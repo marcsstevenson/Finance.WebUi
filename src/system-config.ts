@@ -112,6 +112,9 @@ const barrels: string[] = [
   'app/shared/components/time-line',
   'app/customer/customer-detail/customer-deals/customer-deals',
   'app/shared/directives/tinymce',
+  'app/finance-company',
+  'app/finance-company/finance-companies',
+  'app/finance-company/finance-company-detail',
   /** @cli-barrel */
 ];
 

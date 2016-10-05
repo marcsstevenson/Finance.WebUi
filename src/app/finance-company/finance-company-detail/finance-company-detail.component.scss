@@ -1,0 +1,38 @@
+@import '../../../assets/styles/color';
+
+.card {
+    overflow: auto;
+}
+
+.media img{
+     padding: 0;
+     width: 58px;
+     height: 58px;
+}
+
+input{
+    &.name {
+        width: auto;
+        margin-bottom: 1em; 
+    }
+    &.email {
+        margin-bottom: 1em;
+    }
+}
+
+dt {
+    text-align: right;
+}
+
+.actions {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background: #f7f7f9;
+
+    &.card {
+
+    }
+}
+
+.note {
+    width: 100%;
+}

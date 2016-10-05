@@ -19,8 +19,10 @@ import { routing,
 import { CustomerModule } from './customer/customer.module';
 import { DealModule } from './deal/deal.module';
 import { DealerModule } from './dealer/dealer.module';
+import { FinanceCompanyModule } from './finance-company/finance-company.module';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
+
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { LoginModule } from './login/login.module';
     DealModule,
     DealerModule,
     HomeModule,
+    FinanceCompanyModule,
     routing
     ],
   providers: [

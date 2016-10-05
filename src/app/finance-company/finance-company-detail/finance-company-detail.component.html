@@ -1,0 +1,77 @@
+<div class="container body-content fwui">
+
+  <!--todo: find out where to put the following properties-->
+  <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
+
+  <div class="card actions text-xs-right">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()">
+      <span class="glyphicon glyphicon-align-left"></span> Delete
+    </button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="card basic-info">
+        <div class="card-block">
+          <div class="media col-xs-4 card-block">
+            <img alt="" class="img-rounded" src="assets/images/icons/ic_person_black_216x216.png">
+          </div>
+          <div class="col-xs-8">
+            <div class="row">
+              <input class="name controls" [(ngModel)]="financeCompany.Name" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="text" placeholder="Company Name" required>
+              <!--<input class="name controls" [(ngModel)]="financeCompany.LastName" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="text" placeholder="Last Name" required>-->
+            </div>
+            <div class="row">
+              <input class="email controls" [(ngModel)]="financeCompany.Email" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="email" placeholder="Email" required>
+            </div>
+            <div class="row">
+              <span class="tag tag-pill tag-success">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+          <button type="button" class="btn btn-success" (click)="save()">Save</button>
+          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xs-7">
+      <!--<div class="editor">
+        <textarea class="note" id="test" [(ngModel)]="note"></textarea>
+      </div>-->
+
+      <!--[tinymce]="tinymce"-->
+
+      <div class="column">
+        <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"
+                  (ngModelChange)="noteChanged = true" 
+                  placeholder="Write notes here" 
+                  rows="6">
+        </textarea>
+
+        <!--<span>The note content is: {{note}}</span>-->
+        <div *ngIf="noteChanged" class="actions text-xs-center col-xs-12">
+          <button class="btn btn-success" type="button" (click)="addNote(note)">
+            <span class="glyphicon glyphicon-align-left"></span> Save
+          </button>
+          <button type="button" class="btn btn-default" (click)="clearNote()">Cancel</button>
+        </div>
+
+      </div>
+      <div class="history">
+        <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>
+      </div>
+    </div>
+  </div>
+
+</div>
