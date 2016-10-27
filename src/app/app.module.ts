@@ -21,6 +21,7 @@ import { DealModule } from './deal/deal.module';
 import { DealerModule } from './dealer/dealer.module';
 import { FinanceCompanyModule } from './finance-company/finance-company.module';
 import { HomeModule } from './home/home.module';
+import { ApplicationModule } from './application/application.module';
 import { LoginModule } from './login/login.module';
 
 
@@ -35,6 +36,7 @@ import { LoginModule } from './login/login.module';
     DealModule,
     DealerModule,
     HomeModule,
+    ApplicationModule,
     FinanceCompanyModule,
     routing
     ],
