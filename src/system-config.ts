@@ -116,6 +116,7 @@ const barrels: string[] = [
   'app/finance-company/finance-companies',
   'app/finance-company/finance-company-detail',
   'app/application',
+  'app/shared/components/select',
   /** @cli-barrel */
 ];
 

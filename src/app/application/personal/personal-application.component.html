@@ -49,6 +49,8 @@
 				<div class="card-block">
 					<h4 class="row col-xs-12">Application Details</h4>
 
+          <fwui-select [listName]="'test'" [listValues]="selectOptions" (valueChange)="updateSelect($event)" ></fwui-select>
+
 					<div class="btn-group" role="group" aria-label="application type">
 						<button type="button" class="btn btn-secondary">Signle</button>
 						<button type="button" class="btn btn-secondary">Joint</button>

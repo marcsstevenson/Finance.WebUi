@@ -1,0 +1,13 @@
+<div class="dropdown">
+  <button class="dropdown-btn">
+    {{listName}}
+    <span class="mui-caret"></span>
+  </button>
+
+  <input class="control" type="text" [value]="listName" placeholder="none">
+  <ul class="dropdown-content">
+    <li *ngFor="let item of listValues" (click)="select(item)">
+      {{item.label}}
+    </li>
+  </ul>
+</div>
