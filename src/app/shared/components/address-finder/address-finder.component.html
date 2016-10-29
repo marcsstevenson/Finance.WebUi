@@ -1,0 +1,36 @@
+<div class="address-finder">
+	<div class="row">
+		<input #searchInput class="controls search" type="text" placeholder="type the address here to search" [(ngModel)]="placeSearch"
+			(ngModelChange)="searchAddress()">
+	</div>
+
+	<div class="row">
+		<div class="">
+			<label>Street Number</label>
+			<input #streetInput class="controls" type="text" name="streetNumber" placeholder="Street Number" [(ngModel)]="addressDetail.streetNumber">
+
+			<label>Street Name</label>
+			<input class="controls" type="text" name="streetName" placeholder="Street Name"[(ngModel)]="addressDetail.streetName">
+		</div>
+
+		<div class="">
+			<label>Suburb</label>
+			<input class="controls" type="text" name="postcode" placeholder="Suburb" [(ngModel)]="addressDetail.suburb">
+
+			<label>City</label>
+			<input class="controls" type="text" name="city" placeholder="City" [(ngModel)]="addressDetail.city">
+		</div>
+
+		<div class="">
+			<label>State</label>
+			<input class="controls" type="text" name="region" placeholder="Region / State" [(ngModel)]="addressDetail.state">
+
+			<label>Country</label>
+			<input class="controls" type="text" name="country" placeholder="Country" [(ngModel)]="addressDetail.country">
+
+			<label>Post Code</label>
+			<input class="controls" type="text" name="postcode" placeholder="Post Code"[(ngModel)]="addressDetail.postCode">
+		</div>
+	</div>
+
+</div>

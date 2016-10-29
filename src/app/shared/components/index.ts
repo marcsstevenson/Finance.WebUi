@@ -3,3 +3,4 @@ export * from './header';
 export * from './navigation';
 export * from './time-line';
 export * from './select';
+export * from './address-finder';

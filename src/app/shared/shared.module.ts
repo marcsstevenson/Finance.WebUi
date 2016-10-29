@@ -7,12 +7,13 @@ import {
         //  FinanceWebUiHeaderComponent,
         //  FinanceWebUiNavigationComponent,
          FinanceWebUiSelectComponent,
-         FinanceWebUiTimeLineComponent
+         FinanceWebUiTimeLineComponent,
+         FinanceWebUiAddressFinderComponent
         } from './components/index';
 
 @NgModule({
   imports:      [ CommonModule, FormsModule],
-  declarations: [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent],
-  exports:      [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent],
+  declarations: [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent, FinanceWebUiAddressFinderComponent],
+  exports:      [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent, FinanceWebUiAddressFinderComponent],
 })
 export class SharedModule { }
