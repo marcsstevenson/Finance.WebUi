@@ -1,13 +1,20 @@
 <div class="dropdown">
-  <button class="dropdown-btn">
-    {{listName}}
-    <span class="mui-caret"></span>
-  </button>
 
-  <input class="control" type="text" [value]="listName" placeholder="none">
-  <ul class="dropdown-content">
-    <li *ngFor="let item of listValues" (click)="select(item)">
-      {{item.label}}
-    </li>
-  </ul>
+	<!--<div *ngIf="opened" class="scroll-mask" (click)="hideOptions()">
+  </div>-->
+
+  <select name="role" class="form-control" [(ngModel)]="value">
+    <option *ngFor="let item of listValues" [value]="item.value">{{item.name}}</option>
+  </select>
+
+	<!--<span class="select-input" (click)="showOptions()">
+    <input class="controls" type="text" [value]="listName" placeholder="none">
+    <i class="fa fa-caret-down"></i>  
+  </span>-->
+
+	<!--<ul *ngIf="show" class="dropdown-content">
+		<li *ngFor="let item of listValues" (click)="select($event, item)">
+			{{item.name}}
+		</li>
+	</ul>-->
 </div>

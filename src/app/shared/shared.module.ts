@@ -11,7 +11,7 @@ import {
         } from './components/index';
 
 @NgModule({
-  imports:      [ CommonModule ],
+  imports:      [ CommonModule, FormsModule],
   declarations: [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent],
   exports:      [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent],
 })

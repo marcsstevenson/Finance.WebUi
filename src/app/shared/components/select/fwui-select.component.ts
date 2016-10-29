@@ -29,18 +29,34 @@ export class FinanceWebUiSelectComponent implements OnInit {
   @Output()
   valueChange = new EventEmitter();
 
+  private show = false;
+  private opened = false;
+
   constructor() {
     // this.valueChange = new EventEmitter();
   }
 
-  select(value) {
-    this.valueChange.emit(value);
-  }
   OnInit() {
 
   }
 
   ngOnInit() {
 
+  }
+
+  select($event, value) {
+    this.show = false;
+    this.opened = false;
+    this.valueChange.emit(value);
+  }
+
+  showOptions() {
+    this.show = true;
+    this.opened = true;
+  }
+
+  hideOptions() {
+    this.show = false;
+    this.opened = false;
   }
 }
