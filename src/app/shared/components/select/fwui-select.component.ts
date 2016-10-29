@@ -24,7 +24,7 @@ export class FinanceWebUiSelectComponent implements OnInit {
   listValues: DropDownListValue[];
 
   @Output()
-  value: DropDownListValue;
+  value: any;
 
   @Output()
   valueChange = new EventEmitter();
@@ -58,5 +58,9 @@ export class FinanceWebUiSelectComponent implements OnInit {
   hideOptions() {
     this.show = false;
     this.opened = false;
+  }
+
+  clear() {
+    this.value = '';
   }
 }

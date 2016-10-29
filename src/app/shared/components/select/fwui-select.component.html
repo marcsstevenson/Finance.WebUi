@@ -4,6 +4,7 @@
   </div>-->
 
   <select name="role" class="form-control" [(ngModel)]="value">
+    <option (click)="clear()">None</option>
     <option *ngFor="let item of listValues" [value]="item.value">{{item.name}}</option>
   </select>
 
