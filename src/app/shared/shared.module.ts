@@ -8,7 +8,8 @@ import {
         //  FinanceWebUiNavigationComponent,
          FinanceWebUiSelectComponent,
          FinanceWebUiTimeLineComponent,
-         FinanceWebUiAddressFinderComponent
+         FinanceWebUiAddressFinderComponent,
+         FinanceWebUiPersonalDetailComponent
         } from './components/index';
 
 @NgModule({

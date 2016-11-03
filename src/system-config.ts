@@ -118,6 +118,7 @@ const barrels: string[] = [
   'app/application',
   'app/shared/components/select',
   'app/shared/components/address-finder',
+  'app/shared/components/personal-detail',
   /** @cli-barrel */
 ];
 

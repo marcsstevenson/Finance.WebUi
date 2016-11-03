@@ -1,0 +1,80 @@
+<div class="personal-detail">
+	<div class="row">
+		<input #searchInput class="controls search" type="text" placeholder="type the address here to search" [(ngModel)]="fullName"
+			(ngModelChange)="searchAddress()">
+	</div>
+
+	<div class="row">
+		<div class="">
+			<label>First Name</label>
+			<input class="controls" type="text" name="firstName" placeholder="First Name" [(ngModel)]="personalDetail.FirstName">
+
+			<label>Last Name</label>
+			<input class="controls" type="text" name="lastName" placeholder="Last Name"[(ngModel)]="personalDetail.LastName">
+
+      <label>Gender</label>
+			<input class="controls" type="text" name="lastName" placeholder="Last Name"[(ngModel)]="personalDetail.LastName">
+
+      <input type="radio" name="gender" value="male" checked> Male<br>
+      <input type="radio" name="gender" value="female"> Female<br>
+      <input type="radio" name="gender" value="other"> Other
+		</div>
+
+		<div class="">
+			<label>Date of Birth</label>
+			<input class="controls" type="text" name="dateOfBirth" placeholder="Date of Birth" [(ngModel)]="personalDetail.dateOfBirth">
+
+			<label>Origin Country</label>
+			<input class="controls" type="text" name="originCountry" placeholder="Origin Country" [(ngModel)]="personalDetail.originCountry">
+
+      <label>NZ Resident</label>
+      <input type="radio" name="nzResident" value="Yes" checked> Yes<br>
+      <input type="radio" name="nzResident" value="No"> No<br>
+
+      <label>Work Visa</label>
+      <input type="radio" name="workVisa" value="Yes" checked> Yes<br>
+      <input type="radio" name="workVisa" value="No"> No<br>
+
+      <label>Work Visa Expiry</label>
+			<input class="controls" type="text" name="originCountry" placeholder="Date here" [(ngModel)]="personalDetail.originCountry">
+      Date picker here
+
+      <label>NZ Entry Date</label>
+      <input class="controls" type="text" name="originCountry" placeholder="Date here" [(ngModel)]="personalDetail.originCountry">
+      Date picker here
+		</div>
+
+		<div class="">
+      <label>Driver Licence Type</label>
+      <input type="radio" name="driverLicenceType" value="Full" checked> Full<br>
+      <input type="radio" name="driverLicenceType" value="Restricted"> Restricted<br>
+      <input type="radio" name="driverLicenceType" value="Learners"> Learners<br>
+      <input type="radio" name="driverLicenceType" value="Overseas"> Overseas<br>
+
+
+			<label>Licence No. (5A)</label>
+			<input class="controls" type="text" name="licenceNumber" placeholder="Licence Number" [(ngModel)]="personalDetail.licenceNumber">
+
+      <label>Licence No. (5B)</label>
+			<input class="controls" type="text" name="licenceVersion" placeholder="Licence Version" [(ngModel)]="personalDetail.licenceVersion">
+
+		</div>
+
+    <div class="">
+      <label>Mobile</label>
+			<input class="controls" type="text" name="mobile" placeholder="Mobile" [(ngModel)]="personalDetail.mobile">
+
+      <label>Business Phone</label>
+			<input class="controls" type="text" name="businessPhone" placeholder="Business Phone"[(ngModel)]="personalDetail.businessPhone">
+
+			<label>Personal Email</label>
+			<input class="controls" type="text" name="personalEmail" placeholder="Personal Email"[(ngModel)]="personalDetail.personalEmail">
+
+      <label>Business Email</label>
+			<input class="controls" type="text" name="businessEmail" placeholder="Business Email"[(ngModel)]="personalDetail.businessEmail">
+
+      
+    </div>
+	</div>
+
+</div>

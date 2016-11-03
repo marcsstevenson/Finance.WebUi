@@ -4,3 +4,4 @@ export * from './navigation';
 export * from './time-line';
 export * from './select';
 export * from './address-finder';
+export * from './personal-detail';
