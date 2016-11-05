@@ -9,12 +9,25 @@ import {
          FinanceWebUiSelectComponent,
          FinanceWebUiTimeLineComponent,
          FinanceWebUiAddressFinderComponent,
-         FinanceWebUiPersonalDetailComponent
+         FinanceWebUiPersonalDetailComponent,
+         FinanceWebUiTradeVehicleDetailComponent
         } from './components/index';
 
 @NgModule({
   imports:      [ CommonModule, FormsModule],
-  declarations: [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent, FinanceWebUiAddressFinderComponent],
-  exports:      [ FinanceWebUiSelectComponent, FinanceWebUiTimeLineComponent, FinanceWebUiAddressFinderComponent],
+  declarations: [
+    FinanceWebUiSelectComponent,
+    FinanceWebUiTimeLineComponent,
+    FinanceWebUiAddressFinderComponent,
+    FinanceWebUiPersonalDetailComponent,
+    FinanceWebUiTradeVehicleDetailComponent
+    ],
+  exports:      [
+    FinanceWebUiSelectComponent,
+    FinanceWebUiTimeLineComponent,
+    FinanceWebUiAddressFinderComponent,
+    FinanceWebUiPersonalDetailComponent,
+    FinanceWebUiTradeVehicleDetailComponent
+    ],
 })
 export class SharedModule { }

@@ -5,3 +5,4 @@ export * from './time-line';
 export * from './select';
 export * from './address-finder';
 export * from './personal-detail';
+export * from './trade-vehicle-detail';
