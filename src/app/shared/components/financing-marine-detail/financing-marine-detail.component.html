@@ -1,0 +1,67 @@
+<div class="financing-marine-detail">
+
+	<div class="">
+		<label>Purchase Type</label>
+		<input type="radio" name="Boat" value="boat" checked> Boat<br>
+		<input type="radio" name="Jetski" value="jetski"> Jetski<br>
+		<input class="controls" type="text" name="price" placeholder="Price" [(ngModel)]="financingMarine.marine.price">
+
+		<label>Condition</label>
+		<input type="radio" name="New" value="new" checked> New<br>
+		<input type="radio" name="Used" value="used"> Used<br>
+	</div>
+
+	<div class="">
+		<label>Year</label>
+		<input class="controls" type="text" name="year" placeholder="Year" [(ngModel)]="financingMarine.marine.year">
+
+		<label>Make & Model</label>
+		<input class="controls" type="text" name="makeAndModel" placeholder="Make and Model" [(ngModel)]="financingMarine.marine.makeAndModel">
+
+		<label>Hull Serial No.</label>
+		<input class="controls" type="text" name="hullSerialNo" placeholder="Hull Serial No." [(ngModel)]="financingMarine.marine.hullSerialNumber">
+	</div>
+
+  
+	<div class="row">
+     
+    <div>Buying a new motor?</div>
+
+    <label>Price</label>
+    <input class="controls" type="text" name="price" placeholder="Price" [(ngModel)]="financingVehicle.motor.price">
+
+    <label>Condition</label>
+		<input type="radio" name="New" value="new" checked> New<br>
+		<input type="radio" name="Used" value="used"> Used<br>
+
+    <label>Type</label>
+		<input type="radio" name="OutBoard" value="OutBoard" checked> OutBoard<br>
+		<input type="radio" name="Sterndrive" value="Sterndrive"> Sterndrive<br>
+
+    <label>Year</label>
+		<input class="controls" type="text" name="year" placeholder="Year" [(ngModel)]="financingMarine.motor.year">
+
+		<label>Make & Model</label>
+		<input class="controls" type="text" name="makeAndModel" placeholder="Make and Model" [(ngModel)]="financingMarine.motor.makeAndModel">
+
+		<label>Engine Size</label>
+		<input class="controls" type="text" name="enginSize" placeholder="No. of Litre" [(ngModel)]="financingMarine.motor.enginSize">
+
+		<label>Engine Serial No.</label>
+		<input class="controls" type="number" name="vin" placeholder="Vehicle Identification No." [(ngModel)]="financingMarine.motor.engineSerialNumber">
+	</div>
+
+  <div class="">
+		<label>Trailer Type</label>
+		<input type="radio" name="Boat" value="boat" checked> Boat<br>
+		<input type="radio" name="Jetski" value="jetski"> Jetski<br>
+		<input class="controls" type="text" name="price" placeholder="Price" [(ngModel)]="financingMarine.marine.price">
+
+		<label>Make & Model</label>
+		<input class="controls" type="text" name="makeAndModel" placeholder="Make and Model" [(ngModel)]="financingMarine.marine.makeAndModel">
+
+		<label>Hull Serial No.</label>
+		<input class="controls" type="text" name="hullSerialNo" placeholder="Hull Serial No." [(ngModel)]="financingMarine.marine.hullSerialNumber">
+	</div>
+
+</div>
