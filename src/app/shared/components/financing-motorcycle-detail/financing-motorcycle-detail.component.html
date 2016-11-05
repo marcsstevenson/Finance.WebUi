@@ -1,0 +1,49 @@
+<div class="financing-motorcycle-detail">
+
+	<div class="">
+		<label>Purchase Type</label>
+		<input type="radio" name="Purchase" value="purchase" checked> Purchase<br>
+		<input type="radio" name="Lease" value="lease"> Lease<br>
+		<input class="controls" type="text" name="price" placeholder="Price" [(ngModel)]="financingVehicle.price">
+
+		<label>Condition</label>
+		<input type="radio" name="New" value="new" checked> New<br>
+		<input type="radio" name="Used" value="used"> Used<br>
+
+		<label>Imported</label>
+		<input type="radio" name="Yes" value="yes" checked> Yes<br>
+		<input type="radio" name="No" value="no"> No<br>
+	</div>
+
+	<div class="">
+		<label>Year</label>
+		<input class="controls" type="text" name="year" placeholder="Year" [(ngModel)]="financingVehicle.year">
+
+		<label>Make & Model</label>
+		<input class="controls" type="text" name="makeAndModel" placeholder="Make and Model" [(ngModel)]="financingVehicle.makeAndModel">
+
+		<label>Engine Size</label>
+		<input class="controls" type="text" name="enginSize" placeholder="No. of Litre" [(ngModel)]="financingVehicle.enginSize">
+
+		<label>Registration</label>
+		<input class="controls" type="text" name="registration" placeholder="Registration No." [(ngModel)]="financingVehicle.registration">
+
+		<div class="row">
+			<label>Milage</label>
+			<input type="radio" name="KM" value="Yes" checked> KM<br>
+			<input type="radio" name="MLS" value="No"> MLS<br>
+			<input class="controls" type="text" name="milage" placeholder="Milage" [(ngModel)]="financingVehicle.milage">
+
+			<label>VIN</label>
+			<input class="controls" type="number" name="vin" placeholder="Vehicle Identification No." [(ngModel)]="financingVehicle.vin">
+
+		</div>
+
+		<div class="row">
+			<label>Motorcycle Type</label>
+			<input type="radio" name="roadBike" value="roadBike" checked> Road Bike<br>
+			<input type="radio" name="offRoadBike" value="offRoadBike"> Off Road Bike<br>
+			<input type="radio" name="quadBike" value="quadBike" checked> Quad Bike<br>
+		</div>
+
+	</div>
