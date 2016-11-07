@@ -3,11 +3,11 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { async, inject } from '@angular/core/testing';
-import { FinanceWebUiFinancingMarineDetailComponent } from './financing-marine-detail.component';
+import { FinanceWebUiTraderDetailComponent } from './trader-detail.component';
 
-describe('Component: FinancingMarineDetail', () => {
+describe('Component: TradeDetail', () => {
   it('should create an instance', () => {
-    let component = new FinanceWebUiFinancingMarineDetailComponent();
+    let component = new FinanceWebUiTraderDetailComponent();
     expect(component).toBeTruthy();
   });
 });

@@ -1,0 +1,24 @@
+<div class="trader-detail">
+  <div class="">
+		<label>Purchase Type</label>
+		<input type="radio" name="dealerSale" value="dealerSale" checked> Dealer Sale<br>
+		<input type="radio" name="privateSale" value="privateSale"> Private Sale<br>
+
+		<label>Phone</label>
+		<input class="controls" type="text" name="phone" placeholder="Phone No." [(ngModel)]="vendor.phone">
+	</div>
+
+	<div class="">
+		<label>First Name</label>
+		<input class="controls" type="text" name="firstName" placeholder="First Name" [(ngModel)]="vendor.firstName">
+
+		<label>Last Name</label>
+		<input class="controls" type="text" name="lastName" placeholder="Last Name" [(ngModel)]="vendor.lastName">
+
+		<label>Salesman</label>
+		<input class="controls" type="text" name="salesman" placeholder="Salesman" [(ngModel)]="vendor.salesman">
+
+    <label>Trade Me Listing</label>
+		<input class="controls" type="url" name="salesman" placeholder="Url" [(ngModel)]="vendor.tradeMeUrl">
+	</div>
+</div>

@@ -124,6 +124,8 @@ const barrels: string[] = [
   'app/shared/components/financing-vehicle-detail',
   'app/shared/components/financing-motorcycle-detail',
   'app/shared/components/financing-marine-detail',
+  'app/shared/components/trade-marine-detail',
+  'app/shared/components/trader-detail',
   /** @cli-barrel */
 ];
 
