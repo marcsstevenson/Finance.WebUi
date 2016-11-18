@@ -183,7 +183,7 @@
 
 			<!--[(ngModel)]="customer.BankBranchName" -->
 
-			<div class="card bank-details">
+			<!--<div class="card bank-details">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Bank Details</h4>
 					<dl>
@@ -217,14 +217,19 @@
 					<button type="button" class="btn btn-success" (click)="save()">Save</button>
 					<button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
 				</div>
-			</div>
+			</div>-->
 
 			<!--if the it is joint, we need one more-->
 			<div class="card personal-detail">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Applicant's Personal Details</h4>
 					<fwui-address-finder></fwui-address-finder>
-					<dl>
+					<fwui-personal-detail 
+						[personalDetail]="personalApplicationData.applicant" 
+						(personalDetailChange)="updateApplicantDetails($event)">
+					</fwui-personal-detail>
+
+					<!--<dl>
 						<div class="row">
 							<dt class="col-xs-4 p-x-0 controls">Gender</dt>
 							<dd class="col-xs-8">
@@ -336,7 +341,7 @@
 						</div>
 
 
-					</dl>
+					</dl>-->
 				</div>
 
 			</div>

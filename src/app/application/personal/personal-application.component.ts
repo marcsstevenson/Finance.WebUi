@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class PersonalApplicationComponent implements OnInit {
 
   private selectOptions: Array<any>;
+
+  private personalApplicationData: any;
   constructor() { }
 
   ngOnInit() {
@@ -28,9 +30,33 @@ export class PersonalApplicationComponent implements OnInit {
         name: 'Sole Trader',
         value: 3
       }
-    ]
+    ];
+
+    this.personalApplicationData = {
+      applicant: {
+        FirstName: '',
+        LastName: '',
+        Gender: '',
+        DateOfBirth: '',
+        OriginCountry: '',
+        MaritalStatus: '',
+        DiversLicenceStatus: '',
+        OverseasDiversLicence: '',
+        LicenceNumberSa: '',
+        LicenceNumberSb: '',
+        CellNumber: '',
+        PhoneNumber: '',
+        FaxNumber: '',
+        CellNumberBusiness: '',
+        PhoneNumberBusiness: '',
+        FaxNumberBusiness: ''
+      }
+    };
   }
 
+  updateApplicantDetails($event) {
+    console.log('The event received in parent is: ', $event);
+  }
   updateSelect(event) {
     console.log('The selected value is:', event);
   }

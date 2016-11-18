@@ -1,21 +1,23 @@
 <div class="personal-detail">
-	<div class="row">
+	<!--<div class="row">
 		<input #searchInput class="controls search" type="text" placeholder="type the address here to search" [(ngModel)]="fullName"
 			(ngModelChange)="searchAddress()">
-	</div>
+	</div>-->
 
 	<div class="row">
 		<div class="">
 			<label>First Name</label>
-			<input class="controls" type="text" name="firstName" placeholder="First Name" [(ngModel)]="personalDetail.FirstName">
-
+			<input class="controls" type="text" name="firstName" placeholder="First Name" 
+						 [value]="personalDetail.FirstName" (blur)="updateProptery('FirstName', $event)">
+		<div class="">
 			<label>Last Name</label>
-			<input class="controls" type="text" name="lastName" placeholder="Last Name"[(ngModel)]="personalDetail.LastName">
+			<input class="controls" type="text" name="lastName" placeholder="Last Name" 
+						 [value]="personalDetail.LastName" (blur)="updateProptery('LastName', $event)">
+		</div>
 
+		<div class="">
       <label>Gender</label>
-			<input class="controls" type="text" name="lastName" placeholder="Last Name"[(ngModel)]="personalDetail.LastName">
-
-      <input type="radio" name="gender" value="male" checked> Male<br>
+			<input type="radio" name="gender" value="male" checked> Male<br>
       <input type="radio" name="gender" value="female"> Female<br>
       <input type="radio" name="gender" value="other"> Other
 		</div>
@@ -23,22 +25,32 @@
 		<div class="">
 			<label>Date of Birth</label>
 			<input class="controls" type="text" name="dateOfBirth" placeholder="Date of Birth" [(ngModel)]="personalDetail.dateOfBirth">
+		</div>
 
+		<div class="">
 			<label>Origin Country</label>
 			<input class="controls" type="text" name="originCountry" placeholder="Origin Country" [(ngModel)]="personalDetail.originCountry">
+		</div>
 
+		<div class="">
       <label>NZ Resident</label>
       <input type="radio" name="nzResident" value="Yes" checked> Yes<br>
       <input type="radio" name="nzResident" value="No"> No<br>
+		</div>
 
+		<div class="">
       <label>Work Visa</label>
       <input type="radio" name="workVisa" value="Yes" checked> Yes<br>
       <input type="radio" name="workVisa" value="No"> No<br>
+		</div>
 
+		<div class="">
       <label>Work Visa Expiry</label>
 			<input class="controls" type="text" name="originCountry" placeholder="Date here" [(ngModel)]="personalDetail.originCountry">
       Date picker here
+		</div>
 
+		<div class="">
       <label>NZ Entry Date</label>
       <input class="controls" type="text" name="originCountry" placeholder="Date here" [(ngModel)]="personalDetail.originCountry">
       Date picker here
@@ -53,27 +65,31 @@
 
 
 			<label>Licence No. (5A)</label>
-			<input class="controls" type="text" name="licenceNumber" placeholder="Licence Number" [(ngModel)]="personalDetail.licenceNumber">
+			<input class="controls" type="text" name="licenceNumber" placeholder="Licence Number" 
+						 [value]="personalDetail.LicenceNumber" (blur)="updateProptery('LicenceNumber', $event)">
 
       <label>Licence No. (5B)</label>
-			<input class="controls" type="text" name="licenceVersion" placeholder="Licence Version" [(ngModel)]="personalDetail.licenceVersion">
+			<input class="controls" type="text" name="licenceVersion" placeholder="Licence Version" 
+						 [value]="personalDetail.LicenceVersion" (blur)="updateProptery('LicenceVersion', $event)">
 
 		</div>
 
     <div class="">
       <label>Mobile</label>
-			<input class="controls" type="text" name="mobile" placeholder="Mobile" [(ngModel)]="personalDetail.mobile">
+			<input class="controls" type="text" name="mobile" placeholder="Mobile" 
+						 [value]="personalDetail.Mobile" (blur)="updateProptery('Mobile', $event)">
 
       <label>Business Phone</label>
-			<input class="controls" type="text" name="businessPhone" placeholder="Business Phone"[(ngModel)]="personalDetail.businessPhone">
+			<input class="controls" type="text" name="businessPhone" placeholder="Business Phone"
+						 [value]="personalDetail.BusinessPhone" (blur)="updateProptery('BusinessPhone', $event)">
 
 			<label>Personal Email</label>
-			<input class="controls" type="text" name="personalEmail" placeholder="Personal Email"[(ngModel)]="personalDetail.personalEmail">
+			<input class="controls" type="text" name="personalEmail" placeholder="Personal Email"
+						 [value]="personalDetail.PersonalEmail" (blur)="updateProptery('PersonalEmail', $event)">
 
       <label>Business Email</label>
-			<input class="controls" type="text" name="businessEmail" placeholder="Business Email"[(ngModel)]="personalDetail.businessEmail">
-
-      
+			<input class="controls" type="text" name="businessEmail" placeholder="Business Email"
+						 [value]="personalDetail.BusinessEmail" (blur)="updateProptery('BusinessEmail', $event)">      
     </div>
 	</div>
 
