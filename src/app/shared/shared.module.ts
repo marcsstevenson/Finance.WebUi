@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
+
 import {
         //  FinanceWebUiFooterComponent,
         //  FinanceWebUiHeaderComponent,
@@ -13,11 +15,12 @@ import {
          FinanceWebUiTradeVehicleDetailComponent,
          FinanceWebUiFinancingMarineDetailComponent,
          FinanceWebUTradeMarineDetailComponent,
-         FinanceWebUiTraderDetailComponent
+         FinanceWebUiTraderDetailComponent,
+         FinanceWebUiDatePickerComponent
         } from './components/index';
 
 @NgModule({
-  imports:      [ CommonModule, FormsModule],
+  imports:      [ CommonModule, FormsModule, DatepickerModule],
   declarations: [
     FinanceWebUiSelectComponent,
     FinanceWebUiTimeLineComponent,
@@ -26,7 +29,8 @@ import {
     FinanceWebUiTradeVehicleDetailComponent,
     FinanceWebUiFinancingMarineDetailComponent,
     FinanceWebUTradeMarineDetailComponent,
-    FinanceWebUiTraderDetailComponent
+    FinanceWebUiTraderDetailComponent,
+    FinanceWebUiDatePickerComponent
     ],
   exports:      [
     FinanceWebUiSelectComponent,
@@ -36,7 +40,8 @@ import {
     FinanceWebUiTradeVehicleDetailComponent,
     FinanceWebUiFinancingMarineDetailComponent,
     FinanceWebUTradeMarineDetailComponent,
-    FinanceWebUiTraderDetailComponent
+    FinanceWebUiTraderDetailComponent,
+    FinanceWebUiDatePickerComponent
     ],
 })
 export class SharedModule { }

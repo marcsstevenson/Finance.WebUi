@@ -1,0 +1,9 @@
+<div class="fwui-date-picker">
+  <label>{{label}}</label>
+
+  <div class="picker-content">
+    <input class="controls" [(ngModel)]="dateModel" (focus)="showPopup()" placeholder="{{placeHolder}}" />
+
+    <datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="true" (selectionDone)="hidePopup($event)"></datepicker>
+  </div>
+</div>

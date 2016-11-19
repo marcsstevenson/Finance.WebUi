@@ -11,3 +11,4 @@ export * from './financing-marine-detail';
 export * from './financing-motorcycle-detail';
 export * from './financing-vehicle-detail';
 export * from './trader-detail';
+export * from './date-picker';

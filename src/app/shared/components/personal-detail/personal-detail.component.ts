@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FinanceWebUiPersonalDetailComponent implements OnInit {
 
   @Input()
-  personalDetail;
+  personalDetail = {};
 
   @Output()
   personalDetailChange = new EventEmitter();
@@ -32,8 +32,13 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   //   this.update();
   // }
 
-  updateProptery(property, $event) {
+  updateInputProptery(property, $event) {
     this.personalDetail[property] = $event.target.value;
+    this.update();
+  }
+
+  updateProperty(property, $event) {
+    this.personalDetail[property] = $event;
     this.update();
   }
 
