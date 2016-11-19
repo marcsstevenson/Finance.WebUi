@@ -12,7 +12,7 @@ export class PersonalApplicationComponent implements OnInit {
 
   private selectOptions: Array<any>;
 
-  private personalApplicationData: any;
+  private personalApplication: any;
   constructor() { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class PersonalApplicationComponent implements OnInit {
       }
     ];
 
-    this.personalApplicationData = {
+    this.personalApplication = {
       applicant: {
         FirstName: '',
         LastName: '',

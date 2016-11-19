@@ -12,38 +12,6 @@
 
 	<div class="row">
 		<div class="col-xs-12 center">
-			<!--<div class="card basic-info">
-        <div class="card-block">
-          <div class="media col-xs-4 card-block">
-            <img alt="" class="img-rounded" src="assets/images/icons/ic_person_black_216x216.png">
-          </div>
-          <div class="col-xs-8">
-            <div class="row">
-              <input class="name controls" [(ngModel)]="customer.FirstName" 
-                     (ngModelChange)="basicInfoChanged = true"
-                     type="text" placeholder="First Name" required>
-              <input class="name controls" [(ngModel)]="customer.LastName" 
-                     (ngModelChange)="basicInfoChanged = true"
-                     type="text" placeholder="Last Name" required>
-            </div>
-            <div class="row">
-              <input class="email controls" [(ngModel)]="customer.Email" 
-                     (ngModelChange)="basicInfoChanged = true"
-                     type="email" placeholder="Email" required>
-            </div>
-            <div class="row">
-              <span class="tag tag-pill tag-success">Active</span>
-            </div>
-          </div>
-        </div>
-
-        <div *ngIf="basicInfoChanged" class="actions text-xs-center">
-          <button type="button" class="btn btn-success" (click)="save()">Save</button>
-          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-        </div>
-      </div>-->
-
-			<!--<fwui-customer-deals [deals]="deals" [customerId]="customer.Id"></fwui-customer-deals>-->
 
 			<div class="card application-detail">
 				<div class="card-block">
@@ -60,299 +28,21 @@
 				</div>
 			</div>
 
-
-			<!--<div class="card personal-details">
-        <div class="card-block">
-          <h4 class="row col-xs-12">Personal Details</h4>
-          <dl>
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Last Name</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=application.LastName 
-                       placeholder="Last Name" (ngModelChange)="applicationDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">First Name</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=application.FirstName 
-                       placeholder="First Name" (ngModelChange)="applicationDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Date of Birth</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=application.DateOfBirth 
-                       placeholder="DD/MM/YYYY" (ngModelChange)="applicationDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Origin Country</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=application.OriginCountry 
-                       placeholder="" (ngModelChange)="applicationDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">NZ resident</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=customer.FaxNumber 
-                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Customer Number</dt>
-              <dd class="col-xs-8">
-                <input [(ngModel)]=customer.Number (ngModelChange)="contactDetailsChanged = true" 
-                       placeholder="Customer Number" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Skype</dt>
-              <dd class="col-xs-8">
-                <input [(ngModel)]=customer.SkypeName 
-                       placeholder="Skype" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <div *ngIf="contactDetailsChanged" class="actions text-xs-center">
-          <button type="button" class="btn btn-success" (click)="save()">Save</button>
-          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-        </div>
-      </div>-->
-
-			<!--<div class="card contact-details">
-        <div class="card-block">
-          <h4 class="row col-xs-12">Contact Details</h4>
-          <dl>
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Mobile</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=customer.CellNumber 
-                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Phone</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=customer.PhoneNumber 
-                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Fax</dt>
-              <dd class="col-xs-8">
-                <input class="" [(ngModel)]=customer.FaxNumber 
-                       placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Customer Number</dt>
-              <dd class="col-xs-8">
-                <input [(ngModel)]=customer.Number (ngModelChange)="contactDetailsChanged = true" 
-                       placeholder="Customer Number" type="text">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0">Skype</dt>
-              <dd class="col-xs-8">
-                <input [(ngModel)]=customer.SkypeName 
-                       placeholder="Skype" (ngModelChange)="contactDetailsChanged = true" type="text">
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <div *ngIf="contactDetailsChanged" class="actions text-xs-center">
-          <button type="button" class="btn btn-success" (click)="save()">Save</button>
-          <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-        </div>
-      </div>-->
-
-			<!--[(ngModel)]="customer.BankBranchName" -->
-
-			<!--<div class="card bank-details">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Bank Details</h4>
-					<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Account Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Account Name" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Account Number</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Account Number" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Branch Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Branch Name" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Bank Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Bank Name" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-					</dl>
-				</div>
-				<div *ngIf="bankDetailsChanged" class="actions text-xs-center">
-					<button type="button" class="btn btn-success" (click)="save()">Save</button>
-					<button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-				</div>
-			</div>-->
-
 			<!--if the it is joint, we need one more-->
 			<div class="card personal-detail">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Applicant's Personal Details</h4>
-					<fwui-address-finder></fwui-address-finder>
-					<!--<fwui-personal-detail 
-						[personalDetail]="personalApplicationData.applicant" 
-						(personalDetailChange)="updateApplicantDetails($event)">
-					</fwui-personal-detail>-->
 					
+					<fwui-address-finder></fwui-address-finder>
+
 					<fwui-personal-detail 
-						[personalDetail]="personalApplicationData.applicant" 
+						[personalDetail]="personalApplication.applicant" 
 						(personalDetailChange)="updateApplicantDetails($event)">
 					</fwui-personal-detail>
 
-					<!--<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Gender</dt>
-							<dd class="col-xs-8">
-								<div class="radio" *ngFor="let gender of genders">
-									<label>
-                    <input type="radio" name="gender" [(ngModel)]="user.gender" [value]="gender.value">
-                    {{gender.display}}
-                  </label>
-								</div>
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">First Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="First Name" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Last Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="First Name" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Date of Birth</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Date of Birth" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Origin Country</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Origin Country" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">NZ Resident</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="NZ Resident" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Origin Country</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Origin Country" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">NZ Resident</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="NZ Resident" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Driver License</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Driver License" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">License No.(5a)</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="License NO." (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Version No.(5b)</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Version NO." (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Mobile</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Mobile" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Business Phone</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Business Phone" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Personal Email</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Personal Email" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Business Email</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Business Email" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-
-					</dl>-->
 				</div>
 
 			</div>
-
-
-			<!--</div>-->
 
 			<div class="card personal-detail">
 				<div class="card-block">
@@ -364,7 +54,7 @@
 
 			<div class="card current address">
 				<div class="card-block">
-					<h4 class="row col-xs-12">Current Address</h4>
+					<h4 class="row col-xs-12">Address Details</h4>
 					<dl>
 						<div class="row">
 							<dt class="col-xs-4 p-x-0 controls">Current Home: (select)</dt>
@@ -393,7 +83,7 @@
 				</div>
 			</div>
 
-			<div class="card previous address">
+			<div class="card spouse current address">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Spouse's Previous Address</h4>
 
@@ -457,14 +147,14 @@
 				</div>
 			</div>
 
-			<div class="card references">
-				<div class="card-block">
+			<!--<div class="card references">
+				<div class="card-block col-md-6">
 					<h4 class="row col-xs-12">References</h4>
 					<dl>
 						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Parent/Nearest Relative</dt>
+							<dt class="col-xs-4 p-x-0 controls">Name</dt>
 							<dd class="col-xs-8">
-								<input class="controls" placeholder="Name" (ngModelChange)="bankDetailsChanged = true" type="text">
+								<input class="controls" placeholder="Name" [(ngModel)]=personalApplication.Reference.Name type="text">
 							</dd>
 						</div>
 
@@ -487,45 +177,38 @@
 					</dl>
 
 				</div>
-			</div>
+			</div>-->
 
-			<div class="card acount references">
+			<!--<div class="card acount references">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Account References</h4>
 
 					<dl>
 						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Reference 1 (HP, Etc.)</dt>
+							<dt class="col-xs-4 p-x-0 controls">Name</dt>
 							<dd class="col-xs-8">
-								<input class="controls" placeholder="Ref 1" (ngModelChange)="bankDetailsChanged = true" type="text">
+								<input class="controls" placeholder="Name" [(ngModel)]="personalApplication.Reference.Name" type="text">
 							</dd>
 						</div>
 
 						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Reference 2 (HP, Etc.)</dt>
+							<dt class="col-xs-4 p-x-0 controls">Bankers</dt>
 							<dd class="col-xs-8">
-								<input class="controls" placeholder="Ref 2" (ngModelChange)="bankDetailsChanged = true" type="text">
+								<input class="controls" placeholder="Banker" (ngModelChange)="personalApplication.Reference.Banker" type="text">
 							</dd>
 						</div>
 
 						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Banker</dt>
+							<dt class="col-xs-4 p-x-0 controls">Account No.</dt>
 							<dd class="col-xs-8">
-								<input class="controls" placeholder="Banker" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Account NO.</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Account NO." (ngModelChange)="bankDetailsChanged = true" type="text">
+								<input class="controls" placeholder="Banker" (ngModelChange)="personalApplication.Reference.AccountNum" type="text">
 							</dd>
 						</div>
 
 					</dl>
 
 				</div>
-			</div>
+			</div>-->
 
 			<div class="card fiancial-detail">
 				<div class="card-block">
@@ -779,87 +462,11 @@
 						</dl>
 
 					</div>
-
-
-
 				</div>
 			</div>
 
-
-
-			<!--<div *ngFor="let address of customer.Addresses" class="card address-details">
-        <div class="card-block">
-          <span *ngIf="address.IsDefault" class="tag tag-pill tag-success">Default</span>
-          <dl>
-            <div>
-              <dt>
-                Name
-              </dt>
-              <input [(ngModel)]="address.Name" type="text">
-              <dd>
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Address Line 1
-              </dt>
-              <input [(ngModel)]="address.AddressLine1" type="text">
-              <dd>
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Region
-              </dt>
-              <input [(ngModel)]="address.Region" type="text">
-              <dd>
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                City
-              </dt>
-              <input [(ngModel)]="address.City" type="text">
-              <dd>
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Postcode
-              </dt>
-              <input [(ngModel)]="address.Postcode" type="text">
-              <dd>
-              </dd>
-            </div>
-          </dl>
-        </div>
-      </div>-->
 		</div>
 
-		<!--<div class="col-xs-4">
-      <div class="column">
-        <textarea class="note col-xs-12" id="my-note" [(ngModel)]="note"
-                  (ngModelChange)="noteChanged = true" 
-                  placeholder="Write notes here" 
-                  rows="6">
-        </textarea>
-
-        <div *ngIf="noteChanged" class="actions text-xs-center col-xs-12">
-          <button class="btn btn-success" type="button" (click)="addNote(note)">
-            <span class="glyphicon glyphicon-align-left"></span> Save
-          </button>
-          <button type="button" class="btn btn-default" (click)="clearNote()">Cancel</button>
-        </div>
-
-      </div>
-      <div class="history">
-        <fwui-time-line [notes]="notes" [myText]="myText"></fwui-time-line>
-      </div>
-    </div>-->
 	</div>
 
 </div>

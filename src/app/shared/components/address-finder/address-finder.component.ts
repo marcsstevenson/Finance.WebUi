@@ -55,15 +55,11 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
   @ViewChild('streetInput') streetInput: ElementRef;
 
   constructor() {
-    // this.initAutocomplete();
+
   }
   OnInit() {
 
   }
-
-  // ngAfterViewInit() {
-  //   this.initAutocomplete();
-  // }
 
   ngOnInit() {
     this.initAutocomplete();
