@@ -127,6 +127,7 @@ const barrels: string[] = [
   'app/shared/components/trade-marine-detail',
   'app/shared/components/trader-detail',
   'app/shared/components/date-picker',
+  'app/shared/components/personal-occupation',
   /** @cli-barrel */
 ];
 

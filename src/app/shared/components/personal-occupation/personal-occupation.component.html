@@ -1,0 +1,26 @@
+<div class="personal-occupation">
+
+
+  <dl>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">Mobile</dt>
+      <dd class="col-xs-8">
+        <input class="" [(ngModel)]=customer.CellNumber placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
+      </dd>
+    </div>
+
+  </dl>
+  <div class="">
+    <label>Employer Name</label>
+    <input class="controls" type="text" name="employerName" placeholder="Enter full name here" [value]="personalDetail.EmployerName"
+      (blur)="updateInputProperty('EmployerName', $event)">
+  </div>
+
+  <div class="">
+    <label>Occupation</label>
+    <input class="controls" type="text" name="Occupation" placeholder="Enter Occupation here" [value]="personalDetail.Occupation"
+      (blur)="updateInputProperty('Occupation', $event)">
+  </div>
+
+
+</div>
