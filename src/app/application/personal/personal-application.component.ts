@@ -49,7 +49,14 @@ export class PersonalApplicationComponent implements OnInit {
         FaxNumber: '',
         CellNumberBusiness: '',
         PhoneNumberBusiness: '',
-        FaxNumberBusiness: ''
+        FaxNumberBusiness: '',
+
+        //extra needs to be considered server side
+        PersonalEmail: '',
+        BusinessEmail: '',
+        LicenceVersion: '',
+        LicenceNumber: ''
+
       }
     };
   }

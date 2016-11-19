@@ -18,10 +18,26 @@
 		</div>
 
 		<div class="">
+
+			<div class="radio" *ngFor="let gender of genders">
+        <label>
+          <input type="radio" name="gender" [(ngModel)]="user.gender" [value]="gender.value">
+          {{gender.display}}
+        </label>
+      </div>
       <label>Gender</label>
-			<input type="radio" name="gender" value="male" checked> Male<br>
-      <input type="radio" name="gender" value="female"> Female<br>
-      <input type="radio" name="gender" value="other"> Other
+			<input type="radio" name="gender" value="male" checked
+						(change)="updateInputProperty('Gender', $event)"> 
+			Male<br>
+
+      <input type="radio" name="gender" value="female"
+						 (change)="updateInputProperty('Gender', $event)"> 
+			Female<br>
+
+<!--[value]="personalDetail.Gender" -->
+      <input type="radio" name="gender" value="other"
+			       (change)="updateInputProperty('Gender', $event)">
+			Other
 		</div>
 
 		<div class="">
@@ -30,8 +46,6 @@
 												label="Date of Birth"
 												placeHolder="Date of Birth">
 			</fwui-date-picker>
-
-			<!--<input class="controls" type="text" name="dateOfBirth" placeholder="Date of Birth" [(ngModel)]="personalDetail.DateOfBirth">-->
 		</div>
 
 		<div class="">
@@ -41,7 +55,7 @@
 
 		<div class="">
       <label>NZ Resident</label>
-      <input type="radio" name="nzResident" value="Yes" checked> Yes<br>
+      <input type="radio" name="nzResident" value="Yes" checked (click)="updateInputProperty('IsNzResident', $event)"> Yes<br>
       <input type="radio" name="nzResident" value="No"> No<br>
 		</div>
 
@@ -67,15 +81,6 @@
 												label="Entry Date"
 												placeHolder="Input Date Here">
 			</fwui-date-picker>
-
-      <!--<input class="controls" type="text" name="originCountry" placeholder="Date here" [(ngModel)]="personalDetail.originCountry">
-      Date picker here
-
-			<fwui-date-picker [dateModel]="personalDetail.VisaExpiryDate" 
-											  (dateModelChange)="updateProperty('VisaExpiryDate', $event)"
-												label="Visa Expiry Date"
-												placeHolder="Input Date Here">
-			</fwui-date-picker>-->
 		</div>
 
 		<div class="">
@@ -99,11 +104,11 @@
     <div class="">
       <label>Mobile</label>
 			<input class="controls" type="text" name="mobile" placeholder="Mobile" 
-						 [value]="personalDetail.Mobile" (blur)="updateInputProperty('Mobile', $event)">
+						 [value]="personalDetail.CellNumber" (blur)="updateInputProperty('CellNumber', $event)">
 
       <label>Business Phone</label>
 			<input class="controls" type="text" name="businessPhone" placeholder="Business Phone"
-						 [value]="personalDetail.BusinessPhone" (blur)="updateInputProperty('BusinessPhone', $event)">
+						 [value]="personalDetail.PhoneNumberBusiness" (blur)="updateInputProperty('PhoneNumberBusiness', $event)">
 
 			<label>Personal Email</label>
 			<input class="controls" type="text" name="personalEmail" placeholder="Personal Email"

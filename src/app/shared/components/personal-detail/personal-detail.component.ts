@@ -32,7 +32,7 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   //   this.update();
   // }
 
-  updateInputProptery(property, $event) {
+  updateInputProperty(property, $event) {
     this.personalDetail[property] = $event.target.value;
     this.update();
   }
