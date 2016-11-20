@@ -37,7 +37,7 @@
 
 			<fwui-date-picker [dateModel]="personalDetail.DateOfBirth" 
 			 									(dateModelChange)="updateProperty('DateOfBirth', $event)" 
-												label="Date of Birth" placeHolder="Date of Birth">
+												label="Date of Birth" placeHolder="DD/MM/YYYY">
 			</fwui-date-picker>
 
 			<div class="row">
@@ -75,12 +75,12 @@
 
 			<fwui-date-picker [dateModel]="personalDetail.VisaExpiryDate" 
 												(dateModelChange)="updateProperty('VisaExpiryDate', $event)"
-				                label="Visa Expiry Date" placeHolder="Input Date Here">
+				                label="Visa Expiry Date" placeHolder="DD/MM/YYYY">
 			</fwui-date-picker>
 
 			<fwui-date-picker [dateModel]="personalDetail.EntryDate" 
 												(dateModelChange)="updateProperty('EntryDate', $event)" 
-												label="Entry Date" placeHolder="Input Date Here">
+												label="Entry Date" placeHolder="DD/MM/YYYY">
 			</fwui-date-picker>
 
 			<div class="row">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -7,10 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['personal-occupation.component.css']
 })
 export class FinanceWebUiPersonalOccupationComponent implements OnInit {
+  @Input()
+  personalDetail = {};
 
+  @Output()
+  personalDetailChange = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  update() {
+    console.log('I am sending update to parent');
+    this.personalDetailChange.emit(
+      this.personalDetail
+    );
+  }
+
+  updateInputProperty(property, $event) {
+    this.personalDetail[property] = $event.target.value;
+    this.update();
+  }
+
+  updateProperty(property, $event) {
+    this.personalDetail[property] = $event;
+    this.update();
   }
 
 }
