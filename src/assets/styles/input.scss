@@ -15,6 +15,10 @@ input {
 
     &:placeholder-shown {
         background-color: $gray-lightest;
+    }
+
+    &.full-length {
+        width: 100%;
     } 
 }
 

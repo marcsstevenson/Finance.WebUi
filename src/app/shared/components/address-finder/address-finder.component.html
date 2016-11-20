@@ -1,6 +1,6 @@
 <div class="address-finder">
 	<div class="row">
-		<input #searchInput class="controls search" type="text" placeholder="type the address here to search" [(ngModel)]="placeSearch"
+		<input #searchInput class="controls search full-length" type="text" placeholder="type the address here to search" [(ngModel)]="placeSearch"
 			(ngModelChange)="searchAddress()">
 	</div>
 
@@ -11,42 +11,42 @@
 					<label>Street Number</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input #streetInput class="controls" type="text" name="streetNumber" placeholder="Street Number" [(ngModel)]="addressDetail.streetNumber">
+					<input #streetInput class="controls full-length" type="text" name="streetNumber" placeholder="Street Number" [(ngModel)]="addressDetail.streetNumber">
 				</dd>
 			</div>
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">Street Name</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls" type="text" name="postcode" placeholder="Street Name" [(ngModel)]="addressDetail.streetName">
+					<input class="controls full-length" type="text" name="postcode" placeholder="Street Name" [(ngModel)]="addressDetail.streetName">
 				</dd>
 			</div>
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">Suburb</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls" type="text" name="postcode" placeholder="Suburb" [(ngModel)]="addressDetail.suburb">
+					<input class="controls full-length" type="text" name="postcode" placeholder="Suburb" [(ngModel)]="addressDetail.suburb">
 				</dd>
 			</div>
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">Region / State</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls" type="text" name="region" placeholder="Region / State" [(ngModel)]="addressDetail.state">
+					<input class="controls full-length" type="text" name="region" placeholder="Region / State" [(ngModel)]="addressDetail.state">
 				</dd>
 			</div>
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">Country</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls" type="text" name="country" placeholder="Country" [(ngModel)]="addressDetail.country">
+					<input class="controls full-length" type="text" name="country" placeholder="Country" [(ngModel)]="addressDetail.country">
 				</dd>
 			</div>
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">Post Code</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls" type="text" name="postcode" placeholder="Post Code" [(ngModel)]="addressDetail.postCode">
+					<input class="controls full-length" type="text" name="postcode" placeholder="Post Code" [(ngModel)]="addressDetail.postCode">
 				</dd>
 			</div>
 

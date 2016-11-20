@@ -1,9 +1,17 @@
 <div class="fwui-date-picker">
-  <label>{{label}}</label>
 
-  <div class="picker-content">
-    <input class="controls" [(ngModel)]="dateModel" (focus)="showPopup()" placeholder="{{placeHolder}}" />
+  <div class="row">
+    <dt class="col-xs-4 p-x-0 controls">
+      <label>{{label}}</label>
+    </dt>
 
-    <datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" [showWeeks]="true" (selectionDone)="hidePopup($event)"></datepicker>
+    <dd class="col-xs-8 p-x-0 picker-content">
+      <input class="controls full-length" [(ngModel)]="dateModel" 
+             (focus)="showPopup()" placeholder="{{placeHolder}}" />
+             
+      <datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" 
+                  [showWeeks]="true" (selectionDone)="hidePopup($event)"></datepicker>
+    </dd>
   </div>
+
 </div>
