@@ -1,5 +1,7 @@
 @import './color';
 
+$radio-line-height: 45px;
+
 html, body {
     height: 100vh;
 }
@@ -34,4 +36,9 @@ h1, h2, h3, h4 {
 .datatable {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+.radio-line {
+    height: $radio-line-height;
+    line-height: $radio-line-height;
 }

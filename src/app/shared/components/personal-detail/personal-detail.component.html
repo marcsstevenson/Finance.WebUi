@@ -25,13 +25,13 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
+				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>Gender</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input type="radio" name="gender" value="male" checked (change)="updateInputProperty('Gender', $event)"> Male
-					<input type="radio" name="gender" value="female" (change)="updateInputProperty('Gender', $event)"> Female
-					<input type="radio" name="gender" value="other" (change)="updateInputProperty('Gender', $event)"> Other
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input type="radio" class="controls" name="gender" value="male" checked (change)="updateInputProperty('Gender', $event)"> Male
+					<input type="radio" class="controls" name="gender" value="female" (change)="updateInputProperty('Gender', $event)"> Female
+					<input type="radio" class="controls" name="gender" value="other" (change)="updateInputProperty('Gender', $event)"> Other
 				</dd>
 			</div>
 
@@ -50,10 +50,10 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
+				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>NZ Resident</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0">
+				<dd class="col-xs-8 p-x-0 radio-line">
 					<input type="radio" name="nzResident" value="Yes" checked 
 								 (click)="updateInputProperty('IsNzResident', $event)"> Yes
 					<input type="radio" name="nzResident" value="No"
@@ -62,10 +62,10 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
+				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>Work Visa</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0">
+				<dd class="col-xs-8 p-x-0 radio-line">
 					<input type="radio" name="workVisa" value="Yes" checked
 					       (click)="updateInputProperty('IsWorkVisa', $event)"> Yes 
 					<input type="radio" name="workVisa" value="No"
@@ -84,10 +84,10 @@
 			</fwui-date-picker>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
+				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>Driver Licence Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0">
+				<dd class="col-xs-8 p-x-0 radio-line">
 					<input type="radio" name="driverLicenceType" value="Full" checked
 						     (click)="updateInputProperty('DriverLicenceType', $event)"> Full 
 					<input type="radio" name="driverLicenceType" value="Restricted"
