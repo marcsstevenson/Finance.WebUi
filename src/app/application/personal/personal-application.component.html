@@ -53,6 +53,20 @@
 				<div class="card-block">
 					<h4 class="row col-xs-12">Address Details</h4>
 
+					<dl>
+						<div class="row">
+							<dt class="col-xs-4 p-x-0 controls">Residential Type: (select)</dt>
+							<dd class="col-xs-8">
+								<select name="role" class="full-length" [(ngModel)]="personalApplication.CurrentAddressType">
+									<option value="Own Home">Own Home</option>
+									<option value="Own Home">Renting</option>
+									<option value="Own Home">Boarding</option>
+									<option value="Own Home">Family House</option>
+								</select>
+							</dd>
+						</div>
+					</dl>
+      
 					<fwui-address-finder></fwui-address-finder>
 
 					<dl>

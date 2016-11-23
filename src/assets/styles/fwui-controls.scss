@@ -25,3 +25,18 @@ input {
 textarea.note {
 
 }
+
+select{
+    /*-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;*/
+    color: $input-text-color;
+    border: 0;
+    background: $gray-lightest;
+    border-radius: 0;
+    height: 38px;
+
+    &.full-length {
+        width: 100%;
+    }
+}
