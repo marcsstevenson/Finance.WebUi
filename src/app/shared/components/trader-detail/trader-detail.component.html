@@ -1,24 +1,68 @@
-<div class="trader-detail">
-  <div class="">
-		<label>Purchase Type</label>
-		<input type="radio" name="dealerSale" value="dealerSale" checked> Dealer Sale<br>
-		<input type="radio" name="privateSale" value="privateSale"> Private Sale<br>
-
-		<label>Phone</label>
-		<input class="controls" type="text" name="phone" placeholder="Phone No." [(ngModel)]="vendor.phone">
-	</div>
-
+<div class="vendor-detail">
 	<div class="">
-		<label>First Name</label>
-		<input class="controls" type="text" name="firstName" placeholder="First Name" [(ngModel)]="vendor.firstName">
+		<dl>
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Purchase Type</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input type="radio" class="controls" name="dealerType" value="dealer" 
+								 (change)="updateInputProperty('VendorType', $event)"
+								 checked> Dealer
+					<input type="radio" class="controls" name="dealerType" value="private" 
+								 (change)="updateInputProperty('VendorType', $event)"> Private
+				</dd>
+			</div>
 
-		<label>Last Name</label>
-		<input class="controls" type="text" name="lastName" placeholder="Last Name" [(ngModel)]="vendor.lastName">
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>First Name</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="firstName" placeholder="First Name" 
+								 [value]="vendorDetail.firstName" (blur)="updateInputProperty('FirstName', $event)">
+				</dd>
+			</div>
 
-		<label>Salesman</label>
-		<input class="controls" type="text" name="salesman" placeholder="Salesman" [(ngModel)]="vendor.salesman">
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Last Name</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="lastName" placeholder="Last Name"
+							   [value]="vendorDetail.lastName" (blur)="updateInputProperty('lastName', $event)">
+				</dd>
+			</div>
 
-    <label>Trade Me Listing</label>
-		<input class="controls" type="url" name="salesman" placeholder="Url" [(ngModel)]="vendor.tradeMeUrl">
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Phone</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="phone" placeholder="Phone No." 
+							   [value]="vendorDetail.PhoneNumber" (blur)="updateInputProperty('PhoneNumber', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Salesman</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="phone" placeholder="Salesman" 
+							   [value]="vendorDetail.Salesman" (blur)="updateInputProperty('Salesman', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trade Me Listing</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="tradeMeUrl" placeholder="Url" 
+								 [value]="vendorDetail.TradeMeUrl" (blur)="updateInputProperty('TradeMeUrl', $event)">
+				</dd>
+			</div>
+
+		</dl>
 	</div>
-</div>

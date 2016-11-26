@@ -39,4 +39,8 @@ select{
     &.full-length {
         width: 100%;
     }
+
+    &.off-card {
+        background: $off-card-color;
+    }
 }
