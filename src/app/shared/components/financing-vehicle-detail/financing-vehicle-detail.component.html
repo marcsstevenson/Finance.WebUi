@@ -17,10 +17,10 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Price</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="Price" placeholder="$" 
 							   [value]="vehicleDetail.Price" (blur)="updateInputProperty('Price', $event)">
 				</dd>
@@ -44,69 +44,69 @@
 					<label>Imported</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" class="controls" name="marineCondition" value="New" 
+					<input type="radio" class="controls" name="marineCondition" value="True" 
 								 (change)="updateInputProperty('Condition', $event)"
-								 checked> New
-					<input type="radio" class="controls" name="marineCondition" value="Used" 
-								 (change)="updateInputProperty('Condition', $event)"> Used
+								 checked> Yes
+					<input type="radio" class="controls" name="marineCondition" value="False" 
+								 (change)="updateInputProperty('Condition', $event)"> No
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" name="year" placeholder="" 
 							   [value]="vehicleDetail.Year" (blur)="updateInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Make</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="make" placeholder="" 
 							   [value]="vehicleDetail.Make" (blur)="updateInputProperty('Make', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Model</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="model" placeholder="" 
 							   [value]="vehicleDetail.Model" (blur)="updateInputProperty('Model', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Engine Size</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="EnginSize" placeholder="Engine Size" 
 							   [value]="vehicleDetail.EnginSize" (blur)="updateMotorInputProperty('EnginSize', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Colour</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="Colour" placeholder="Colour" 
 							   [value]="vehicleDetail.Colour" (blur)="updateMotorInputProperty('Colour', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Registration</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="registration" placeholder="Registration" 
 							   [value]="vehicleDetail.Registration" (blur)="updateInputProperty('Registration', $event)">
 				</dd>
@@ -126,20 +126,20 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>Milage</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="Milage" placeholder="Milage" 
 							   [value]="vehicleDetail.Milage" (blur)="updateInputProperty('Milage', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0">
 					<label>VIN</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="VehicleIdentificationNumber" placeholder="Vehicle Identification Number" 
 							   [value]="vehicleDetail.VehicleIdentificationNumber" (blur)="updateInputProperty('VehicleIdentificationNumber', $event)">
 				</dd>

@@ -20,7 +20,8 @@ export class TransportationFormComponent implements OnInit {
         TradeIn: {},
       },
       TradeVehicle: { },
-      Vehicle: { }
+      Vehicle: { },
+      Motorcycle: {}
     };
   }
 
