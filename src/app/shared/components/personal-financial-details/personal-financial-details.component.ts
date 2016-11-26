@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
 
+  private NetWorth = 0;
+  private DisposableIncome = 0;
+
   constructor() { }
 
   ngOnInit() {
