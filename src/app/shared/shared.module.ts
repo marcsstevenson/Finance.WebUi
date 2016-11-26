@@ -18,7 +18,8 @@ import {
          FinanceWebUiTraderDetailComponent,
          FinanceWebUiDatePickerComponent,
          FinanceWebUiPersonalOccupationComponent,
-         FinanceWebUiPersonalFinancialDetailsComponent
+         FinanceWebUiPersonalFinancialDetailsComponent,
+         FinanceWebUiFinancingVehicleDetailComponent
         } from './components/index';
 
 @NgModule({
@@ -34,7 +35,8 @@ import {
     FinanceWebUiTraderDetailComponent,
     FinanceWebUiDatePickerComponent,
     FinanceWebUiPersonalOccupationComponent,
-    FinanceWebUiPersonalFinancialDetailsComponent
+    FinanceWebUiPersonalFinancialDetailsComponent,
+    FinanceWebUiFinancingVehicleDetailComponent
     ],
   exports:      [
     FinanceWebUiSelectComponent,
@@ -47,7 +49,8 @@ import {
     FinanceWebUiTraderDetailComponent,
     FinanceWebUiDatePickerComponent,
     FinanceWebUiPersonalOccupationComponent,
-    FinanceWebUiPersonalFinancialDetailsComponent
+    FinanceWebUiPersonalFinancialDetailsComponent,
+    FinanceWebUiFinancingVehicleDetailComponent
     ],
 })
 export class SharedModule { }

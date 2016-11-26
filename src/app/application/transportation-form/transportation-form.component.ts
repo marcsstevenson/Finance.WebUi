@@ -17,9 +17,10 @@ export class TransportationFormComponent implements OnInit {
       Marine: {
         Motor: {},
         Trailer: {},
-        TradeIn: {}
+        TradeIn: {},
       },
-      TradeVehicle: { }
+      TradeVehicle: { },
+      Vehicle: { }
     };
   }
 

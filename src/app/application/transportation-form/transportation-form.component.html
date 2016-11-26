@@ -26,12 +26,14 @@
           <!--<fwui-financing-marine-detail *ngIf="transportationForm.Marine" [marineDetail]="transportationForm.Marine" 
                                         (marineDetailChange)="updateTransportationForm($event)">
           </fwui-financing-marine-detail>-->
-
+<!--
           <fwui-trade-vehicle-detail [tradeVehicleDetail]="transportationForm.TradeVehicle" 
                                      (tradeVehicleChange)="updateTransportationForm($event)">
-          </fwui-trade-vehicle-detail>
+          </fwui-trade-vehicle-detail>-->
 
-
+          <fwui-financing-vehicle-detail [vehicleDetail]="transportationForm.Vehicle" 
+                                         (vehicleDetailChange)="updateTransportationForm($event)">
+          </fwui-financing-vehicle-detail>
           <hr>
         </div>
       </div>
