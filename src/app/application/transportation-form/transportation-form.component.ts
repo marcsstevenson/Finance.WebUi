@@ -21,7 +21,8 @@ export class TransportationFormComponent implements OnInit {
       },
       TradeVehicle: { },
       Vehicle: { },
-      Motorcycle: {}
+      Motorcycle: {},
+      FinancialDetail: {}
     };
   }
 

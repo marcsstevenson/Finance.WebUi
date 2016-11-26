@@ -1,412 +1,421 @@
 <div class="transport-financial-details">
 
 	<div class="col-ms-12">
+		<h3 class="blue-light">Financial Details</h3>
 		<dl>
-			<div class="row">
+			<div class="row m-x-0">
 				<dt class="col-xs-4 p-x-0 controls">
 					<label>Term (Months)</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" 
-                 name="Term" placeholder="$" [value]="transportDetail.Term" 
+                 name="Term" placeholder="$" [value]="financialDetail.Term" 
                  (blur)="updateInputProperty('Term', $event)">
 				</dd>
 			</div>
 		</dl>
 	</div>
 
-  <div class="col-ms-6">
-    <h3>Financial Details</h3>
-
-    <dl>
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Cash Price</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="cashPrice" placeholder="$" [value]="transportDetail.CashPrice" 
-                 (blur)="updateInputProperty('CashPrice', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>On Road Cost</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="onRoadCost" placeholder="$" [value]="transportDetail.CashPrice" 
-                 (blur)="updateInputProperty('CashPrice', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Mechanical Warranty</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="mechanicalWarranty" placeholder="$" [value]="transportDetail.MechanicalWarranty" 
-                 (blur)="updateInputProperty('MechanicalWarranty', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="gap" placeholder="$" [value]="transportDetail.Gap" 
-                 (blur)="updateInputProperty('Gap', $event)">
-				</dd>
-			</div>
-      
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Insurance</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="insurance" placeholder="$" [value]="transportDetail.Insurance" 
-                 (blur)="updateInputProperty('Insurance', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Loan Protection</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="loanProtection" placeholder="$" [value]="transportDetail.LoanProtection" 
-                 (blur)="updateInputProperty('LoanProtection', $event)">
-				</dd>
-			</div>
- 
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Booking Fee</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="bookingFee" placeholder="$" [value]="transportDetail.BookingFee" 
-                 (blur)="updateInputProperty('BookingFee', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Broker Fee</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="brokerFee" placeholder="$" [value]="transportDetail.BrokerFee" 
-                 (blur)="updateInputProperty('BrokerFee', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Other</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="other" placeholder="$" [value]="transportDetail.Other" 
-                 (blur)="updateInputProperty('Other', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Total Gross Cost</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="totalGrossCost" placeholder="$" [value]="calculateGrossCost()">
-				</dd>
-			</div>
-      
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Cash Deposit/Advance Rental</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="cashDeposit" placeholder="$" [value]="transportDetail.CashDepositOrAdvanceRental" 
-                 (blur)="updateInputProperty('CashDepositOrAdvanceRental', $event)">
-				</dd>
-			</div>
-      
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Net Trade</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="netTrade" placeholder="$" [value]="transportDetail.NetTrade" 
-                 (blur)="updateInputProperty('NetTrade', $event)">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Total Deposit</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="totalDeposit" placeholder="$" [value]="calculateTotalDeposit()">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Amount Financed</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="amountFinanced" placeholder="$" [value]="transportDetail.AmountFinanced">
-				</dd>
-			</div>
-
-      <div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Inerest Rate (%)</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="amountFinanced" placeholder="$" [value]="transportDetail.InterestRate">
-				</dd>
-			</div>
-      
-    </dl>
-  </div>
-
-  <div class="col-ms-3">
-    <h3>Monthly Payments</h3>
-      
-    <dl>
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyCashPayment" placeholder="$" [value]="transportDetail.MonthlyCashPayment" 
-                 (blur)="updateInputProperty('MonthlyCashPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyRoadCost" placeholder="$" [value]="transportDetail.MonthlyRoadCost" 
-                 (blur)="updateInputProperty('MonthlyRoadCost', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyMechanicalWarranty" placeholder="$" [value]="transportDetail.MonthlyMechanicalWarranty" 
-                 (blur)="updateInputProperty('MonthlyMechanicalWarranty', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyGap" placeholder="$" [value]="transportDetail.MonthlyGap" 
-                 (blur)="updateInputProperty('MonthlyGap', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyInsurance" placeholder="$" [value]="transportDetail.MonthlyInsurance" 
-                 (blur)="updateInputProperty('MonthlyInsurance', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyInsurance" placeholder="$" [value]="transportDetail.MonthlyLoanProtection" 
-                 (blur)="updateInputProperty('MonthlyInsurance', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyBookingFee" placeholder="$" [value]="transportDetail.MonthlyBookingFee" 
-                 (blur)="updateInputProperty('MonthlyBookingFee', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MonthlyBrokerFee" placeholder="$" [value]="transportDetail.MonthlyBrokerFee" 
-                 (blur)="updateInputProperty('MonthlyBrokerFee', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" hidden="true" 
-                 name="MonthlyBrokerFee" placeholder="$" [value]="transportDetail.MonthlyBrokerFee" 
-                 (blur)="updateInputProperty('MonthlyBrokerFee', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-12 p-x-0 controls">
-					<label>Residual Value</label>
-				</dt>
-			</div>
-    </dl>
-
-  </div>
-
-  <div class="col-ms-3">
-    <h3>Payment</h3>
-
-    <dl>
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="CashPayment" placeholder="$" [value]="transportDetail.CashPayment" 
-                 (blur)="updateInputProperty('CashPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="RoadCostPayment" placeholder="$" [value]="transportDetail.RoadCostPayment" 
-                 (blur)="updateInputProperty('RoadCostPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="MechanicalWarrantyPayment" placeholder="$" [value]="transportDetail.MechanicalWarrantyPayment" 
-                 (blur)="updateInputProperty('MechanicalWarrantyPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="GapPayment" placeholder="$" [value]="transportDetail.GapPayment" 
-                 (blur)="updateInputProperty('GapPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="InsurancePayment" placeholder="$" [value]="transportDetail.InsurancePayment" 
-                 (blur)="updateInputProperty('InsurancePayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="LoanProtectionPayment" placeholder="$" [value]="transportDetail.LoanProtectionPayment" 
-                 (blur)="updateInputProperty('LoanProtectionPayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<!--<dt class="col-xs-4 p-x-0 controls">
-					<label>Gap</label>
-				</dt>-->
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" 
-                 name="BookingFeePayment" placeholder="$" [value]="transportDetail.BookingFeePayment" 
-                 (blur)="updateInputProperty('BookingFeePayment', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" hide="true">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" hide="true">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" hide="true">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dd class="col-xs-12 p-x-0">
-					<input class="controls full-length" type="number" hide="true">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dd class="col-xs-12 p-x-0">
+	<div class="row m-x-0">
+		<div class="col-xs-6 p-x-1">
+			<h4 class="row hide">Financial Details</h4>
+			<dl>
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Cash Price</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
 						<input class="controls full-length" type="number" 
-									name="ResidualValue" placeholder="$" [value]="transportDetail.ResidualValue" 
-									(blur)="updateInputProperty('ResidualValue', $event)">
-				</dd>
-			</div>
-    </dl>
-  </div>
+									name="cashPrice" placeholder="$" [value]="financialDetail.CashPrice" 
+									(blur)="updateInputProperty('CashPrice', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>On Road Cost</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="onRoadCost" placeholder="$" [value]="financialDetail.CashPrice" 
+									(blur)="updateInputProperty('CashPrice', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Mechanical Warranty</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="mechanicalWarranty" placeholder="$" [value]="financialDetail.MechanicalWarranty" 
+									(blur)="updateInputProperty('MechanicalWarranty', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Gap</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="gap" placeholder="$" [value]="financialDetail.Gap" 
+									(blur)="updateInputProperty('Gap', $event)">
+					</dd>
+				</div>
+				
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Insurance</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="insurance" placeholder="$" [value]="financialDetail.Insurance" 
+									(blur)="updateInputProperty('Insurance', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Loan Protection</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="loanProtection" placeholder="$" [value]="financialDetail.LoanProtection" 
+									(blur)="updateInputProperty('LoanProtection', $event)">
+					</dd>
+				</div>
+	
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Booking Fee</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="bookingFee" placeholder="$" [value]="financialDetail.BookingFee" 
+									(blur)="updateInputProperty('BookingFee', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Broker Fee</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="brokerFee" placeholder="$" [value]="financialDetail.BrokerFee" 
+									(blur)="updateInputProperty('BrokerFee', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Other</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="other" placeholder="$" [value]="financialDetail.Other" 
+									(blur)="updateInputProperty('Other', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Total Gross Cost</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="totalGrossCost" placeholder="$" [value]="calculateGrossCost()">
+					</dd>
+				</div>
+				
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Cash Deposit/Advance Rental</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="cashDeposit" placeholder="$" [value]="financialDetail.CashDepositOrAdvanceRental" 
+									(blur)="updateInputProperty('CashDepositOrAdvanceRental', $event)">
+					</dd>
+				</div>
+				
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Net Trade</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="netTrade" placeholder="$" [value]="financialDetail.NetTrade" 
+									(blur)="updateInputProperty('NetTrade', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Total Deposit</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="totalDeposit" placeholder="$" [value]="calculateTotalDeposit()">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Amount Financed</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="amountFinanced" placeholder="$" [value]="financialDetail.AmountFinanced">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dt class="col-xs-8 p-x-0 controls">
+						<label>Inerest Rate (%)</label>
+					</dt>
+					<dd class="col-xs-4 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="amountFinanced" placeholder="$" [value]="financialDetail.InterestRate">
+					</dd>
+				</div>
+				
+			</dl>
+		</div>
+
+		<div class="col-xs-3 p-x-1">
+			<h4 class="row">Monthly Payments</h4>
+				
+			<dl>
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyCashPayment" placeholder="$" [value]="financialDetail.MonthlyCashPayment" 
+									(blur)="updateInputProperty('MonthlyCashPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyRoadCost" placeholder="$" [value]="financialDetail.MonthlyRoadCost" 
+									(blur)="updateInputProperty('MonthlyRoadCost', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyMechanicalWarranty" placeholder="$" [value]="financialDetail.MonthlyMechanicalWarranty" 
+									(blur)="updateInputProperty('MonthlyMechanicalWarranty', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyGap" placeholder="$" [value]="financialDetail.MonthlyGap" 
+									(blur)="updateInputProperty('MonthlyGap', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyInsurance" placeholder="$" [value]="financialDetail.MonthlyInsurance" 
+									(blur)="updateInputProperty('MonthlyInsurance', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyInsurance" placeholder="$" [value]="financialDetail.MonthlyLoanProtection" 
+									(blur)="updateInputProperty('MonthlyInsurance', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyBookingFee" placeholder="$" [value]="financialDetail.MonthlyBookingFee" 
+									(blur)="updateInputProperty('MonthlyBookingFee', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MonthlyBrokerFee" placeholder="$" [value]="financialDetail.MonthlyBrokerFee" 
+									(blur)="updateInputProperty('MonthlyBrokerFee', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" hidden="true" 
+									name="MonthlyOther" placeholder="$" [value]="financialDetail.MonthlyOther" 
+									(blur)="updateInputProperty('MonthlyOther', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length hide" type="number" hide="true">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length hide" type="number" hide="true">
+					</dd>
+				</div>				
+
+				<div class="row">
+					<dt class="col-xs-12 p-x-0 controls">
+						<label>Residual Value</label>
+					</dt>
+				</div>
+			</dl>
+
+		</div>
+
+		<div class="col-xs-3 p-x-1">
+			<h4 class="row">Payment</h4>
+
+			<dl>
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="CashPayment" placeholder="$" [value]="financialDetail.CashPayment" 
+									(blur)="updateInputProperty('CashPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="RoadCostPayment" placeholder="$" [value]="financialDetail.RoadCostPayment" 
+									(blur)="updateInputProperty('RoadCostPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="MechanicalWarrantyPayment" placeholder="$" [value]="financialDetail.MechanicalWarrantyPayment" 
+									(blur)="updateInputProperty('MechanicalWarrantyPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="GapPayment" placeholder="$" [value]="financialDetail.GapPayment" 
+									(blur)="updateInputProperty('GapPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="InsurancePayment" placeholder="$" [value]="financialDetail.InsurancePayment" 
+									(blur)="updateInputProperty('InsurancePayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="LoanProtectionPayment" placeholder="$" [value]="financialDetail.LoanProtectionPayment" 
+									(blur)="updateInputProperty('LoanProtectionPayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<!--<dt class="col-xs-4 p-x-0 controls">
+						<label>Gap</label>
+					</dt>-->
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length" type="number" 
+									name="BookingFeePayment" placeholder="$" [value]="financialDetail.BookingFeePayment" 
+									(blur)="updateInputProperty('BookingFeePayment', $event)">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length hide" type="number" hide="true">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length hide" type="number" hide="true">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+						<input class="controls full-length hide" type="number" hide="true">
+					</dd>
+				</div>
+
+				<div class="row">
+					<dd class="col-xs-12 p-x-0">
+							<input class="controls full-length" type="number" 
+										name="ResidualValue" placeholder="$" [value]="financialDetail.ResidualValue" 
+										(blur)="updateInputProperty('ResidualValue', $event)">
+					</dd>
+				</div>
+			</dl>
+		</div>
+		
+	</div>
 </div>

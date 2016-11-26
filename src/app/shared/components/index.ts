@@ -14,3 +14,4 @@ export * from './trader-detail';
 export * from './date-picker';
 export * from './personal-occupation';
 export * from './personal-financial-details';
+export * from './transport-financial-details';
