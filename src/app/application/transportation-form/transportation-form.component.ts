@@ -13,6 +13,11 @@ export class TransportationFormComponent implements OnInit {
     this.transportationForm = {
       Vendor: {
 
+      },
+      Marine: {
+        Motor: {},
+        Trailer: {},
+        TradeIn: {}
       }
     };
   }
