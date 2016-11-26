@@ -18,7 +18,8 @@ export class TransportationFormComponent implements OnInit {
         Motor: {},
         Trailer: {},
         TradeIn: {}
-      }
+      },
+      TradeVehicle: { }
     };
   }
 

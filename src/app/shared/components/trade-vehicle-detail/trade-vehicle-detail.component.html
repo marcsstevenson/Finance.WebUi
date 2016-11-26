@@ -1,36 +1,121 @@
 <div class="trade-vehicle-detail">
+
   <div class="">
-			<label>Year</label>
-			<input class="controls" type="text" name="year" placeholder="Year" [(ngModel)]="tradeVehicle.year">
+		<h3 class="row blue-light">Trade In Vehicle Details</h3>
+		<dl>
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Year</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type="number" name="year" placeholder="Year" 
+							   [value]="tradeVehicleDetail.Year" (blur)="updateInputProperty('Year', $event)">
+				</dd>
+			</div>
 
-			<label>Make & Model</label>
-			<input class="controls" type="text" name="makeAndModel" placeholder="Make and Model" [(ngModel)]="tradeVehicle.makeAndModel">
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Make</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type="text" name="make" placeholder="Make" 
+							   [value]="tradeVehicleDetail.Make" (blur)="updateInputProperty('Make', $event)">
+				</dd>
+			</div>
 
-      <label>Registration</label>
-      <input class="controls" type="text" name="Registration" placeholder="Registration No." [(ngModel)]="tradeVehicle.registration">
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Model</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type="text" name="model" placeholder="Model" 
+							   [value]="tradeVehicleDetail.Model" (blur)="updateInputProperty('Model', $event)">
+				</dd>
+			</div>
 
-      <label>Milage</label>
-      <input type="radio" name="KM" value="Yes" checked> KM<br>
-      <input type="radio" name="MLS" value="No"> MLS<br>
-      <input class="controls" type="text" name="milage" placeholder="Milage" [(ngModel)]="tradeVehicle.milage">
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Registration</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type="text" name="registration" placeholder="Registration" 
+							   [value]="tradeVehicleDetail.Registration" (blur)="updateInputProperty('Registration', $event)">
+				</dd>
+			</div>
 
-      <label>Trade Value</label>
-			<input class="controls" type="number" name="tradeValue" placeholder="Dollar Value" [(ngModel)]="tradeVehicle.tradeValue">
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Milage Unit</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input type="radio" class="controls" name="milageUnit" value="KM" 
+								 (change)="updateInputProperty('MilageUnit', $event)"
+								 checked> Kilometers
+					<input type="radio" class="controls" name="milageUnit" value="MLs" 
+								 (change)="updateInputProperty('MilageUnit', $event)"> Miles
+				</dd>
+			</div>
 
-      <label>Settlement To</label>
-      <input class="controls" type="text" name="settlementTo" placeholder="Finance Company Name" [(ngModel)]="tradeVehicle.settlementTo">
-		</div>
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>RegistMilageration</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type="text" name="Milage" placeholder="Milage" 
+							   [value]="tradeVehicleDetail.Milage" (blur)="updateInputProperty('Milage', $event)">
+				</dd>
+			</div>
 
-		<div class="">
-      <label>Balances</label>
-      <input class="controls" type="number" name="balances" placeholder="Dollar Value" [(ngModel)]="tradeVehicle.balances">
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Trade Value</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type=" number" name="TradeInValue" placeholder="$" 
+							   [value]="tradeVehicleDetail.Value" (blur)="updateInputProperty('Value', $event)">
+				</dd>
+			</div>
 
-      <label>Valid To</label>
-      <input class="controls" type="text" name="validTo" placeholder="Dollar Value" [(ngModel)]="tradeVehicle.validTo">
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Settlement To</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type=" number" name="SettlementValue" placeholder="$" 
+							   [value]="tradeVehicleDetail.SettlementValue" (blur)="updateInputProperty('SettlementValue', $event)">
+				</dd>
+			</div>
 
-      <label>Net Trade Value</label>
-      <input class="controls" type="number" name="netTradeValue" placeholder="Dollar Value" [(ngModel)]="tradeVehicle.netTradeValue">
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Balance</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type=" number" name="Balance" placeholder="$" 
+							   [value]="tradeVehicleDetail.Blance" (blur)="updateInputProperty('Balance', $event)">
+				</dd>
+			</div>
 
-		</div>
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Valid To</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type=" number" name="validTo" placeholder="$" 
+							   [value]="tradeVehicleDetail.ValidTo" (blur)="updateInputProperty('ValidTo', $event)">
+				</dd>
+			</div>
 
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Net Trade Value</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input class="controls full-length" type=" number" name="netValue" placeholder="$" 
+							   [value]="tradeVehicleDetail.NetValue" (blur)="updateInputProperty('NetValue', $event)">
+				</dd>
+			</div>
+		</dl>
+
+  </div>  
 </div>

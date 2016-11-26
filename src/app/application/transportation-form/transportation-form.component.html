@@ -27,7 +27,9 @@
                                         (marineDetailChange)="updateTransportationForm($event)">
           </fwui-financing-marine-detail>-->
 
-          
+          <fwui-trade-vehicle-detail [tradeVehicleDetail]="transportationForm.TradeVehicle" 
+                                     (tradeVehicleChange)="updateTransportationForm($event)">
+          </fwui-trade-vehicle-detail>
 
 
           <hr>
