@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import {
          PersonalApplicationComponent,
+         TransportationFormComponent,
          ApplicationService,
          ApplicationRoute }   from './index';
 
@@ -21,10 +22,12 @@ import {
     ApplicationRoute
   ],
   declarations: [
-    PersonalApplicationComponent
+    PersonalApplicationComponent,
+    TransportationFormComponent
   ],
   exports: [
-    PersonalApplicationComponent
+    PersonalApplicationComponent,
+    TransportationFormComponent
   ],
   providers: [ApplicationService]
 })
