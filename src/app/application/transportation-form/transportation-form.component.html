@@ -1,0 +1,29 @@
+<div class="container body-content fwui">
+  <div class="row">
+    <div class="row col-xs-12 center">
+      <div class="row m-x-0">
+        <label class="col-xs-4 p-x-0 controls">Type of transportation: </label>
+        <select name="role" class="col-xs-8 off-card" [(ngModel)]="transportationForm.TransportType">
+            <option value="Vehicle">Vehicle</option>
+            <option value="Marine">Marine - Boat/Jetski</option>
+            <option value="Motorcycle">Motorcycle</option>
+        </select>
+      </div>
+      <!--<div class="row">
+      <dt class="col-xs-4 p-x-0 controls">Type of transportation: </dt>
+      <dd class="col-xs-8">
+        
+      </dd>
+    </div>-->
+
+      <div class="card">
+        <div class="card-block">
+          <fwui-vendor-detail [vendorDetail]="transportationForm.Vendor" 
+                              (vendorDetailChange)="updateTransportationForm($event)">
+          </fwui-vendor-detail>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
