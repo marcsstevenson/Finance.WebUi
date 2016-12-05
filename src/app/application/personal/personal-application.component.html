@@ -12,8 +12,16 @@
 
 	<div class="row">
 		<div class="col-xs-12 center">
+			<div class="row m-x-0">
+				<label class="col-xs-4 p-x-0 controls">Type of Application: </label>
+				<select name="role" class="col-xs-8 off-card" [(ngModel)]="personalApplication.ApplicationType">
+            <option value="Single">Single</option>
+            <option value="Joint">Joint</option>
+            <option value="Coporate">Coporate</option>
+        </select>
+			</div>
 
-			<div class="card application-detail">
+			<!--<div class="card application-detail">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Application Details</h4>
 
@@ -25,91 +33,86 @@
 					</div>
 
 				</div>
-			</div>
+			</div>-->
 
-			<!--if the it is joint, we need one more-->
-			<div class="card personal-detail">
+			<div class="card">
 				<div class="card-block">
-					<h4 class="row col-xs-12">Applicant's Personal Details</h4>
+					<div>
+						<h4 class="row col-xs-12 blue-light">Applicant's Personal Details</h4>
 
-					<fwui-personal-detail 
-						[personalDetail]="personalApplication.applicant" 
-						(personalDetailChange)="updateApplicantDetails($event)">
-					</fwui-personal-detail>
+						<fwui-personal-detail [personalDetail]="personalApplication.Applicant" (personalDetailChange)="updateApplicantDetails($event)">
+						</fwui-personal-detail>
+					</div>
+					<hr>
 
-				</div>
+					<div>
+						<h4 class="row col-xs-12 blue-light">Spouse's Personal Details</h4>
 
-			</div>
+						<fwui-personal-detail [personalDetail]="personalApplication.Spouse" (personalDetailChange)="updateApplicantDetails($event)">
+						</fwui-personal-detail>
+					</div>
 
-			<div class="card personal-detail">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Spouse's Personal Details</h4>
+					<hr>
 
-				</div>
-			</div>
+					<div class="address">
+						<h4 class="row col-xs-12 blue-light">Address Details</h4>
 
-
-			<div class="card current address">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Address Details</h4>
-
-					<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Residential Type: (select)</dt>
-							<dd class="col-xs-8">
-								<select name="role" class="full-length" [(ngModel)]="personalApplication.CurrentAddressType">
+						<dl>
+							<div class="row">
+								<dt class="col-xs-4 p-x-0 controls">Residential Type: (select)</dt>
+								<dd class="col-xs-8">
+									<select name="role" class="full-length" [(ngModel)]="personalApplication.CurrentAddressType">
 									<option value="Own Home">Own Home</option>
 									<option value="Own Home">Renting</option>
 									<option value="Own Home">Boarding</option>
 									<option value="Own Home">Family House</option>
 								</select>
-							</dd>
-						</div>
-					</dl>
-      
-					<fwui-address-finder></fwui-address-finder>
+								</dd>
+							</div>
+						</dl>
 
-					<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Current Home: (select)</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
-								<input class="controls" placeholder="Other Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
+						<fwui-address-finder></fwui-address-finder>
 
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Address Detail</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
-								<input class="controls" placeholder="Other Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
+						<dl>
+							<div class="row">
+								<dt class="col-xs-4 p-x-0 controls">Current Home: (select)</dt>
+								<dd class="col-xs-8">
+									<input class="controls" placeholder="Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
+									<input class="controls" placeholder="Other Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
+								</dd>
+							</div>
 
-					</dl>
-				</div>
-			</div>
+							<div class="row">
+								<dt class="col-xs-4 p-x-0 controls">Address Detail</dt>
+								<dd class="col-xs-8">
+									<input class="controls" placeholder="Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
+									<input class="controls" placeholder="Other Home Type" (ngModelChange)="bankDetailsChanged = true" type="text">
+								</dd>
+							</div>
 
-			<div class="card previous address">
+						</dl>
+					</div>
+
+					<!--<div class="card previous address">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Applicant's Previous Address</h4>
 
 				</div>
-			</div>
+			</div>-->
 
-			<div class="card spouse current address">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Spouse's Previous Address</h4>
+					<div class="card spouse current address">
+						<div class="card-block">
+							<h4 class="row col-xs-12">Spouse's Previous Address</h4>
 
-				</div>
-			</div>
+						</div>
+					</div>
 
-			<div class="card occupation">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Applicant's Occupation Details</h4>
+					<div class="occupation">
 
-					<fwui-personal-occupation></fwui-personal-occupation>
-					<!--<dl>
+						<h4 class="row col-xs-12">Applicant's Occupation Details</h4>
+
+						<fwui-personal-occupation></fwui-personal-occupation>
+						<!--<dl>
 						<div class="row">
 							<dt class="col-xs-4 p-x-0 controls">Current Employer</dt>
 							<dd class="col-xs-8">
@@ -153,49 +156,49 @@
 						</div>
 					</dl>-->
 
-				</div>
-			</div>
 
-			<div class="card occupation">
+					</div>
+
+					<!--<div class="card occupation">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Spouse's Occupation Details</h4>
 
 				</div>
-			</div>
-
-			<!--<div class="card references">
-				<div class="card-block col-md-6">
-					<h4 class="row col-xs-12">References</h4>
-					<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Name" [(ngModel)]=personalApplication.Reference.Name type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Relationship</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Relationship" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Phone</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Phone" (ngModelChange)="bankDetailsChanged = true" type="text">
-							</dd>
-						</div>
-
-						Address
-
-					</dl>
-
-				</div>
 			</div>-->
 
-			<!--<div class="card acount references">
+					<!--<div class="references">
+						<div class="card-block col-md-6">
+							<h4 class="row col-xs-12">References</h4>
+							<dl>
+								<div class="row">
+									<dt class="col-xs-4 p-x-0 controls">Name</dt>
+									<dd class="col-xs-8">
+										<input class="controls" placeholder="Name" [value]="personalApplication.Reference.Name" type="text">
+									</dd>
+								</div>
+
+								<div class="row">
+									<dt class="col-xs-4 p-x-0 controls">Relationship</dt>
+									<dd class="col-xs-8">
+										<input class="controls" placeholder="Relationship" [value]="personalApplication.Reference.Relationship" type="text">
+									</dd>
+								</div>
+
+								<div class="row">
+									<dt class="col-xs-4 p-x-0 controls">Phone</dt>
+									<dd class="col-xs-8">
+										<input class="controls" placeholder="Phone" [value]="personalApplication.Reference.Phone" type="text">
+									</dd>
+								</div>
+
+							
+
+							</dl>
+
+						</div>
+					</div>-->
+
+					<!--<div class="card acount references">
 				<div class="card-block">
 					<h4 class="row col-xs-12">Account References</h4>
 
@@ -226,217 +229,12 @@
 				</div>
 			</div>-->
 
-			<div class="card fiancial-detail">
-				<div class="card-block">
-					<!--<div class="assets col-xs-6">
-						<h4 class="row col-xs-12">Assets</h4>
-						<dl>
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Home</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
+					<fwui-personal-financial-details [assets]="personalApplication.Assets" [liabilities]="personalApplication.Liabilities" [income]="personalApplication.Income"
+						[expenses]="personalApplication.Expenses">
+					</fwui-personal-financial-details>
 
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Home Contents</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Car</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Motorcycle</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Boat</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Bank</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Investments</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Kiwisaver</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Other</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Total</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-						</dl>
-
-						<h4 class="row col-xs-12">Income (Monthly)</h4>
-						<dl>
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Applicant's Take Home Pay</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Applicant Secondary Income</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Spouse Take Home Pay</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Spouse Secondary Income</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Rental Income 1</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Rental Income 2</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Government Subsidy</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Other</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Total</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-						</dl>
-
-					</div>
-
-					<div class="liabilities col-xs-6">
-						
-
-
-						<h4 class="row col-xs-12">Expenses (Monthly)</h4>
-            <dl>
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Mortgage / Rent Payments</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Hire Purchase</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Bank / Personal Loan</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Credit Cards</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Rates / Phone / Power</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-              <div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Other</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-							<div class="row">
-								<dt class="col-xs-4 p-x-0 controls">Total</dt>
-								<dd class="col-xs-8">
-									<input class="controls" placeholder="Dollar Value" (ngModelChange)="bankDetailsChanged = true" type="text">
-								</dd>
-							</div>
-
-						</dl>
-
-					</div>-->
 				</div>
 			</div>
-
 		</div>
 
 	</div>

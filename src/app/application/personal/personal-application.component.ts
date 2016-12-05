@@ -55,7 +55,12 @@ export class PersonalApplicationComponent implements OnInit {
         PersonalEmail: '',
         BusinessEmail: '',
         LicenceVersion: '',
-        LicenceNumber: ''
+        LicenceNumber: '',
+        Reference: {
+          Name: '',
+          Relationship: '',
+          Phone: ''
+        }
 
       }
     };

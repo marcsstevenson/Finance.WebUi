@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -8,6 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
 
+  @Input()
+  assets;
+
+  @Output()
+  assetsChange = new EventEmitter();
+
+  @Input()
+  liabilities;
+
+  @Output()
+  liabilitiesChange = new EventEmitter();
+
+  @Input()
+  income;
+
+  @Output()
+  incomeChange = new EventEmitter();
+
+  @Input()
+  expenses;
+
+  @Output()
+  expensesChange = new EventEmitter();
+
   private NetWorth = 0;
   private DisposableIncome = 0;
 
@@ -16,4 +40,35 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateAssetsInputProperty(property, $event) {
+    this.assets[property] = $event.target.value;
+    console.log('I am sending update to parent');
+    this.assetsChange.emit(
+      this.assets
+    );
+  }
+
+  updateIncomeInputProperty(property, $event) {
+    this.income[property] = $event.target.value;
+    console.log('I am sending update to parent');
+    this.incomeChange.emit(
+      this.income
+    );
+  }
+
+  updateLiabilitiesInputProperty(property, $event) {
+    this.income[property] = $event.target.value;
+    console.log('I am sending update to parent');
+    this.incomeChange.emit(
+      this.income
+    );
+  }
+
+  updateExpensesInputProperty(property, $event) {
+    this.income[property] = $event.target.value;
+    console.log('I am sending update to parent');
+    this.incomeChange.emit(
+      this.income
+    );
+  }
 }
