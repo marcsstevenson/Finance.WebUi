@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {
-  TableOptions,
-  SelectionType,
-  TableColumn,
-  ColumnMode
-} from 'angular2-data-table';
+// import {
+//   TableOptions,
+//   SelectionType,
+//   TableColumn,
+//   ColumnMode
+// } from 'angular2-data-table';
 
 import { DealService } from '../deal.service';
 
 const SORT_ASC = 'asc';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-deals',
-  templateUrl: 'deals.component.html',
-  styleUrls: ['deals.component.css'],
+  templateUrl: './deals.component.html',
+  styleUrls: ['./deals.component.scss'],
   providers: [DealService]
 })
 export class DealsComponent implements OnInit {

@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../shared/services/authentication.service';
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.css'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   providers: [AuthenticationService]
 })
 export class LoginComponent implements OnInit {

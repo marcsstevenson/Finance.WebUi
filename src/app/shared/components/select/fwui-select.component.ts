@@ -11,10 +11,10 @@ export class DropDownListValue {
 }
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-select',
-  templateUrl: 'fwui-select.component.html',
-  styleUrls: ['fwui-select.component.css']
+  templateUrl: './fwui-select.component.html',
+  styleUrls: ['./fwui-select.component.scss']
 })
 export class FinanceWebUiSelectComponent implements OnInit {
   @Input()

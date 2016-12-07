@@ -9,10 +9,10 @@ import * as moment from 'moment';
 declare var tinymce: any;
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-deal-detail',
-  templateUrl: 'deal-detail.component.html',
-  styleUrls: ['deal-detail.component.css'],
+  templateUrl: './deal-detail.component.html',
+  styleUrls: ['./deal-detail.component.scss'],
   providers: [DealService]
 })
 export class DealDetailComponent implements OnInit {

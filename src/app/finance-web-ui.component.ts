@@ -22,10 +22,10 @@ import {
 // MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, 
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'finance-web-ui-app',
-  templateUrl: 'finance-web-ui.component.html',
-  styleUrls: ['finance-web-ui.component.css'],
+  templateUrl: './finance-web-ui.component.html',
+  styleUrls: ['./finance-web-ui.component.scss'],
   // directives: [
   //     FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
   //     FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,

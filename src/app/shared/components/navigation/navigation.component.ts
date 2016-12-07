@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/index';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-app-navigation',
-  templateUrl: 'navigation.component.html',
-  styleUrls: ['navigation.component.css'],
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.scss'],
   // directives: [ROUTER_DIRECTIVES],
   providers: [ AuthenticationService]
 })

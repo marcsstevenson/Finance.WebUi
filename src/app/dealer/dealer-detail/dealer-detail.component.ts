@@ -8,10 +8,10 @@ import { DealershipData } from '../mockup-data';
 
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-dealer-detail',
-  templateUrl: 'dealer-detail.component.html',
-  styleUrls: ['dealer-detail.component.css'],
+  templateUrl: './dealer-detail.component.html',
+  styleUrls: ['./dealer-detail.component.scss'],
   providers: [DealerService]
 })
 export class DealerDetailComponent implements OnInit, OnDestroy {

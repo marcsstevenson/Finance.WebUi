@@ -1,12 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
-import {
-  TableOptions,
-  SelectionType,
-  TableColumn,
-  ColumnMode
-} from 'angular2-data-table';
+// import {
+//   TableOptions,
+//   SelectionType,
+//   TableColumn,
+//   ColumnMode
+// } from 'angular2-data-table';
 
 import { DealershipData } from '../mockup-data';
 import { DealerService } from '../dealer.service';
@@ -14,10 +14,10 @@ import { DealerService } from '../dealer.service';
 const SORT_ASC = 'asc';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-dealers',
-  templateUrl: 'dealers.component.html',
-  styleUrls: ['dealers.component.css'],
+  templateUrl: './dealers.component.html',
+  styleUrls: ['./dealers.component.scss'],
   providers: [DealerService]
 })
 export class DealersComponent implements OnInit {

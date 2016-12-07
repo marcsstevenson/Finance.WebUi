@@ -1,21 +1,19 @@
+import './polyfills.ts';
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from '@angular/core';
+import { environment } from './environments/environment';
 import { AppModule } from './app/app.module';
+
+if (environment.production) {
+  enableProdMode();
+}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-// import { bootstrap } from '@angular/platform-browser-dynamic';
-// import { enableProdMode } from '@angular/core';
-// import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
-// import { environment, FinanceWebUiAppComponent } from './app/';
-// import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { AppModule } from './app/app.module';
 
-// if (environment.production) {
-//   enableProdMode();
-// }
+// platformBrowserDynamic().bootstrapModule(AppModule);
 
-// bootstrap(FinanceWebUiAppComponent, [
-//   disableDeprecatedForms(),
-//   provideForms(),
-//   APP_ROUTER_PROVIDERS
-// ]);

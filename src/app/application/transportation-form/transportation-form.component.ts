@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-transportation-form',
-  templateUrl: 'transportation-form.component.html',
-  styleUrls: ['transportation-form.component.css']
+  templateUrl: './transportation-form.component.html',
+  styleUrls: ['./transportation-form.component.scss']
 })
 export class TransportationFormComponent implements OnInit {
 

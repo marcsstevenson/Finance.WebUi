@@ -8,10 +8,10 @@ import { GlobalVarables } from '../../global-variables';
 import * as moment from 'moment';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-finance-company-detail',
-  templateUrl: 'finance-company-detail.component.html',
-  styleUrls: ['finance-company-detail.component.css'],
+  templateUrl: './finance-company-detail.component.html',
+  styleUrls: ['./finance-company-detail.component.scss'],
   providers: [FinanceCompanyService]
 })
 export class FinanceCompanyDetailComponent implements OnInit {

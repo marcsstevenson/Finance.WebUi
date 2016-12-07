@@ -14,10 +14,10 @@ import * as moment from 'moment';
 declare var tinymce: any;
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-customer-detail',
-  templateUrl: 'customer-detail.component.html',
-  styleUrls: ['customer-detail.component.css'],
+  templateUrl: './customer-detail.component.html',
+  styleUrls: ['./customer-detail.component.scss'],
   // directives: [CustomerDealsComponent, /*TinyMceValueAccessorDirective*/],
   providers: [CustomerService]
 })

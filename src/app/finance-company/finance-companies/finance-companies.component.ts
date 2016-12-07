@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {
-  TableOptions,
-  SelectionType,
-  TableColumn,
-  ColumnMode
-} from 'angular2-data-table';
+// import {
+//   TableOptions,
+//   SelectionType,
+//   TableColumn,
+//   ColumnMode
+// } from 'angular2-data-table';
 
 import { FinanceCompanyService } from '../finance-company.service';
 
 const SORT_ASC = 'asc';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'app-finance-companies',
-  templateUrl: 'finance-companies.component.html',
-  styleUrls: ['finance-companies.component.css'],
+  templateUrl: './finance-companies.component.html',
+  styleUrls: ['./finance-companies.component.scss'],
   providers: [ FinanceCompanyService ]
 })
 

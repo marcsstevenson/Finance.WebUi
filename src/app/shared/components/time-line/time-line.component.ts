@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-time-line',
-  templateUrl: 'time-line.component.html',
-  styleUrls: ['time-line.component.css']
+  templateUrl: './time-line.component.html',
+  styleUrls: ['./time-line.component.scss']
 })
 export class FinanceWebUiTimeLineComponent implements OnInit {
 

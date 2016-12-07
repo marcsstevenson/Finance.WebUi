@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './index';
@@ -9,5 +10,5 @@ const loginRoute: Routes = [
     }
 ];
 
-export const LoginRoute = RouterModule.forChild(loginRoute);
+export const LoginRoute: ModuleWithProviders = RouterModule.forChild(loginRoute);
 

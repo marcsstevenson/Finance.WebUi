@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-transport-financial-details',
-  templateUrl: 'transport-financial-details.component.html',
-  styleUrls: ['transport-financial-details.component.css']
+  templateUrl: './transport-financial-details.component.html',
+  styleUrls: ['./transport-financial-details.component.scss']
 })
 export class FinanceWebUiTransportFinancialDetailsComponent implements OnInit {
 

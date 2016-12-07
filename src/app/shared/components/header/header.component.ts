@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../services/index';
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-app-header',
-  templateUrl: 'header.component.html',
-  styleUrls: ['header.component.css'],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
   providers: [ AuthenticationService]
 })
 export class FinanceWebUiHeaderComponent implements OnInit {

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-date-picker',
-  templateUrl: 'date-picker.component.html',
-  styleUrls: ['date-picker.component.css']
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.scss']
 })
 export class FinanceWebUiDatePickerComponent implements OnInit {
 

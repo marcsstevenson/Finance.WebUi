@@ -20,10 +20,10 @@ export class AddressDetail {
 }
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-address-finder',
-  templateUrl: 'address-finder.component.html',
-  styleUrls: ['address-finder.component.css']
+  templateUrl: './address-finder.component.html',
+  styleUrls: ['./address-finder.component.scss']
 })
 export class FinanceWebUiAddressFinderComponent implements OnInit {
 

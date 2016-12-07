@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-customer-deals',
-  templateUrl: 'customer-deals.component.html',
-  styleUrls: ['customer-deals.component.css']
+  templateUrl: './customer-deals.component.html',
+  styleUrls: ['./customer-deals.component.scss']
 })
 export class CustomerDealsComponent implements OnInit {
 

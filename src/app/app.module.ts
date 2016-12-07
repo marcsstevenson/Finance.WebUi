@@ -18,7 +18,7 @@ import { routing,
 
 import { CustomerModule } from './customer/customer.module';
 import { DealModule } from './deal/deal.module';
-import { DealerModule } from './dealer/dealer.module';
+import { PfDealerModule } from './dealer/dealer.module';
 import { FinanceCompanyModule } from './finance-company/finance-company.module';
 import { HomeModule } from './home/home.module';
 import { ApplicationModule } from './application/application.module';
@@ -34,7 +34,7 @@ import { LoginModule } from './login/login.module';
     LoginModule,
     CustomerModule,
     DealModule,
-    DealerModule,
+    PfDealerModule,
     HomeModule,
     ApplicationModule,
     FinanceCompanyModule,

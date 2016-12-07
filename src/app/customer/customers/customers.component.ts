@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {
-  TableOptions,
-  SelectionType,
-  TableColumn,
-  ColumnMode
-} from 'angular2-data-table';
+// import {
+//   TableOptions,
+//   SelectionType,
+//   TableColumn,
+//   ColumnMode
+// } from 'angular2-data-table';
 
 
 import { CustomersData } from '../mockup-data';
@@ -15,10 +15,10 @@ import { CustomerService } from '../customer.service';
 const SORT_ASC = 'asc';
 
 @Component({
-  moduleId: module.id,
+  //moduleId: module.id,
   selector: 'fwui-customers',
-  templateUrl: 'customers.component.html',
-  styleUrls: ['customers.component.css'],
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss'],
   providers: [ CustomerService ]
 })
 export class CustomersComponent implements OnInit {
