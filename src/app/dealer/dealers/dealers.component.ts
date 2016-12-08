@@ -27,26 +27,29 @@ export class DealersComponent implements OnInit {
   public searchQuery: string;
 
   private pageSize = 5;
+  private offset = 0;
+  private count = 0;
+  private limit = 10;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
   private currentlyOrderBy = 'Name';
   private sortAsc = true;
 
-  public options = new TableOptions({
-    columnMode: ColumnMode.force,
-    headerHeight: 42,
-    footerHeight: 50,
-    limit: this.pageSize,
-    rowHeight: 'auto',
-    selectionType: SelectionType.multi,
-    columns: [
-      new TableColumn({ prop: 'Name', name: 'Dealer Name', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'ContactName', name: 'Contact Name', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' , comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'Email', name: 'Email' , comparator: this.sorter.bind(this) })
-    ]
-  });
+  // public options = new TableOptions({
+  //   columnMode: ColumnMode.force,
+  //   headerHeight: 42,
+  //   footerHeight: 50,
+  //   limit: this.pageSize,
+  //   rowHeight: 'auto',
+  //   selectionType: SelectionType.multi,
+  //   columns: [
+  //     new TableColumn({ prop: 'Name', name: 'Dealer Name', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'ContactName', name: 'Contact Name', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' , comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'Email', name: 'Email' , comparator: this.sorter.bind(this) })
+  //   ]
+  // });
 
 
   private data: Array<any> = DealershipData;
@@ -129,8 +132,8 @@ export class DealersComponent implements OnInit {
 
     this.searchDealershipByOjb(searchObj).then((response) => {
       // this.rows = response.SearchResults;
-      this.options.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.options.count, {});
+      this.count = response.TotalResultCount;
+      this.rows = this.createEmtpyArray(this.count, {});
       this.populateCurrentTablePage(response);
     });
   }
@@ -150,7 +153,7 @@ export class DealersComponent implements OnInit {
   }
 
   private populateCurrentTablePage (data) {
-      let start = this.options.offset * this.options.limit;
+      let start = this.offset * this.limit;
       let end = start + data.SearchResults.length;
 
       // update the current page record

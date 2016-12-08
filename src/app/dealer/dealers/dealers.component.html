@@ -25,13 +25,34 @@
     </div>
   </div>
 
-  <datatable
+
+
+    <swui-datatable
+        class="material"
+        [rows]="rows"
+        [columns]="[{name:'Deal Number'},{name:'Deal Status'},{name:'Customer Name'},{name:'Date Created'}]"
+        [columnMode]="'force'"
+        [headerHeight]="42"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="count"
+        [offset]="offset"
+        [limit]="pageSize"
+        [loadingIndicator]="loading"
+        (select)='onSelect($event)'
+        (page)='onPage($event)'>
+  </swui-datatable>
+<!--(sort)="onSort($event)"-->
+
+
+  <!--<datatable
     class='material'
     [rows]='rows'
     [options]='options'
     (onSelectionChange)='onSelectionChange($event)'
     (onPageChange)='onPageChange($event)'>
-  </datatable>
+  </datatable>-->
 
   <!--<table class="table table-striped">
     <thead>

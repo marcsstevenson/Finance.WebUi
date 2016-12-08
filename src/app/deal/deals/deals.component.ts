@@ -26,25 +26,28 @@ export class DealsComponent implements OnInit {
   public searchQuery: string;
 
   private pageSize = 5;
+  private offset = 0;
+  private count = 0;
+  private limit = 10;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
   private currentlyOrderBy = 'Number';
   private sortAsc = true;
 
-  public options = new TableOptions({
-    columnMode: ColumnMode.force,
-    headerHeight: 42,
-    footerHeight: 50,
-    limit: this.pageSize,
-    rowHeight: 'auto',
-    selectionType: SelectionType.multi,
-    columns: [
-      new TableColumn({ prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) }),
-      new TableColumn({ prop: 'DateCreated', name: 'Date Created' , comparator: this.sorter.bind(this) })
-    ]
-  });
+  // public options = new TableOptions({
+  //   columnMode: ColumnMode.force,
+  //   headerHeight: 42,
+  //   footerHeight: 50,
+  //   limit: this.pageSize,
+  //   rowHeight: 'auto',
+  //   selectionType: SelectionType.multi,
+  //   columns: [
+  //     new TableColumn({ prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) }),
+  //     new TableColumn({ prop: 'DateCreated', name: 'Date Created' , comparator: this.sorter.bind(this) })
+  //   ]
+  // });
 
 
   constructor(
@@ -71,7 +74,7 @@ export class DealsComponent implements OnInit {
     this.router.navigate(['/deal', 'new']);
   }
 
-  public sorter (rows, dirs, sortedBy?) {
+  public onSort (rows, dirs, sortedBy?) {
     console.log('sorting server side: ', rows, dirs);
 
     this.currentlyOrderBy = sortedBy || dirs[0].prop;
@@ -100,11 +103,11 @@ export class DealsComponent implements OnInit {
     this.searchDealByOjb(searchObj);
   }
 
-  public onSelectionChange(selected) {
+  public onSelect(selected) {
     this.router.navigate(['/deal', selected[0].Id]);
   }
 
-  public onPageChange(pageOptions) {
+  public onPage(pageOptions) {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
@@ -127,8 +130,8 @@ export class DealsComponent implements OnInit {
 
     this.searchDealByOjb(searchObj).then((response) => {
       // this.rows = response.SearchResults;
-      this.options.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.options.count, {});
+      this.count = response.TotalResultCount;
+      this.rows = this.createEmtpyArray(this.count, {});
       this.populateCurrentTablePage(response);
     });
   }
@@ -148,7 +151,7 @@ export class DealsComponent implements OnInit {
   }
 
   private populateCurrentTablePage (data) {
-      let start = this.options.offset * this.options.limit;
+      let start = this.offset * this.limit;
       let end = start + data.SearchResults.length;
 
       // update the current page record
