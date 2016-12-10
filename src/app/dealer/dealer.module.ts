@@ -22,4 +22,4 @@ import { DealersComponent,
   declarations: [ DealersComponent, DealerDetailComponent ],
   providers: [ DealerService ],
 })
-export class PfDealerModule { }
+export class DealerModule { }

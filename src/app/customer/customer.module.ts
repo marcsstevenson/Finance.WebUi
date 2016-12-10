@@ -9,7 +9,7 @@ import { CustomersComponent,
          CustomerDetailComponent,
          CustomerDealsComponent,
          CustomerService,
-         CustomerRoute }   from './index';
+         CustomerRoutingModule }   from './index';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { CustomersComponent,
     FormsModule,
     SharedModule,
     Angular2DataTableModule,
-    CustomerRoute
+    CustomerRoutingModule
   ],
   declarations: [
     CustomersComponent,

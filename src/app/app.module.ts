@@ -13,16 +13,16 @@ import {
   FinanceWebUiNavigationComponent
 } from './shared/components/index';
 
-import { routing,
-         appRoutingProviders } from './app.routes';
+import { AppRoutingModule,
+         appRoutingProviders } from './app-routing.module';
 
 import { CustomerModule } from './customer/customer.module';
-import { DealModule } from './deal/deal.module';
-import { PfDealerModule } from './dealer/dealer.module';
-import { FinanceCompanyModule } from './finance-company/finance-company.module';
+// import { DealModule } from './deal/deal.module';
+// import { DealerModule } from './dealer/dealer.module';
+// import { FinanceCompanyModule } from './finance-company/finance-company.module';
 import { HomeModule } from './home/home.module';
-import { ApplicationModule } from './application/application.module';
-import { LoginModule } from './login/login.module';
+// import { ApplicationModule } from './application/application.module';
+// import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -31,14 +31,14 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     HttpModule,
     JsonpModule,
-    LoginModule,
+    // LoginModule,
     CustomerModule,
-    DealModule,
-    PfDealerModule,
+    // DealModule,
+    // DealerModule,
     HomeModule,
-    ApplicationModule,
-    FinanceCompanyModule,
-    routing
+    // ApplicationModule,
+    // FinanceCompanyModule,
+    AppRoutingModule
     ],
   providers: [
     appRoutingProviders

@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { ROUTER_DIRECTIVES } from '@angular/router';
-// import { HTTP_PROVIDERS } from '@angular/http';
-// import { CORE_DIRECTIVES } from '@angular/common';
-// import { FORM_DIRECTIVES} from '@angular/forms';
-
 import * as moment from 'moment';
-// import { BUTTON_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
-
-// import {AlertComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 
 // import {
 //   FinanceWebUiHeaderComponent,
@@ -22,21 +14,16 @@ import {
 // MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, 
 
 @Component({
-  //moduleId: module.id,
   selector: 'finance-web-ui-app',
   templateUrl: './finance-web-ui.component.html',
   styleUrls: ['./finance-web-ui.component.scss'],
-  // directives: [
-  //     FinanceWebUiHeaderComponent, FinanceWebUiFooterComponent,
-  //     FinanceWebUiNavigationComponent, FinanceWebUiTimeLineComponent,
-      // ROUTER_DIRECTIVES, TinyEditor
-  // ],
   // providers: [ HTTP_PROVIDERS ]
-  // directives: [ BUTTON_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 
-// BUTTON_DIRECTIVES,
 export class FinanceWebUiAppComponent implements OnInit {
+
+  // console.log("in finance app now");
+
 
   public singleModel:string = '1';
 
