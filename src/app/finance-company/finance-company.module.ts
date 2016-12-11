@@ -9,7 +9,7 @@ import {
   FinanceCompaniesComponent,
   FinanceCompanyDetailComponent,
   FinanceCompanyService,
-  FinanceCompanyRoute
+  FinanceCompanyRoutingModule
  }   from './index';
 
 @NgModule({
@@ -18,7 +18,7 @@ import {
     FormsModule,
     SharedModule,
     Angular2DataTableModule,
-    FinanceCompanyRoute
+    FinanceCompanyRoutingModule
   ],
   exports: [
     FinanceCompaniesComponent,

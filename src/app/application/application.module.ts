@@ -10,7 +10,7 @@ import {
          PersonalApplicationComponent,
          TransportationFormComponent,
          ApplicationService,
-         ApplicationRoute }   from './index';
+         ApplicationRoutingModule }   from './index';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import {
     SharedModule,
     Angular2DataTableModule,
     DatepickerModule,
-    ApplicationRoute
+    ApplicationRoutingModule
   ],
   declarations: [
     PersonalApplicationComponent,

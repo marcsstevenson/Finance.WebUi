@@ -17,12 +17,12 @@ import { AppRoutingModule,
          appRoutingProviders } from './app-routing.module';
 
 import { CustomerModule } from './customer/customer.module';
-// import { DealModule } from './deal/deal.module';
-// import { DealerModule } from './dealer/dealer.module';
-// import { FinanceCompanyModule } from './finance-company/finance-company.module';
+import { DealModule } from './deal/deal.module';
+import { DealerModule } from './dealer/dealer.module';
+import { FinanceCompanyModule } from './finance-company/finance-company.module';
 import { HomeModule } from './home/home.module';
-// import { ApplicationModule } from './application/application.module';
-// import { LoginModule } from './login/login.module';
+import { ApplicationModule } from './application/application.module';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -31,13 +31,13 @@ import { HomeModule } from './home/home.module';
     FormsModule,
     HttpModule,
     JsonpModule,
-    // LoginModule,
+    LoginModule,
     CustomerModule,
-    // DealModule,
-    // DealerModule,
+    DealModule,
+    DealerModule,
     HomeModule,
-    // ApplicationModule,
-    // FinanceCompanyModule,
+    ApplicationModule,
+    FinanceCompanyModule,
     AppRoutingModule
     ],
   providers: [
@@ -53,4 +53,4 @@ import { HomeModule } from './home/home.module';
   ],
   bootstrap: [FinanceWebUiAppComponent]
 })
-export class AppModule {}
+export class AppModule { }

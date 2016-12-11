@@ -1,13 +1,13 @@
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DealsComponent } from './index';
+import { DealsComponent } from './deals/deals.component';
 
-import { DealDetailComponent } from './index';
+import { DealDetailComponent } from './deal-detail/deal-detail.component';
 
 import { AuthorisationService } from '../shared/services/index';
 
-const dealRoute: Routes = [
+const dealRoutes: Routes = [
     {
         path: 'deal',
         component: DealsComponent,
@@ -20,4 +20,13 @@ const dealRoute: Routes = [
     }
 ];
 
-export const DealRoute: ModuleWithProviders = RouterModule.forChild(dealRoute);
+@NgModule({
+    imports: [
+        RouterModule.forChild(dealRoutes)
+    ],
+    exports: [
+        RouterModule
+    ],
+})
+
+export class DealRoutingModule { }

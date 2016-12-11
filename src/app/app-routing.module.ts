@@ -26,5 +26,3 @@ export const appRoutingProviders: any[] = [
 })
 export class AppRoutingModule { }
 
-
-// export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

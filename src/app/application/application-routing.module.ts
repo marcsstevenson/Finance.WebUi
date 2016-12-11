@@ -1,14 +1,12 @@
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {
-         PersonalApplicationComponent,
-         TransportationFormComponent
-        } from './index';
+import { PersonalApplicationComponent } from './personal/personal-application.component';
+import { TransportationFormComponent } from './transportation-form/transportation-form.component';
 
 import { AuthorisationService } from '../shared/services/index';
 
-const applicationRoute: Routes = [
+const applicationRoutes: Routes = [
     {
         path: 'personal-application',
         component: PersonalApplicationComponent,
@@ -32,4 +30,13 @@ const applicationRoute: Routes = [
 
 ];
 
-export const ApplicationRoute: ModuleWithProviders = RouterModule.forChild(applicationRoute);
+@NgModule({
+    imports: [
+        RouterModule.forChild(applicationRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class ApplicationRoutingModule { }
+

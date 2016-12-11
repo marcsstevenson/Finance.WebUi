@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DealsComponent,
          DealDetailComponent,
          DealService,
-         DealRoute }   from './index';
+         DealRoutingModule }   from './index';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { DealsComponent,
     FormsModule,
     SharedModule,
     Angular2DataTableModule,
-    DealRoute
+    DealRoutingModule
     ],
   declarations: [
     DealsComponent,
