@@ -19,13 +19,14 @@ const SORT_ASC = 'asc';
   selector: 'fwui-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
-  providers: [ CustomerService ]
+  providers: [CustomerService]
 })
 export class CustomersComponent implements OnInit {
 
   public rows: Array<any> = [];
   public selections = [];
   public searchQuery: string;
+  public selected = {};
 
   private pageSize = 5;
   private offset = 0;
@@ -37,6 +38,7 @@ export class CustomersComponent implements OnInit {
   private sortAsc = true;
 
 
+
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
   //   headerHeight: 42,
@@ -44,19 +46,21 @@ export class CustomersComponent implements OnInit {
   //   limit: this.pageSize,
   //   rowHeight: 'auto',
   //   selectionType: SelectionType.multi,
-  //   columns: [
-  //     new TableColumn({ prop: 'Number', name: 'Customer Number', comparator: this.sorter.bind(this) }),
-  //     new TableColumn({ prop: 'FirstName', name: 'First Name', comparator: this.sortedByName.bind(this) }),
-  //     new TableColumn({ prop: 'LastName', name: 'Last Name' , comparator: this.sortedByName.bind(this) }),
-  //     new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorterByCell.bind(this) }),
-  //     new TableColumn({ prop: 'DriversLicenceNumber', name: 'Drivers Licence', comparator: this.sorter.bind(this) }),
-  //   ]
+
   // });
+
+  columns = [
+    { prop: 'Number', name: 'Customer Number', comparator: this.sorter.bind(this) },
+    { prop: 'FirstName', name: 'First Name', comparator: this.sorter.bind(this) },
+    { prop: 'LastName', name: 'Last Name', comparator: this.sorter.bind(this) },
+    { prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) },
+    { prop: 'DriversLicenceNumber', name: 'Drivers Licence', comparator: this.sorter.bind(this) },
+  ]
 
   constructor(
     private router: Router,
     private _customerService: CustomerService
-    ) {
+  ) {
   }
 
   ngOnInit() {
@@ -65,15 +69,18 @@ export class CustomersComponent implements OnInit {
     this.loadCustomersBySearch();
   }
 
-  addCustomer () {
+  addCustomer() {
     this.router.navigate(['/customer', 'new']);
   }
 
-  sorter (rows, dirs, sortedBy?) {
-    console.log('sorting server side: ', rows, dirs);
+  sorter(event) {
+    let sort = event.sorts[0]
+    let dir = sort.dir;
+    let sortedBy = sort.prop
+    // console.log('sorting server side: ', rows, dirs);
 
-    this.currentlyOrderBy = sortedBy || dirs[0].prop;
-    this.sortAsc = dirs[0].dir === SORT_ASC;
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
 
     let searchObj = {
       SearchTerm: this.searchQuery,
@@ -87,15 +94,15 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  sortedByName (rows, dirs) {
-    this.sorter(rows, dirs, 'Name');
-  }
+  // sortedByName (rows, dirs) {
+  //   this.sorter(rows, dirs, 'Name');
+  // }
 
-  sorterByCell (rows, dirs) {
-    this.sorter(rows, dirs, 'Cell');
-  }
+  // sorterByCell (rows, dirs) {
+  //   this.sorter(rows, dirs, 'Cell');
+  // }
 
-  searchCustomer (searchQuery: string) {
+  searchCustomer(searchQuery: string) {
     let searchObj = {
       SearchTerm: searchQuery,
       OrderBy: this.currentlyOrderBy,
@@ -106,11 +113,19 @@ export class CustomersComponent implements OnInit {
     this.searchCustomerByOjb(searchObj);
   }
 
-  onSelectionChange(selected) {
-    this.router.navigate(['/customer', selected[0].Id]);
+  onSelect(event) {
+    this.router.navigate(['/customer', event.selected[0].Id]);
   }
 
-  onPageChange(pageOptions) {
+  // onSelect(event) {
+  //   console.log('Event: select', event, this.selected);
+  // }
+
+  // onActivate(event) {
+  //   console.log('Event: activate', event);
+  // }
+
+  onPage(pageOptions) {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
@@ -124,7 +139,7 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  private loadCustomersBySearch () {
+  private loadCustomersBySearch() {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
@@ -133,50 +148,52 @@ export class CustomersComponent implements OnInit {
 
     this.searchCustomerByOjb(searchObj).then((response) => {
       // this.rows = response.SearchResults;
-      this.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.count, {});
-      this.populateCurrentTablePage(response);
+      if (response) {
+        this.count = response.TotalResultCount;
+        this.rows = this.createEmtpyArray(this.count, {});
+        this.populateCurrentTablePage(response);
+      } ``
     });
   }
 
-  private populateCurrentTablePage (data) {
-      let start = this.offset * this.limit;
-      let end = start + data.SearchResults.length;
+  private populateCurrentTablePage(data) {
+    let start = this.offset * this.limit;
+    let end = start + data.SearchResults.length;
 
-      // update the current page record
-      for (let i = start; i < end; i++) {
-        this.rows[i] = data.SearchResults[i - start];
-      }
+    // update the current page record
+    for (let i = start; i < end; i++) {
+      this.rows[i] = data.SearchResults[i - start];
+    }
   }
 
 
-  private searchCustomerByOjb (searchObj) {
+  private searchCustomerByOjb(searchObj) {
     console.log("The searchObj is: ", searchObj);
 
     return this._customerService.searchCustomer(searchObj)
-    .then((response) => {
-      console.log("The response is: ", response);
-      return response;
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+      .then((response) => {
+        console.log("The response is: ", response);
+        return response;
+      })
+      .catch((err) => {
+        //todo: show err message to users later
+        console.log(err);
+      });
   }
 
-  private loadCustomers () {
+  private loadCustomers() {
     this._customerService.getCustomers()
-    .then((customers) => {
-      this.rows = customers;
-      console.log(this.rows);
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+      .then((customers) => {
+        this.rows = customers;
+        console.log(this.rows);
+      })
+      .catch((err) => {
+        //todo: show err message to users later
+        console.log(err);
+      });
   }
 
-  private createEmtpyArray (length, obj) {
+  private createEmtpyArray(length, obj) {
     let array = [];
 
     for (let i = 0; i < length; i++) {

@@ -70,11 +70,11 @@ export class DealsComponent implements OnInit {
     this.loadDealsBySearch();
   }
 
-  public addDeal () {
+  public addDeal() {
     this.router.navigate(['/deal', 'new']);
   }
 
-  public onSort (rows, dirs, sortedBy?) {
+  public onSort(rows, dirs, sortedBy?) {
     console.log('sorting server side: ', rows, dirs);
 
     this.currentlyOrderBy = sortedBy || dirs[0].prop;
@@ -92,7 +92,7 @@ export class DealsComponent implements OnInit {
     });
   }
 
-  public searchDeal (searchQuery: string) {
+  public searchDeal(searchQuery: string) {
     let searchObj = {
       SearchTerm: searchQuery,
       OrderBy: this.currentlyOrderBy,
@@ -121,7 +121,7 @@ export class DealsComponent implements OnInit {
     });
   }
 
-  private loadDealsBySearch () {
+  private loadDealsBySearch() {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
@@ -130,37 +130,40 @@ export class DealsComponent implements OnInit {
 
     this.searchDealByOjb(searchObj).then((response) => {
       // this.rows = response.SearchResults;
-      this.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.count, {});
-      this.populateCurrentTablePage(response);
+      if (response) {
+        this.count = response.TotalResultCount;
+        this.rows = this.createEmtpyArray(this.count, {});
+        this.populateCurrentTablePage(response);
+      }
+
     });
   }
 
-  private searchDealByOjb (searchObj) {
+  private searchDealByOjb(searchObj) {
     console.log("The searchObj is: ", searchObj);
 
     return this._dealService.searchDeal(searchObj)
-    .then((response) => {
-      console.log("The response is: ", response);
-      return response;
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+      .then((response) => {
+        console.log("The response is: ", response);
+        return response;
+      })
+      .catch((err) => {
+        //todo: show err message to users later
+        console.log(err);
+      });
   }
 
-  private populateCurrentTablePage (data) {
-      let start = this.offset * this.limit;
-      let end = start + data.SearchResults.length;
+  private populateCurrentTablePage(data) {
+    let start = this.offset * this.limit;
+    let end = start + data.SearchResults.length;
 
-      // update the current page record
-      for (let i = start; i < end; i++) {
-        this.rows[i] = data.SearchResults[i - start];
-      }
+    // update the current page record
+    for (let i = start; i < end; i++) {
+      this.rows[i] = data.SearchResults[i - start];
+    }
   }
 
-  private createEmtpyArray (length, obj) {
+  private createEmtpyArray(length, obj) {
     let array = [];
 
     for (let i = 0; i < length; i++) {
