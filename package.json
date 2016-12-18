@@ -4,6 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
+    "postinstall": "typings install && tsc",
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
@@ -35,9 +36,7 @@
     "tinymce": "^4.5.1",
     "ts-helpers": "^1.1.1",
     "tslint": "^4.0.2",
-    "zone.js": "^0.6.23"
-  },
-  "devDependencies": {
+    "zone.js": "^0.6.23",
     "@angular/compiler-cli": "2.2.4",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
@@ -55,5 +54,8 @@
     "tslint": "^4.0.2",
     "typescript": "~2.0.3",
     "webdriver-manager": "10.2.5"
+  },
+  "devDependencies": {
+
   }
 }
