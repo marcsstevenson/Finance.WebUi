@@ -44,6 +44,7 @@
     "lodash": "^4.14.1",
     "moment": "^2.14.1",
     "ng2-bootstrap": "1.1.16-7",
+    "postcss-discard-comments": "^2.0.4",
     "protractor": "4.0.9",
     "rxjs": "5.0.0-beta.12",
     "tinymce": "^4.5.1",
