@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { DatepickerModule } from 'ng2-bootstrap/components/datepicker';
+import { DatepickerModule } from 'ng2-bootstrap/datepicker';
 
 import {
         //  FinanceWebUiFooterComponent,
