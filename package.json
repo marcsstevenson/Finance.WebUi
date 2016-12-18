@@ -4,16 +4,16 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "postinstall": "typings install && tsc",
+    "postinstall": "typings install && tsc && npm run serve-build-prod",
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "build:nodeserver": "ng build && cp node-server/* dist",
-    "build:nodeserver-prod": "ng build -prod && cp nodes-erver/* dist",
-    "serve-build": "npm run build:nodeserver && cd dist && node index.js",
-    "serve-build-prod": "npm run build:nodeserver-prod && cd dist && node index.js"
+    "build:nodeserver-prod": "ng build -prod && cp node-server/* dist",
+    "serve-build": "npm run build:nodeserver && cd dist && node server.js",
+    "serve-build-prod": "npm run build:nodeserver-prod && cd dist && node server.js"
   },
   "private": true,
   "dependencies": {
