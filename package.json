@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "postinstall": "typings install && tsc && npm run serve-build-prod",
+    "postinstall": "typings install && tsc && npm run serve-build",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
