@@ -12,7 +12,7 @@
     "build:nodeserver": "ng build && cp node-server/* dist",
     "build:nodeserver-prod": "ng build -prod && cp node-server/* dist",
     "serve-build": "npm run build:nodeserver && cd dist && node server.js",
-    "serve-build-prod": "npm run build:nodeserver-prod && pwd && cd dist && node server.js"
+    "serve-build-prod": "npm run build:nodeserver-prod"
   },
   "private": true,
   "dependencies": {
