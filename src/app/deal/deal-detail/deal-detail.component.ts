@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DealService } from '../deal.service';
+import { DealerService } from '../../dealer/index';
 // import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
 
 import { DealsData } from '../mockup-data';
@@ -20,6 +21,7 @@ export class DealDetailComponent implements OnInit {
   public notes: Array<any>;
 
   private deal: any = {};
+  private dealers = [];
   private copyDeal: any = {};
   private note: string;
   private customerId: string;
@@ -27,11 +29,13 @@ export class DealDetailComponent implements OnInit {
   private descriptionChanged = false;
   private financeChanged = false;
   private noteChanged = false;
+  private currentDealId = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private _dealService: DealService
+    private _dealService: DealService,
+    private _dealerService: DealerService
   ) { }
 
   ngOnInit() {
@@ -41,12 +45,12 @@ export class DealDetailComponent implements OnInit {
     //     selector: "#test",
     //   });
 
-    let dealId = this.route.snapshot.params['id'];
+    this.currentDealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
 
-    if (dealId !== 'new') {
-      this.loadDeal(dealId);
-      this.loadNotes(dealId);
+    if (this.currentDealId !== 'new') {
+      this.loadDeal(this.currentDealId);
+      this.loadNotes(this.currentDealId);
     }
     else if (this.customerId) {
       this.deal = {};
@@ -119,6 +123,7 @@ export class DealDetailComponent implements OnInit {
         this.resetAllChangedStatus();
         console.log('Saved successfully: ', response);
         this.clearNote();
+        this.loadNotes(this.currentDealId);
 
       })
       .catch((err) => {
@@ -161,6 +166,16 @@ export class DealDetailComponent implements OnInit {
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
+      });
+  }
+
+  private loadDealers() {
+    this._dealerService.getDealerships()
+      .then((dealers) => {
+        this.dealers = dealers;
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 

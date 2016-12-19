@@ -34,6 +34,14 @@ export class DealsComponent implements OnInit {
   private currentlyOrderBy = 'Number';
   private sortAsc = true;
 
+
+    columns = [
+    { prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) },
+    { prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) },
+    { prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) },
+    { prop: 'DateCreated', name: 'Date Created', comparator: this.sorter.bind(this) },
+  ]
+
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
   //   headerHeight: 42,
@@ -74,7 +82,7 @@ export class DealsComponent implements OnInit {
     this.router.navigate(['/deal', 'new']);
   }
 
-  public onSort(rows, dirs, sortedBy?) {
+  public sorter(rows, dirs, sortedBy?) {
     console.log('sorting server side: ', rows, dirs);
 
     this.currentlyOrderBy = sortedBy || dirs[0].prop;

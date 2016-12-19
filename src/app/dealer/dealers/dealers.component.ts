@@ -1,15 +1,11 @@
-import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-// import {
-//   TableOptions,
-//   SelectionType,
-//   TableColumn,
-//   ColumnMode
-// } from 'angular2-data-table';
+// import {   TableOptions,   SelectionType,   TableColumn,   ColumnMode } from
+// 'angular2-data-table';
 
-import { DealershipData } from '../mockup-data';
-import { DealerService } from '../dealer.service';
+import {DealershipData} from '../mockup-data';
+import {DealerService} from '../dealer.service';
 
 const SORT_ASC = 'asc';
 
@@ -22,9 +18,10 @@ const SORT_ASC = 'asc';
 })
 export class DealersComponent implements OnInit {
 
-  public rows: Array<any> = [];
+  public rows : Array < any > = [];
   public selections = [];
-  public searchQuery: string;
+  public searchQuery : string;
+  public selected = {};
 
   private pageSize = 5;
   private offset = 0;
@@ -35,52 +32,79 @@ export class DealersComponent implements OnInit {
   private currentlyOrderBy = 'Name';
   private sortAsc = true;
 
-  // public options = new TableOptions({
-  //   columnMode: ColumnMode.force,
-  //   headerHeight: 42,
-  //   footerHeight: 50,
-  //   limit: this.pageSize,
-  //   rowHeight: 'auto',
-  //   selectionType: SelectionType.multi,
-  //   columns: [
-  //     new TableColumn({ prop: 'Name', name: 'Dealer Name', comparator: this.sorter.bind(this) }),
-  //     new TableColumn({ prop: 'ContactName', name: 'Contact Name', comparator: this.sorter.bind(this) }),
-  //     new TableColumn({ prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) }),
-  //     new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' , comparator: this.sorter.bind(this) }),
-  //     new TableColumn({ prop: 'Email', name: 'Email' , comparator: this.sorter.bind(this) })
-  //   ]
-  // });
+  public columns = [
+    {
+      prop: 'Name',
+      name: 'Dealer Name',
+      comparator: this
+        .sorter
+        .bind(this)
+    }, {
+      prop: 'ContactName',
+      name: 'Contact Name',
+      comparator: this
+        .sorter
+        .bind(this)
+    }, {
+      prop: 'CellNumber',
+      name: 'Cell Number',
+      comparator: this
+        .sorter
+        .bind(this)
+    }, {
+      prop: 'PhoneNumber',
+      name: 'Phone Number',
+      comparator: this
+        .sorter
+        .bind(this)
+    }, {
+      prop: 'Email',
+      name: 'Date Created',
+      comparator: this
+        .sorter
+        .bind(this)
+    }
+  ];
+  // public options = new TableOptions({   columnMode: ColumnMode.force,
+  // headerHeight: 42,   footerHeight: 50,   limit: this.pageSize,   rowHeight:
+  // 'auto',   selectionType: SelectionType.multi,   columns: [     new
+  // TableColumn({ prop: 'Name', name: 'Dealer Name', comparator:
+  // this.sorter.bind(this) }),     new TableColumn({ prop: 'ContactName', name:
+  // 'Contact Name', comparator: this.sorter.bind(this) }),     new TableColumn({
+  // prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this)
+  // }),     new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' ,
+  // comparator: this.sorter.bind(this) }),     new TableColumn({ prop: 'Email',
+  // name: 'Email' , comparator: this.sorter.bind(this) })   ] });
 
+  private data : Array < any > = DealershipData;
 
-  private data: Array<any> = DealershipData;
-
-  public constructor(
-    private router: Router,
-    private _dealershipService: DealerService
-  ) {
+  public constructor(private router : Router, private _dealershipService : DealerService) {
     // this.length = this.data.length;
   }
 
-  public ngOnInit(): void {
-    // this.onChangeTable(this.config);
+  public ngOnInit() : void {
+    // this.onChangeTable(this.config); this.rows = this.data;
 
-    // this.rows = this.data;
-
-    //todo: uncomment the code below and change the base api url contant in the file,
-    // the api integration should just work
-    // this.loadDealership();
+    // todo: uncomment the code below and change the base api url contant in the
+    // file, the api integration should just work this.loadDealership();
     this.loadDealsBySearch();
   }
 
   public addDealership() {
-    this.router.navigate(['/dealership', 'new']);
+    this
+      .router
+      .navigate(['/dealership', 'new']);
   }
 
-  public sorter (rows, dirs, sortedBy?) {
-    console.log('sorting server side: ', rows, dirs);
+  public sorter(event) {
+    let sort = event.sorts[0];
+    let dir = sort.dir;
+    let sortedBy = sort.prop;
 
-    this.currentlyOrderBy = sortedBy || dirs[0].prop;
-    this.sortAsc = dirs[0].dir === SORT_ASC;
+    // console.log('sorting server side: ', rows, dirs);
+
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
 
     let searchObj = {
       SearchTerm: this.searchQuery,
@@ -89,12 +113,14 @@ export class DealersComponent implements OnInit {
       PageSize: this.numOfReturnedResult
     };
 
-    this.searchDealershipByOjb(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-    });
+    this
+      .searchDealershipByOjb(searchObj)
+      .then((response) => {
+        this.populateCurrentTablePage(response);
+      });
   }
 
-  public searchDealer (searchQuery: string) {
+  public searchDealer(searchQuery : string) {
     let searchObj = {
       SearchTerm: searchQuery,
       OrderBy: this.currentlyOrderBy,
@@ -106,7 +132,9 @@ export class DealersComponent implements OnInit {
   }
 
   public onSelectionChange(selected) {
-    this.router.navigate(['/dealership', selected[0].Id]);
+    this
+      .router
+      .navigate(['/dealership', selected[0].Id]);
   }
 
   public onPageChange(pageOptions) {
@@ -118,51 +146,59 @@ export class DealersComponent implements OnInit {
       PageSize: this.pageSize
     };
 
-    this.searchDealershipByOjb(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-    });
+    this
+      .searchDealershipByOjb(searchObj)
+      .then((response) => {
+        this.populateCurrentTablePage(response);
+      });
   }
 
-  private loadDealsBySearch () {
+  private loadDealsBySearch() {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
       PageSize: this.numOfReturnedResult
     };
 
-    this.searchDealershipByOjb(searchObj).then((response) => {
-      // this.rows = response.SearchResults;
-      this.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.count, {});
-      this.populateCurrentTablePage(response);
-    });
+    this
+      .searchDealershipByOjb(searchObj)
+      .then((response) => {
+        // this.rows = response.SearchResults;
+        if (response) {
+          this.count = response.TotalResultCount;
+          this.rows = this.createEmtpyArray(this.count, {});
+          this.populateCurrentTablePage(response);
+        }
+      });
   }
 
-  private searchDealershipByOjb (searchObj) {
+  private searchDealershipByOjb(searchObj) {
     console.log("The searchObj is: ", searchObj);
 
-    return this._dealershipService.searchDealership(searchObj)
-    .then((response) => {
-      console.log("The response is: ", response);
-      return response;
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
+    return this
+      ._dealershipService
+      .searchDealership(searchObj)
+      .then((response) => {
+        console.log("The response is: ", response);
+        return response;
+      })
+      .catch((err) => {
+        //todo: show err message to users later
+        console.log(err);
+      });
   }
 
-  private populateCurrentTablePage (data) {
-      let start = this.offset * this.limit;
-      let end = start + data.SearchResults.length;
+  private populateCurrentTablePage(data) {
+    let start = this.offset * this.limit;
+    let end = start + data.SearchResults.length;
 
-      // update the current page record
-      for (let i = start; i < end; i++) {
-        this.rows[i] = data.SearchResults[i - start];
-      }
+    // update the current page record
+    for (let i = start; i < end; i++) {
+      this.rows[i] = data.SearchResults[i - start];
+    }
   }
 
-  private createEmtpyArray (length, obj) {
+  private createEmtpyArray(length, obj) {
     let array = [];
 
     for (let i = 0; i < length; i++) {
@@ -173,7 +209,9 @@ export class DealersComponent implements OnInit {
   }
 
   private loadDealership() {
-    this._dealershipService.getDealerships()
+    this
+      ._dealershipService
+      .getDealerships()
       .then((dealers) => {
         this.rows = dealers;
         console.log(this.rows);

@@ -89,6 +89,11 @@
                 <input [(ngModel)]="deal.SourceId" 
                        (ngModelChange)="descriptionChanged = true"
                        placeholder="Source Id" type="text" class="controls">
+
+                <select name="dealership" [(ngModel)]="deal.SourceId">
+                  <option selected disabled hidden>Choose dealer</option>
+                  <option *ngFor="let dealer of dealers" [value]="dealer.Id">{{dealer.Name}}</option>
+                </select>
               </dd>
             </div>
 
