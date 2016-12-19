@@ -49,7 +49,7 @@ export class CustomersComponent implements OnInit {
 
   // });
 
-  columns = [
+  public columns = [
     { prop: 'Number', name: 'Customer Number', comparator: this.sorter.bind(this) },
     { prop: 'FirstName', name: 'First Name', comparator: this.sorter.bind(this) },
     { prop: 'LastName', name: 'Last Name', comparator: this.sorter.bind(this) },
@@ -74,9 +74,9 @@ export class CustomersComponent implements OnInit {
   }
 
   sorter(event) {
-    let sort = event.sorts[0]
+    let sort = event.sorts[0];
     let dir = sort.dir;
-    let sortedBy = sort.prop
+    let sortedBy = sort.prop;
     // console.log('sorting server side: ', rows, dirs);
 
     this.currentlyOrderBy = sortedBy;
@@ -152,7 +152,7 @@ export class CustomersComponent implements OnInit {
         this.count = response.TotalResultCount;
         this.rows = this.createEmtpyArray(this.count, {});
         this.populateCurrentTablePage(response);
-      } ``
+      }
     });
   }
 
