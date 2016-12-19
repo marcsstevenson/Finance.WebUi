@@ -86,12 +86,8 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">SourceId</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.SourceId" 
-                       (ngModelChange)="descriptionChanged = true"
-                       placeholder="Source Id" type="text" class="controls">
-
-                <select name="dealership" [(ngModel)]="deal.SourceId">
-                  <option selected disabled hidden>Choose dealer</option>
+                <select name="Dealership" [(ngModel)]="deal.SourceId">
+                  <option selected disabled hidden>Choose here</option>
                   <option *ngFor="let dealer of dealers" [value]="dealer.Id">{{dealer.Name}}</option>
                 </select>
               </dd>
@@ -100,9 +96,12 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Finance Company Id</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.FinanceCompanyId" 
-                       (ngModelChange)="descriptionChanged = true"
-                       placeholder="Finance Company Id" type="text" class="controls">
+                <select name="FinanceCompany" [(ngModel)]="deal.FinanceCompanyId">
+                  <option selected disabled hidden>Choose here</option>
+                  <option *ngFor="let financeCompany of financeCompanies" [value]="financeCompany.Id">
+                    {{financeCompany.Name}}
+                  </option>
+                </select>
               </dd>
             </div>
           </dl>

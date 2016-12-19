@@ -39,7 +39,8 @@ export class DealersComponent implements OnInit {
       comparator: this
         .sorter
         .bind(this)
-    }, {
+    }, 
+    {
       prop: 'ContactName',
       name: 'Contact Name',
       comparator: this
@@ -78,7 +79,7 @@ export class DealersComponent implements OnInit {
 
   private data : Array < any > = DealershipData;
 
-  public constructor(private router : Router, private _dealershipService : DealerService) {
+  public constructor(private router: Router, private _dealershipService: DealerService) {
     // this.length = this.data.length;
   }
 
@@ -131,10 +132,10 @@ export class DealersComponent implements OnInit {
     this.searchDealershipByOjb(searchObj);
   }
 
-  public onSelectionChange(selected) {
+  public onSelect(event) {
     this
       .router
-      .navigate(['/dealership', selected[0].Id]);
+      .navigate(['/dealership', event.selected[0].Id]);
   }
 
   public onPageChange(pageOptions) {
@@ -165,8 +166,9 @@ export class DealersComponent implements OnInit {
       .then((response) => {
         // this.rows = response.SearchResults;
         if (response) {
-          this.count = response.TotalResultCount;
-          this.rows = this.createEmtpyArray(this.count, {});
+          // this.count = response.TotalResultCount;
+          this.count = 2;
+          this.rows = this.createEmtpyArray(response.SearchResults.length, {});
           this.populateCurrentTablePage(response);
         }
       });

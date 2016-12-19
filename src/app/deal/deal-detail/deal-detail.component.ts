@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DealService } from '../deal.service';
 import { DealerService } from '../../dealer/index';
+import { FinanceCompanyService } from '../../finance-company/index';
 // import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
 
 import { DealsData } from '../mockup-data';
@@ -22,6 +23,7 @@ export class DealDetailComponent implements OnInit {
 
   private deal: any = {};
   private dealers = [];
+  private financeCompanies = [];
   private copyDeal: any = {};
   private note: string;
   private customerId: string;
@@ -35,7 +37,8 @@ export class DealDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _dealService: DealService,
-    private _dealerService: DealerService
+    private _dealerService: DealerService,
+    private _financeCompanyService: FinanceCompanyService
   ) { }
 
   ngOnInit() {
@@ -48,7 +51,10 @@ export class DealDetailComponent implements OnInit {
     this.currentDealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
 
-    if (this.currentDealId !== 'new') {
+    this.loadDealers();
+    this.loadFinanceCompanies();
+
+    if (this.currentDealId !== 'new' && this.currentDealId) {
       this.loadDeal(this.currentDealId);
       this.loadNotes(this.currentDealId);
     }
@@ -173,6 +179,16 @@ export class DealDetailComponent implements OnInit {
     this._dealerService.getDealerships()
       .then((dealers) => {
         this.dealers = dealers;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  private loadFinanceCompanies() {
+    this._financeCompanyService.getFinanceCompanies()
+      .then((financeCompanies) => {
+        this.financeCompanies = financeCompanies;
       })
       .catch((err) => {
         console.log(err);
