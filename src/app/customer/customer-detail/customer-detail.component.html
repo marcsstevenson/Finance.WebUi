@@ -43,7 +43,10 @@
         </div>
       </div>
 
-      <fwui-customer-deals [deals]="deals" [customerId]="customer.Id"></fwui-customer-deals>
+      <fwui-customer-deals [deals]="deals" 
+          [customerId]="customer.Id" 
+          [customerName]="customer.FirstName + ' ' + customer.LastName">
+      </fwui-customer-deals>
 
       <div class="card contact-details">
         <div class="card-block">

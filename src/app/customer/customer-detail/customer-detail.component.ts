@@ -97,7 +97,7 @@ export class CustomerDetailComponent implements OnInit {
     this._customerService.addOrSaveCustomerNote(noteObj)
       .then((response) => {
         console.log('Saved successfully: ', response);
-        this.note = '';
+        this.clearNote();
         this.notes.push(noteObj);
       })
       .catch((err) => {
@@ -112,6 +112,7 @@ export class CustomerDetailComponent implements OnInit {
       .then((response) => {
         this.resetAllChangedStatus();
         console.log('Saved successfully: ', response);
+        this.loadNotes(this.customer.Id);
         this.clearNote();
       })
       .catch((err) => {

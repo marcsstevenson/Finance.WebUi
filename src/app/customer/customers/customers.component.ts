@@ -55,7 +55,7 @@ export class CustomersComponent implements OnInit {
     { prop: 'LastName', name: 'Last Name', comparator: this.sorter.bind(this) },
     { prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) },
     { prop: 'DriversLicenceNumber', name: 'Drivers Licence', comparator: this.sorter.bind(this) },
-  ]
+  ];
 
   constructor(
     private router: Router,
@@ -150,7 +150,8 @@ export class CustomersComponent implements OnInit {
       // this.rows = response.SearchResults;
       if (response) {
         this.count = response.TotalResultCount;
-        this.rows = this.createEmtpyArray(this.count, {});
+        // this.count = 0;
+        this.rows = this.createEmtpyArray(response.SearchResults.length, {});
         this.populateCurrentTablePage(response);
       }
     });

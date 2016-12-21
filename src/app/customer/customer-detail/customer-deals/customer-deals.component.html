@@ -1,32 +1,34 @@
 <div class="card col-xs-12">
-  <div class="p-y-1" *ngFor="let deal of deals;">
-    <h5>
-      <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.Number }}</span>
-      </a>
-    </h5>
+  <div class="card-block">
+    <div class="p-y-1" *ngFor="let deal of deals;">
+      <h5>
+        <a [routerLink]="['/deal', deal.Id]"><span> {{ deal.Number }}</span>
+        </a>
+      </h5>
 
-    <p>
-      <strong>Status: </strong>
-      <span>{{ deal.DealStatus }}</span>
-    </p>
+      <p>
+        <strong>Status: </strong>
+        <span>{{ deal.DealStatus }}</span>
+      </p>
 
-    <p>
-      <strong>Security Description: </strong>
-      <span>{{ deal.SecurityDescription }} </span>
-    </p>
-    
-    <!--<p>
-      <strong>Net Income: </strong>
-      <span> {{ deal.NetIncome}} </span>
-    </p>-->
-  </div>
+      <p>
+        <strong>Security Description: </strong>
+        <span>{{ deal.SecurityDescription }} </span>
+      </p>
+      
+      <!--<p>
+        <strong>Net Income: </strong>
+        <span> {{ deal.NetIncome}} </span>
+      </p>-->
+    </div>
 
-  <div class="text-center p-x-1 p-y-1">
-    <button class="btn btn-lg btn-default btn-block" 
-            tabindex="0" type="button" aria-disabled="false"
-            (click)="addDeal()">
-      <i name="plus" class="icon icon-plus"></i>
-      <span>New deal</span>
-    </button>
+    <div class="text-center p-x-1 p-y-1">
+      <button class="btn btn-lg btn-default btn-block" 
+              tabindex="0" type="button" aria-disabled="false"
+              (click)="addDeal()">
+        <i name="plus" class="icon icon-plus"></i>
+        <span>New deal</span>
+      </button>
+    </div>
   </div>
 </div>

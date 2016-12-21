@@ -11,6 +11,7 @@ export class CustomerDealsComponent implements OnInit {
 
   @Input() deals: Array<any>;
   @Input() customerId: string;
+  @Input() customerName: string;
 
   constructor(
     private router: Router
@@ -20,7 +21,10 @@ export class CustomerDealsComponent implements OnInit {
   }
 
   addDeal () {
-    this.router.navigate(['/deal/new', { customerId: this.customerId }]);
+    this.router.navigate(['/deal/new', {
+      customerId: this.customerId,
+      customerName: this.customerName
+    }]);
   }
 
   netIncome (deal) {
