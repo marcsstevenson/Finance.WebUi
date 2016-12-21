@@ -35,12 +35,12 @@ export class DealsComponent implements OnInit {
   private sortAsc = true;
 
 
-    columns = [
+  private columns = [
     { prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) },
     { prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) },
     { prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) },
     { prop: 'DateCreated', name: 'Date Created', comparator: this.sorter.bind(this) },
-  ]
+  ];
 
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
@@ -111,8 +111,8 @@ export class DealsComponent implements OnInit {
     this.searchDealByOjb(searchObj);
   }
 
-  public onSelect(selected) {
-    this.router.navigate(['/deal', selected[0].Id]);
+  public onSelect(event) {
+    this.router.navigate(['/deal', event.selected[0].Id]);
   }
 
   public onPage(pageOptions) {
@@ -169,6 +169,8 @@ export class DealsComponent implements OnInit {
     for (let i = start; i < end; i++) {
       this.rows[i] = data.SearchResults[i - start];
     }
+
+    console.log(this.rows);
   }
 
   private createEmtpyArray(length, obj) {
