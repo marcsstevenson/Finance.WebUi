@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DealService } from '../deal.service';
 import { DealerService } from '../../dealer/index';
 import { FinanceCompanyService } from '../../finance-company/index';
+import { CustomerService } from '../../customer/index';
 // import { TinyEditor } from '../../shared/directives/tiny-editor/tiny-editor.directive';
 
 import { DealsData } from '../mockup-data';
@@ -27,18 +28,39 @@ export class DealDetailComponent implements OnInit {
   private copyDeal: any = {};
   private note: string;
   private customerId: string;
+  private customerName: string;
   private basicInfoChanged = false;
   private descriptionChanged = false;
   private financeChanged = false;
   private noteChanged = false;
   private currentDealId = '';
 
+  //todo: add this to database
+  private DealStatusSelections = [
+    {
+      Id: 0,
+      Name: 'Settled /Paid'
+    },
+    {
+      Id: 1,
+      Name: 'Settled Awaiting Commission'
+    },
+    {
+      Id: 2,
+      Name: 'Pending Sign Up'
+    },
+    {
+      Id: 3,
+      Name: 'Pending Payout'
+    }
+  ];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private _dealService: DealService,
     private _dealerService: DealerService,
-    private _financeCompanyService: FinanceCompanyService
+    private _financeCompanyService: FinanceCompanyService,
+    private _customerService: CustomerService
   ) { }
 
   ngOnInit() {
@@ -50,12 +72,20 @@ export class DealDetailComponent implements OnInit {
 
     this.currentDealId = this.route.snapshot.params['id'];
     this.customerId = this.route.snapshot.params['customerId'];
+    this.customerName = this.route.snapshot.params['customerName'];
 
     this.loadDealers();
     this.loadFinanceCompanies();
 
     if (this.currentDealId !== 'new' && this.currentDealId) {
-      this.loadDeal(this.currentDealId);
+      this.loadDeal(this.currentDealId)
+          .then((deal) => {
+
+            //todo: load customer Name with load deal api from backend
+            this.loadCustomerName(deal.CustomerId);
+            this.calculateGrossIncome(false);
+
+          });
       this.loadNotes(this.currentDealId);
     }
     else if (this.customerId) {
@@ -76,6 +106,7 @@ export class DealDetailComponent implements OnInit {
         }
 
         this.copyDeal = Object.assign({}, this.deal);
+        this.resetAllChangedStatus();
         // this.router.navigateByUrl('/deal');
       })
       .catch((err) => {
@@ -142,6 +173,23 @@ export class DealDetailComponent implements OnInit {
     this.note = '';
   }
 
+  calculateGrossIncome(changedByUi = true) {
+    this.financeChanged = changedByUi;
+
+    this.deal.GrossIncome = parseInt(this.deal.Commission, 10) +
+    parseInt(this.deal.DocumentationFee, 10) +
+    parseInt(this.deal.GuaranteedAssetProtection, 10) +
+    parseInt(this.deal.MechanicalBreakDownInsurance, 10) +
+    parseInt(this.deal.PaymentProtectionInsurance, 10) +
+    parseInt(this.deal.OtherInsurance, 10);
+
+    this.calculateNetIncome();
+  }
+
+  calculateNetIncome() {
+    this.deal.NetIncome = this.deal.GrossIncome - this.deal.DealershipCommission;
+  }
+
   private setDefaultData() {
     // this.deal.
 
@@ -164,11 +212,13 @@ export class DealDetailComponent implements OnInit {
 
   private loadDeal(dealId) {
 
-    this._dealService.getDeal(dealId)
+    return this._dealService.getDeal(dealId)
       .then((deal) => {
         this.deal = deal;
         this.copyDeal = Object.assign({}, deal);
         console.log(this.deal);
+
+        return deal;
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
@@ -200,6 +250,17 @@ export class DealDetailComponent implements OnInit {
       .then((notes) => {
         this.notes = notes;
         console.log('The notes:', notes);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  private loadCustomerName(customerId) {
+    return this._customerService.getCustomer(customerId)
+      .then((customer) => {
+        this.customerName = customer.FirstName + ' ' + customer.LastName;
+        console.log('customerName:', this.customerName);
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
