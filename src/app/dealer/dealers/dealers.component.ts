@@ -166,8 +166,8 @@ export class DealersComponent implements OnInit {
       .then((response) => {
         // this.rows = response.SearchResults;
         if (response) {
-          // this.count = response.TotalResultCount;
-          this.count = 2;
+          this.count = response.TotalResultCount;
+          // this.count = 2;
           this.rows = this.createEmtpyArray(response.SearchResults.length, {});
           this.populateCurrentTablePage(response);
         }

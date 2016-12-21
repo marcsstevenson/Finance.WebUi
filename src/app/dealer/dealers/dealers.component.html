@@ -43,7 +43,7 @@
         [selected]="selected"
         [selectionType]="'single'"
         (select)='onSelect($event)'
-        
+        (sort)="sorter($event)"
         (page)='onPage($event)'>
   </swui-datatable>
 <!--(sort)="onSort($event)"-->
