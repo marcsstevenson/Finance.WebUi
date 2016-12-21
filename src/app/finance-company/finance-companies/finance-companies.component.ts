@@ -35,6 +35,12 @@ export class FinanceCompaniesComponent implements OnInit {
   private currentlyOrderBy = 'Name';
   private sortAsc = true;
 
+
+  private columns = [
+      { prop: 'Name', name: 'Finance Company Name', comparator: this.sorter.bind(this) },
+      { prop: 'DateCreated', name: 'Date Created', comparator: this.sorter.bind(this) },
+      { prop: 'DateModified', name: 'Date Modified' , comparator: this.sorter.bind(this) },
+  ];
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
   //   headerHeight: 42,
@@ -96,11 +102,11 @@ export class FinanceCompaniesComponent implements OnInit {
     this.searchFinanceCompanyByOjb(searchObj);
   }
 
-  onSelectionChange(selected) {
-    this.router.navigate(['/finance-company', selected[0].Id]);
+  onSelect(event) {
+    this.router.navigate(['/finance-company', event.selected[0].Id]);
   }
 
-  onPageChange(pageOptions) {
+  onPage(pageOptions) {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,
@@ -156,8 +162,11 @@ export class FinanceCompaniesComponent implements OnInit {
   private loadFinanceCompanies () {
     this._financeCompanyService.getFinanceCompanies()
     .then((financeCompanies) => {
+      this.count = financeCompanies.length;
+      // this.rows = this.createEmtpyArray(this.count, {});
       this.rows = financeCompanies;
-      console.log(this.rows);
+
+      console.log('rows: ', this.rows);
     })
     .catch((err) => {
       //todo: show err message to users later
