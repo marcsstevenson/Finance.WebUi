@@ -2,28 +2,35 @@
   <ul class="nav nav-pills nav-stacked">
     <li class="nav-item home ">
       <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <i class="fa fa-home"></i>
+        <i class="fa fa-home"></i>        
+        <span>Home</span>
       </a>
+      
     </li>
     <li class="nav-item customer">
       <a [routerLink]="['/customer']" routerLinkActive="active">
         <i class="fa fa-user"></i>
+        <span>Customer</span>
       </a>
+      
     </li>
     <li class="nav-item deal">
       <a [routerLink]="['/deal']" routerLinkActive="active">
         <i class="fa fa-file-text"></i>
+        <span>Deal</span>
       </a>
     </li>
     <li class="nav-item dealer">
       <a [routerLink]="['/dealership']" routerLinkActive="active">
         <i class="dealer fa fa-car"></i>
+        <span>Dealership</span>
       </a>
     </li>
 
     <li class="nav-item finance-company">
       <a [routerLink]="['/finance-company']" routerLinkActive="active">
         <i class="fa fa-building"></i>
+        <span>Finance Company</span>
       </a>
     </li>
   </ul>

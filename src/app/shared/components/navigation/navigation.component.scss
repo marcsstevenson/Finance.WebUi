@@ -3,7 +3,7 @@
 $sideNavBarWidth: $topNavBarHeight;
 
 div.left-side {
-    background-color: orange;
+    // background-color: orange;
     width: $topNavBarHeight;
     background: #353e49;
     white-space: nowrap;
@@ -13,6 +13,7 @@ div.left-side {
     height: 100%;   
     border-radius: 0;
     padding: 10px 0 10px 0;
+    z-index: 1000;
     
     li a {
         text-align: center;
@@ -23,7 +24,26 @@ div.left-side {
         &:hover, &.active {
             background-color: black;
             // color: white;
-            border-left: 3px solid #3c8dbc;
+            border-left: 3px solid skyblue;
+        }
+
+        &:hover span {
+            visibility: visible;
+        }
+        
+        span {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: skyblue;
+            color: white;
+            height: 44px;
+            line-height: 32px;
+            width: auto;
+            padding: 5px 16px 5px 16px;
+            text-align: left;
+            visibility: hidden;
         }
     }
 
@@ -34,6 +54,7 @@ div.left-side {
         // height: $sideNavBarWidth;
         // width: $sideNavBarWidth;
     }
+
 
     // li.nav-item.home i {
         
