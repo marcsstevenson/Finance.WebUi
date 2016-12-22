@@ -181,7 +181,8 @@ export class DealDetailComponent implements OnInit {
     parseInt(this.deal.GuaranteedAssetProtection, 10) +
     parseInt(this.deal.MechanicalBreakDownInsurance, 10) +
     parseInt(this.deal.PaymentProtectionInsurance, 10) +
-    parseInt(this.deal.OtherInsurance, 10);
+    parseInt(this.deal.Insurance, 10) +
+    parseInt(this.deal.Other, 10);
 
     this.calculateNetIncome();
   }
