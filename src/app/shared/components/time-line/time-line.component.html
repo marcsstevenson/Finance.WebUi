@@ -1,5 +1,7 @@
 <div class="col-xs-12 p-x-0">
   <!--*ngIf="note"-->
+
+  <!--todo:sorting the time -->
   <div class="time-line" *ngFor="let note of notes; let isLast = last">
     <div class="visual col-xs-1">
       <div class="vertical-line top"></div>
@@ -20,9 +22,9 @@
       <div class="content col-xs-12 p-x-1 p-y-1"
           [innerHTML]="note.Note">
       </div>
-      <div class="footer col-xs-12 p-x-1 p-y-1">
+      <!--<div class="footer col-xs-12 p-x-1 p-y-1">
         <span class="pull-xs-right">Edited at {{note.DateModified | date:'medium'}}</span>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
