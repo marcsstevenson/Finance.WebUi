@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  NgZone
 } from '@angular/core';
 
 declare let google: any;
@@ -54,7 +55,9 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
 
   @ViewChild('streetInput') streetInput: ElementRef;
 
-  constructor() {
+  constructor(
+    private _zone: NgZone
+  ) {
 
   }
   OnInit() {
@@ -85,29 +88,46 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
     // Have to write the call back function here instead of call this.fillInAddress. Calling it outside has scope issue which
     // is unclear to me at the time of writing this. 
     this.autocomplete.addListener('place_changed', () => {
-      // console.log('placeSearch string is: ', this.placeSearch);
-      console.log('autocomplete: ', this.autocomplete);
 
-      let place = this.autocomplete.getPlace();
+      this._zone.run(() => {
+        // console.log('placeSearch string is: ', this.placeSearch);
+        console.log('autocomplete: ', this.autocomplete);
 
-      console.log('place detail: ', place);
-      // Get each component of the address from the place details
-      // and fill the corresponding field on the form.
-      for (let i = 0; i < place.address_components.length; i++) {
-        let addressType = place.address_components[i].types[0];
-        if (this.componentForm[addressType]) {
-          let googlePropName = this.componentForm[addressType];
-          let val = place.address_components[i][googlePropName];
+        let place = this.autocomplete.getPlace();
 
-          let addressDetailProp = this.googleAddressPropMapper[addressType];
-          this.addressDetail[addressDetailProp] = val;
+        console.log('place detail: ', place);
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+
+        this.clearOldAddressDetails();
+        
+        for (let i = 0; i < place.address_components.length; i++) {
+          let addressType = place.address_components[i].types[0];
+          if (this.componentForm[addressType]) {
+            let googlePropName = this.componentForm[addressType];
+            let val = place.address_components[i][googlePropName];
+
+            let addressDetailProp = this.googleAddressPropMapper[addressType];
+            this.addressDetail[addressDetailProp] = val;
+          }
         }
-      }
 
-      this.searchInput.nativeElement.value = '';
-      this.streetInput.nativeElement.focus();
-      console.log('The place object is: ', place);
+        // this.searchInput.nativeElement.focus();
+        this.searchInput.nativeElement.value = '';
+
+        // this.streetInput.nativeElement.focus();
+        console.log('The place object is: ', place);
+        // console.log('======== The current addressDetail is: ', this.addressDetail);
+      });
     });
+  }
+
+  clearOldAddressDetails () {
+    for (let property in this.addressDetail) {
+      if (this.addressDetail.hasOwnProperty(property)) {
+        this.addressDetail[property] = '';
+      }
+    }
   }
 
   fillInAddress(autocomplete, placeSearch) {
