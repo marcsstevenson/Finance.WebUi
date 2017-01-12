@@ -33,7 +33,7 @@ export class PersonalApplicationComponent implements OnInit {
     ];
 
     this.personalApplication = {
-      applicant: {
+      Applicant: {
         FirstName: '',
         LastName: '',
         Gender: '',
@@ -62,6 +62,107 @@ export class PersonalApplicationComponent implements OnInit {
           Phone: ''
         }
 
+      },
+      Spouse: {
+        FirstName: '',
+        LastName: '',
+        Gender: '',
+        DateOfBirth: '',
+        OriginCountry: '',
+        MaritalStatus: '',
+        DiversLicenceStatus: '',
+        OverseasDiversLicence: '',
+        LicenceNumberSa: '',
+        LicenceNumberSb: '',
+        CellNumber: '',
+        PhoneNumber: '',
+        FaxNumber: '',
+        CellNumberBusiness: '',
+        PhoneNumberBusiness: '',
+        FaxNumberBusiness: '',
+
+        //extra needs to be considered server side
+        PersonalEmail: '',
+        BusinessEmail: '',
+        LicenceVersion: '',
+        LicenceNumber: '',
+        Reference: {
+          Name: '',
+          Relationship: '',
+          Phone: ''
+        }
+
+      },
+      Assets: {
+        Properties: [],
+        HomeContents: [],
+        Transportations: [],
+        Bank: '',
+        Investments: '',
+        Kiwisaver: '',
+        Other: ''
+      },
+      Liabilities: {
+        Mortgages: [],
+        HirePurchases: [],
+        Loan: {
+          Note: '',
+          Value: ''
+        },
+        CreditCard: {
+          Note: '',
+          Value: ''
+        },
+        BankOverdraft: {
+          Note: '',
+          Value: ''
+        }
+      },
+      Income: {
+        ApplicantTakeHomePay: {
+          Note: '',
+          Value: ''
+        },
+        ApplicantSecondaryIncome: {
+          Note: '',
+          Value: ''
+        },
+        SpouseTakeHomePay: {
+          Note: '',
+          Value: ''
+        },
+        SpouseSecondaryIncome: {
+          Note: '',
+          Value: ''
+        },
+        GovernmentSubsidy: {
+          Note: '',
+          Value: ''
+        },
+        Other: {
+          Note: '',
+          Value: ''
+        }
+      },
+      Expenses: {
+        Mortgages: [],
+        HirePurchases: [],
+        Loan: {
+          Note: '',
+          Value: ''
+        },
+        CreditCard: {
+          Note: '',
+          Value: ''
+        },
+        Miscellaneous: {
+          Note: '',
+          Value: ''
+        },
+        Other: {
+          Note: '',
+          Value: ''
+        }
       }
     };
   }
