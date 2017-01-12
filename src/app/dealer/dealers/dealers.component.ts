@@ -33,49 +33,12 @@ export class DealersComponent implements OnInit {
   private sortAsc = true;
 
   public columns = [
-    {
-      prop: 'Name',
-      name: 'Dealer Name',
-      comparator: this
-        .sorter
-        .bind(this)
-    }, 
-    {
-      prop: 'ContactName',
-      name: 'Contact Name',
-      comparator: this
-        .sorter
-        .bind(this)
-    }, {
-      prop: 'CellNumber',
-      name: 'Cell Number',
-      comparator: this
-        .sorter
-        .bind(this)
-    }, {
-      prop: 'PhoneNumber',
-      name: 'Phone Number',
-      comparator: this
-        .sorter
-        .bind(this)
-    }, {
-      prop: 'Email',
-      name: 'Date Created',
-      comparator: this
-        .sorter
-        .bind(this)
-    }
+    { prop: 'Name', name: 'Dealer Name' },
+    { prop: 'ContactName', name: 'Contact Name' },
+    { prop: 'CellNumber', name: 'Cell Number' },
+    { prop: 'PhoneNumber', name: 'Phone Number' },
+    { prop: 'Email', name: 'Email Address' }
   ];
-  // public options = new TableOptions({   columnMode: ColumnMode.force,
-  // headerHeight: 42,   footerHeight: 50,   limit: this.pageSize,   rowHeight:
-  // 'auto',   selectionType: SelectionType.multi,   columns: [     new
-  // TableColumn({ prop: 'Name', name: 'Dealer Name', comparator:
-  // this.sorter.bind(this) }),     new TableColumn({ prop: 'ContactName', name:
-  // 'Contact Name', comparator: this.sorter.bind(this) }),     new TableColumn({
-  // prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this)
-  // }),     new TableColumn({ prop: 'PhoneNumber', name: 'Phone Number' ,
-  // comparator: this.sorter.bind(this) }),     new TableColumn({ prop: 'Email',
-  // name: 'Email' , comparator: this.sorter.bind(this) })   ] });
 
   private data : Array < any > = DealershipData;
 
@@ -97,7 +60,7 @@ export class DealersComponent implements OnInit {
       .navigate(['/dealership', 'new']);
   }
 
-  public sorter(event) {
+  public onSort(event) {
     let sort = event.sorts[0];
     let dir = sort.dir;
     let sortedBy = sort.prop;

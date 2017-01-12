@@ -50,11 +50,11 @@ export class CustomersComponent implements OnInit {
   // });
 
   public columns = [
-    { prop: 'Number', name: 'Customer Number', comparator: this.sorter.bind(this) },
-    { prop: 'FirstName', name: 'First Name', comparator: this.sorter.bind(this) },
-    { prop: 'LastName', name: 'Last Name', comparator: this.sorter.bind(this) },
-    { prop: 'CellNumber', name: 'Cell Number', comparator: this.sorter.bind(this) },
-    { prop: 'DriversLicenceNumber', name: 'Drivers Licence', comparator: this.sorter.bind(this) },
+    { prop: 'Number', name: 'Customer Number' },
+    { prop: 'FirstName', name: 'First Name' },
+    { prop: 'LastName', name: 'Last Name' },
+    { prop: 'CellNumber', name: 'Cell Number' },
+    { prop: 'DriversLicenceNumber', name: 'Drivers Licence' },
   ];
 
   constructor(
@@ -73,7 +73,7 @@ export class CustomersComponent implements OnInit {
     this.router.navigate(['/customer', 'new']);
   }
 
-  sorter(event) {
+  onSort(event) {
     let sort = event.sorts[0];
     let dir = sort.dir;
     let sortedBy = sort.prop;

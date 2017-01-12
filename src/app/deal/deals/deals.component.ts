@@ -36,10 +36,10 @@ export class DealsComponent implements OnInit {
 
 
   private columns = [
-    { prop: 'Number', name: 'Deal Number', comparator: this.sorter.bind(this) },
-    { prop: 'DealStatus', name: 'Deal Status', comparator: this.sorter.bind(this) },
-    { prop: 'CustomerName', name: 'Customer Name', comparator: this.sorter.bind(this) },
-    { prop: 'DateCreated', name: 'Date Created', comparator: this.sorter.bind(this) },
+    { prop: 'Number', name: 'Deal Number' },
+    { prop: 'DealStatus', name: 'Deal Status' },
+    { prop: 'CustomerName', name: 'Customer Name' },
+    { prop: 'DateCreated', name: 'Date Created' },
   ];
 
   // public options = new TableOptions({
@@ -82,11 +82,14 @@ export class DealsComponent implements OnInit {
     this.router.navigate(['/deal', 'new']);
   }
 
-  public sorter(rows, dirs, sortedBy?) {
-    console.log('sorting server side: ', rows, dirs);
+  public onSort(event) {
+    let sort = event.sorts[0];
+    let dir = sort.dir;
+    let sortedBy = sort.prop;
+    // console.log('sorting server side: ', rows, dirs);
 
-    this.currentlyOrderBy = sortedBy || dirs[0].prop;
-    this.sortAsc = dirs[0].dir === SORT_ASC;
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
 
     let searchObj = {
       SearchTerm: this.searchQuery,
@@ -94,6 +97,7 @@ export class DealsComponent implements OnInit {
       OrderByAscending: this.sortAsc,
       PageSize: this.numOfReturnedResult
     };
+
 
     this.searchDealByOjb(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
