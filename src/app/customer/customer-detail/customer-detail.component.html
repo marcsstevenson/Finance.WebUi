@@ -32,6 +32,11 @@
                      type="email" placeholder="Email" required>
             </div>
             <div class="row">
+              <input class="driver-licence controls" [(ngModel)]="customer.DriverLicence" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="email" placeholder="Driver Licence" required>
+            </div>
+            <div class="row">
               <span class="tag tag-pill tag-success">Active</span>
             </div>
           </div>

@@ -23,10 +23,10 @@ export class DealersComponent implements OnInit {
   public searchQuery : string;
   public selected = {};
 
-  private pageSize = 5;
+  private pageSize = 100;
   private offset = 0;
   private count = 0;
-  private limit = 10;
+  private limit = 100;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
   private currentlyOrderBy = 'Name';
