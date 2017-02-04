@@ -55,3 +55,13 @@ dt {
 .note {
     width: 100%;
 }
+
+a.email-link {
+    margin: 8.8em auto 0 auto;
+    display: block;
+    float: right;
+
+    i.fa {
+        font-size: 1.5em;
+    }
+}
