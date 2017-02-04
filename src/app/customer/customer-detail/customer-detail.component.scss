@@ -28,6 +28,11 @@ input{
         width: auto;
         max-width: 6em;
         margin-bottom: 1em; 
+
+        &.full-length {
+            max-width: 100%;
+            width: 100%;
+        }
     }
     &.email {
         margin-bottom: 1em;

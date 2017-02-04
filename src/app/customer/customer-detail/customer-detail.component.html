@@ -19,22 +19,29 @@
           </div>
           <div class="col-xs-8">
             <div class="row">
-              <input class="name controls" [(ngModel)]="customer.FirstName" 
+              <input class="name controls full-length" [(ngModel)]="customer.FirstName" 
                      (ngModelChange)="basicInfoChanged = true"
                      type="text" placeholder="First Name" required>
-              <input class="name controls" [(ngModel)]="customer.LastName" 
+            </div>
+            <div class="row">
+              <input class="name controls full-length" [(ngModel)]="customer.MiddleName" 
+                     (ngModelChange)="basicInfoChanged = true"
+                     type="text" placeholder="Middle Name" required>
+            </div>
+            <div class="row">
+              <input class="name controls full-length" [(ngModel)]="customer.LastName" 
                      (ngModelChange)="basicInfoChanged = true"
                      type="text" placeholder="Last Name" required>
             </div>
             <div class="row">
-              <input class="email controls" [(ngModel)]="customer.Email" 
+              <input class="name controls full-length" [(ngModel)]="customer.PreferredName" 
                      (ngModelChange)="basicInfoChanged = true"
-                     type="email" placeholder="Email" required>
+                     type="text" placeholder="Preferred Name" required>
             </div>
             <div class="row">
-              <input class="driver-licence controls" [(ngModel)]="customer.DriverLicence" 
+              <input class="email controls full-length" [(ngModel)]="customer.Email" 
                      (ngModelChange)="basicInfoChanged = true"
-                     type="email" placeholder="Driver Licence" required>
+                     type="email" placeholder="Email" required>
             </div>
             <div class="row">
               <span class="tag tag-pill tag-success">Active</span>
@@ -58,15 +65,15 @@
           <h4 class="row col-xs-12">Contact Details</h4>
           <dl>
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Mobile</dt>
+              <dt class="col-xs-4 p-x-0 controls">Mobile</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]=customer.CellNumber 
+                <input class="controls" [(ngModel)]=customer.MobileNumber 
                        placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Phone</dt>
+              <dt class="col-xs-4 p-x-0 controls">Phone</dt>
               <dd class="col-xs-8">
                 <input class="controls" [(ngModel)]=customer.PhoneNumber 
                        placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
@@ -74,15 +81,15 @@
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Fax</dt>
+              <dt class="col-xs-4 p-x-0 controls">Work</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]=customer.FaxNumber 
+                <input class="controls" [(ngModel)]=customer.WorkNumber 
                        placeholder="Numer" (ngModelChange)="contactDetailsChanged = true" type="text">
               </dd>
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Customer Number</dt>
+              <dt class="col-xs-4 p-x-0 controls">Customer Number</dt>
               <dd class="col-xs-8">
                 <input class="controls" [(ngModel)]=customer.Number (ngModelChange)="contactDetailsChanged = true" 
                        placeholder="Customer Number" type="text">
@@ -90,10 +97,14 @@
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0">Skype</dt>
+              <dt class="col-xs-4 p-x-0 controls">Driver Licence</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]=customer.SkypeName 
+                <!--<input class="controls" [(ngModel)]=customer.SkypeName 
                        placeholder="Skype" (ngModelChange)="contactDetailsChanged = true" type="text">
+                -->
+                <input class="driver-licence controls" [(ngModel)]="customer.DriverLicence" 
+                      (ngModelChange)="basicInfoChanged = true"
+                      type="email" placeholder="Driver Licence" required>
               </dd>
             </div>
           </dl>

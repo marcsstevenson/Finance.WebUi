@@ -53,7 +53,7 @@ export class CustomersComponent implements OnInit {
     { prop: 'Number', name: 'Customer Number' },
     { prop: 'FirstName', name: 'First Name' },
     { prop: 'LastName', name: 'Last Name' },
-    { prop: 'CellNumber', name: 'Mobile' },
+    { prop: 'MobileNumber', name: 'Mobile' },
     { prop: 'DriversLicenceNumber', name: 'Drivers Licence' },
   ];
 

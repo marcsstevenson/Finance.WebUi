@@ -3,6 +3,7 @@
 input {
     border: 0;
     color: $input-text-color;
+    width: 100%;
 
     &:focus{
         outline: none;
