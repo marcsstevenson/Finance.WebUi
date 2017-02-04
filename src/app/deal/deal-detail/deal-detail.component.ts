@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DealService } from '../deal.service';
 import { DealerService } from '../../dealer/index';
@@ -83,7 +84,7 @@ export class DealDetailComponent implements OnInit {
 
             //todo: load customer Name with load deal api from backend
             this.loadCustomerName(deal.CustomerId);
-            this.calculateGrossIncome(false);
+            this.calculateIncome(null, false);
 
           });
       this.loadNotes(this.currentDealId);
@@ -173,8 +174,12 @@ export class DealDetailComponent implements OnInit {
     this.note = '';
   }
 
-  calculateGrossIncome(changedByUi = true) {
+  calculateIncome(event, fieldName, changedByUi = true) {
     this.financeChanged = changedByUi;
+
+    if (event) {
+      this.updateFinanceField(event, fieldName);
+    }
 
     this.deal.GrossIncome = parseInt(this.deal.Commission, 10) +
     parseInt(this.deal.DocumentationFee, 10) +
@@ -184,11 +189,29 @@ export class DealDetailComponent implements OnInit {
     parseInt(this.deal.Insurance, 10) +
     parseInt(this.deal.Other, 10);
 
-    this.calculateNetIncome();
+    this.calculateNetIncome(event, '', false);
   }
 
-  calculateNetIncome() {
+  calculateNetIncome(event, fieldName = '', update = true) {
+    if (event && update && fieldName !== '') {
+      this.updateFinanceField(event, fieldName);
+    }
+
     this.deal.NetIncome = this.deal.GrossIncome - this.deal.DealershipCommission;
+  }
+
+  updateFinanceField (event, fieldName = '') {
+    let numberValue = Number(event.currentTarget.value.replace(/[^0-9\.-]+/g, ''));
+
+    this.deal[fieldName] = numberValue;
+    event.currentTarget.value = new CurrencyPipe('NZ')
+                                    .transform(numberValue, 'USD', true, '1.2-2') ;
+    this.financeChanged = true;
+  }
+
+  clearPipe (event, value) {
+    let stringValue = value + '';
+    event.currentTarget.value = Number(stringValue.replace(/[^0-9\.-]+/g, ''));
   }
 
   private setDefaultData() {

@@ -35,11 +35,11 @@
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Cash Manager Reference *</dt>
+              <dt class="col-xs-4 p-x-0 controls">Loan Number *</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.CashManagerReference" 
+                <input [(ngModel)]="deal.LoanNumber" 
                        (ngModelChange)="basicInfoChanged = true"
-                       placeholder="Reference Number" 
+                       placeholder="Loan Number" 
                        type="text" class="controls" required>
               </dd>
             </div>
@@ -51,17 +51,6 @@
                        (ngModelChange)="basicInfoChanged = true"
                        placeholder="Date created" 
                        type="text" class="controls">
-              </dd>
-            </div>
-
-            <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Deal Status</dt>
-              <dd class="col-xs-8">
-                <select name="DealStatus" [(ngModel)]="deal.DealStatus" 
-                        (ngModelChange)="basicInfoChanged = true">
-                  <option selected disabled hidden>Choose here</option>
-                  <option *ngFor="let status of DealStatusSelections" [value]="status.Id">{{status.Name}}</option>
-                </select>      
               </dd>
             </div>
 
@@ -78,11 +67,13 @@
         <div class="card-block">
           <dl>
             <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Security Description</dt>
+              <dt class="col-xs-4 p-x-0 controls">Deal Status</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.SecurityDescription" 
-                       (ngModelChange)="descriptionChanged = true"
-                       placeholder="Description" type="text" class="controls">
+                <select name="DealStatus" [(ngModel)]="deal.DealStatus" 
+                        (ngModelChange)="descriptionChanged = true">
+                  <option selected disabled hidden>Choose here</option>
+                  <option *ngFor="let status of DealStatusSelections" [value]="status.Id">{{status.Name}}</option>
+                </select>      
               </dd>
             </div>
 
@@ -107,6 +98,15 @@
                     {{financeCompany.Name}}
                   </option>
                 </select>
+              </dd>
+            </div>
+
+            <div class="row">
+              <dt class="col-xs-4 p-x-0 controls">Security Description</dt>
+              <dd class="col-xs-8">
+                <input [(ngModel)]="deal.SecurityDescription" 
+                       (ngModelChange)="descriptionChanged = true"
+                       placeholder="Description" type="text" class="controls">
               </dd>
             </div>
           </dl>
@@ -144,17 +144,20 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Finance Volume</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.FinanceVolume" 
-                       (ngModelChange)="financeChanged = true"
-                       placeholder="Volume" type="number" class="controls">
+                <!--using NZD will show unecessary text which may not be desirable, so we are using usd format here.-->
+                <input [ngModel]="deal.FinanceVolume | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.FinanceVolume)"
+                       (blur)="calculateIncome($event, 'FinanceVolume')"
+                       placeholder="Volume" type="text" class="controls">
               </dd>
             </div>
 
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Commission</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.Commission" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.Commission | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.Commission)"
+                       (blur)="calculateIncome($event, 'Commission')"
                        placeholder="Commission" type="currency" class="controls">
               </dd>
             </div>
@@ -162,8 +165,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Documentation  Fee</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.DocumentationFee" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.DocumentationFee | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.DocumentationFee)"
+                       (blur)="calculateIncome($event, 'DocumentationFee')"
                        placeholder="Fee" type="currency" class="controls">
               </dd>
             </div>
@@ -171,8 +175,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls" title="Payment Protection Insurance">P.P.I</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.PaymentProtectionInsurance" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.PaymentProtectionInsurance | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.PaymentProtectionInsurance)"
+                       (blur)="calculateIncome($event, 'PaymentProtectionInsurance')"
                        placeholder="Fee" type="currency" class="controls">
               </dd>
             </div>
@@ -180,8 +185,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls" title="Guaranteed Asset Protection">G.A.P</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.GuaranteedAssetProtection" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.GuaranteedAssetProtection | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.GuaranteedAssetProtection)"
+                       (blur)="calculateIncome($event, 'GuaranteedAssetProtection')"
                        placeholder="Asset" type="currency" class="controls">
               </dd>
             </div>
@@ -189,8 +195,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls" title="Mechanical Break Down Insurance">M.B.I</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.MechanicalBreakDownInsurance" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.MechanicalBreakDownInsurance | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.MechanicalBreakDownInsurance)"
+                       (blur)="calculateIncome($event, 'MechanicalBreakDownInsurance')"
                        placeholder="Mechnical Insurance" type="currency" class="controls">
               </dd>
             </div>
@@ -198,8 +205,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Insurance</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.Insurance" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.Insurance | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.Insurance)"
+                       (blur)="calculateIncome($event, 'Insurance')"
                        placeholder="Insurance" type="currency" class="controls">
               </dd>
             </div>
@@ -207,8 +215,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Other</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.Other" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.Other | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.Other)"
+                       (blur)="calculateIncome($event, 'Other')"
                        placeholder="Other" type="currency" class="controls">
               </dd>
             </div>
@@ -216,7 +225,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Gross Income</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.GrossIncome" 
+                <input [ngModel]="deal.GrossIncome | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.GrossIncome)"
+                       (blur)="calculateNetIncome($event, 'GrossIncome')"
                        placeholder="Gross Income" type="currency" class="controls" [readonly]="false">
               </dd>
             </div>
@@ -224,8 +235,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Dealership Commission</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.DealershipCommission" 
-                       (ngModelChange)="calculateGrossIncome()"
+                <input [ngModel]="deal.DealershipCommission | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.DealershipCommission)"
+                       (blur)="calculateNetIncome($event, 'DealershipCommission')"
                        placeholder="Dealership Commission" type="currency" class="controls">
               </dd>
             </div>
@@ -233,7 +245,9 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Net Income</dt>
               <dd class="col-xs-8">
-                <input [(ngModel)]="deal.NetIncome" 
+                <input [ngModel]="deal.NetIncome | currency:'USD':true:'1.2-2'" 
+                       (focus)="clearPipe($event, deal.NetIncome)"
+                       (blur)="updateFinanceField($event, 'NetIncome')"
                        placeholder="Net Income" type="currency" class="controls" [readonly]="false">
               </dd>
             </div>
