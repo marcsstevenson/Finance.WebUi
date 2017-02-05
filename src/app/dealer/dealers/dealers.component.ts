@@ -101,7 +101,7 @@ export class DealersComponent implements OnInit {
       .navigate(['/dealership', event.selected[0].Id]);
   }
 
-  public onPageChange(pageOptions) {
+  public onPage(pageOptions) {
     let searchObj = {
       SearchTerm: '',
       OrderBy: this.currentlyOrderBy,

@@ -13,29 +13,29 @@
 input{
     // margin: 0;
     // padding: 0;
-    &.country {
-        width: 2.5em;
-    }
+    // &.country {
+    //     width: 2.5em;
+    // }
 
-    &.area {
-        width: 2.5em;
-    }
+    // &.area {
+    //     width: 2.5em;
+    // }
 
-    &.number {
-        width: 8em;
-    }
+    // &.number {
+    //     width: 8em;
+    // }
+
+    width: 100%;
+    max-width: 100%;
+
     &.name {
-        width: auto;
-        max-width: 12em;
+        width: 100%;
+        max-width: 100%;
         margin-bottom: 1em; 
     }
     &.email {
         margin-bottom: 1em;
     }
-}
-
-.bank-details .controls {
-  width: 12em;
 }
 
 dt {
@@ -53,4 +53,14 @@ dt {
 
 .note {
     width: 100%;
+}
+
+a.web-link {
+    margin: 2.5em auto 0 auto;
+    display: block;
+    float: right;
+
+    i.fa {
+        font-size: 1.5em;
+    }
 }

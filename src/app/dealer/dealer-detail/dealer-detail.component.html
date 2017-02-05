@@ -13,17 +13,21 @@
     <div class="card-block">
       <div class="media col-xs-4 card-block">
         <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
+
+        <a class="web-link" [href]="'http://' + dealership.Website">
+              <i class="fa fa-globe"></i>
+        </a>
       </div>
 
       <div class="col-xs-8">
         <div class="row">
-          <input class="name controls" [(ngModel)]="dealership.Name" 
+          <input class="name controls full-length" [(ngModel)]="dealership.Name" 
                  (ngModelChange)="basicInfoChanged = true" 
                  type="text" placeholder="Dealer Name">
         </div>
 
         <div class="row">
-          <input class="name controls" [(ngModel)]="dealership.Website" 
+          <input class="name controls full-length" [(ngModel)]="dealership.Website" 
                  (ngModelChange)="basicInfoChanged = true" 
                  type="text" placeholder="Dealer Web Site Url">
         </div>
@@ -45,7 +49,7 @@
       <h4 class="row col-xs-12">Contact Details</h4>
       <dl>
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Mobile</dt>
+          <dt class="col-xs-4 p-x-0 controls">Mobile</dt>
           <dd class="col-xs-8">
             <!--<input class="country controls" [(ngModel)]=dealership.CellCountry 
                    (ngModelChange)="contactDetailsChanged = true"
@@ -60,7 +64,7 @@
         </div>
 
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Phone</dt>
+          <dt class="col-xs-4 p-x-0 controls">Phone</dt>
           <dd class="col-xs-8">
             <!--<input class="country controls" [(ngModel)]=dealership.PhoneCountry 
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true"
@@ -75,7 +79,7 @@
         </div>
 
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Fax</dt>
+          <dt class="col-xs-4 p-x-0 controls">Fax</dt>
           <dd class="col-xs-8">
             <!--<input class="country controls" [(ngModel)]=dealership.FaxCountry 
                    placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
@@ -90,7 +94,7 @@
         </div>
 
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Contact Name</dt>
+          <dt class="col-xs-4 p-x-0 controls">Contact Name</dt>
           <dd class="col-xs-8">
             <input class="contact-name controls" [(ngModel)]=dealership.ContactName 
                    placeholder="Input name here" (ngModelChange)="contactDetailsChanged = true"
@@ -99,7 +103,7 @@
         </div>
 
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Email</dt>
+          <dt class="col-xs-4 p-x-0 controls">Email</dt>
           <dd class="col-xs-8">
             <input class="email controls" [(ngModel)]=dealership.Email 
                    placeholder="Email address here" (ngModelChange)="contactDetailsChanged = true"
@@ -120,7 +124,7 @@
       <h4 class="row col-xs-12">Bank Details</h4>
       <dl>
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Account Name</dt>
+          <dt class="col-xs-4 p-x-0 controls">Account Name</dt>
           <dd class="col-xs-8">
             <input class="controls" [(ngModel)]=dealership.BankAccountName 
                    placeholder="Account Name" (ngModelChange)="bankDetailsChanged = true"
@@ -128,7 +132,7 @@
           </dd>
         </div>
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Account Number</dt>
+          <dt class="col-xs-4 p-x-0 controls">Account Number</dt>
           <dd class="col-xs-8">
             <input class="controls" [(ngModel)]="dealership.BankAccountNumber" 
                    placeholder="Account Number" (ngModelChange)="bankDetailsChanged = true"
@@ -136,7 +140,7 @@
           </dd>
         </div>
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Branch Name</dt>
+          <dt class="col-xs-4 p-x-0 controls">Branch Name</dt>
           <dd class="col-xs-8">
             <input class="controls" [(ngModel)]="dealership.BankBranchName" 
                    placeholder="Branch Name" (ngModelChange)="bankDetailsChanged = true" 
@@ -144,7 +148,7 @@
           </dd>
         </div>
         <div class="row">
-          <dt class="col-xs-4 p-x-0">Bank Name</dt>
+          <dt class="col-xs-4 p-x-0 controls">Bank Name</dt>
           <dd class="col-xs-8">
             <input class="controls" [(ngModel)]="dealership.BankingCompany"
                    placeholder="Bank Name" (ngModelChange)="bankDetailsChanged = true" 
