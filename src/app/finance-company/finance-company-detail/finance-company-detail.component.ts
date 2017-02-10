@@ -20,8 +20,11 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   private financeCompany: any = {};
   private copyFinanceCompany: any = {};
+  private accountManager: any = {};
+  private copyAccountManager: any = {};
   private note: string;
   private basicInfoChanged = false;
+  private accountManagerDetailsChanged = false;
   private noteChanged = false;
 
   constructor(
@@ -34,7 +37,9 @@ export class FinanceCompanyDetailComponent implements OnInit {
     let financeCompanyId = this.route.snapshot.params['id'];
 
     if (financeCompanyId !== 'new') {
-      this.loadCustomer(financeCompanyId);
+      this.loadCustomer(financeCompanyId).then((financeCompany) => {
+        this.loadAccountManager(financeCompany.AccountManagerId);
+      });
       this.loadNotes(financeCompanyId);
     }
   }
@@ -121,15 +126,22 @@ export class FinanceCompanyDetailComponent implements OnInit {
   }
 
   private loadCustomer(financeCompanyId) {
-    this._financeCompanyService.getFinanceCompany(financeCompanyId)
+    return this._financeCompanyService.getFinanceCompany(financeCompanyId)
       .then((financeCompany) => {
         this.financeCompany = financeCompany;
         this.copyFinanceCompany = Object.assign({}, financeCompany);
+
         console.log(this.financeCompany);
+
+        return financeCompany;
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
       });
+  }
+
+  private loadAccountManager(accountManagerId) {
+
   }
 
   private setDefaulCustomerDates() {
@@ -155,6 +167,7 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   private resetAllChangedStatus() {
     this.basicInfoChanged = false;
+    this.accountManagerDetailsChanged = false;
   }
 
 }

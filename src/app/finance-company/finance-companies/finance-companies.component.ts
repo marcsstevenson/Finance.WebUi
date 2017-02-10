@@ -26,11 +26,11 @@ export class FinanceCompaniesComponent implements OnInit {
   public selections = [];
   public searchQuery: string;
 
-  private pageSize = 5;
+  private pageSize = 100;
   private offset = 0;
   private count = 0;
-  private limit = 10;
-  private loadNumOfPages = 3;
+  private limit = 100;
+  private loadNumOfPages = 2;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
   private currentlyOrderBy = 'Name';
   private sortAsc = true;
