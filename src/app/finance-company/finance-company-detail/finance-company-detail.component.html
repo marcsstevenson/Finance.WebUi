@@ -19,7 +19,7 @@
           </div>
           <div class="col-xs-8">
             <div class="row">
-              <input class="name controls" [(ngModel)]="financeCompany.Name" 
+              <input class="name controls" [(ngModel)]="financeCompany.FinanceCompanyDto.Name" 
                      (ngModelChange)="basicInfoChanged = true"
                      type="text" placeholder="Company Name" required>
               <!--<input class="name controls" [(ngModel)]="financeCompany.LastName" 
@@ -50,28 +50,28 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">First Name</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]=accountManager.FirstName 
+                <input class="controls" [(ngModel)]=financeCompany.AccountManagers[0].FirstName 
                        placeholder="First Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Last Name</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]="accountManager.LastName" 
+                <input class="controls" [(ngModel)]="financeCompany.AccountManagers[0].LastName" 
                        placeholder="Last Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Email</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]="accountManager.Email" 
+                <input class="controls" [(ngModel)]="financeCompany.AccountManagers[0].Email" 
                        placeholder="Branch Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Mobile</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]="accountManager.MobileNumber" 
+                <input class="controls" [(ngModel)]="financeCompany.AccountManagers[0].MobileNumber" 
                        placeholder="Bank Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>
@@ -79,7 +79,7 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Phone</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]="accountManager.PhoneNumber" 
+                <input class="controls" [(ngModel)]="financeCompany.AccountManagers[0].PhoneNumber" 
                        placeholder="Branch Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>
@@ -87,7 +87,7 @@
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Fax</dt>
               <dd class="col-xs-8">
-                <input class="controls" [(ngModel)]="accountManager.FaxNumber" 
+                <input class="controls" [(ngModel)]="financeCompany.AccountManagers[0].FaxNumber" 
                        placeholder="Branch Name" (ngModelChange)="accountManagerDetailsChanged = true" type="text">
               </dd>
             </div>

@@ -18,7 +18,20 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   public notes: Array<any>;
 
-  private financeCompany: any = {};
+  private accountManger = {
+      FirstName: '',
+      LastName: '',
+      Email: '',
+      MobileNumber: '',
+      PhoneNumber: '',
+      FaxNumber: ''
+  };
+
+  private financeCompany: any = {
+    FinanceCompanyDto: {},
+    AccountManagers: [this.accountManger]
+  };
+
   private copyFinanceCompany: any = {};
   private accountManager: any = {};
   private copyAccountManager: any = {};
@@ -37,8 +50,10 @@ export class FinanceCompanyDetailComponent implements OnInit {
     let financeCompanyId = this.route.snapshot.params['id'];
 
     if (financeCompanyId !== 'new') {
-      this.loadCustomer(financeCompanyId).then((financeCompany) => {
-        this.loadAccountManager(financeCompany.AccountManagerId);
+      this.loadFinanceCompany(financeCompanyId).then((financeCompany) => {
+        // if (financeCompany.AccountManagerId) {
+        //   this.loadAccountManager(financeCompany.AccountManagerId);
+        // }
       });
       this.loadNotes(financeCompanyId);
     }
@@ -125,9 +140,13 @@ export class FinanceCompanyDetailComponent implements OnInit {
     this.note = '';
   }
 
-  private loadCustomer(financeCompanyId) {
+  private loadFinanceCompany(financeCompanyId) {
     return this._financeCompanyService.getFinanceCompany(financeCompanyId)
       .then((financeCompany) => {
+        // initialise account manager for template
+        if (!financeCompany.AccountManagers || financeCompany.AccountManagers.length < 1) {
+          financeCompany.AccountManagers.push(this.accountManager);
+        }
         this.financeCompany = financeCompany;
         this.copyFinanceCompany = Object.assign({}, financeCompany);
 
