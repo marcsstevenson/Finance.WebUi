@@ -93,15 +93,41 @@ export class PersonalApplicationComponent implements OnInit {
         }
 
       },
-      Assets: {
-        Properties: [],
-        HomeContents: [],
-        Transportations: [],
-        Bank: '',
-        Investments: '',
-        Kiwisaver: '',
-        Other: ''
-      },
+      Assets: [
+        {
+          OptionName: 'Home',
+          Note: ''
+        },
+        {
+          OptionName: 'Home Contents',
+          Note: ''
+        },
+        {
+          OptionName: 'Car',
+          Note: ''
+        },
+        {
+          OptionName: 'Bank',
+          Note: ''
+        },
+        {
+          OptionName: 'Investments',
+          Note: ''
+        },
+        {
+          OptionName: 'Kiwisaver',
+          Note: ''
+        }
+      ],
+      // Assets: {
+      //   Properties: [],
+      //   HomeContents: [],
+      //   Transportations: [],
+      //   Bank: '',
+      //   Investments: '',
+      //   Kiwisaver: '',
+      //   Other: ''
+      // },
       Liabilities: {
         Mortgages: [],
         HirePurchases: [],

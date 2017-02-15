@@ -1,8 +1,17 @@
 
 $topNavBarHeight: 58px;
+$sideNavBarWidth: 58px;
+$fwuiContainerPadding: 15px;
 
 .body-content.fwui {
     margin-top: $topNavBarHeight;
     position: relative;
 }
+
+
+.container.body-content.fwui {
+    padding-left: $fwuiContainerPadding + $sideNavBarWidth;
+    padding-right: $fwuiContainerPadding;
+}
+
 

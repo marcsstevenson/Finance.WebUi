@@ -71,4 +71,12 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       this.income
     );
   }
+
+  addAsset() {
+    this.assets.push({
+      OptionName: 'Asset Name',
+      Value: '',
+      Note: ''
+    });
+  }
 }

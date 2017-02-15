@@ -1,10 +1,8 @@
 @import '../../../../assets/styles/main';
 
-$sideNavBarWidth: $topNavBarHeight;
-
 div.left-side {
     // background-color: orange;
-    width: $topNavBarHeight;
+    width: $sideNavBarWidth;
     background: #353e49;
     white-space: nowrap;
     position: fixed;
