@@ -128,68 +128,92 @@ export class PersonalApplicationComponent implements OnInit {
       //   Kiwisaver: '',
       //   Other: ''
       // },
-      Liabilities: {
-        Mortgages: [],
-        HirePurchases: [],
-        Loan: {
-          Note: '',
-          Value: ''
+      Liabilities: [
+        {
+          OptionName: 'Mortgage',
+          Note: ''
         },
-        CreditCard: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Hire Purchase',
+          Note: ''
         },
-        BankOverdraft: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Loan',
+          Note: ''
+        },
+        {
+          OptionName: 'Credit Card',
+          Note: ''
+        },
+        {
+          OptionName: 'Bank Overdraft',
+          Note: ''
         }
-      },
-      Income: {
-        ApplicantTakeHomePay: {
-          Note: '',
-          Value: ''
+      ],
+      Income: [
+        {
+          OptionName: 'Take Home Pay',
+          Note: ''
         },
-        ApplicantSecondaryIncome: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Secondary Income',
+          Note: ''
         },
-        SpouseTakeHomePay: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Spouse Take Home Pay',
+          Note: ''
         },
-        SpouseSecondaryIncome: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Spouse Secondary Income',
+          Note: ''
         },
-        GovernmentSubsidy: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Government Subsidy',
+          Note: ''
         },
-        Other: {
-          Note: '',
-          Value: ''
-        }
-      },
-      Expenses: {
-        Mortgages: [],
-        HirePurchases: [],
-        Loan: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Other',
+          Note: ''
         },
-        CreditCard: {
-          Note: '',
-          Value: ''
+      ],
+      Expenses: [
+        {
+          OptionName: 'Mortgage',
+          Note: ''
         },
-        Miscellaneous: {
-          Note: '',
-          Value: ''
+        {
+          OptionName: 'Hire Purchase',
+          Note: ''
         },
-        Other: {
-          Note: '',
-          Value: ''
-        }
-      }
+        {
+          OptionName: 'Loan',
+          Note: ''
+        },
+        {
+          OptionName: 'Credit Card',
+          Note: ''
+        },
+        {
+          OptionName: 'Miscellaneous',
+          Note: ''
+        },
+        {
+          OptionName: 'Rates',
+          Note: ''
+        },
+        {
+          OptionName: 'Phone',
+          Note: ''
+        },
+        {
+          OptionName: 'Power',
+          Note: ''
+        },
+        {
+          OptionName: 'Other',
+          Note: ''
+        },
+      ]
     };
   }
 

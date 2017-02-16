@@ -4,80 +4,18 @@
     <dl>
       <div class="row" *ngFor="let property of assets; let i = index;">
         <dt class="col-xs-4 p-x-0">
-          <input class="controls" placeholder="Asset Name"
-                 [value]="property.OptionName" 
-                 type="text">
+          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
         </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes"
-                 [value]="property.Note" 
-                 type="text">
+          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="property.Value" 
-                 type="number">
+          <input class="controls" placeholder="$" [value]="property.Value" type="number">
         </dd>
       </div>
 
-      <button (click)="addAsset()">Add asset</button>
-      <!--<div class="row" *ngFor="let homeContent of assets.HomeContents; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Home Content {{i}}</dt>
-        <dd class="col-xs-5">
-          <input class="controls" type="text" placeholder="Describe the content here" 
-                 [value]="homeContent.Note">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="homeContent.Value"
-                 type="number">
-        </dd>
-      </div>
-
-      <div class="row" *ngFor="let transportation of assets.Transportations; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Transport {{i}}</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the tranportation here"
-                 [value]="tranportation.Note" 
-                 type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="transportation.Value" 
-                 type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Bank</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="assets.Bank" type="text">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Investments</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="assets.Investments" type="text">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Kiwisaver</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="assets.Kiwisaver" type="text">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Other</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="assets.Other" type="text">
-        </dd>
-      </div>-->
+      <button (click)="addAsset()">Add Asset</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -92,63 +30,20 @@
   <div class="liabilities col-xs-6">
     <h4 class="row col-xs-12">Liabilities</h4>
     <dl>
-      <div class="row" *ngFor="let mortgage of liabilities.Mortgages; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Mortgage {{i}}</dt>
+      <div class="row" *ngFor="let property of liabilities; let i = index;">
+        <dt class="col-xs-4 p-x-0">
+          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+        </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Address here" [value]="mortgage.Note" type="text">
+          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="mortgage.Value" type="number">
+          <input class="controls" placeholder="$" [value]="property.Value" type="number">
         </dd>
       </div>
 
-      <div class="row" *ngFor="let purchase of liabilities.HirePurchases; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Hire Purchase {{i}}</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="purchase.Note" type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="purchase.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Bank / Personal Loan</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="liabilities.Loan.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="liabilities.Loan.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Credit Cards</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="liabilities.CreditCard.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="liabilities.CreditCard.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Bank Overdraft</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="liabilities.BankOverdraft.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="liabilities.BankOverdraft.Value" type="number">
-        </dd>
-      </div>
+      <button (click)="addLiability()">Add Liability</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -167,91 +62,20 @@
   <div class="income cols-xs-6">
     <h4 class="row col-xs-12">Income (Monthly)</h4>
     <dl>
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Applicant's Take Home Pay</dt>
+      <div class="row" *ngFor="let property of income; let i = index;">
+        <dt class="col-xs-4 p-x-0">
+          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+        </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.ApplicantTakeHomePay.Note"
-            type="text">
+          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.ApplicantTakeHomePay.Value" type="number">
+          <input class="controls" placeholder="$" [value]="property.Value" type="number">
         </dd>
       </div>
 
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Applicant Secondary Income</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.ApplicantSecondaryIncome.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.ApplicantSecondaryIncome.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Spouse Take Home Pay</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.SpouseTakeHomePay.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.SpouseTakeHomePay.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Spouse Secondary Income</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.SpouseSecondaryIncome.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.SpouseSecondaryIncome.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Rental Income 1</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="" type="text">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Rental Income 2</dt>
-        <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" [value]="" type="text">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Government Subsidy</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.GovernmentSubsidy.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.GovernmentSubsidy.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Other</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="income.Other.Note" type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="income.Other.Value" type="number">
-        </dd>
-      </div>
-
+      <button (click)="addIncome()">Add Income</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -266,75 +90,20 @@
   <div class="expenses col-xs-6">
     <h4 class="row col-xs-12">Expenses</h4>
     <dl>
-      <div class="row" *ngFor="let mortgage of expenses.Mortgages; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Mortgage {{i}}</dt>
+      <div class="row" *ngFor="let property of expenses; let i = index;">
+        <dt class="col-xs-4 p-x-0">
+          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+        </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Address here" [value]="mortgage.Note" type="text">
+          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="mortgage.Value" type="number">
+          <input class="controls" placeholder="$" [value]="property.Value" type="number">
         </dd>
       </div>
 
-      <div class="row" *ngFor="let purchase of expenses.HirePurchases; let i = index;">
-        <dt class="col-xs-4 p-x-0 controls">Hire Purchase {{i}}</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="purchase.Note" type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="purchase.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Bank / Personal Loan</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="expenses.Loan.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="expenses.Loan.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Credit Cards</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="expenses.CreditCard.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="expenses.CreditCard.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Rates/Phone/Power</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="expenses.Miscellaneous.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="expenses.Miscellaneous.Value" type="number">
-        </dd>
-      </div>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Other</dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Describe the details here" [value]="expenses.Other.Note"
-            type="text">
-        </dd>
-
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="expenses.Other.Value" type="number">
-        </dd>
-      </div>
+      <button (click)="addExpense()">Add Expense</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>

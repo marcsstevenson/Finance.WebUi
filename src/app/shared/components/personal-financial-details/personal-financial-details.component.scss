@@ -1,4 +1,10 @@
+@import '../../../../assets/styles/main';
+
 .personal-financial-details {
   width: 100%;
   padding: 1.25em;
+
+  input.option-name {
+    color: $normal-content-color;
+  }
 }

@@ -79,4 +79,29 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       Note: ''
     });
   }
+
+  addLiability() {
+    this.liabilities.push({
+      OptionName: 'Liability Name',
+      Value: '',
+      Note: ''
+    });
+  }
+
+  addIncome() {
+    this.income.push({
+      OptionName: 'Income Name',
+      Value: '',
+      Note: ''
+    });
+  }
+
+  addExpense() {
+    this.expenses.push({
+      OptionName: 'Expense Name',
+      Value: '',
+      Note: ''
+    });
+  }
+
 }
