@@ -7,4 +7,23 @@
   input.option-name {
     color: $normal-content-color;
   }
+
+  button.add-item {
+    width: 100%;
+    height: 3em;
+    background-color: $highlight-color;
+    border: none;
+    color: white;
+    margin: 1em 0 1em 0;
+  }
+
+  h3.net-worth, h3.disposable-income {
+    text-align: center;
+    margin: 1em 0 2em 0;
+
+    span {
+      color: $highlight-color;
+      font-size: 3em;
+    }
+  }
 }

@@ -15,7 +15,7 @@
         </dd>
       </div>
 
-      <button (click)="addAsset()">Add Asset</button>
+      <button class="add-item" (click)="addAsset()">Add Asset</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -43,7 +43,7 @@
         </dd>
       </div>
 
-      <button (click)="addLiability()">Add Liability</button>
+      <button class="add-item" (click)="addLiability()">Add Liability</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -56,10 +56,10 @@
 
   <hr>
   <div class="col-xs-12">
-    <h3>Net Worth: <span>{{NetWorth}}</span></h3>
+    <h3 class="net-worth">Net Worth: <span>{{NetWorth}}</span></h3>
   </div>
 
-  <div class="income cols-xs-6">
+  <div class="income col-xs-6">
     <h4 class="row col-xs-12">Income (Monthly)</h4>
     <dl>
       <div class="row" *ngFor="let property of income; let i = index;">
@@ -75,7 +75,7 @@
         </dd>
       </div>
 
-      <button (click)="addIncome()">Add Income</button>
+      <button class="add-item" (click)="addIncome()">Add Income</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -103,7 +103,7 @@
         </dd>
       </div>
 
-      <button (click)="addExpense()">Add Expense</button>
+      <button class="add-item" (click)="addExpense()">Add Expense</button>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
@@ -115,6 +115,6 @@
   </div>
 
   <div class="col-xs-12">
-    <h3>Disposable Income: <span>{{DisposableIncome}}</span></h3>
+    <h3 class="disposable-income">Disposable Income: <span>{{DisposableIncome}}</span></h3>
   </div>
 </div>
