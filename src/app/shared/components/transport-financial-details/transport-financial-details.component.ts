@@ -14,6 +14,9 @@ export class FinanceWebUiTransportFinancialDetailsComponent implements OnInit {
   @Output()
   financialDetailChange = new EventEmitter();
 
+  private grossCostTotal;
+  private depositTotal;
+
   constructor() { }
 
   ngOnInit() {
@@ -27,15 +30,32 @@ export class FinanceWebUiTransportFinancialDetailsComponent implements OnInit {
   }
 
   updateInputProperty(property, $event) {
-    this.financialDetail[property] = $event.target.value;
+    this.financialDetail[property] = parseInt($event.target.value, 10);
+    this.calculateGrossCost();
+    this.calculateTotalDeposit();
+    this.calculateAmountFinanced();
     this.update();
   }
 
   calculateGrossCost () {
-    return 0;
+    this.grossCostTotal = (this.financialDetail.CashPrice || 0) +
+             (this.financialDetail.OnRoadCosts || 0) +
+             (this.financialDetail.MechanicalWarranty || 0) +
+             (this.financialDetail.Gap || 0) +
+             (this.financialDetail.Insurance || 0) +
+             (this.financialDetail.LoanProtection || 0) +
+             (this.financialDetail.BookingFee || 0) +
+             (this.financialDetail.BrokerFee || 0) +
+             (this.financialDetail.Other || 0);
+
   }
 
   calculateTotalDeposit() {
-    return 0;
+    this.depositTotal = (this.financialDetail.CashDepositOrAdvanceRental || 0) +
+                        (this.financialDetail.NetTrade || 0);
+  }
+
+  calculateAmountFinanced() {
+    this.financialDetail.AmountFinanced = this.grossCostTotal - this.depositTotal;
   }
 }

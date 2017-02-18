@@ -9,7 +9,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" 
-                 name="Term" placeholder="$" [value]="financialDetail.Term" 
+                 name="Term" placeholder="# of months" [value]="financialDetail.Term" 
                  (blur)="updateInputProperty('Term', $event)">
 				</dd>
 			</div>
@@ -37,8 +37,8 @@
 					</dt>
 					<dd class="col-xs-4 p-x-0">
 						<input class="controls full-length" type="number" 
-									name="onRoadCost" placeholder="$" [value]="financialDetail.CashPrice" 
-									(blur)="updateInputProperty('CashPrice', $event)">
+									name="onRoadCost" placeholder="$" [value]="financialDetail.OnRoadCosts" 
+									(blur)="updateInputProperty('OnRoadCosts', $event)">
 					</dd>
 				</div>
 
@@ -125,7 +125,7 @@
 					</dt>
 					<dd class="col-xs-4 p-x-0">
 						<input class="controls full-length" type="number" 
-									name="totalGrossCost" placeholder="$" [value]="calculateGrossCost()">
+									name="totalGrossCost" placeholder="$" [value]="grossCostTotal">
 					</dd>
 				</div>
 				
@@ -157,7 +157,7 @@
 					</dt>
 					<dd class="col-xs-4 p-x-0">
 						<input class="controls full-length" type="number" 
-									name="totalDeposit" placeholder="$" [value]="calculateTotalDeposit()">
+									name="totalDeposit" placeholder="$" [value]="depositTotal">
 					</dd>
 				</div>
 
@@ -167,7 +167,8 @@
 					</dt>
 					<dd class="col-xs-4 p-x-0">
 						<input class="controls full-length" type="number" 
-									name="amountFinanced" placeholder="$" [value]="financialDetail.AmountFinanced">
+									name="amountFinanced" placeholder="$" [value]="financialDetail.AmountFinanced"
+									(blur)="updateInputProperty('AmountFinanced', $event)">
 					</dd>
 				</div>
 
@@ -176,8 +177,9 @@
 						<label>Inerest Rate (%)</label>
 					</dt>
 					<dd class="col-xs-4 p-x-0">
-						<input class="controls full-length" type="number" 
-									name="amountFinanced" placeholder="$" [value]="financialDetail.InterestRate">
+						<input class="controls full-length" type="percentage" 
+									name="amountFinanced" placeholder="%" [value]="financialDetail.InterestRate"
+									(blur)="updateInputProperty('InterestRate', $event)">
 					</dd>
 				</div>
 				
