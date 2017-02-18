@@ -4,14 +4,23 @@
     <dl>
       <div class="row" *ngFor="let property of assets; let i = index;">
         <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+          <input class="controls option-name" placeholder="Asset Name" 
+                 [value]="property.OptionName" 
+                 (blur)="updateAssetsOptionName(i, $event)"
+                 type="text" >
         </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
+          <input class="controls" placeholder="Notes" 
+                 [value]="property.Note" 
+                 (blur)="updateAssetsNote(i, $event)" 
+                 type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="property.Value" type="number">
+          <input class="controls" placeholder="$" 
+                 [value]="property.Value" 
+                 (blur)="updateAssetsValue(i, $event)" 
+                 type="number">
         </dd>
       </div>
 
@@ -20,7 +29,7 @@
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
         <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" type="text">
+          <input class="controls" [(value)]="assetsTotal" placeholder="Dollar Value" type="text">
         </dd>
       </div>
 
@@ -32,14 +41,23 @@
     <dl>
       <div class="row" *ngFor="let property of liabilities; let i = index;">
         <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+          <input class="controls option-name" placeholder="Asset Name" 
+                 [value]="property.OptionName" 
+                 (blur)="updateLiabilitiesOptionName(i, $event)"
+                 type="text" >
         </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
+          <input class="controls" placeholder="Notes" 
+                 [value]="property.Note" 
+                 (blur)="updateLiabilitiesNote(i, $event)" 
+                 type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="property.Value" type="number">
+          <input class="controls" placeholder="$" 
+                 [value]="property.Value" 
+                 (blur)="updateLiabilitiesValue(i, $event)" 
+                 type="number">
         </dd>
       </div>
 
@@ -48,7 +66,7 @@
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
         <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" type="text">
+          <input class="controls" [(ngModel)]="liabilitiesTotal" placeholder="Dollar Value" type="text">
         </dd>
       </div>
     </dl>
@@ -56,7 +74,7 @@
 
   <hr>
   <div class="col-xs-12">
-    <h3 class="net-worth">Net Worth: <span>{{NetWorth}}</span></h3>
+    <h3 class="net-worth">Net Worth: <span>{{netWorth}}</span></h3>
   </div>
 
   <div class="income col-xs-6">
@@ -64,14 +82,23 @@
     <dl>
       <div class="row" *ngFor="let property of income; let i = index;">
         <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+          <input class="controls option-name" placeholder="Asset Name" 
+                 [value]="property.OptionName" 
+                 (blur)="updateIncomeOptionName(i, $event)"
+                 type="text" >
         </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
+          <input class="controls" placeholder="Notes" 
+                 [value]="property.Note" 
+                 (blur)="updateIncomeNote(i, $event)" 
+                 type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="property.Value" type="number">
+          <input class="controls" placeholder="$" 
+                 [value]="property.Value" 
+                 (blur)="updateIncomeValue(i, $event)" 
+                 type="number">
         </dd>
       </div>
 
@@ -80,7 +107,7 @@
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
         <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" type="text">
+          <input class="controls" [(ngModel)]="incomeTotal" placeholder="Dollar Value" type="text">
         </dd>
       </div>
 
@@ -92,14 +119,23 @@
     <dl>
       <div class="row" *ngFor="let property of expenses; let i = index;">
         <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" type="text">
+          <input class="controls option-name" placeholder="Asset Name" 
+                 [value]="property.OptionName" 
+                 (blur)="updateExpensesOptionName(i, $event)"
+                 type="text" >
         </dt>
         <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" [value]="property.Note" type="text">
+          <input class="controls" placeholder="Notes" 
+                 [value]="property.Note" 
+                 (blur)="updateExpensesNote(i, $event)" 
+                 type="text">
         </dd>
 
         <dd class="col-xs-3">
-          <input class="controls" placeholder="$" [value]="property.Value" type="number">
+          <input class="controls" placeholder="$" 
+                 [value]="property.Value" 
+                 (blur)="updateExpensesValue(i, $event)" 
+                 type="number">
         </dd>
       </div>
 
@@ -108,13 +144,13 @@
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">Total</dt>
         <dd class="col-xs-8">
-          <input class="controls" placeholder="Dollar Value" type="text">
+          <input class="controls" [(ngModel)]="expensesTotal" placeholder="Dollar Value" type="text">
         </dd>
       </div>
     </dl>
   </div>
 
   <div class="col-xs-12">
-    <h3 class="disposable-income">Disposable Income: <span>{{DisposableIncome}}</span></h3>
+    <h3 class="disposable-income">Disposable Income: <span>{{disposableIncome}}</span></h3>
   </div>
 </div>

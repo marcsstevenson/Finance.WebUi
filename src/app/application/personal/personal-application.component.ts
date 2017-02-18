@@ -96,27 +96,33 @@ export class PersonalApplicationComponent implements OnInit {
       Assets: [
         {
           OptionName: 'Home',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Home Contents',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Car',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Bank',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Investments',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Kiwisaver',
-          Note: ''
+          Note: '',
+          Value: 0
         }
       ],
       // Assets: {
@@ -131,87 +137,107 @@ export class PersonalApplicationComponent implements OnInit {
       Liabilities: [
         {
           OptionName: 'Mortgage',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Hire Purchase',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Loan',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Credit Card',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Bank Overdraft',
-          Note: ''
+          Note: '',
+          Value: 0
         }
       ],
       Income: [
         {
           OptionName: 'Take Home Pay',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Secondary Income',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Spouse Take Home Pay',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Spouse Secondary Income',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Government Subsidy',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Other',
-          Note: ''
+          Note: '',
+          Value: 0
         },
       ],
       Expenses: [
         {
           OptionName: 'Mortgage',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Hire Purchase',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Loan',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Credit Card',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Miscellaneous',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Rates',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Phone',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Power',
-          Note: ''
+          Note: '',
+          Value: 0
         },
         {
           OptionName: 'Other',
-          Note: ''
+          Note: '',
+          Value: 0
         },
       ]
     };
