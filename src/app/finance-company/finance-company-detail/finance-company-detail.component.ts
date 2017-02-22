@@ -17,8 +17,7 @@ import * as moment from 'moment';
 export class FinanceCompanyDetailComponent implements OnInit {
 
   public notes: Array<any>;
-
-  private accountManger = {
+  private accountManager = {
       FirstName: '',
       LastName: '',
       Email: '',
@@ -27,13 +26,15 @@ export class FinanceCompanyDetailComponent implements OnInit {
       FaxNumber: ''
   };
 
-  private financeCompany: any = {
-    FinanceCompanyDto: {},
-    AccountManagers: [this.accountManger]
+  private financeCompany = {
+      Id: null,
+      Name: '',
+      DateCreated: null,
+      DateModified: null
   };
 
   private copyFinanceCompany: any = {};
-  private accountManager: any = {};
+  
   private copyAccountManager: any = {};
   private note: string;
   private basicInfoChanged = false;
@@ -61,8 +62,13 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   save() {
     this.setDefaulCustomerDates();
+console.log(this.financeCompany.Name);
+    var financeCompanyUpdate: any = {
+      FinanceCompany: this.financeCompany,
+      AccountManager: this.accountManager
+    };
 
-    this._financeCompanyService.addOrSaveFinanceCompany(this.financeCompany)
+    this._financeCompanyService.addOrSaveFinanceCompany(financeCompanyUpdate)
       .then((response) => {
         console.log('Saved successfully: ', response);
         this.router.navigate(['/finance-company', response.CommittedId]);
@@ -76,8 +82,10 @@ export class FinanceCompanyDetailComponent implements OnInit {
   }
 
   cancel() {
+console.log(this.accountManager.FirstName);
     this.resetAllChangedStatus();
     this.financeCompany = Object.assign({}, this.copyFinanceCompany);
+    this.accountManager = Object.assign({}, this.copyAccountManager);
   }
 
   delete() {
@@ -142,33 +150,35 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   private loadFinanceCompany(financeCompanyId) {
     return this._financeCompanyService.getFinanceCompany(financeCompanyId)
-      .then((financeCompany) => {
+      .then((financeCompanyDetails) => {
         // initialise account manager for template
-        if (!financeCompany.AccountManagers || financeCompany.AccountManagers.length < 1) {
-          financeCompany.AccountManagers.push(this.accountManager);
-        }
-        this.financeCompany = financeCompany;
-        this.copyFinanceCompany = Object.assign({}, financeCompany);
+        // if (!financeCompany.AccountManagers || financeCompany.AccountManagers.length < 1) {
+        //   financeCompany.AccountManagers.push(this.accountManager);
+        // }
 
-        console.log(this.financeCompany);
+        this.financeCompany = financeCompanyDetails.FinanceCompany;
+        this.copyFinanceCompany = Object.assign({}, financeCompanyDetails.FinanceCompany);
 
-        return financeCompany;
+        this.accountManager = financeCompanyDetails.AccountManager;
+        this.copyAccountManager = Object.assign({}, financeCompanyDetails.AccountManager);
+
+        return financeCompanyDetails;
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
       });
   }
 
-  private loadAccountManager(accountManagerId) {
+  // private loadAccountManager(accountManagerId) {
 
-  }
+  // }
 
   private setDefaulCustomerDates() {
-    if (this.financeCompany.DateCreated === undefined) {
+    if (this.financeCompany.DateCreated === null) {
       this.financeCompany.DateCreated = moment().utc();
     }
 
-    if (this.financeCompany.DateModified === undefined) {
+    if (this.financeCompany.DateModified === null) {
       this.financeCompany.DateModified = moment().utc();
     }
   }
