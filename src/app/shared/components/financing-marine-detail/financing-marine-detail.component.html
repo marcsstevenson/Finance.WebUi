@@ -17,20 +17,20 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Price</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="price" placeholder="$" 
 							   [value]="marineDetail.Price" (blur)="updateInputProperty('Price', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Condition</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input type="radio" class="controls" name="marineCondition" value="New" 
 								 (change)="updateInputProperty('Condition', $event)"
 								 checked> New
@@ -40,40 +40,40 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" name="year" placeholder="" 
 							   [value]="marineDetail.Year" (blur)="updateInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Make</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="make" placeholder="" 
 							   [value]="marineDetail.Make" (blur)="updateInputProperty('Make', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Model</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="model" placeholder="" 
 							   [value]="marineDetail.Model" (blur)="updateInputProperty('Model', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Hull Serial No.</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="hullSerialNumber" placeholder="" 
 							   [value]="marineDetail.HullSerialNumber" (blur)="updateInputProperty('HullSerialNumber', $event)">
 				</dd>
@@ -82,20 +82,20 @@
 			<hr>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Mortor Price</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="TrailerPrice" placeholder="" 
 							   [value]="marineDetail.Motor.Price" (blur)="updateMotorInputProperty('Price', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Condition</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input type="radio" class="controls" name="motorCondition" value="New" 
 								 (change)="updateMotorInputProperty('Condition', $event)"
 								 checked> New
@@ -105,10 +105,10 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input type="radio" class="controls" name="motorType" value="Outboard" 
 								 (change)="updateMotorInputProperty('Type', $event)"
 								 checked> Outboard
@@ -118,60 +118,60 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Mortor Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorYear" placeholder="" 
 							   [value]="marineDetail.Motor.Year" (blur)="updateMotorInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Mortor Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorYear" placeholder="" 
 							   [value]="marineDetail.Motor.Year" (blur)="updateMotorInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Make</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorMake" placeholder="" 
 							   [value]="marineDetail.Motor.Make" (blur)="updateMotorInputProperty('Make', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Model</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorModel" placeholder="" 
 							   [value]="marineDetail.Motor.Model" (blur)="updateMotorInputProperty('Model', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Engine Size</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorEnginSize" placeholder="Engine Size" 
 							   [value]="marineDetail.Motor.EnginSize" (blur)="updateMotorInputProperty('enginSize', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Engine Serial No.</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorEnginSize" placeholder="Engine Serial Number" 
 							   [value]="marineDetail.Motor.EngineSerialNumber" (blur)="updateMotorInputProperty('EngineSerialNumber', $event)">
 				</dd>
@@ -193,20 +193,20 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Price</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" name="trailerPrice" placeholder="$" 
 							   [value]="marineDetail.Trailer.Price" (blur)="updateTrailerInputProperty('Price', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input type="radio" class="controls" name="trailerType" value="SingleAxle" 
 								 (change)="updateTrailerInputProperty('Type', $event)"
 								 checked> Single Axle
@@ -216,40 +216,40 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="TrailerYear" placeholder="Year" 
 							   [value]="marineDetail.Trailer.Year" (blur)="updateTrailerInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" name="trailerYear" placeholder="Year" 
 							   [value]="marineDetail.Trailer.Year" (blur)="updateTrailerInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Registration</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="trailerRegistration" placeholder="Trailer Registration" 
 							   [value]="marineDetail.Trailer.Registration" (blur)="updateTrailerInputProperty('Registration', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Serial No.</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="trailerSerialNumber" placeholder="Trailer Serial Number" 
 							   [value]="marineDetail.Trailer.SerialNumber" (blur)="updateTrailerInputProperty('SerialNumber', $event)">
 				</dd>
@@ -260,50 +260,50 @@
 			<h3 class="row blue-light">Marine Trade In Details</h3>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade In Year</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="tradeInYear" placeholder="" 
 							   [value]="marineDetail.TradeIn.Year" (blur)="updateTradeInInputProperty('Year', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade In Make</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="tradeInMake" placeholder="" 
 							   [value]="marineDetail.TradeIn.Make" (blur)="updateTradeInInputProperty('Make', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade In Model</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="tradeInModel" placeholder="" 
 							   [value]="marineDetail.TradeIn.Model" (blur)="updateTradeInInputProperty('Model', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade In Registration</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="tradeInRegistration" placeholder="Registration" 
 							   [value]="marineDetail.TradeIn.Registration" (blur)="updateTradeInInputProperty('Registration', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade In Engine Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input type="radio" class="controls" name="tradeInMotorType" value="Outboard" 
 								 (change)="updateTradeInInputProperty('Type', $event)"
 								 checked> Outboard
@@ -313,61 +313,61 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Engine Size</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="tradeInEnginSize" placeholder="Engine Size" 
 							   [value]="marineDetail.TradeIn.EnginSize" (blur)="updateTradeInInputProperty('enginSize', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade Value</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input class="controls full-length" type=" number" name="tradeInValue" placeholder="$" 
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="tradeInValue" placeholder="$" 
 							   [value]="marineDetail.TradeIn.Value" (blur)="updateTradeInInputProperty('Value', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Settlement To</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input class="controls full-length" type=" number" name="settlementValue" placeholder="$" 
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="settlementValue" placeholder="$" 
 							   [value]="marineDetail.TradeIn.SettlementValue" (blur)="updateTradeInInputProperty('SettlementValue', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Balance</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input class="controls full-length" type=" number" name="balance" placeholder="$" 
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="balance" placeholder="$" 
 							   [value]="marineDetail.TradeIn.Blance" (blur)="updateTradeInInputProperty('Balance', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Valid To</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input class="controls full-length" type=" number" name="validTo" placeholder="$" 
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="validTo" placeholder="$" 
 							   [value]="marineDetail.TradeIn.ValidTo" (blur)="updateTradeInInputProperty('ValidTo', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Net Trade Value</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input class="controls full-length" type=" number" name="netValue" placeholder="$" 
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="netValue" placeholder="$" 
 							   [value]="marineDetail.TradeIn.NetValue" (blur)="updateTradeInInputProperty('NetValue', $event)">
 				</dd>
 			</div>

@@ -1,13 +1,15 @@
 @import './color';
 
-input {
-    border: 0;
+$border-thickness: 2px;
+
+input[type='text'], input[type='number'], input[type='percentage'] {
+    border: transparent solid $border-thickness;
     color: $input-text-color;
     width: 100%;
 
     &:focus{
         outline: none;
-        border-bottom: $blue-light solid 2px;
+        border-bottom: $blue-light solid $border-thickness;
     }
 
     &.empty {
@@ -21,6 +23,10 @@ input {
     &.full-length {
         width: 100%;
     } 
+}
+
+input[type="radio"] {
+    margin: 0.4em 0.5em;
 }
 
 textarea.note {
