@@ -49,11 +49,11 @@ export class FinanceCompanyService {
     .catch((err: any) => this.handleError(err));
   }
 
-  addOrSaveFinanceCompany (financeCompany: any) {
-    console.log('the financeCompany obj is: ', financeCompany);
+  addOrSaveFinanceCompany (financeCompanyUpdate: any) {
+    console.log('the financeCompany obj is: ', financeCompanyUpdate);
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.post(BASE_API_URL + '/FinanceCompany', financeCompany, options)
+    return this._http.post(BASE_API_URL + '/FinanceCompany', financeCompanyUpdate, options)
     .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
