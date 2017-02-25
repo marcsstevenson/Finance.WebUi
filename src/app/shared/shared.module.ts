@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { DatepickerModule } from 'ng2-bootstrap/datepicker';
+import { TinyEditor } from './directives/index';
 
 import {
         //  FinanceWebUiFooterComponent,
@@ -34,13 +35,14 @@ import {
     FinanceWebUiTradeVehicleDetailComponent,
     FinanceWebUiFinancingMarineDetailComponent,
     FinanceWebUTradeMarineDetailComponent,
-    FinanceWebUiTraderDetailComponent,
+    FinanceWebUiTraderDetailComponent, 
     FinanceWebUiDatePickerComponent,
     FinanceWebUiPersonalOccupationComponent,
     FinanceWebUiPersonalFinancialDetailsComponent,
     FinanceWebUiFinancingVehicleDetailComponent,
     FinanceWebUiFinancingMotorcycleDetailComponent,
-    FinanceWebUiTransportFinancialDetailsComponent
+    FinanceWebUiTransportFinancialDetailsComponent,
+    TinyEditor
     ],
   exports:      [
     FinanceWebUiSelectComponent,
@@ -56,7 +58,8 @@ import {
     FinanceWebUiPersonalFinancialDetailsComponent,
     FinanceWebUiFinancingVehicleDetailComponent,
     FinanceWebUiFinancingMotorcycleDetailComponent,
-    FinanceWebUiTransportFinancialDetailsComponent
+    FinanceWebUiTransportFinancialDetailsComponent,
+    TinyEditor
     ],
 })
 export class SharedModule { }
