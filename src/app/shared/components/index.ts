@@ -7,6 +7,7 @@ export * from './address-finder';
 export * from './personal-detail';
 export * from './trade-vehicle-detail';
 export * from './trade-marine-detail';
+export * from './trade-motorcycle-detail';
 export * from './financing-marine-detail';
 export * from './financing-motorcycle-detail';
 export * from './financing-vehicle-detail';
