@@ -9,12 +9,6 @@
             <option value="Motorcycle">Motorcycle</option>
         </select>
       </div>
-      <!--<div class="row">
-      <dt class="col-xs-4 p-x-0 controls">Type of transportation: </dt>
-      <dd class="col-xs-8">
-        
-      </dd>
-    </div>-->
 
       <div class="card">
         <div class="card-block">
@@ -22,34 +16,35 @@
                               (vendorDetailChange)="updateTransportationForm($event)">
           </fwui-vendor-detail>
 
-          
-          <fwui-financing-marine-detail *ngIf="transportationForm.Marine" [marineDetail]="transportationForm.Marine" 
-                                        (marineDetailChange)="updateTransportationForm($event)">
-          </fwui-financing-marine-detail>
 
-          <hr>
-
-          <fwui-trade-vehicle-detail [tradeVehicleDetail]="transportationForm.TradeVehicle" 
-                                     (tradeVehicleChange)="updateTransportationForm($event)">
-          </fwui-trade-vehicle-detail>
-
-          <hr>
-
-          <fwui-financing-vehicle-detail [vehicleDetail]="transportationForm.Vehicle" 
+          <fwui-financing-vehicle-detail *ngIf="transportationForm.TransportType === 'Vehicle'"
+                                         [vehicleDetail]="transportationForm.Vehicle" 
                                          (vehicleDetailChange)="updateTransportationForm($event)">
           </fwui-financing-vehicle-detail>
 
-          <hr>
 
-          <fwui-financing-motorcycle-detail [motorcycleDetail]="transportationForm.Motorcycle"
+          <!--<fwui-financing-marine-detail *ngIf="transportationForm.TransportType === 'Marine'" 
+                                        [marineDetail]="transportationForm.Marine" 
+                                        (marineDetailChange)="updateTransportationForm($event)">
+          </fwui-financing-marine-detail>-->
+
+          <fwui-financing-motorcycle-detail *ngIf="transportationForm.TransportType === 'Motorcycle'" 
+                                            [motorcycleDetail]="transportationForm.Motorcycle"
                                             (motorcycleDetailChange)="updateTransportationForm($event)">
           </fwui-financing-motorcycle-detail>
 
           <fwui-transport-financial-details [financialDetail]="transportationForm.FinancialDetail"
                                             (financialDetailChange)="updateTransportationForm($event)">
           </fwui-transport-financial-details>
+<!--
+          <fwui-trade-vehicle-detail [tradeVehicleDetail]="transportationForm.TradeVehicle" 
+                                     (tradeVehicleChange)="updateTransportationForm($event)">
+          </fwui-trade-vehicle-detail>-->
 
-          <hr>
+          <!--<fwui-trade-marine-detail [tradeMarineDetail]="transportationForm.TradeVehicle" 
+                                   (tradeMarineChange)="updateTransportationForm($event)">
+          </fwui-trade-marine-detail>-->
+
         </div>
       </div>
     </div>

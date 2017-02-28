@@ -1,0 +1,34 @@
+<div class="container body-content fwui">
+  <div class="row">
+    <!--<div class="row col-xs-12 center">
+      <div class="row m-x-0">
+        <label class="col-xs-4 p-x-0 controls">Type of transportation: </label>
+        <select name="role" class="col-xs-8 off-card" [(ngModel)]="vehicleForm.TransportType">
+            <option value="Vehicle">Vehicle</option>
+            <option value="Marine">Marine - Boat/Jetski</option>
+            <option value="Motorcycle">Motorcycle</option>
+        </select>
+      </div>-->
+
+    <div class="card">
+      <div class="card-block">
+        <fwui-vendor-detail [vendorDetail]="vehicleForm.Vendor" (vendorDetailChange)="updateVehicleForm($event)">
+        </fwui-vendor-detail>
+
+        <div *ngFor="let financedVehicle of vehicleForm.FiancedVehicles; let i = index;">
+          <fwui-financing-vehicle-detail [vehicleDetail]="financedVehicle" (vehicleDetailChange)="updateVehicleForm($event)">
+          </fwui-financing-vehicle-detail>
+        </div>
+
+        <div *ngFor="let tradeInVehicle of vehicleForm.TradeInVehicles; let i = index;">
+          <fwui-trade-vehicle-detail [tradeVehicleDetail]="tradeInVehicle" (tradeVehicleChange)="updateVehicleForm($event)">
+          </fwui-trade-vehicle-detail>
+        </div>
+
+        <fwui-transport-financial-details [financialDetail]="vehicleForm.FinancialDetail" (financialDetailChange)="updateVehicleForm($event)">
+        </fwui-transport-financial-details>
+
+      </div>
+    </div>
+  </div>
+</div>

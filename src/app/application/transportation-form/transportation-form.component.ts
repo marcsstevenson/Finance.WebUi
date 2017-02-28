@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransportationFormComponent implements OnInit {
 
-  transportationForm = {};
-  constructor() {
-    this.transportationForm = {
+  transportationForm = {
+      TransportType: '',
       Vendor: {
 
       },
@@ -24,6 +23,7 @@ export class TransportationFormComponent implements OnInit {
       Motorcycle: {},
       FinancialDetail: {}
     };
+  constructor() {
   }
 
   ngOnInit() {
@@ -31,6 +31,10 @@ export class TransportationFormComponent implements OnInit {
 
   updateTransportationForm($event) {
     console.log('The event received in parent is: ', $event);
+  }
+
+  selectForm(){
+    console.log('The selected tranport type: ', this.transportationForm.TransportType);
   }
 
 }

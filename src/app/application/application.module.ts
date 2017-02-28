@@ -11,6 +11,9 @@ import {
          TransportationFormComponent,
          ApplicationService,
          ApplicationRoutingModule }   from './index';
+import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { MarineFormComponent } from './marine-form/marine-form.component';
+import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.component';
 
 @NgModule({
   imports: [
@@ -23,7 +26,10 @@ import {
   ],
   declarations: [
     PersonalApplicationComponent,
-    TransportationFormComponent
+    TransportationFormComponent,
+    VehicleFormComponent,
+    MarineFormComponent,
+    MotorcycleFormComponent
   ],
   exports: [
     PersonalApplicationComponent,
