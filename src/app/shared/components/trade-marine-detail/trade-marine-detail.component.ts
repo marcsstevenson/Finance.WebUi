@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   //moduleId: module.id,
@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceWebUTradeMarineDetailComponent implements OnInit {
 
+  @Input()
+  tradeMarineDetail;
+
+  @Output()
+  tradeMarineDetailChange = new EventEmitter();
   constructor() { }
 
   ngOnInit() {

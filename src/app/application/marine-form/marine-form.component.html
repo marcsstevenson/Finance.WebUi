@@ -1,0 +1,26 @@
+<div class="container body-content fwui">
+  <div class="row">
+    <div class="card">
+      <div class="card-block">
+        <fwui-vendor-detail [vendorDetail]="marineForm.Vendor" (vendorDetailChange)="updateMarineForm($event)">
+        </fwui-vendor-detail>
+
+        <div *ngFor="let financedMarine of marineForm.FiancedMarines; let i = index;">
+          <fwui-financing-marine-detail [marineDetail]="financedMarine" 
+                                        (marineDetailChange)="updateMarineForm($event)">
+          </fwui-financing-marine-detail>
+        </div>
+
+        <div *ngFor="let tradeInMarine of marineForm.TradeInMarines; let i = index;">
+          <fwui-trade-marine-detail [tradeMarineDetail]="tradeInMarine" 
+                                   (tradeMarineChange)="updateMarineForm($event)">
+          </fwui-trade-marine-detail>
+        </div>
+
+        <fwui-transport-financial-details [financialDetail]="marineForm.FinancialDetail" (financialDetailChange)="updateMarineForm($event)">
+        </fwui-transport-financial-details>
+
+      </div>
+    </div>
+  </div>
+</div>
