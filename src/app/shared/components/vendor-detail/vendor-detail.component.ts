@@ -3,10 +3,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   //moduleId: module.id,
   selector: 'fwui-vendor-detail',
-  templateUrl: './trader-detail.component.html',
-  styleUrls: ['./trader-detail.component.scss']
+  templateUrl: './vendor-detail.component.html',
+  styleUrls: ['./vendor-detail.component.scss']
 })
-export class FinanceWebUiTraderDetailComponent implements OnInit {
+export class FinanceWebUiVendorDetailComponent implements OnInit {
 
   @Input()
   vendorDetail;

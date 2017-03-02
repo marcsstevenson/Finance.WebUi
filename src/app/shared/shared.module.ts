@@ -16,15 +16,16 @@ import {
          FinanceWebUiTradeVehicleDetailComponent,
          FinanceWebUiFinancingMarineDetailComponent,
          FinanceWebUTradeMarineDetailComponent,
-         FinanceWebUiTraderDetailComponent,
          FinanceWebUiDatePickerComponent,
          FinanceWebUiPersonalOccupationComponent,
          FinanceWebUiPersonalFinancialDetailsComponent,
          FinanceWebUiFinancingVehicleDetailComponent,
          FinanceWebUiFinancingMotorcycleDetailComponent,
          FinanceWebUiTransportFinancialDetailsComponent,
-         FinanceWebUiTradeMotorcycleDetailComponent
+         FinanceWebUiTradeMotorcycleDetailComponent,
+         FinanceWebUiVendorDetailComponent
         } from './components/index';
+
 
 @NgModule({
   imports:      [ CommonModule, FormsModule, DatepickerModule],
@@ -36,7 +37,6 @@ import {
     FinanceWebUiTradeVehicleDetailComponent,
     FinanceWebUiFinancingMarineDetailComponent,
     FinanceWebUTradeMarineDetailComponent,
-    FinanceWebUiTraderDetailComponent,
     FinanceWebUiDatePickerComponent,
     FinanceWebUiPersonalOccupationComponent,
     FinanceWebUiPersonalFinancialDetailsComponent,
@@ -44,7 +44,8 @@ import {
     FinanceWebUiFinancingMotorcycleDetailComponent,
     FinanceWebUiTransportFinancialDetailsComponent,
     TinyEditor,
-    FinanceWebUiTradeMotorcycleDetailComponent
+    FinanceWebUiTradeMotorcycleDetailComponent,
+    FinanceWebUiVendorDetailComponent
     ],
   exports:      [
     FinanceWebUiSelectComponent,
@@ -54,7 +55,6 @@ import {
     FinanceWebUiTradeVehicleDetailComponent,
     FinanceWebUiFinancingMarineDetailComponent,
     FinanceWebUTradeMarineDetailComponent,
-    FinanceWebUiTraderDetailComponent,
     FinanceWebUiDatePickerComponent,
     FinanceWebUiPersonalOccupationComponent,
     FinanceWebUiPersonalFinancialDetailsComponent,
@@ -62,7 +62,8 @@ import {
     FinanceWebUiFinancingMotorcycleDetailComponent,
     FinanceWebUiTransportFinancialDetailsComponent,
     TinyEditor,
-    FinanceWebUiTradeMotorcycleDetailComponent
+    FinanceWebUiTradeMotorcycleDetailComponent,
+    FinanceWebUiVendorDetailComponent
     ],
 })
 export class SharedModule { }

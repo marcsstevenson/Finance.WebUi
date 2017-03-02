@@ -12,16 +12,16 @@
 
     <div class="card">
       <div class="card-block">
-        <fwui-vendor-detail [vendorDetail]="vehicleForm.Vendor" (vendorDetailChange)="updateVehicleForm($event)">
+        <fwui-vendor-detail [vendorDetail]="vehicleForm.Vendor" (vendorDetailChange)="updateVendor($event)">
         </fwui-vendor-detail>
 
         <div *ngFor="let financedVehicle of vehicleForm.FiancedVehicles; let i = index;">
-          <fwui-financing-vehicle-detail [vehicleDetail]="financedVehicle" (vehicleDetailChange)="updateVehicleForm($event)">
+          <fwui-financing-vehicle-detail [vehicleDetail]="financedVehicle" (vehicleDetailChange)="updateFinancedVehicle($event)">
           </fwui-financing-vehicle-detail>
         </div>
 
         <div *ngFor="let tradeInVehicle of vehicleForm.TradeInVehicles; let i = index;">
-          <fwui-trade-vehicle-detail [tradeVehicleDetail]="tradeInVehicle" (tradeVehicleChange)="updateVehicleForm($event)">
+          <fwui-trade-vehicle-detail [tradeVehicleDetail]="tradeInVehicle" (tradeVehicleDetailChange)="updateTradeInVehicle($event)">
           </fwui-trade-vehicle-detail>
         </div>
 

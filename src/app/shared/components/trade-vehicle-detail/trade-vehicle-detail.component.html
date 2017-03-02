@@ -4,7 +4,7 @@
 		<h3 class="row blue-light">Trade In Vehicle Details</h3>
 		<dl>
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Year</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -14,7 +14,7 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Make</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -24,7 +24,7 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Model</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -34,7 +34,7 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Registration</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -44,10 +44,10 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Milage Unit</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
+				<dd class="col-xs-8 p-x-0 controls">
 					<input type="radio" class="controls" name="milageUnit" value="KM" 
 								 (change)="updateInputProperty('MilageUnit', $event)"
 								 checked> Kilometers
@@ -57,7 +57,7 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Milage</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -67,7 +67,7 @@
 			</div>
 
       <div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trade Value</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -77,7 +77,7 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Settlement To</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -87,7 +87,7 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Balance</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -97,21 +97,21 @@
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Valid To</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" name="validTo" placeholder="$" 
+					<input class="controls full-length" type="number" name="ValidTo" placeholder="$" 
 							   [value]="tradeVehicleDetail.ValidTo" (blur)="updateInputProperty('ValidTo', $event)">
 				</dd>
 			</div>
 
 			<div class="row">
-				<dt class="col-xs-4 p-x-0">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Net Trade Value</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" name="netValue" placeholder="$" 
+					<input class="controls full-length" type="number" name="NetValue" placeholder="$" 
 							   [value]="tradeVehicleDetail.NetValue" (blur)="updateInputProperty('NetValue', $event)">
 				</dd>
 			</div>

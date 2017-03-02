@@ -13,7 +13,20 @@ export class MarineFormComponent implements OnInit {
     },
     FiancedMarines: [
       {
-
+        Price: '',
+        Condition: '',
+        Year: '',
+        Make: '',
+        Model: '',
+        HullSerialNumber: '',
+        Motor: {
+          Price: '',
+          Condition: '',
+          Make: '',
+          Model: '',
+          EngineSize: '',
+          EngineSerialNumber: ''
+        }
       }
     ],
     TradeInMarines: [

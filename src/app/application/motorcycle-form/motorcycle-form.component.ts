@@ -25,10 +25,14 @@ export class MotorcycleFormComponent implements OnInit {
 
     }
   };
-  
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateMotorcycleForm(event) {
+
   }
 
 }
