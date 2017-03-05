@@ -25,6 +25,8 @@ import {
          FinanceWebUiTradeMotorcycleDetailComponent,
          FinanceWebUiVendorDetailComponent
         } from './components/index';
+import { FinancingMarineMotorDetailComponent } from './components/financing-marine-motor-detail/financing-marine-motor-detail.component';
+import { FinancingMarineTrailerDetailComponent } from './components/financing-marine-trailer-detail/financing-marine-trailer-detail.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import {
     FinanceWebUiTransportFinancialDetailsComponent,
     TinyEditor,
     FinanceWebUiTradeMotorcycleDetailComponent,
-    FinanceWebUiVendorDetailComponent
+    FinanceWebUiVendorDetailComponent,
+    FinancingMarineMotorDetailComponent,
+    FinancingMarineTrailerDetailComponent
     ],
   exports:      [
     FinanceWebUiSelectComponent,

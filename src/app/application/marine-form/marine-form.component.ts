@@ -9,29 +9,58 @@ export class MarineFormComponent implements OnInit {
 
   private marineForm = {
     Vendor: {
-
+      VendorType: '',
+      FirstName: '',
+      LastName: '',
+      PhoneNumber: '',
+      Salesman: '',
+      TradeMeUrl: ''
     },
     FiancedMarines: [
       {
+        MarineType: '',
         Price: '',
         Condition: '',
         Year: '',
         Make: '',
         Model: '',
         HullSerialNumber: '',
-        Motor: {
+      }
+    ],
+    FinancedMotor: [
+      {
           Price: '',
           Condition: '',
+          Type: '',
+          Year: '',
           Make: '',
           Model: '',
           EngineSize: '',
           EngineSerialNumber: ''
         }
+    ],
+    FinancedTrailer: [
+      {
+        MarineType: '',
+        Type: '',
+        Price: '',
+        Year: '',
+        Registration: '',
+        TrailerSerialNumber: ''
       }
     ],
     TradeInMarines: [
       {
-
+        MarineType: '',
+        Year: '',
+        Make: '',
+        Model: '',
+        Registration: '',
+        EngineSize: '',
+        SettlementTo: '',
+        Balance: '',
+        ValieTo: '',
+        NetTradeValue: ''
       }
     ],
     FinancialDetail: {

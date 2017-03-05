@@ -72,4 +72,8 @@ export class VehicleFormComponent implements OnInit {
   updateTradeInVehicle (receivedValue) {
     console.log('Trade In Vehicle received value', receivedValue);
   }
+
+  updateFinanceDetails (receivedValue) {
+    console.log('Trade In Vehicle received value', receivedValue);
+  }
 }

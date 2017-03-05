@@ -1,0 +1,75 @@
+<div class="financing-motor-detail">
+
+	<div class="">
+		<h3 class="row blue-light">Trailer Details</h3>
+		<dl>
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 radio-line">
+					<label>Trailer For:</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 radio-line">
+					<input type="radio" class="controls" name="TrailerMarineType" value="Boat" 
+								 (change)="updateTrailerInputProperty('MarineType', $event)"
+								 checked> Boat
+					<input type="radio" class="controls" name="TrailerMarineType" value="Jetski" 
+								 (change)="updateTrailerInputProperty('MarineType', $event)"> Jetski
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trailer Price</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="trailerPrice" placeholder="$" 
+							   [value]="marineDetail.Trailer.Price" (blur)="updateTrailerInputProperty('Price', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trailer Type</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input type="radio" class="controls" name="trailerType" value="SingleAxle" 
+								 (change)="updateTrailerInputProperty('Type', $event)"
+								 checked> Single Axle
+					<input type="radio" class="controls" name="trailerType" value="TandemAxle" 
+								 (change)="updateTrailerInputProperty('Type', $event)"> Tandem Axle
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trailer Year</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="TrailerYear" placeholder="Year" 
+							   [value]="marineDetail.Trailer.Year" (blur)="updateTrailerInputProperty('Year', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trailer Registration</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="trailerRegistration" placeholder="Trailer Registration" 
+							   [value]="marineDetail.Trailer.Registration" (blur)="updateTrailerInputProperty('Registration', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trailer Serial No.</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="trailerSerialNumber" placeholder="Trailer Serial Number" 
+							   [value]="marineDetail.Trailer.SerialNumber" (blur)="updateTrailerInputProperty('SerialNumber', $event)">
+				</dd>
+			</div>
+
+			<hr>
+		</dl>
+	</div>
+</div>

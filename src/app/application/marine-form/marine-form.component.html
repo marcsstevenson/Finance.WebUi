@@ -11,6 +11,18 @@
           </fwui-financing-marine-detail>
         </div>
 
+        <!--<div *ngFor="let financedMotor of marineForm.FiancedMotors; let i = index;">
+          <fwui-financing-marine-detail [motorDetail]="financedMotor" 
+                                        (motorDetailChange)="updateMarineForm($event)">
+          </fwui-financing-marine-detail>
+        </div>
+
+        <div *ngFor="let fiancedTrailer of marineForm.FiancedTrailers; let i = index;">
+          <fwui-financing-marine-detail [trailerDetail]="fiancedTrailer" 
+                                        (trailerDetailChange)="updateMarineForm($event)">
+          </fwui-financing-marine-detail>
+        </div>-->
+
         <div *ngFor="let tradeInMarine of marineForm.TradeInMarines; let i = index;">
           <fwui-trade-marine-detail [tradeMarineDetail]="tradeInMarine" 
                                    (tradeMarineChange)="updateMarineForm($event)">
