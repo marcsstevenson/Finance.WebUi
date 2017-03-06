@@ -27,7 +27,7 @@ export class MarineFormComponent implements OnInit {
         HullSerialNumber: '',
       }
     ],
-    FinancedMotor: [
+    FinancedMotors: [
       {
           Price: '',
           Condition: '',
@@ -39,7 +39,7 @@ export class MarineFormComponent implements OnInit {
           EngineSerialNumber: ''
         }
     ],
-    FinancedTrailer: [
+    FinancedTrailers: [
       {
         MarineType: '',
         Type: '',
@@ -70,6 +70,26 @@ export class MarineFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateFinancedMarine(receivedValue) {
+    this.marineForm.Vendor = receivedValue;
+    console.log('Current Vendor details', this.marineForm.Vendor);
+  }
+
+  updateTradeInMarine(receivedValue) {
+    this.marineForm.TradeInMarines = receivedValue;
+    console.log('Current Vendor details', this.marineForm.TradeInMarines);
+  }
+
+  updateMarineTrailer(receivedValue) {
+    this.marineForm.FinancedTrailers = receivedValue;
+    console.log('Current Vendor details', this.marineForm.FinancedTrailers);
+  }
+
+  updateMarineForm(receivedValue) {
+    this.marineForm.FinancialDetail = receivedValue;
+    console.log('Current Vendor details', this.marineForm.Vendor);
   }
 
 }

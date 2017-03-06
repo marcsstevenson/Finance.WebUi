@@ -18,4 +18,16 @@ export class FinanceWebUTradeMarineDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  update() {
+    console.log('I am sending update to parent');
+    this.tradeMarineDetailChange.emit(
+      this.tradeMarineDetail
+    );
+  }
+
+  updateInputProperty(property, $event) {
+    this.tradeMarineDetail[property] = $event.target.value;
+    this.update();
+  }
+
 }

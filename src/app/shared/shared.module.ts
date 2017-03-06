@@ -23,11 +23,10 @@ import {
          FinanceWebUiFinancingMotorcycleDetailComponent,
          FinanceWebUiTransportFinancialDetailsComponent,
          FinanceWebUiTradeMotorcycleDetailComponent,
-         FinanceWebUiVendorDetailComponent
+         FinanceWebUiVendorDetailComponent,
+         FinanceWebUiFinancingMarineMotorDetailComponent,
+         FinanceWebUiFinancingMarineTrailerDetailComponent
         } from './components/index';
-import { FinancingMarineMotorDetailComponent } from './components/financing-marine-motor-detail/financing-marine-motor-detail.component';
-import { FinancingMarineTrailerDetailComponent } from './components/financing-marine-trailer-detail/financing-marine-trailer-detail.component';
-
 
 @NgModule({
   imports:      [ CommonModule, FormsModule, DatepickerModule],
@@ -48,8 +47,8 @@ import { FinancingMarineTrailerDetailComponent } from './components/financing-ma
     TinyEditor,
     FinanceWebUiTradeMotorcycleDetailComponent,
     FinanceWebUiVendorDetailComponent,
-    FinancingMarineMotorDetailComponent,
-    FinancingMarineTrailerDetailComponent
+    FinanceWebUiFinancingMarineMotorDetailComponent,
+    FinanceWebUiFinancingMarineTrailerDetailComponent
     ],
   exports:      [
     FinanceWebUiSelectComponent,
@@ -67,7 +66,9 @@ import { FinancingMarineTrailerDetailComponent } from './components/financing-ma
     FinanceWebUiTransportFinancialDetailsComponent,
     TinyEditor,
     FinanceWebUiTradeMotorcycleDetailComponent,
-    FinanceWebUiVendorDetailComponent
+    FinanceWebUiVendorDetailComponent,
+    FinanceWebUiFinancingMarineMotorDetailComponent,
+    FinanceWebUiFinancingMarineTrailerDetailComponent
     ],
 })
 export class SharedModule { }

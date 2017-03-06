@@ -7,25 +7,25 @@
 
         <div *ngFor="let financedMarine of marineForm.FiancedMarines; let i = index;">
           <fwui-financing-marine-detail [marineDetail]="financedMarine" 
-                                        (marineDetailChange)="updateMarineForm($event)">
+                                        (marineDetailChange)="updateFinancedMarine($event)">
           </fwui-financing-marine-detail>
         </div>
 
-        <!--<div *ngFor="let financedMotor of marineForm.FiancedMotors; let i = index;">
-          <fwui-financing-marine-detail [motorDetail]="financedMotor" 
-                                        (motorDetailChange)="updateMarineForm($event)">
-          </fwui-financing-marine-detail>
+        <div *ngFor="let financedMotor of marineForm.FinancedMotors; let i = index;">
+          <fwui-financing-marine-motor-detail [marineMotorDetail]="financedMotor" 
+                                        (marineMotorDetailChange)="updateMarineMotor($event)">
+          </fwui-financing-marine-motor-detail>
         </div>
 
-        <div *ngFor="let fiancedTrailer of marineForm.FiancedTrailers; let i = index;">
-          <fwui-financing-marine-detail [trailerDetail]="fiancedTrailer" 
-                                        (trailerDetailChange)="updateMarineForm($event)">
-          </fwui-financing-marine-detail>
-        </div>-->
+        <div *ngFor="let fiancedTrailer of marineForm.FinancedTrailers; let i = index;">
+          <fwui-financing-marine-trailer-detail [marineTrailerDetail]="fiancedTrailer" 
+                                        (marineTrailerDetailChange)="updateMarineTrailer($event)">
+          </fwui-financing-marine-trailer-detail>
+        </div>
 
         <div *ngFor="let tradeInMarine of marineForm.TradeInMarines; let i = index;">
           <fwui-trade-marine-detail [tradeMarineDetail]="tradeInMarine" 
-                                   (tradeMarineChange)="updateMarineForm($event)">
+                                   (tradeMarineChange)="updateTradeInMarine($event)">
           </fwui-trade-marine-detail>
         </div>
 
