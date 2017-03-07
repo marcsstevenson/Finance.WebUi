@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'fwui-trade-motorcycle-detail',
   templateUrl: './trade-motorcycle-detail.component.html',
-  styleUrls: ['./trade-motorcycle-detail.component.css']
+  styleUrls: ['./trade-motorcycle-detail.component.scss']
 })
 export class FinanceWebUiTradeMotorcycleDetailComponent implements OnInit {
 
@@ -16,6 +16,18 @@ export class FinanceWebUiTradeMotorcycleDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  update() {
+    console.log('I am sending update to parent');
+    this.tradeMotorcycleDetailChange.emit(
+      this.tradeMotorcycleDetail
+    );
+  }
+
+  updateInputProperty(property, $event) {
+    this.tradeMotorcycleDetail[property] = $event.target.value;
+    this.update();
   }
 
 }

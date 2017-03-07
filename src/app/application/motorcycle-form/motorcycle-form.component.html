@@ -7,17 +7,17 @@
 
         <div *ngFor="let financedMotorcycle of motorcycleForm.FiancedMotorcycles; let i = index;">
           <fwui-financing-motorcycle-detail [motorcycleDetail]="financedMotorcycle" 
-                                        (motorcycleDetailChange)="updateMotorcycleForm($event)">
+                                        (motorcycleDetailChange)="updateFinancedMotorcycle($event)">
           </fwui-financing-motorcycle-detail>
         </div>
 
         <div *ngFor="let tradeInMotorcycle of motorcycleForm.TradeInMotorcycles; let i = index;">
           <fwui-trade-motorcycle-detail [tradeMotorcycleDetail]="tradeInMotorcycle" 
-                                   (tradeMotorcycleChange)="updateMotorcycleForm($event)">
+                                   (tradeMotorcycleDetailChange)="updateTradeInMotorcycle($event)">
           </fwui-trade-motorcycle-detail>
         </div>
 
-        <fwui-transport-financial-details [financialDetail]="motorcycleForm.FinancialDetail" (financialDetailChange)="updateMotorcycleForm($event)">
+        <fwui-transport-financial-details [financialDetail]="motorcycleForm.FinancialDetail" (financialDetailChange)="updateFinanceDetails($event)">
         </fwui-transport-financial-details>
 
       </div>

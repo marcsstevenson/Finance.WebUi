@@ -1,3 +1,121 @@
-<p>
-  trade-motorcycle-detail works!
-</p>
+<div class="trade-motorcycle-detail">
+
+  <div class="">
+		<h3 class="row blue-light">Trade In Motorcycle Details</h3>
+		<dl>
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Year</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="year" placeholder="Year" 
+							   [value]="tradeMotorcycleDetail.Year" (blur)="updateInputProperty('Year', $event)">
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Make</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="make" placeholder="Make" 
+							   [value]="tradeMotorcycleDetail.Make" (blur)="updateInputProperty('Make', $event)">
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Model</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="model" placeholder="Model" 
+							   [value]="tradeMotorcycleDetail.Model" (blur)="updateInputProperty('Model', $event)">
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Registration</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="registration" placeholder="Registration" 
+							   [value]="tradeMotorcycleDetail.Registration" (blur)="updateInputProperty('Registration', $event)">
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Milage Unit</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0 controls">
+					<input type="radio" class="controls" name="milageUnit" value="KM" 
+								 (change)="updateInputProperty('MilageUnit', $event)"
+								 checked> Kilometers
+					<input type="radio" class="controls" name="milageUnit" value="MLs" 
+								 (change)="updateInputProperty('MilageUnit', $event)"> Miles
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Milage</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="Milage" placeholder="Milage" 
+							   [value]="tradeMotorcycleDetail.Milage" (blur)="updateInputProperty('Milage', $event)">
+				</dd>
+			</div>
+
+      <div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Trade Value</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="TradeInValue" placeholder="$" 
+							   [value]="tradeMotorcycleDetail.Value" (blur)="updateInputProperty('Value', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Settlement To</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="SettlementValue" placeholder="$" 
+							   [value]="tradeMotorcycleDetail.SettlementValue" (blur)="updateInputProperty('SettlementValue', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Balance</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="Balance" placeholder="$" 
+							   [value]="tradeMotorcycleDetail.Blance" (blur)="updateInputProperty('Balance', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Valid To</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="ValidTo" placeholder="$" 
+							   [value]="tradeMotorcycleDetail.ValidTo" (blur)="updateInputProperty('ValidTo', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Net Trade Value</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="number" name="NetValue" placeholder="$" 
+							   [value]="tradeMotorcycleDetail.NetValue" (blur)="updateInputProperty('NetValue', $event)">
+				</dd>
+			</div>
+		</dl>
+
+  </div>  
+</div>

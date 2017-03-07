@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'fwui-financing-marine-motor-detail',
   templateUrl: './financing-marine-motor-detail.component.html',
-  styleUrls: ['./financing-marine-motor-detail.component.css']
+  styleUrls: ['./financing-marine-motor-detail.component.scss']
 })
 export class FinanceWebUiFinancingMarineMotorDetailComponent implements OnInit {
 
