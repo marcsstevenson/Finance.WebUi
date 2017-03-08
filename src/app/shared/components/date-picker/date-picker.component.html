@@ -7,10 +7,10 @@
 
     <dd class="col-xs-8 p-x-0 picker-content">
       <input class="controls full-length" [(ngModel)]="dateModel" 
-             (focus)="showPopup()" placeholder="{{placeHolder}}" />
+             (focus)="showPopup()" (blur)="hidePopup()" placeholder="{{placeHolder}}" />
              
       <datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" 
-                  [showWeeks]="true" (selectionDone)="hidePopup($event)"></datepicker>
+                  [showWeeks]="true" (selectionDone)="updateValue($event)"></datepicker>
     </dd>
   </div>
 

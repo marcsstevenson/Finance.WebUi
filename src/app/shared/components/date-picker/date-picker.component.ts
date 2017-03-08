@@ -20,16 +20,22 @@ export class FinanceWebUiDatePickerComponent implements OnInit {
   @Output()
   dateModelChange: EventEmitter<string> = new EventEmitter<string>();
 
-  private showDatepicker: boolean = false;
+  private showDatepicker = false;
 
   showPopup() {
     this.showDatepicker = true;
   }
 
-  hidePopup(event) {
+  hidePopup() {
+    this.showDatepicker = false;
+  }
+
+  updateValue(event) {
     this.showDatepicker = false;
     this.dateModel = event;
-    this.dateModelChange.emit(event);
+    if (event) {
+      this.dateModelChange.emit(event);
+    }
   }
 
   constructor() { }
