@@ -21,7 +21,7 @@ import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.compo
     FormsModule,
     SharedModule,
     Angular2DataTableModule,
-    DatepickerModule,
+    DatepickerModule.forRoot(),
     ApplicationRoutingModule
   ],
   declarations: [
