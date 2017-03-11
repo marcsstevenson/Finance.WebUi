@@ -35,6 +35,7 @@ export class PersonalApplicationComponent implements OnInit {
     this.personalApplication = {
       Applicant: {
         FirstName: '',
+        MiddleName: '',
         LastName: '',
         Gender: '',
         DateOfBirth: '',
@@ -42,6 +43,8 @@ export class PersonalApplicationComponent implements OnInit {
         MaritalStatus: '',
         DiversLicenceStatus: '',
         OverseasDiversLicence: '',
+        IsNzResident: true,
+        IsWorkVisa: false,
         LicenceNumberSa: '',
         LicenceNumberSb: '',
         CellNumber: '',

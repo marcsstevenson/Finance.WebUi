@@ -17,6 +17,15 @@
 
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">
+					<label>Middle Name</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="personalDetail.FirstName" (blur)="updateInputProperty('FirstName', $event)">
+				</dd>
+			</div>
+
+			<div class="row">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Last Name</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
@@ -54,31 +63,33 @@
 					<label>NZ Resident</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" name="nzResident" value="Yes" checked 
-								 (click)="updateInputProperty('IsNzResident', $event)"> Yes
-					<input type="radio" name="nzResident" value="No"
-					 			 (click)="updateInputProperty('IsNzResident', $event)"> No
+					<input type="radio" value="true" name="nzResident" [checked]="personalDetail.IsNzResident === true"
+					(click)="updateResidency(true)"> Yes
+					<input type="radio" value="false" name="nzResident" [checked]="personalDetail.IsNzResident === false" 
+					(click)="updateResidency(false)"> No
 				</dd>
 			</div>
 
-			<div class="row">
+			<div class="row" *ngIf="personalDetail.IsNzResident == false">
 				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>Work Visa</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0 radio-line">
 					<input type="radio" name="workVisa" value="Yes" checked
-					       (click)="updateInputProperty('IsWorkVisa', $event)"> Yes 
+					       (click)="updateWorkVisaStatus(true)"> Yes 
 					<input type="radio" name="workVisa" value="No"
-					 			 (click)="updateInputProperty('IsWorkVisa', $event)"> No 
+					 			 (click)="updateWorkVisaStatus(false)"> No 
 				</dd>
 			</div>
 
-			<fwui-date-picker [dateModel]="personalDetail.VisaExpiryDate" 
+			<fwui-date-picker *ngIf="personalDetail.IsNzResident === false"
+											  [dateModel]="personalDetail.VisaExpiryDate" 
 												(dateModelChange)="updateProperty('VisaExpiryDate', $event)"
 				                label="Visa Expiry Date" placeHolder="DD/MM/YYYY">
 			</fwui-date-picker>
 
-			<fwui-date-picker [dateModel]="personalDetail.EntryDate" 
+			<fwui-date-picker *ngIf="personalDetail.IsNzResident === false"
+			   								[dateModel]="personalDetail.EntryDate" 
 												(dateModelChange)="updateProperty('EntryDate', $event)" 
 												label="Entry Date" placeHolder="DD/MM/YYYY">
 			</fwui-date-picker>
@@ -99,7 +110,17 @@
 				</dd>
 			</div>
 
-			<div class="row">
+			<div *ngIf="personalDetail.DriverLicenceType === 'Overseas'" class="row">
+				<dt class="col-xs-4 p-x-0 controls">
+					<label>Overseas Licence</label>
+				</dt>
+				<dd class="col-xs-8 p-x-0">
+					<input class="controls full-length" type="text" name="OverseasDiversLicence" placeholder="Overseas sDivers Licence" [value]="personalDetail.OverseasDiversLicence"
+				(blur)="updateInputProperty('OverseasDiversLicence', $event)">
+				</dd>
+			</div>
+
+			<div *ngIf="personalDetail.IsNzResident === true" class="row">
 				<dt class="col-xs-4 p-x-0 controls">
 					<label>Licence No. (5A)</label>
 				</dt>

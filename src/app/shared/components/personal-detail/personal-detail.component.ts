@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {  FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   //moduleId: module.id,
@@ -9,12 +10,49 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FinanceWebUiPersonalDetailComponent implements OnInit {
 
   @Input()
-  personalDetail = {};
+  personalDetail = {
+
+  };
 
   @Output()
   personalDetailChange = new EventEmitter();
 
+  isResidentOptions:  Array<any>;
 
+  // workVisaOptions = [
+  //   {
+  //     value: true,
+  //     display: 'Yess'
+  //   },
+  //   {
+  //     value: false,
+  //     display: 'No'
+  //   }
+  // ];
+
+  ngInit() {
+  //   this.workVisaOptions = [
+  //   {
+  //     value: true,
+  //     display: 'Yess'
+  //   },
+  //   {
+  //     value: false,
+  //     display: 'No'
+  //   }
+  // ];
+
+    // this.isResidentOptions = [
+    //   {
+    //     value: true,
+    //     display: 'Yess'
+    //   },
+    //   {
+    //     value: false,
+    //     display: 'No'
+    //   }
+    // ];
+  }
   // get personalDetail() {
   //   return this.personalDetail;
   // }
@@ -31,6 +69,16 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
 
   //   this.update();
   // }
+
+  updateResidency(isNzResident: boolean) {
+    this.personalDetail['IsNzResident'] = isNzResident;
+    this.update();
+  }
+
+  updateWorkVisaStatus(isWorkVisa: boolean) {
+    this.personalDetail['IsWorkVisa'] = isWorkVisa;
+    this.update();
+  }
 
   updateInputProperty(property, $event) {
     this.personalDetail[property] = $event.target.value;
