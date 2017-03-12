@@ -7,18 +7,18 @@
         <!--todo: make the search query only fires after 300 to 400 milliseconds-->
 
         <div class="search">
-          <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="searchDeal(searchQuery)" 
-                 class="form-control" placeholder="customer number, name or mobile">
+          <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="search()" 
+                 class="form-control" placeholder="Search by deal number, customer number or name, driver license or mobile">
         </div>
 
-        <div class="buttons text-md-right">
+        <!--<div class="buttons text-md-right">
           <button type="button" class="btn btn-success" (click)="addDeal()">
             <i name="add" class="icon icon-plus">
               <img src="assets/images/icons/ic_add_white_24px.svg">
             </i>
             <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add deal
           </button>
-        </div>
+        </div>-->
 
         <!--<span class="input-group-btn">
           <button class="btn btn-default" type="button" >Search</button>
@@ -45,6 +45,16 @@
         (select)='onSelect($event)'
         (sort)="onSort($event)"
         (page)='onPage($event)'>
+        <!--<swui-datatable-column name="DateCreated">
+          <ng-template let-column="column" swui-datatable-header-template>
+            Holla! {{column.name}}
+          </ng-template>
+          <ng-template let-value="value" swui-datatable-cell-template>
+            Hi: <strong>{{value}}</strong>
+          </ng-template>
+        </swui-datatable-column>
+        <swui-datatable-column name="Number">
+        </swui-datatable-column>-->
   </swui-datatable>
 
       

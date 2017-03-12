@@ -35,7 +35,7 @@ export class DealersComponent implements OnInit {
   public columns = [
     { prop: 'Name', name: 'Dealer Name' },
     { prop: 'ContactName', name: 'Contact Name' },
-    { prop: 'CellNumber', name: 'Cell Number' },
+    { prop: 'MobileNumber', name: 'Mobile' },
     { prop: 'PhoneNumber', name: 'Phone Number' },
     { prop: 'Email', name: 'Email Address' }
   ];
@@ -51,7 +51,7 @@ export class DealersComponent implements OnInit {
 
     // todo: uncomment the code below and change the base api url contant in the
     // file, the api integration should just work this.loadDealership();
-    this.loadDealsBySearch();
+    this.search();
   }
 
   public addDealership() {
@@ -60,102 +60,51 @@ export class DealersComponent implements OnInit {
       .navigate(['/dealership', 'new']);
   }
 
-  public onSort(event) {
-    let sort = event.sorts[0];
-    let dir = sort.dir;
-    let sortedBy = sort.prop;
-
-    // console.log('sorting server side: ', rows, dirs);
-
-    this.currentlyOrderBy = sortedBy;
-    this.sortAsc = dir === SORT_ASC;
-
-    let searchObj = {
-      SearchTerm: this.searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this
-      .searchDealershipByOjb(searchObj)
-      .then((response) => {
-        this.populateCurrentTablePage(response);
-      });
-  }
-
-  public searchDealer(searchQuery : string) {
-    let searchObj = {
-      SearchTerm: searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this.searchDealershipByOjb(searchObj);
-  }
-
   public onSelect(event) {
     this
       .router
       .navigate(['/dealership', event.selected[0].Id]);
   }
 
+  public onSort(event) {
+    let sort = event.sorts[0];
+    let dir = sort.dir;
+    let sortedBy = sort.prop;
+
+    //Update our sort properties
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
+
+    this.search();
+  }
+
   public onPage(pageOptions) {
+    //Update the offset
+    this.offset = pageOptions.offset;
+
+    this.search();
+  }
+
+  public search() {
+    //Build a search request for our current values
     let searchObj = {
-      SearchTerm: '',
+      SearchTerm: this.searchQuery,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
-      CurrentPage: pageOptions.offset + 1,
+      CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
       PageSize: this.pageSize
     };
 
-    this
-      .searchDealershipByOjb(searchObj)
-      .then((response) => {
-        this.populateCurrentTablePage(response);
-      });
-  }
-
-  private loadDealsBySearch() {
-    let searchObj = {
-      SearchTerm: '',
-      OrderBy: this.currentlyOrderBy,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this
-      .searchDealershipByOjb(searchObj)
-      .then((response) => {
-        // this.rows = response.SearchResults;
-        if (response) {
-          this.count = response.TotalResultCount;
-          // this.count = 2;
-          this.rows = this.createEmtpyArray(response.SearchResults.length, {});
-          this.populateCurrentTablePage(response);
-        }
-      });
-  }
-
-  private searchDealershipByOjb(searchObj) {
-    console.log("The searchObj is: ", searchObj);
-
-    return this
-      ._dealershipService
-      .searchDealership(searchObj)
-      .then((response) => {
-        console.log("The response is: ", response);
-        return response;
-      })
-      .catch((err) => {
-        //todo: show err message to users later
-        console.log(err);
-      });
+    this._dealershipService.searchDealership(searchObj).then((response) => {
+      this.populateCurrentTablePage(response);
+    });
   }
 
   private populateCurrentTablePage(data) {
-    let start = this.offset * this.limit;
+    let start = this.offset * this.pageSize;
     let end = start + data.SearchResults.length;
+    this.count = data.TotalResultCount;
+    this.rows = this.createEmtpyArray(data.SearchResults.length);
 
     // update the current page record
     for (let i = start; i < end; i++) {
@@ -163,7 +112,7 @@ export class DealersComponent implements OnInit {
     }
   }
 
-  private createEmtpyArray(length, obj) {
+  private createEmtpyArray(length) {
     let array = [];
 
     for (let i = 0; i < length; i++) {
@@ -172,19 +121,4 @@ export class DealersComponent implements OnInit {
 
     return array;
   }
-
-  private loadDealership() {
-    this
-      ._dealershipService
-      .getDealerships()
-      .then((dealers) => {
-        this.rows = dealers;
-        console.log(this.rows);
-      })
-      .catch((err) => {
-        //todo: show err message to users later
-        console.log(err);
-      });
-  }
-
 }

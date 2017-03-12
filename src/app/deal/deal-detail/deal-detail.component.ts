@@ -21,7 +21,7 @@ declare var tinymce: any;
 })
 export class DealDetailComponent implements OnInit {
 
-  public notes: Array<any>;
+  public notes = [];
 
   private deal: any = {};
   private dealers = [];
@@ -35,6 +35,7 @@ export class DealDetailComponent implements OnInit {
   private financeChanged = false;
   private noteChanged = false;
   private currentDealId = '';
+  private isNew = false;
 
   //todo: add this to database
   private DealStatusSelections = [
@@ -72,24 +73,29 @@ export class DealDetailComponent implements OnInit {
     //   });
 
     this.currentDealId = this.route.snapshot.params['id'];
-    this.customerId = this.route.snapshot.params['customerId'];
     this.customerName = this.route.snapshot.params['customerName'];
+    this.isNew = this.currentDealId === 'new';
 
     this.loadDealers();
     this.loadFinanceCompanies();
 
-    if (this.currentDealId !== 'new' && this.currentDealId) {
+    if (!this.isNew && this.currentDealId) {
       this.loadDeal(this.currentDealId)
           .then((deal) => {
 
             //todo: load customer Name with load deal api from backend
-            this.loadCustomerName(deal.CustomerId);
+            // this.loadCustomerName(deal.CustomerId);
+
+            this.customerName = deal.CustomerFirstName + ' ' + deal.CustomerLastName;
+            this.customerId = deal.CustomerId;
+
             this.calculateIncome(null, false);
 
           });
       this.loadNotes(this.currentDealId);
     }
-    else if (this.customerId) {
+    else {
+      this.customerId = this.route.snapshot.params['customerId'];
       this.deal = {};
       this.deal.CustomerId = this.customerId;
     }
@@ -100,15 +106,19 @@ export class DealDetailComponent implements OnInit {
 
     this._dealService.addOrSaveDeal(this.deal)
       .then((response) => {
-        console.log('Saved successfully: ', response);
+        console.log('Saved successfully: ', response.CommittedId);
 
-        if (this.customerId != null) {
-          this.router.navigate(['/customer', this.customerId]);
-        }
-
+        // if (this.customerId != null) {
+        //   this.router.navigate(['/customer', this.customerId]);
+        // }
+        //We need the deal id if this is new        
+        this.deal.Id = response.CommittedId;
+        this.currentDealId = this.deal.Id; //This appears to be unneeded duplication
+        this.router.navigate(['/deal', response.CommittedId]);
         this.copyDeal = Object.assign({}, this.deal);
         this.resetAllChangedStatus();
         // this.router.navigateByUrl('/deal');
+        this.isNew = false;
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
@@ -121,11 +131,15 @@ export class DealDetailComponent implements OnInit {
     this.deal.CustomerId = this.customerId;
   }
 
+  back() {
+    this.router.navigate(['/customer', this.customerId]);
+  }
+
   delete() {
     this._dealService.deleteDeal(this.deal.Id)
       .then((response) => {
         console.log('Deleted successfully: ', response);
-        this.router.navigateByUrl('/deal');
+        this.back();
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
@@ -146,6 +160,7 @@ export class DealDetailComponent implements OnInit {
         console.log('Saved successfully: ', response);
         this.note = '';
         this.notes.push(noteObj);
+        console.log(this.notes);
         this.clearNote();
       })
       .catch((err) => {
@@ -153,21 +168,21 @@ export class DealDetailComponent implements OnInit {
       });
   }
 
-  saveNote(noteObj: any) {
-    noteObj.DateModified = new Date();
+  // saveNote(noteObj: any) {
+  //   noteObj.DateModified = new Date();
 
-    this._dealService.addOrSaveDealNote(noteObj)
-      .then((response) => {
-        this.resetAllChangedStatus();
-        console.log('Saved successfully: ', response);
-        this.clearNote();
-        this.loadNotes(this.currentDealId);
-
-      })
-      .catch((err) => {
-        console.log(err); //todo: show the user a nice message
-      });
-  }
+  //   this._dealService.addOrSaveDealNote(noteObj)
+  //     .then((response) => {
+  //       this.resetAllChangedStatus();
+  //       console.log('Saved successfully: ', response);
+  //       this.clearNote();
+  //       console.log('Loading notes for ' + this.currentDealId);
+  //       this.loadNotes(this.currentDealId);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err); //todo: show the user a nice message
+  //     });
+  // }
 
   clearNote() {
     this.noteChanged = false;
@@ -280,16 +295,16 @@ export class DealDetailComponent implements OnInit {
       });
   }
 
-  private loadCustomerName(customerId) {
-    return this._customerService.getCustomer(customerId)
-      .then((customer) => {
-        this.customerName = customer.FirstName + ' ' + customer.LastName;
-        console.log('customerName:', this.customerName);
-      })
-      .catch((err) => {
-        console.log(err); //todo: show the user a nice message
-      });
-  }
+  // private loadCustomerName(customerId) {
+  //   return this._customerService.getCustomer(customerId)
+  //     .then((customer) => {
+  //       this.customerName = customer.FirstName + ' ' + customer.LastName;
+  //       console.log('customerName:', this.customerName);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err); //todo: show the user a nice message
+  //     });
+  // }
 
   private resetAllChangedStatus () {
     this.basicInfoChanged = false;

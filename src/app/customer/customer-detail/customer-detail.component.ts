@@ -22,7 +22,7 @@ declare var tinymce: any;
   providers: [CustomerService]
 })
 export class CustomerDetailComponent implements OnInit {
-  public notes: Array<any>;
+  public notes = [];
   public deals: Array<any>;
 
   private customer: any = {};
@@ -32,6 +32,7 @@ export class CustomerDetailComponent implements OnInit {
   private contactDetailsChanged = false;
   private bankDetailsChanged = false;
   private noteChanged = false;
+  private isNew = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +46,9 @@ export class CustomerDetailComponent implements OnInit {
     });
 
     let customerId = this.route.snapshot.params['id'];
+    this.isNew = customerId === 'new';
 
-    if (customerId !== 'new') {
+    if (!this.isNew) {
       this.loadCustomer(customerId);
       this.loadNotes(customerId);
       this.loadDeals(customerId);
@@ -63,6 +65,7 @@ export class CustomerDetailComponent implements OnInit {
         this.customer.Id = response.CommittedId;
         this.resetAllChangedStatus();
         this.copyCustomer = Object.assign({}, this.customer);
+        this.isNew = false;
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -74,11 +77,15 @@ export class CustomerDetailComponent implements OnInit {
     this.customer = Object.assign({}, this.copyCustomer);
   }
 
+  back() {
+        this.router.navigateByUrl('/customer');
+  }
+
   delete() {
     this._customerService.deleteCustomer(this.customer.Id)
       .then((response) => {
         console.log('Deleted successfully: ', response);
-        this.router.navigateByUrl('/customer');
+        this.back();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message

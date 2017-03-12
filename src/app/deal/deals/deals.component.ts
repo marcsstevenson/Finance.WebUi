@@ -28,7 +28,6 @@ export class DealsComponent implements OnInit {
   private pageSize = 100;
   private offset = 0;
   private count = 0;
-  private limit = 100;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
   private currentlyOrderBy = 'Number';
@@ -37,7 +36,7 @@ export class DealsComponent implements OnInit {
 
   private columns = [
     { prop: 'Number', name: 'Deal Number' },
-    { prop: 'DealStatus', name: 'Deal Status' },
+    { prop: 'DealStatusDescription', name: 'Deal Status' },
     { prop: 'CustomerName', name: 'Customer Name' },
     { prop: 'DateCreated', name: 'Date Created' },
   ];
@@ -62,122 +61,65 @@ export class DealsComponent implements OnInit {
     private router: Router,
     private _dealService: DealService) { }
 
-  ngOnInit() {
-    //todo: after implementing search api call for deals, call loadDealsBySearch
-
-    // this._dealService.getDeals()
-    // .then((deals) => {
-    //   this.rows = deals;
-    //   console.log(this.rows);
-    // })
-    // .catch((err) => {
-    //   //todo: show err message to users later
-    //   console.log(err);
-    // });
-
-    this.loadDealsBySearch();
+    ngOnInit() {
+    this.search();
   }
 
   public addDeal() {
     this.router.navigate(['/deal', 'new']);
   }
 
-  public onSort(event) {
-    let sort = event.sorts[0];
-    let dir = sort.dir;
-    let sortedBy = sort.prop;
-    // console.log('sorting server side: ', rows, dirs);
-
-    this.currentlyOrderBy = sortedBy;
-    this.sortAsc = dir === SORT_ASC;
-
-    let searchObj = {
-      SearchTerm: this.searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-
-    this.searchDealByOjb(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-    });
-  }
-
-  public searchDeal(searchQuery: string) {
-    let searchObj = {
-      SearchTerm: searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this.searchDealByOjb(searchObj);
-  }
-
   public onSelect(event) {
     this.router.navigate(['/deal', event.selected[0].Id]);
   }
 
+  public onSort(event) {
+    let sort = event.sorts[0];
+    let dir = sort.dir;
+    let sortedBy = sort.prop;
+
+    //Update our sort properties
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
+
+    this.search();
+  }
+
   public onPage(pageOptions) {
+    //Update the offset
+    this.offset = pageOptions.offset;
+
+    this.search();
+  }
+
+  public search() {
+    //Build a search request for our current values
     let searchObj = {
-      SearchTerm: '',
+      SearchTerm: this.searchQuery,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
-      CurrentPage: pageOptions.offset + 1,
+      CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
       PageSize: this.pageSize
     };
 
-    this.searchDealByOjb(searchObj).then((response) => {
+    this._dealService.searchDeal(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
     });
   }
 
-  private loadDealsBySearch() {
-    let searchObj = {
-      SearchTerm: '',
-      OrderBy: this.currentlyOrderBy,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this.searchDealByOjb(searchObj).then((response) => {
-      // this.rows = response.SearchResults;
-      if (response) {
-        this.count = response.TotalResultCount;
-        this.rows = this.createEmtpyArray(this.count, {});
-        this.populateCurrentTablePage(response);
-      }
-
-    });
-  }
-
-  private searchDealByOjb(searchObj) {
-    console.log("The searchObj is: ", searchObj);
-
-    return this._dealService.searchDeal(searchObj)
-      .then((response) => {
-        console.log("The response is: ", response);
-        return response;
-      })
-      .catch((err) => {
-        //todo: show err message to users later
-        console.log(err);
-      });
-  }
-
   private populateCurrentTablePage(data) {
-    let start = this.offset * this.limit;
+    let start = this.offset * this.pageSize;
     let end = start + data.SearchResults.length;
+    this.count = data.TotalResultCount;
+    this.rows = this.createEmtpyArray(data.SearchResults.length);
 
     // update the current page record
     for (let i = start; i < end; i++) {
       this.rows[i] = data.SearchResults[i - start];
     }
-
-    console.log(this.rows);
   }
 
-  private createEmtpyArray(length, obj) {
+  private createEmtpyArray(length) {
     let array = [];
 
     for (let i = 0; i < length; i++) {

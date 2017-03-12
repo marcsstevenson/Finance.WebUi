@@ -4,8 +4,11 @@
   <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
 
   <div class="card actions text-xs-right">
-    <button class="btn btn-outline-danger" type="button" (click)="delete()">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
       <span class="glyphicon glyphicon-align-left"></span> Delete
+    </button>
+    <button class="btn btn-link" type="button" (click)="back()">
+      <span class="glyphicon glyphicon-align-left"></span> Back
     </button>
   </div>
 
@@ -48,6 +51,16 @@
     <div class="card-block">
       <h4 class="row col-xs-12">Contact Details</h4>
       <dl>
+
+        <div class="row">
+          <dt class="col-xs-4 p-x-0 controls">Contact Name</dt>
+          <dd class="col-xs-8">
+            <input class="contact-name controls" [(ngModel)]=dealership.ContactName 
+                   placeholder="Input name here" (ngModelChange)="contactDetailsChanged = true"
+                   type="text" >
+          </dd>
+        </div>
+        
         <div class="row">
           <dt class="col-xs-4 p-x-0 controls">Mobile</dt>
           <dd class="col-xs-8">
@@ -57,7 +70,7 @@
             <input class="area controls" [(ngModel)]=dealership.CellArea 
                    (ngModelChange)="contactDetailsChanged = true"
                    placeholder="00" type="text">-->
-            <input class="number controls" [(ngModel)]=dealership.CellNumber 
+            <input class="number controls" [(ngModel)]=dealership.MobileNumber 
                    (ngModelChange)="contactDetailsChanged = true"
                    placeholder="Number" type="text">
           </dd>
@@ -89,15 +102,6 @@
                    type="text" >-->
             <input class="number controls" [(ngModel)]=dealership.FaxNumber 
                    placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
-                   type="text" >
-          </dd>
-        </div>
-
-        <div class="row">
-          <dt class="col-xs-4 p-x-0 controls">Contact Name</dt>
-          <dd class="col-xs-8">
-            <input class="contact-name controls" [(ngModel)]=dealership.ContactName 
-                   placeholder="Input name here" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
           </dd>
         </div>

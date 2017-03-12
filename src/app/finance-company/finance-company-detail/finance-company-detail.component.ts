@@ -16,7 +16,7 @@ import * as moment from 'moment';
 })
 export class FinanceCompanyDetailComponent implements OnInit {
 
-  public notes: Array<any>;
+  public notes: Array<any> = [];
   private accountManager = {
       FirstName: '',
       LastName: '',
@@ -33,13 +33,13 @@ export class FinanceCompanyDetailComponent implements OnInit {
       DateModified: null
   };
 
-  private copyFinanceCompany: any = {};
-  
+  private copyFinanceCompany: any = {};  
   private copyAccountManager: any = {};
   private note: string;
   private basicInfoChanged = false;
   private accountManagerDetailsChanged = false;
   private noteChanged = false;
+  private isNew = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,8 +49,9 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   ngOnInit() {
     let financeCompanyId = this.route.snapshot.params['id'];
+    this.isNew = financeCompanyId === 'new';
 
-    if (financeCompanyId !== 'new') {
+    if (!this.isNew) {
       this.loadFinanceCompany(financeCompanyId).then((financeCompany) => {
         // if (financeCompany.AccountManagerId) {
         //   this.loadAccountManager(financeCompany.AccountManagerId);
@@ -62,7 +63,6 @@ export class FinanceCompanyDetailComponent implements OnInit {
 
   save() {
     this.setDefaulCustomerDates();
-console.log(this.financeCompany.Name);
     var financeCompanyUpdate: any = {
       FinanceCompany: this.financeCompany,
       AccountManager: this.accountManager
@@ -75,6 +75,7 @@ console.log(this.financeCompany.Name);
         this.financeCompany.Id = response.CommittedId;
         this.resetAllChangedStatus();
         this.copyFinanceCompany = Object.assign({}, this.financeCompany);
+        this.isNew = false;
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -88,11 +89,15 @@ console.log(this.accountManager.FirstName);
     this.accountManager = Object.assign({}, this.copyAccountManager);
   }
 
+  back() {
+        this.router.navigateByUrl('/finance-company');
+  }
+
   delete() {
     this._financeCompanyService.deleteFinanceCompany(this.financeCompany.Id)
       .then((response) => {
         console.log('Deleted successfully: ', response);
-        this.router.navigateByUrl('/finance-company');
+        this.back();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -102,7 +107,7 @@ console.log(this.accountManager.FirstName);
   addNote(note: string) {
     let noteObj = {
       Note: note,
-      CustomerId: this.financeCompany.Id,
+      FinanceCompanyId: this.financeCompany.Id,
       EnteredBy: 'You', //todo: need to get this user name
       DateCreated: new Date(),
       DateModified: new Date()

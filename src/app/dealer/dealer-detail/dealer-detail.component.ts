@@ -21,7 +21,7 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
   private basicInfoChanged = false;
   private contactDetailsChanged = false;
   private bankDetailsChanged = false;
-
+  private isNew = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,8 +35,9 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
 
     //todo: need to fix bad request. Likely issue from api side
     let dealershipId = this.route.snapshot.params['id'];
+    this.isNew = dealershipId === 'new';
 
-    if (dealershipId !== 'new') {
+    if (!this.isNew) {
       this.loadDealership(dealershipId);
     }
   }
@@ -59,6 +60,7 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
         this.dealership.Id = response.CommittedId;
         this.resetAllChangedStatus();
         this.copyDealership = Object.assign({}, this.dealership);
+        this.isNew = false;
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
@@ -70,11 +72,15 @@ export class DealerDetailComponent implements OnInit, OnDestroy {
     this.dealership = Object.assign({}, this.copyDealership);
   }
 
+  back() {
+        this.router.navigateByUrl('/dealership');
+  }
+
   delete() {
     this._dealershipService.deleteDealership(this.dealership.Id)
       .then((response) => {
         console.log('Deleted successfully: ', response);
-        this.router.navigateByUrl('/deal');
+        this.back();
       })
       .catch((err) => {
         console.log(err); // dont do this, show the user a nice message
