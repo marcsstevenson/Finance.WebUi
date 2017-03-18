@@ -64,7 +64,12 @@
               </dd>
             </div>
             <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Email</dt>
+              <dt class="col-xs-4 p-x-0 controls">
+                <a [href]="'mailto:' + accountManager.Email">
+                  <span>Email</span> 
+                  <i class="fa fa-envelope"></i> 
+                </a>
+              </dt>
               <dd class="col-xs-8">
                 <input class="controls" [(ngModel)]="accountManager.Email" 
                        placeholder="Email" (ngModelChange)="accountManagerDetailsChanged = true" type="text">

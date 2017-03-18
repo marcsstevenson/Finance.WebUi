@@ -64,12 +64,6 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0 controls">Mobile</dt>
           <dd class="col-xs-8">
-            <!--<input class="country controls" [(ngModel)]=dealership.CellCountry 
-                   (ngModelChange)="contactDetailsChanged = true"
-                   placeholder="00" type="text" >
-            <input class="area controls" [(ngModel)]=dealership.CellArea 
-                   (ngModelChange)="contactDetailsChanged = true"
-                   placeholder="00" type="text">-->
             <input class="number controls" [(ngModel)]=dealership.MobileNumber 
                    (ngModelChange)="contactDetailsChanged = true"
                    placeholder="Number" type="text">
@@ -79,12 +73,6 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0 controls">Phone</dt>
           <dd class="col-xs-8">
-            <!--<input class="country controls" [(ngModel)]=dealership.PhoneCountry 
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
-                   type="text" >
-            <input class="area controls" [(ngModel)]=dealership.PhoneArea 
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
-                   type="text" >-->
             <input class="number controls" [(ngModel)]=dealership.PhoneNumber 
                    placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
@@ -94,12 +82,6 @@
         <div class="row">
           <dt class="col-xs-4 p-x-0 controls">Fax</dt>
           <dd class="col-xs-8">
-            <!--<input class="country controls" [(ngModel)]=dealership.FaxCountry 
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true" 
-                   type="text" >
-            <input class="area controls" [(ngModel)]=dealership.FaxArea
-                   placeholder="00" (ngModelChange)="contactDetailsChanged = true"
-                   type="text" >-->
             <input class="number controls" [(ngModel)]=dealership.FaxNumber 
                    placeholder="Number" (ngModelChange)="contactDetailsChanged = true"
                    type="text" >
@@ -107,7 +89,12 @@
         </div>
 
         <div class="row">
-          <dt class="col-xs-4 p-x-0 controls">Email</dt>
+          <dt class="col-xs-4 p-x-0 controls">
+              <a [href]="'mailto:' + dealership.Email">
+                <span>Email</span> 
+                <i class="fa fa-envelope"></i> 
+              </a>
+          </dt>
           <dd class="col-xs-8">
             <input class="email controls" [(ngModel)]=dealership.Email 
                    placeholder="Email address here" (ngModelChange)="contactDetailsChanged = true"

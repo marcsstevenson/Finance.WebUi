@@ -21,12 +21,12 @@ const applicationRoutes: Routes = [
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application/:id/transportation-form',
+        path: 'transportation-form',
         component: TransportationFormComponent,
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application',
+        path: 'application/:id/transportation-form',
         component: TransportationFormComponent,
         canActivate: [AuthorisationService]
     },
