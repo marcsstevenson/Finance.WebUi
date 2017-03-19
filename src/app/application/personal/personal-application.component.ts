@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { }
-
 
 @Component({
-  //////moduleId: module.id,
   selector: 'app-application',
   templateUrl: './personal-application.component.html',
   styleUrls: ['./personal-application.component.scss']
@@ -41,6 +38,7 @@ export class PersonalApplicationComponent implements OnInit {
         DateOfBirth: '',
         OriginCountry: '',
         MaritalStatus: '',
+        NumOfDenpendants: 0,
         DiversLicenceStatus: '',
         OverseasDiversLicence: '',
         IsNzResident: true,
@@ -53,18 +51,66 @@ export class PersonalApplicationComponent implements OnInit {
         CellNumberBusiness: '',
         PhoneNumberBusiness: '',
         FaxNumberBusiness: '',
-
+        CurrentAddress: {
+          Type: '',
+          Street: '',
+          Suburb: '',
+          City: '',
+          PostCode: '',
+          Years: 0,
+          Months: 0
+        },
+        PrevioiusAddress: {
+          Type: '',
+          Street: '',
+          Suburb: '',
+          City: '',
+          PostCode: '',
+          Years: 0,
+          Months: 0
+        },
+        CurrentOccupation: {
+          EmployerName: '',
+          Occupation: '',
+          Address: {
+            Street: '',
+            Suburb: '',
+            City: '',
+            PostCode: '',
+          },
+          Years: 0,
+          Months: 0
+        },
+        PreviousOccupation: {
+          EmployerName: '',
+          Occupation: '',
+          Address: {
+            Street: '',
+            Suburb: '',
+            City: '',
+            PostCode: '',
+          },
+          Years: 0,
+          Months: 0
+        },
         //extra needs to be considered server side
         PersonalEmail: '',
         BusinessEmail: '',
         LicenceVersion: '',
         LicenceNumber: '',
-        Reference: {
-          Name: '',
-          Relationship: '',
-          Phone: ''
-        }
-
+        References: [
+          {
+            Name: '',
+            Relationship: '',
+            Phone: '',
+            Address: {
+              Street: '',
+              Suburb: '',
+              City: '',
+              PostCode: '',
+            }
+          }
+        ]
       },
       Spouse: {
         FirstName: '',
@@ -73,6 +119,7 @@ export class PersonalApplicationComponent implements OnInit {
         DateOfBirth: '',
         OriginCountry: '',
         MaritalStatus: '',
+        NumOfDenpendants: 0,
         DiversLicenceStatus: '',
         OverseasDiversLicence: '',
         LicenceNumberSa: '',
@@ -89,11 +136,19 @@ export class PersonalApplicationComponent implements OnInit {
         BusinessEmail: '',
         LicenceVersion: '',
         LicenceNumber: '',
-        Reference: {
-          Name: '',
-          Relationship: '',
-          Phone: ''
-        }
+        References: [
+          {
+            Name: '',
+            Relationship: '',
+            Phone: '',
+            Address: {
+              Street: '',
+              Suburb: '',
+              City: '',
+              PostCode: '',
+            }
+          }
+        ]
 
       },
       Assets: [
@@ -128,15 +183,6 @@ export class PersonalApplicationComponent implements OnInit {
           Value: 0
         }
       ],
-      // Assets: {
-      //   Properties: [],
-      //   HomeContents: [],
-      //   Transportations: [],
-      //   Bank: '',
-      //   Investments: '',
-      //   Kiwisaver: '',
-      //   Other: ''
-      // },
       Liabilities: [
         {
           OptionName: 'Mortgage',
@@ -194,7 +240,7 @@ export class PersonalApplicationComponent implements OnInit {
           OptionName: 'Other',
           Note: '',
           Value: 0
-        },
+        }
       ],
       Expenses: [
         {
