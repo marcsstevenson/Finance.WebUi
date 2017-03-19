@@ -20,6 +20,7 @@ import { CustomerModule } from './customer/customer.module';
 import { DealModule } from './deal/deal.module';
 import { DealerModule } from './dealer/dealer.module';
 import { FinanceCompanyModule } from './finance-company/finance-company.module';
+import { LeadOriginModule } from './lead-origin/lead-origin.module';
 import { HomeModule } from './home/home.module';
 import { ApplicationModule } from './application/application.module';
 import { LoginModule } from './login/login.module';
@@ -38,6 +39,7 @@ import { LoginModule } from './login/login.module';
     HomeModule,
     ApplicationModule,
     FinanceCompanyModule,
+    LeadOriginModule,
     AppRoutingModule
     ],
   providers: [

@@ -1,0 +1,42 @@
+<div class="container body-content fwui">
+
+  <!--todo: the follow data are not binded to the view yet-->
+  <!--DateCreated: new Date(), DateModified: new Date(), IsEnabled: true,-->
+
+  <h1>Lead Origin Edit</h1>
+
+  <div class="card actions text-xs-right">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+      <span class="glyphicon glyphicon-align-left"></span> Delete
+    </button>
+    <button class="btn btn-link" type="button" (click)="back()">
+      <span class="glyphicon glyphicon-align-left"></span> Back
+    </button>
+  </div>
+
+  <div class="card basic-info">
+    <div class="card-block">
+      <div class="media col-xs-4 card-block">
+        <img alt="" class="img-rounded" src="assets/images/icons/ic_business_48pt_3x.png">
+      </div>
+
+      <div class="col-xs-8">
+        <div class="row">
+          <input class="name controls full-length" [(ngModel)]="leadOrigin.Name" 
+                 (ngModelChange)="basicInfoChanged = true" 
+                 type="text" placeholder="Name">
+        </div>
+        <div class="row">
+          <span>Is Default</span>
+          <input [(ngModel)]="leadOrigin.IsDefault" style="width: 30px"
+                 (ngModelChange)="basicInfoChanged = true"
+                 type="checkbox">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+      <button type="button" class="btn btn-success" (click)="save()">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </div>
+  </div>

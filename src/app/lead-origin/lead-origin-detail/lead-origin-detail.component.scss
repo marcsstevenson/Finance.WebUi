@@ -1,0 +1,66 @@
+@import '../../../assets/styles/color';
+
+.card {
+    overflow: auto;
+}
+
+.media img{
+     padding: 0;
+     width: 58px;
+     height: 58px;
+}
+
+input{
+    // margin: 0;
+    // padding: 0;
+    // &.country {
+    //     width: 2.5em;
+    // }
+
+    // &.area {
+    //     width: 2.5em;
+    // }
+
+    // &.number {
+    //     width: 8em;
+    // }
+
+    width: 100%;
+    max-width: 100%;
+
+    &.name {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1em; 
+    }
+    &.email {
+        margin-bottom: 1em;
+    }
+}
+
+dt {
+    text-align: right;
+}
+
+.actions {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background: #f7f7f9;
+
+    &.card {
+
+    }
+}
+
+.note {
+    width: 100%;
+}
+
+a.web-link {
+    margin: 2.5em auto 0 auto;
+    display: block;
+    float: right;
+
+    i.fa {
+        font-size: 1.5em;
+    }
+}

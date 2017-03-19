@@ -1,6 +1,5 @@
 <div class="container body-content fwui">
-  <h1>Customers</h1>
-
+  <h1>Lead Origin Admin</h1>
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
@@ -8,29 +7,26 @@
         <!--todo: make the search query only fires after 300 to 400 milliseconds-->
 
         <div class="search">
-          <input type="text" [(ngModel)]="searchQuery" 
-                 (ngModelChange)="search()" 
-                 class="form-control" placeholder="Search by customer number, name, driver license or mobile">
+          <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="search()" class="form-control" placeholder="Name">
         </div>
 
         <div class="buttons text-md-right">
-          <button type="button" class="btn btn-success" (click)="addCustomer()">
+          <button type="button" class="btn btn-success" (click)="add()">
             <i name="add" class="icon icon-plus">
               <img src="assets/images/icons/ic_add_white_24px.svg">
             </i>
-            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add customer
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add New
           </button>
         </div>
+
+        <!--<span class="input-group-btn">
+          <button class="btn btn-default" type="button" >Search</button>
+        </span>-->
       </div>
     </div>
   </div>
-  <!--<datatable
-    class='material'
-    [rows]='rows'
-    [options]='options'
-    (onSelectionChange)='onSelectionChange($event)'
-    (onPageChange)='onPageChange($event)'>
-  </datatable>-->
+
+
 
     <swui-datatable
         class="material"
@@ -51,5 +47,4 @@
         (sort)="onSort($event)"
         (page)='onPage($event)'>
   </swui-datatable>
-<!--(activate)="onActivate($event)"-->
 </div>
