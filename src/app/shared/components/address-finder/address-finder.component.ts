@@ -3,20 +3,23 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  NgZone
+  NgZone,
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 declare let google: any;
 
 export class AddressDetail {
   constructor(
-    private streetNumber: string,
-    private streetName: string,
-    private suburb: string,
-    private city: string,
-    private state: string,
-    private country: string,
-    private postCode: string
+    private StreetNumber: string,
+    private StreetName: string,
+    private Suburb: string,
+    private City: string,
+    private State: string,
+    private Country: string,
+    private PostCode: string
     ) {}
 }
 
@@ -28,7 +31,12 @@ export class AddressDetail {
 })
 export class FinanceWebUiAddressFinderComponent implements OnInit {
 
-  public addressDetail = {};
+  @Input()
+  addressDetail = {};
+
+  @Output()
+  addressDetailChange = new EventEmitter();
+
   public placeSearch: string;
   public autocomplete: any = {};
   public componentForm = {
@@ -42,13 +50,13 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
   };
 
   private googleAddressPropMapper = {
-    street_number: 'streetNumber',
-    route: 'streetName',
-    sublocality_level_1: 'suburb',
-    locality: 'city',
-    administrative_area_level_1: 'state',
-    country: 'country',
-    postal_code: 'postCode'
+    street_number: 'StreetNumber',
+    route: 'StreetName',
+    sublocality_level_1: 'Suburb',
+    locality: 'City',
+    administrative_area_level_1: 'State',
+    country: 'Country',
+    postal_code: 'PostCode'
   };
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -100,7 +108,7 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
         // and fill the corresponding field on the form.
 
         this.clearOldAddressDetails();
-        
+
         for (let i = 0; i < place.address_components.length; i++) {
           let addressType = place.address_components[i].types[0];
           if (this.componentForm[addressType]) {
@@ -113,7 +121,11 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
         }
 
         // this.searchInput.nativeElement.focus();
+        
         this.searchInput.nativeElement.value = '';
+
+        // this.addressDetail.
+        this.addressDetailChange.emit(this.addressDetail);
 
         // this.streetInput.nativeElement.focus();
         console.log('The place object is: ', place);
