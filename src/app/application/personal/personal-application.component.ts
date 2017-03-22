@@ -51,9 +51,10 @@ export class PersonalApplicationComponent implements OnInit {
           Years: 0,
           Months: 0
         },
-        PrevioiusAddress: {
+        PreviousAddress: {
           Type: '',
-          Street: '',
+          StreetNumber: '',
+          StreetName: '',
           Suburb: '',
           City: '',
           PostCode: '',
@@ -64,7 +65,8 @@ export class PersonalApplicationComponent implements OnInit {
           EmployerName: '',
           Occupation: '',
           Address: {
-            Street: '',
+            StreetNumber: '',
+            StreetName: '',
             Suburb: '',
             City: '',
             PostCode: '',
@@ -76,7 +78,8 @@ export class PersonalApplicationComponent implements OnInit {
           EmployerName: '',
           Occupation: '',
           Address: {
-            Street: '',
+            StreetNumber: '',
+            StreetName: '',
             Suburb: '',
             City: '',
             PostCode: '',
@@ -95,11 +98,19 @@ export class PersonalApplicationComponent implements OnInit {
             Relationship: '',
             Phone: '',
             Address: {
-              Street: '',
+              StreetNumber: '',
+              StreetName: '',
               Suburb: '',
               City: '',
               PostCode: '',
             }
+          }
+        ],
+        AccountReferences: [
+          {
+            Name: '',
+            Bank: '',
+            AccountNumber: ''
           }
         ]
       },
@@ -127,19 +138,42 @@ export class PersonalApplicationComponent implements OnInit {
         BusinessEmail: '',
         LicenceVersion: '',
         LicenceNumber: '',
-        References: [
-          {
-            Name: '',
-            Relationship: '',
-            Phone: '',
-            Address: {
-              Street: '',
-              Suburb: '',
-              City: '',
-              PostCode: '',
-            }
-          }
-        ]
+        PreviousAddress: {
+          Type: '',
+          StreetNumber: '',
+          StreetName: '',
+          Suburb: '',
+          City: '',
+          PostCode: '',
+          Years: 0,
+          Months: 0
+        },
+        CurrentOccupation: {
+          EmployerName: '',
+          Occupation: '',
+          Address: {
+            StreetNumber: '',
+            StreetName: '',
+            Suburb: '',
+            City: '',
+            PostCode: '',
+          },
+          Years: 0,
+          Months: 0
+        },
+        PreviousOccupation: {
+          EmployerName: '',
+          Occupation: '',
+          Address: {
+            StreetNumber: '',
+            StreetName: '',
+            Suburb: '',
+            City: '',
+            PostCode: '',
+          },
+          Years: 0,
+          Months: 0
+        },
 
       },
       Assets: [
@@ -300,8 +334,6 @@ export class PersonalApplicationComponent implements OnInit {
         value: 3
       }
     ];
-
-    
   }
 
   updateApplicantDetails($event) {

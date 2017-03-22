@@ -1,0 +1,37 @@
+<div class="personal-reference-detail">
+  <dl>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Name</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="Name" placeholder="Name of the reference" [value]="referenceDetail.Name"
+          (blur)="updateInputProperty('Name', $event)">
+      </dd>
+    </div>
+
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Relationship</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="Relationship" placeholder="Enter Relationship here" [value]="referenceDetail.Relationship"
+          (blur)="updateInputProperty('Relationship', $event)">
+      </dd>
+    </div>
+
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Phone</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="number" name="Phone" placeholder="Phone"
+          [value]="referenceDetail.Phone" (blur)="updateInputProperty('Phone', $event)">
+      </dd>
+    </div>
+  </dl>
+
+  <fwui-address-finder [addressDetail]="referenceDetail.Address" 
+                       (addressDetailChange)="updateInputProperty('Address', $event)"></fwui-address-finder>
+
+</div>

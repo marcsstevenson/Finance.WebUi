@@ -1,49 +1,48 @@
 <div class="personal-occupation">
+  <dl>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Employer Name</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="employerName" placeholder="Name of the employer" [value]="occupationDetail.EmployerName"
+          (blur)="updateInputProperty('EmployerName', $event)">
+      </dd>
+    </div>
 
-  <div class="current-occupation">
-    <dl>
-      <div class="row">
-        <dt class="col-xs-4 p-x-0">
-          <label>Employer Name</label>
-        </dt>
-        <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="text" name="employerName" placeholder="Name of the employer" [value]="occupationDetail.EmployerName"
-            (blur)="updateInputProperty('EmployerName', $event)">
-        </dd>
-      </div>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Occupation</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="Occupation" placeholder="Enter Occupation here" [value]="occupationDetail.Occupation"
+          (blur)="updateInputProperty('Occupation', $event)">
+      </dd>
+    </div>
 
-      <div class="row">
-        <dt class="col-xs-4 p-x-0">
-          <label>Occupation</label>
-        </dt>
-        <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="text" name="Occupation" placeholder="Enter Occupation here" [value]="occupationDetail.Occupation"
-            (blur)="updateInputProperty('Occupation', $event)">
-        </dd>
-      </div>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Years</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="number" name="previousYears" placeholder="Number of years worked for this employer"
+          [value]="occupationDetail.Years" (blur)="updateInputProperty('PreviousYears', $event)">
+      </dd>
+    </div>
 
-      <div class="row">
-        <dt class="col-xs-4 p-x-0">
-          <label>Years</label>
-        </dt>
-        <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="number" name="previousYears" placeholder="Number of years worked for this employer"
-            [value]="occupationDetail.Years" (blur)="updateInputProperty('PreviousYears', $event)">
-        </dd>
-      </div>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Months</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="number" name="previousMonths" placeholder="Number of years worked for this employer"
+          [value]="occupationDetail.Months" (blur)="updateInputProperty('PreviousMonths', $event)">
+      </dd>
+    </div>
+  </dl>
 
-      <div class="row">
-        <dt class="col-xs-4 p-x-0">
-          <label>Months</label>
-        </dt>
-        <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="number" name="previousMonths" placeholder="Number of years worked for this employer"
-            [value]="occupationDetail.Months" (blur)="updateInputProperty('PreviousMonths', $event)">
-        </dd>
-      </div>
-    </dl>
-  </div>
-
-  <fwui-address-finder [addressDetail]="occupationDetail.Address"></fwui-address-finder>
+  <fwui-address-finder [addressDetail]="occupationDetail.Address" 
+                       (addressDetailChange)="updateInputProperty('Address', $event)">
+  </fwui-address-finder>
 
 </div>

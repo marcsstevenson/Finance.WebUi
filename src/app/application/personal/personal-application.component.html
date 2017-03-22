@@ -70,8 +70,8 @@
 
 					<div class="spouse previous address" *ngIf="personalApplication.ApplicationType === 'Joint'" >
 							<h4 class="row col-xs-12 blue-light">Spouse's Previous Address</h4>
-							<fwui-address-finder [addressDetail]="personalApplication.Spouse.CurrentAddress"
-																		(addressDetailChange)="updateSpouseCurrentAddress($event)"></fwui-address-finder>
+							<fwui-address-finder [addressDetail]="personalApplication.Spouse.PreviousAddress"
+																		(addressDetailChange)="updateSpousePreviousAddress($event)"></fwui-address-finder>
 					</div>
 
 					<div class="occupation">
@@ -98,68 +98,25 @@
 																			(occupationDetailChange)="updateApplicantPreviousOccupation($event)"></fwui-personal-occupation>
 					</div>
 
-					<!--<div class="references">
-						<div class="card-block col-md-6">
-							<h4 class="row col-xs-12">References</h4>
-							<dl>
-								<div class="row">
-									<dt class="col-xs-4 p-x-0 controls">Name</dt>
-									<dd class="col-xs-8">
-										<input class="controls" placeholder="Name" [value]="personalApplication.Reference.Name" type="text">
-									</dd>
-								</div>
+					<!--todo: add button to add more references-->
+					<div class="personal-reference">
+							<h4 class="row col-xs-12 blue-light">References</h4>
+							<div *ngFor="let reference of personalApplication.Applicant.References; let i = index;">
+							<fwui-personal-reference-detail [referenceDetail]="reference" 
+																		 					(referenceDetailChange)="updateApplicantReference(i, $event)">
+							</fwui-personal-reference-detail>
+							</div>
+					</div>
 
-								<div class="row">
-									<dt class="col-xs-4 p-x-0 controls">Relationship</dt>
-									<dd class="col-xs-8">
-										<input class="controls" placeholder="Relationship" [value]="personalApplication.Reference.Relationship" type="text">
-									</dd>
-								</div>
-
-								<div class="row">
-									<dt class="col-xs-4 p-x-0 controls">Phone</dt>
-									<dd class="col-xs-8">
-										<input class="controls" placeholder="Phone" [value]="personalApplication.Reference.Phone" type="text">
-									</dd>
-								</div>
-
-							
-
-							</dl>
-
-						</div>
-					</div>-->
-
-					<!--<div class="card acount references">
-				<div class="card-block">
-					<h4 class="row col-xs-12">Account References</h4>
-
-					<dl>
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Name</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Name" [(ngModel)]="personalApplication.Reference.Name" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Bankers</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Banker" (ngModelChange)="personalApplication.Reference.Banker" type="text">
-							</dd>
-						</div>
-
-						<div class="row">
-							<dt class="col-xs-4 p-x-0 controls">Account No.</dt>
-							<dd class="col-xs-8">
-								<input class="controls" placeholder="Banker" (ngModelChange)="personalApplication.Reference.AccountNum" type="text">
-							</dd>
-						</div>
-
-					</dl>
-
-				</div>
-			</div>-->
+					<!--todo: add button to add more account references-->
+					<div class="personal-account-reference">
+							<h4 class="row col-xs-12 blue-light">Account References</h4>
+							<div *ngFor="let accountReference of personalApplication.Applicant.AccountReferences; let i = index;">
+							<fwui-personal-account-reference-detail [accountReferenceDetail]="accountReference" 
+																		 									(accountReferenceDetailChange)="updateApplicantAccountReference(i, $event)">
+							</fwui-personal-account-reference-detail>
+							</div>
+					</div>
 
 					<fwui-personal-financial-details [assets]="personalApplication.Assets" [liabilities]="personalApplication.Liabilities" [income]="personalApplication.Income"
 						[expenses]="personalApplication.Expenses">
@@ -168,7 +125,5 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 </div>

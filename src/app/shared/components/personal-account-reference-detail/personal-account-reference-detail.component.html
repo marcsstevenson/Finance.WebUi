@@ -1,0 +1,33 @@
+<div class="personal-account-reference-detail">
+  <dl>
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Name</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="Name" placeholder="Name of the reference" [value]="accountReferenceDetail.Name"
+          (blur)="updateInputProperty('Name', $event)">
+      </dd>
+    </div>
+
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Bank</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="Bank" placeholder="Enter bank name here" [value]="accountReferenceDetail.Bank"
+          (blur)="updateInputProperty('Bank', $event)">
+      </dd>
+    </div>
+
+    <div class="row">
+      <dt class="col-xs-4 p-x-0">
+        <label>Account Number</label>
+      </dt>
+      <dd class="col-xs-8 p-x-0">
+        <input class="controls full-length" type="text" name="AccountNumber" placeholder="Account Number"
+          [value]="accountReferenceDetail.AccountNumber" (blur)="updateInputProperty('AccountNumber', $event)">
+      </dd>
+    </div>
+  </dl>
+</div>
