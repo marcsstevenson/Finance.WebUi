@@ -9,27 +9,17 @@ export class PersonalApplicationComponent implements OnInit {
 
   private selectOptions: Array<any>;
 
-  private personalApplication: any;
-  constructor() { }
-
-  ngOnInit() {
-
-    this.selectOptions = [
-      {
-        name: 'Personal Use',
-        value: 1
-      },
-      {
-        name: 'Business Use',
-        value: 2
-      },
-      {
-        name: 'Sole Trader',
-        value: 3
-      }
-    ];
-
-    this.personalApplication = {
+  private personalApplication = {
+      CurrentAddress: {
+          Type: '',
+          StreetNumber: '',
+          StreetName: '',
+          Suburb: '',
+          City: '',
+          PostCode: '',
+          Years: 0,
+          Months: 0
+        },
       Applicant: {
         FirstName: '',
         MiddleName: '',
@@ -53,7 +43,8 @@ export class PersonalApplicationComponent implements OnInit {
         FaxNumberBusiness: '',
         CurrentAddress: {
           Type: '',
-          Street: '',
+          StreetNumber: '',
+          StreetName: '',
           Suburb: '',
           City: '',
           PostCode: '',
@@ -290,10 +281,34 @@ export class PersonalApplicationComponent implements OnInit {
         },
       ]
     };
+
+  constructor() { }
+
+  ngOnInit() {
+
+    this.selectOptions = [
+      {
+        name: 'Personal Use',
+        value: 1
+      },
+      {
+        name: 'Business Use',
+        value: 2
+      },
+      {
+        name: 'Sole Trader',
+        value: 3
+      }
+    ];
+
+    
   }
 
   updateApplicantDetails($event) {
     console.log('The event received in parent is: ', $event);
+  }
+  updateCurrentAddress($event) {
+
   }
   updateSelect(event) {
     console.log('The selected value is:', event);

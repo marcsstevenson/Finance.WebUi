@@ -13,7 +13,7 @@
 
         <div *ngFor="let financedMotor of marineForm.FinancedMotors; let i = index;">
           <fwui-financing-marine-motor-detail [marineMotorDetail]="financedMotor" 
-                                        (marineMotorDetailChange)="updateMarineMotor($event)">
+                                              (marineMotorDetailChange)="updateMarineMotor($event)">
           </fwui-financing-marine-motor-detail>
         </div>
 

@@ -8,10 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FinanceWebUiPersonalOccupationComponent implements OnInit {
   @Input()
-  personalDetail = {};
+  occupationDetail = {};
 
   @Output()
-  personalDetailChange = new EventEmitter();
+  occupationDetailChange = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -19,18 +19,18 @@ export class FinanceWebUiPersonalOccupationComponent implements OnInit {
 
   update() {
     console.log('I am sending update to parent');
-    this.personalDetailChange.emit(
-      this.personalDetail
+    this.occupationDetailChange.emit(
+      this.occupationDetail
     );
   }
 
   updateInputProperty(property, $event) {
-    this.personalDetail[property] = $event.target.value;
+    this.occupationDetail[property] = $event.target.value;
     this.update();
   }
 
   updateProperty(property, $event) {
-    this.personalDetail[property] = $event;
+    this.occupationDetail[property] = $event;
     this.update();
   }
 
