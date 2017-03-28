@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FinancingMarineMotorDetailComponent } from './financing-marine-motor-detail.component';
+import { FinanceWebUiFinancingMarineMotorDetailComponent } from './financing-marine-motor-detail.component';
 
 describe('FinancingMarineMotorDetailComponent', () => {
-  let component: FinancingMarineMotorDetailComponent;
-  let fixture: ComponentFixture<FinancingMarineMotorDetailComponent>;
+  let component: FinanceWebUiFinancingMarineMotorDetailComponent;
+  let fixture: ComponentFixture<FinanceWebUiFinancingMarineMotorDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FinancingMarineMotorDetailComponent ]
+      declarations: [ FinanceWebUiFinancingMarineMotorDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FinancingMarineMotorDetailComponent);
+    fixture = TestBed.createComponent(FinanceWebUiFinancingMarineMotorDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AddressDetails } from "app/application";
+import { PersonalApplication } from "app/application/personal/personal-application";
+
 
 @Component({
   selector: 'app-application',
@@ -6,320 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-application.component.scss']
 })
 export class PersonalApplicationComponent implements OnInit {
-
   private selectOptions: Array<any>;
-
-  private personalApplication = {
-      CurrentAddress: {
-          Type: '',
-          StreetNumber: '',
-          StreetName: '',
-          Suburb: '',
-          City: '',
-          PostCode: '',
-          Years: 0,
-          Months: 0
-        },
-      Applicant: {
-        FirstName: '',
-        MiddleName: '',
-        LastName: '',
-        Gender: '',
-        DateOfBirth: '',
-        OriginCountry: '',
-        MaritalStatus: '',
-        NumOfDenpendants: 0,
-        DiversLicenceStatus: '',
-        OverseasDiversLicence: '',
-        IsNzResident: true,
-        IsWorkVisa: false,
-        LicenceNumberSa: '',
-        LicenceNumberSb: '',
-        CellNumber: '',
-        PhoneNumber: '',
-        FaxNumber: '',
-        CellNumberBusiness: '',
-        PhoneNumberBusiness: '',
-        FaxNumberBusiness: '',
-        CurrentAddress: {
-          Type: '',
-          StreetNumber: '',
-          StreetName: '',
-          Suburb: '',
-          City: '',
-          PostCode: '',
-          Years: 0,
-          Months: 0
-        },
-        PreviousAddress: {
-          Type: '',
-          StreetNumber: '',
-          StreetName: '',
-          Suburb: '',
-          City: '',
-          PostCode: '',
-          Years: 0,
-          Months: 0
-        },
-        CurrentOccupation: {
-          EmployerName: '',
-          Occupation: '',
-          Address: {
-            StreetNumber: '',
-            StreetName: '',
-            Suburb: '',
-            City: '',
-            PostCode: '',
-          },
-          Years: 0,
-          Months: 0
-        },
-        PreviousOccupation: {
-          EmployerName: '',
-          Occupation: '',
-          Address: {
-            StreetNumber: '',
-            StreetName: '',
-            Suburb: '',
-            City: '',
-            PostCode: '',
-          },
-          Years: 0,
-          Months: 0
-        },
-        //extra needs to be considered server side
-        PersonalEmail: '',
-        BusinessEmail: '',
-        LicenceVersion: '',
-        LicenceNumber: '',
-        References: [
-          {
-            Name: '',
-            Relationship: '',
-            Phone: '',
-            Address: {
-              StreetNumber: '',
-              StreetName: '',
-              Suburb: '',
-              City: '',
-              PostCode: '',
-            }
-          }
-        ],
-        AccountReferences: [
-          {
-            Name: '',
-            Bank: '',
-            AccountNumber: ''
-          }
-        ]
-      },
-      Spouse: {
-        FirstName: '',
-        LastName: '',
-        Gender: '',
-        DateOfBirth: '',
-        OriginCountry: '',
-        MaritalStatus: '',
-        NumOfDenpendants: 0,
-        DiversLicenceStatus: '',
-        OverseasDiversLicence: '',
-        LicenceNumberSa: '',
-        LicenceNumberSb: '',
-        CellNumber: '',
-        PhoneNumber: '',
-        FaxNumber: '',
-        CellNumberBusiness: '',
-        PhoneNumberBusiness: '',
-        FaxNumberBusiness: '',
-
-        //extra needs to be considered server side
-        PersonalEmail: '',
-        BusinessEmail: '',
-        LicenceVersion: '',
-        LicenceNumber: '',
-        PreviousAddress: {
-          Type: '',
-          StreetNumber: '',
-          StreetName: '',
-          Suburb: '',
-          City: '',
-          PostCode: '',
-          Years: 0,
-          Months: 0
-        },
-        CurrentOccupation: {
-          EmployerName: '',
-          Occupation: '',
-          Address: {
-            StreetNumber: '',
-            StreetName: '',
-            Suburb: '',
-            City: '',
-            PostCode: '',
-          },
-          Years: 0,
-          Months: 0
-        },
-        PreviousOccupation: {
-          EmployerName: '',
-          Occupation: '',
-          Address: {
-            StreetNumber: '',
-            StreetName: '',
-            Suburb: '',
-            City: '',
-            PostCode: '',
-          },
-          Years: 0,
-          Months: 0
-        },
-
-      },
-      Assets: [
-        {
-          OptionName: 'Home',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Home Contents',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Car',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Bank',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Investments',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Kiwisaver',
-          Note: '',
-          Value: 0
-        }
-      ],
-      Liabilities: [
-        {
-          OptionName: 'Mortgage',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Hire Purchase',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Loan',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Credit Card',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Bank Overdraft',
-          Note: '',
-          Value: 0
-        }
-      ],
-      Income: [
-        {
-          OptionName: 'Take Home Pay',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Secondary Income',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Spouse Take Home Pay',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Spouse Secondary Income',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Government Subsidy',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Other',
-          Note: '',
-          Value: 0
-        }
-      ],
-      Expenses: [
-        {
-          OptionName: 'Mortgage',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Hire Purchase',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Loan',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Credit Card',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Miscellaneous',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Rates',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Phone',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Power',
-          Note: '',
-          Value: 0
-        },
-        {
-          OptionName: 'Other',
-          Note: '',
-          Value: 0
-        },
-      ]
-    };
+  private personalApplication: PersonalApplication;
 
   constructor() { }
 
   ngOnInit() {
-
     this.selectOptions = [
       {
         name: 'Personal Use',
@@ -334,6 +29,11 @@ export class PersonalApplicationComponent implements OnInit {
         value: 3
       }
     ];
+    this.personalApplication = new PersonalApplication()
+  }
+
+  spouceDisplayed() {
+    return this.personalApplication.ApplicationType === 'Joint';
   }
 
   updateApplicantDetails($event) {
@@ -346,4 +46,8 @@ export class PersonalApplicationComponent implements OnInit {
     console.log('The selected value is:', event);
   }
 
+  public expandedFinancials = true;
+  toggleExpandedFinancials() {
+    this.expandedFinancials = !this.expandedFinancials;
+  }
 }

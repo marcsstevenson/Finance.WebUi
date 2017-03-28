@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {  FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { PersonalEntity } from "app/application/personal/personal-application";
 
 @Component({
   //moduleId: module.id,
@@ -9,15 +10,17 @@ import {  FormControl, FormGroup} from '@angular/forms';
 })
 export class FinanceWebUiPersonalDetailComponent implements OnInit {
 
-  @Input()
-  personalDetail = {
+  @Input() personalDetail : PersonalEntity;
 
-  };
-
-  @Output()
-  personalDetailChange = new EventEmitter();
+  @Input() title : string;
+  @Output() personalDetailChange = new EventEmitter();
 
   isResidentOptions:  Array<any>;
+  expanded : boolean = true;
+
+  public toggleExpanded() : void{
+    this.expanded = !this.expanded;
+  }
 
   // workVisaOptions = [
   //   {
@@ -30,7 +33,10 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   //   }
   // ];
 
-  ngInit() {
+  ngOnInit() {
+  }
+
+  OnInit() {
   //   this.workVisaOptions = [
   //   {
   //     value: true,
@@ -91,8 +97,4 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

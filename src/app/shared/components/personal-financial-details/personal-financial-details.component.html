@@ -1,156 +1,141 @@
 <div class="personal-financial-details">
-  <div class="assets col-xs-6">
-    <h4 class="row col-xs-12">Assets</h4>
-    <dl>
-      <div class="row" *ngFor="let property of assets; let i = index;">
-        <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" 
-                 [value]="property.OptionName" 
-                 (blur)="updateAssetsOptionName(i, $event)"
-                 type="text" >
-        </dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" 
-                 [value]="property.Note" 
-                 (blur)="updateAssetsNote(i, $event)" 
-                 type="text">
-        </dd>
+  <div class="assets row">
+    <div class="col-xs-12">
+      <h4>Assets</h4>
+      <dl>
+        <div class="row" *ngFor="let property of assets; let i = index;">
+          <dt class="col-xs-3 p-x-0">
+            <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" (blur)="updateAssetsOptionName(i, $event)"
+             (keypress)="assetOnKeypress($event)" type="text">
+          </dt>
+          <dd class="col-xs-7">
+            <input class="controls" placeholder="Notes" [value]="property.Note" (blur)="updateAssetsNote(i, $event)" type="text"
+            (keypress)="assetOnKeypress($event)">
+          </dd>
 
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="property.Value" 
-                 (blur)="updateAssetsValue(i, $event)" 
-                 type="number">
-        </dd>
-      </div>
+          <dd class="col-xs-2 px-0">
+            <input class="controls" placeholder="$" [value]="property.Value" (blur)="updateAssetsValue(i, $event)" type="number"
+            (keypress)="assetOnKeypress($event)">
+          </dd>
+        </div>
 
-      <button class="add-item" (click)="addAsset()">Add Asset</button>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Total</dt>
-        <dd class="col-xs-8">
-          <input class="controls" [(value)]="assetsTotal" placeholder="Dollar Value" type="text">
-        </dd>
-      </div>
-
-    </dl>
+        <div class="row">          
+          <dd class="offset-xs-3 col-xs-7">
+            <button class="add-item" (click)="addAsset()">Add Asset</button>
+          </dd>
+          <dd class="col-xs-2 px-0">
+            <label class="controls">{{assetsTotal | currency:'USD':true}}</label>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
 
-  <div class="liabilities col-xs-6">
-    <h4 class="row col-xs-12">Liabilities</h4>
-    <dl>
-      <div class="row" *ngFor="let property of liabilities; let i = index;">
-        <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" 
-                 [value]="property.OptionName" 
-                 (blur)="updateLiabilitiesOptionName(i, $event)"
-                 type="text" >
-        </dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" 
-                 [value]="property.Note" 
-                 (blur)="updateLiabilitiesNote(i, $event)" 
-                 type="text">
-        </dd>
+  <div class="liabilities row">
+    <div class="col-xs-12">
+      <h4>Liabilities</h4>
+      <dl>
+        <div class="row" *ngFor="let property of liabilities; let i = index;">
+          <dt class="col-xs-3 p-x-0">
+            <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" (blur)="updateLiabilitiesOptionName(i, $event)"
+              type="text" (keypress)="liabilityOnKeypress($event)">
+          </dt>
+          <dd class="col-xs-7">
+            <input class="controls" placeholder="Notes" [value]="property.Note" (blur)="updateLiabilitiesNote(i, $event)" type="text"
+             (keypress)="liabilityOnKeypress($event)">
+          </dd>
 
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="property.Value" 
-                 (blur)="updateLiabilitiesValue(i, $event)" 
-                 type="number">
-        </dd>
-      </div>
+          <dd class="col-xs-2 px-0">
+            <input class="controls" placeholder="$" [value]="property.Value" (blur)="updateLiabilitiesValue(i, $event)" type="number"
+             (keypress)="liabilityOnKeypress($event)">
+          </dd>
+        </div>
 
-      <button class="add-item" (click)="addLiability()">Add Liability</button>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Total</dt>
-        <dd class="col-xs-8">
-          <input class="controls" [(ngModel)]="liabilitiesTotal" placeholder="Dollar Value" type="text">
-        </dd>
-      </div>
-    </dl>
+        <div class="row">          
+          <dd class="offset-xs-3 col-xs-7">
+            <button class="add-item" (click)="addLiability()">Add Liability</button>
+          </dd>
+          <dd class="col-xs-2 px-0">
+            <label class="controls">{{liabilitiesTotal | currency:'USD':true}}</label>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
 
-  <hr>
-  <div class="col-xs-12">
-    <h3 class="net-worth">Net Worth: <span>{{netWorth}}</span></h3>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="net-worth">Net Worth: <span> {{netWorth | currency:'USD':true}}</span></h3>
+    </div>
   </div>
 
-  <div class="income col-xs-6">
-    <h4 class="row col-xs-12">Income (Monthly)</h4>
-    <dl>
-      <div class="row" *ngFor="let property of income; let i = index;">
-        <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" 
-                 [value]="property.OptionName" 
-                 (blur)="updateIncomeOptionName(i, $event)"
-                 type="text" >
-        </dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" 
-                 [value]="property.Note" 
-                 (blur)="updateIncomeNote(i, $event)" 
-                 type="text">
-        </dd>
+  <div class="income row">
+    <div class="col-xs-12">
+      <h4>Income (Monthly)</h4>
+      <dl>
+        <div class="row" *ngFor="let property of income; let i = index;">
+          <dt class="col-xs-3 p-x-0">
+            <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" (blur)="updateIncomeOptionName(i, $event)"
+              type="text" (keypress)="incomeOnKeypress($event)">
+          </dt>
+          <dd class="col-xs-7">
+            <input class="controls" placeholder="Notes" [value]="property.Note" (blur)="updateIncomeNote(i, $event)" type="text"
+             (keypress)="incomeOnKeypress($event)">
+          </dd>
 
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="property.Value" 
-                 (blur)="updateIncomeValue(i, $event)" 
-                 type="number">
-        </dd>
-      </div>
+          <dd class="col-xs-2 px-0">
+            <input class="controls" placeholder="$" [value]="property.Value" (blur)="updateIncomeValue(i, $event)" type="number"
+             (keypress)="incomeOnKeypress($event)">
+          </dd>
+        </div>
 
-      <button class="add-item" (click)="addIncome()">Add Income</button>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Total</dt>
-        <dd class="col-xs-8">
-          <input class="controls" [(ngModel)]="incomeTotal" placeholder="Dollar Value" type="text">
-        </dd>
-      </div>
-
-    </dl>
+        <div class="row">          
+          <dd class="offset-xs-3 col-xs-7">
+            <button class="add-item" (click)="addIncome()">Add Income</button>
+          </dd>
+          <dd class="col-xs-2 px-0">
+            <label class="controls">{{incomeTotal | currency:'USD':true}}</label>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
 
-  <div class="expenses col-xs-6">
-    <h4 class="row col-xs-12">Expenses</h4>
-    <dl>
-      <div class="row" *ngFor="let property of expenses; let i = index;">
-        <dt class="col-xs-4 p-x-0">
-          <input class="controls option-name" placeholder="Asset Name" 
-                 [value]="property.OptionName" 
-                 (blur)="updateExpensesOptionName(i, $event)"
-                 type="text" >
-        </dt>
-        <dd class="col-xs-5">
-          <input class="controls" placeholder="Notes" 
-                 [value]="property.Note" 
-                 (blur)="updateExpensesNote(i, $event)" 
-                 type="text">
-        </dd>
+  <div class="expenses row">
+    <div class="col-xs-12">
+      <h4>Expenses</h4>
+      <dl>
+        <div class="row" *ngFor="let property of expenses; let i = index;">
+          <dt class="col-xs-3 p-x-0">
+            <input class="controls option-name" placeholder="Asset Name" [value]="property.OptionName" (blur)="updateExpensesOptionName(i, $event)"
+              type="text" (keypress)="expensesOnKeypress($event)">
+          </dt>
+          <dd class="col-xs-7">
+            <input class="controls" placeholder="Notes" [value]="property.Note" (blur)="updateExpensesNote(i, $event)" type="text" 
+              (keypress)="expensesOnKeypress($event)">
+          </dd>
 
-        <dd class="col-xs-3">
-          <input class="controls" placeholder="$" 
-                 [value]="property.Value" 
-                 (blur)="updateExpensesValue(i, $event)" 
-                 type="number">
-        </dd>
-      </div>
+          <dd class="col-xs-2 px-0">
+            <input class="controls" placeholder="$" [value]="property.Value" (blur)="updateExpensesValue(i, $event)" type="number"
+             (keypress)="expensesOnKeypress($event)">
+          </dd>
+        </div>
 
-      <button class="add-item" (click)="addExpense()">Add Expense</button>
-
-      <div class="row">
-        <dt class="col-xs-4 p-x-0 controls">Total</dt>
-        <dd class="col-xs-8">
-          <input class="controls" [(ngModel)]="expensesTotal" placeholder="Dollar Value" type="text">
-        </dd>
-      </div>
-    </dl>
+        <div class="row">          
+          <dd class="offset-xs-3 col-xs-7">
+            <button class="add-item" (click)="addExpense()">Add Expense</button>
+          </dd>
+          <dd class="col-xs-2 px-0">
+            <label class="controls">{{expensesTotal | currency:'USD':true}}</label>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
 
-  <div class="col-xs-12">
-    <h3 class="disposable-income">Disposable Income: <span>{{disposableIncome}}</span></h3>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="disposable-income">Disposable Income: <span>{{disposableIncome | currency:'USD':true}}</span></h3>
+    </div>
   </div>
 </div>

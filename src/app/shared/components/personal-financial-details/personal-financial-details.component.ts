@@ -82,10 +82,20 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       .push({OptionName: 'Asset Name', Value: 0, Note: ''});
   }
 
+  assetOnKeypress(event: any){
+    if(event && event.code === 'Enter')
+      this.addAsset();
+  }
+
   addLiability() {
     this
       .liabilities
       .push({OptionName: 'Liability Name', Value: 0, Note: ''});
+  }
+
+  liabilityOnKeypress(event: any){
+    if(event && event.code === 'Enter')
+      this.addLiability();
   }
 
   addIncome() {
@@ -94,10 +104,20 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       .push({OptionName: 'Income Name', Value: 0, Note: ''});
   }
 
+  incomeOnKeypress(event: any){
+    if(event && event.code === 'Enter')
+      this.addIncome();
+  }
+
   addExpense() {
     this
       .expenses
       .push({OptionName: 'Expense Name', Value: 0, Note: ''});
+  }
+
+  expensesOnKeypress(event: any){
+    if(event && event.code === 'Enter')
+      this.addExpense();
   }
 
   // I could refactor and make all updates to one method. But that might be

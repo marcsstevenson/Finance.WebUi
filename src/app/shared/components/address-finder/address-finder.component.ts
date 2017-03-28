@@ -69,10 +69,12 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
 
   }
   OnInit() {
-
   }
 
   ngOnInit() {
+    //2017.03.26 MS - this is throwing an exception on route change (eg, saving a file during dev)
+    //It appears to be a race condition whereby the google API is initialised before this is called when the page is loaded from scratch
+    //but the google API is not initialised on route change. Commented out so that I can form on the form
     this.initAutocomplete();
   }
 
@@ -80,7 +82,7 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
 
   }
 
-  initAutocomplete() {
+  initAutocomplete() {    
     let that = this;
     // Create the autocomplete object, restricting the search to geographical
     // location types.
@@ -119,17 +121,12 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
             this.addressDetail[addressDetailProp] = val;
           }
         }
-
-        // this.searchInput.nativeElement.focus();
         
         this.searchInput.nativeElement.value = '';
 
-        // this.addressDetail.
         this.addressDetailChange.emit(this.addressDetail);
 
-        // this.streetInput.nativeElement.focus();
         console.log('The place object is: ', place);
-        // console.log('======== The current addressDetail is: ', this.addressDetail);
       });
     });
   }

@@ -3,7 +3,7 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { async, inject } from '@angular/core/testing';
-import { DealerDetailComponent } from './dealer-detail.component';
+import { LeadOriginDetailComponent } from './lead-origin-detail.component';
 
 
 describe('Component: DealerDetail', () => {

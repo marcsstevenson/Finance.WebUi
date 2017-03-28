@@ -1,191 +1,314 @@
-<div class="personal-detail">
-	<!--<div class="row">
-		<input #searchInput class="controls search full-length" type="text" placeholder="type the address here to search" [(ngModel)]="fullName"
-			(ngModelChange)="searchAddress()">
-	</div>-->
+<div class="card">
+	<div class="card-block">
+		<div class="row">
+			<div class="col-xs-10">
+				<h4 class="blue-light">{{title}}</h4>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-secondary" *ngIf="!expanded" (click)="toggleExpanded()">Show</button>
+				<button class="btn btn-secondary" *ngIf="expanded" (click)="toggleExpanded()">Hide</button>
+			</div>
+		</div>
+		<div class="personal-detail">
+			<!--<div class="row">
+				<input #searchInput class="controls search full-length" type="text" placeholder="type the address here to search" [(ngModel)]="fullName"
+					(ngModelChange)="searchAddress()">
+			</div>-->
 
-	<div class="">
-		<dl>
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>First Name</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="personalDetail.FirstName" (blur)="updateInputProperty('FirstName', $event)">
-				</dd>
+			<div *ngIf="expanded">
+				<dl>
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>First Name</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="personalDetail.FirstName"
+							 (blur)="updateInputProperty('FirstName', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Preferred Name</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="preferredName" placeholder="Preferred Name" [value]="personalDetail.PreferredName"
+							 (blur)="updateInputProperty('PreferredName', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Middle Name</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="middleName" placeholder="Middle Name" [value]="personalDetail.MiddleName"
+							 (blur)="updateInputProperty('MiddleName', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Last Name</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="lastName" placeholder="Last Name" [value]="personalDetail.LastName"
+							 (blur)="updateInputProperty('LastName', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 radio-line">
+							<label>Gender</label>
+						</dt>
+						<dd class="col-xs-8 radio-line">
+							<input type="radio" class="controls" name="gender" value="male" checked (change)="updateInputProperty('Gender', $event)">							Male
+							<input type="radio" class="controls" name="gender" value="female" (change)="updateInputProperty('Gender', $event)">							Female
+						</dd>
+					</div>
+
+					<fwui-date-picker [dateModel]="personalDetail.DateOfBirth" (dateModelChange)="updateProperty('DateOfBirth', $event)" label="Date of Birth"
+					 placeHolder="DD/MM/YYYY">
+					</fwui-date-picker>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Origin Country</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="originCountry" placeholder="Origin Country" [(ngModel)]="personalDetail.originCountry">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 radio-line">
+							<label>NZ Resident</label>
+						</dt>
+						<dd class="col-xs-8 radio-line">
+							<input type="radio" value="true" name="nzResident" [checked]="personalDetail.IsNzResident === true" (click)="updateResidency(true)">							Yes
+							<input type="radio" value="false" name="nzResident" [checked]="personalDetail.IsNzResident === false" (click)="updateResidency(false)">							No
+						</dd>
+					</div>
+
+					<div class="row" *ngIf="personalDetail.IsNzResident == false">
+						<dt class="col-xs-4 radio-line">
+							<label>Work Visa</label>
+						</dt>
+						<dd class="col-xs-8 radio-line">
+							<input type="radio" name="workVisa" value="Yes" checked (click)="updateWorkVisaStatus(true)"> Yes
+							<input type="radio" name="workVisa" value="No" (click)="updateWorkVisaStatus(false)"> No
+						</dd>
+					</div>
+
+					<fwui-date-picker *ngIf="personalDetail.IsNzResident === false" [dateModel]="personalDetail.VisaExpiryDate" (dateModelChange)="updateProperty('VisaExpiryDate', $event)"
+					 label="Visa Expiry Date" placeHolder="DD/MM/YYYY">
+					</fwui-date-picker>
+
+					<fwui-date-picker *ngIf="personalDetail.IsNzResident === false" [dateModel]="personalDetail.EntryDate" (dateModelChange)="updateProperty('EntryDate', $event)"
+					 label="Entry Date" placeHolder="DD/MM/YYYY">
+					</fwui-date-picker>
+
+					<div class="row">
+						<dt class="col-xs-4 radio-line">
+							<label>Driver Licence Type</label>
+						</dt>
+						<dd class="col-xs-8 radio-line">
+							<input type="radio" name="driverLicenceType" value="Full" checked (click)="updateInputProperty('DriverLicenceType', $event)">							Full
+							<input type="radio" name="driverLicenceType" value="Restricted" (click)="updateInputProperty('DriverLicenceType', $event)">							Restricted
+							<input type="radio" name="driverLicenceType" value="Learners" (click)="updateInputProperty('DriverLicenceType', $event)">							Learners
+							<input type="radio" name="driverLicenceType" value="Overseas" (click)="updateInputProperty('DriverLicenceType', $event)">							Overseas
+						</dd>
+					</div>
+
+					<div *ngIf="personalDetail.DriverLicenceType === 'Overseas'" class="row">
+						<dt class="col-xs-4 controls">
+							<label>Overseas Licence</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="OverseasDiversLicence" placeholder="Overseas sDivers Licence" [value]="personalDetail.OverseasDiversLicence"
+							 (blur)="updateInputProperty('OverseasDiversLicence', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Licence No. (5A)</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="licenceNumber" placeholder="Licence Number" [value]="personalDetail.LicenceNumberSa"
+							 (blur)="updateInputProperty('LicenceNumberSa', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Licence No. (5B)</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="licenceNumberSb" placeholder="Licence Version" [value]="personalDetail.LicenceNumberSb"
+							 (blur)="updateInputProperty('LicenceNumberSb', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Marital Status</label>
+						</dt>
+						<dd class="col-xs-8">
+							<select name="maritalStatus" class="controls full-length" [value]="personalDetail.MaritalStatus" (blur)="updateInputProperty('MaritalStatus', $event)">
+								<option value="Single">Single</option>
+								<option value="Married">Married</option>
+								<option value="Married">Defacto</option>
+								<option value="Married">Seperated</option>
+								<option value="Married">Divorced</option>
+							</select>
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>No. Dependants</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="numOfDenpendants" placeholder="No. Dependants" [value]="personalDetail.NumOfDenpendants"
+							 (blur)="updateInputProperty('NumOfDenpendants', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Mobile Phone</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="mobilePhoneNumber" placeholder="Mobile Phone" [value]="personalDetail.MobilePhoneNumber"
+							 (blur)="updateInputProperty('MobilePhoneNumber', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Home Phone</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="homePhoneNumber" placeholder="Home Phone" [value]="personalDetail.HomePhoneNumber"
+							 (blur)="updateInputProperty('HomePhoneNumber', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Business Phone</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="businessPhoneNumber" placeholder="Business Phone" [value]="personalDetail.BusinessPhoneNumber"
+							 (blur)="updateInputProperty('BusinessPhoneNumber', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Personal Email</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="personalEmail" placeholder="Personal Email" [value]="personalDetail.PersonalEmail"
+							 (blur)="updateInputProperty('PersonalEmail', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 controls">
+							<label>Business Email</label>
+						</dt>
+						<dd class="col-xs-8">
+							<input class="controls full-length" type="text" name="businessEmail" placeholder="Business Email" [value]="personalDetail.BusinessEmail"
+							 (blur)="updateInputProperty('BusinessEmail', $event)">
+						</dd>
+					</div>
+
+					<div class="address">
+						<div class="row">
+							<h4 class="col-xs-12">Current Address Details</h4>
+						</div>
+						<div class="row">
+							<dt class="col-xs-4 controls">Residential Type: (select)</dt>
+							<dd class="col-xs-8 pr-2">
+								<select name="role" class="full-length" [value]="personalDetail.CurrentAddressType" (blur)="updateInputProperty('CurrentAddressType', $event)">
+									<option value="OwnHome">Own Home</option>
+									<option value="Renting">Renting</option>
+									<option value="Boarding">Boarding</option>
+									<option value="FamilyHouse">Family House</option>
+									<option value="Other">Other</option>
+								</select>
+							</dd>
+						</div>
+						<div class="row" *ngIf="personalDetail.CurrentAddressType === 'Other'">
+							<dt class="col-xs-4 controls">Other:</dt>
+							<dd class="col-xs-8 pr-2">
+								<input class="controls full-length" type="text" name="region" placeholder="Current Address Type Other" [value]="personalDetail.CurrentAddressOther"
+								 (blur)="updateInputProperty('CurrentAddressOther', $event)">
+							</dd>
+						</div>
+						<fwui-address-finder [addressDetail]="personalDetail.CurrentAddress" (blur)="updateInputProperty('CurrentAddress', $event)"></fwui-address-finder>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 p-x-0">
+							<label>Years</label>
+						</dt>
+						<dd class="col-xs-8 p-x-0">
+							<input class="controls full-length" type="number" placeholder="Number of years at this address" [value]="personalDetail.CurrentAddressYears"
+							 (blur)="updateInputProperty('CurrentAddressYears', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 p-x-0">
+							<label>Months</label>
+						</dt>
+						<dd class="col-xs-8 p-x-0">
+							<input class="controls full-length" type="number" placeholder="Number of months at this address" [value]="personalDetail.CurrentAddressMonths"
+							 (blur)="updateInputProperty('CurrentAddressMonths', $event)">
+						</dd>
+					</div>
+
+					<div class="previous address">
+						<h4 class="row col-xs-12">Previous Address Details</h4>
+
+						<fwui-address-finder [addressDetail]="personalDetail.PreviousAddress" (blur)="updateInputProperty('PreviousAddress', $event)"></fwui-address-finder>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 p-x-0">
+							<label>Years</label>
+						</dt>
+						<dd class="col-xs-8 p-x-0">
+							<input class="controls full-length" type="number" placeholder="Number of years at this address" [value]="personalDetail.PreviousAddressYears"
+							 (blur)="updateInputProperty('PreviousAddressYears', $event)">
+						</dd>
+					</div>
+
+					<div class="row">
+						<dt class="col-xs-4 p-x-0">
+							<label>Months</label>
+						</dt>
+						<dd class="col-xs-8 p-x-0">
+							<input class="controls full-length" type="number" placeholder="Number of months at this address" [value]="personalDetail.PreviousAddressMonths"
+							 (blur)="updateInputProperty('PreviousAddressMonths', $event)">
+						</dd>
+					</div>
+
+					<div class="occupation">
+						<h4 class="row col-xs-12">Occupation Details</h4>
+						<fwui-personal-occupation [occupationDetail]="personalDetail.CurrentOccupation" (blur)="updateInputProperty('CurrentOccupation', $event)"></fwui-personal-occupation>
+					</div>
+
+					<div class="previous occupation">
+						<h4 class="row col-xs-12">Previous Occupation Details</h4>
+						<fwui-personal-occupation [occupationDetail]="personalDetail.PreviousOccupation" (blur)="updateInputProperty('PreviousOccupation', $event)"></fwui-personal-occupation>
+					</div>
+				</dl>
 			</div>
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Middle Name</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="personalDetail.FirstName" (blur)="updateInputProperty('FirstName', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Last Name</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="lastName" placeholder="Last Name" [value]="personalDetail.LastName" (blur)="updateInputProperty('LastName', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
-					<label>Gender</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" class="controls" name="gender" value="male" checked (change)="updateInputProperty('Gender', $event)"> Male
-					<input type="radio" class="controls" name="gender" value="female" (change)="updateInputProperty('Gender', $event)"> Female
-					<input type="radio" class="controls" name="gender" value="other" (change)="updateInputProperty('Gender', $event)"> Other
-				</dd>
-			</div>
-
-			<fwui-date-picker [dateModel]="personalDetail.DateOfBirth" 
-			 									(dateModelChange)="updateProperty('DateOfBirth', $event)" 
-												label="Date of Birth" placeHolder="DD/MM/YYYY">
-			</fwui-date-picker>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Origin Country</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="originCountry" placeholder="Origin Country" [(ngModel)]="personalDetail.originCountry">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
-					<label>NZ Resident</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" value="true" name="nzResident" [checked]="personalDetail.IsNzResident === true"
-					(click)="updateResidency(true)"> Yes
-					<input type="radio" value="false" name="nzResident" [checked]="personalDetail.IsNzResident === false" 
-					(click)="updateResidency(false)"> No
-				</dd>
-			</div>
-
-			<div class="row" *ngIf="personalDetail.IsNzResident == false">
-				<dt class="col-xs-4 p-x-0 radio-line">
-					<label>Work Visa</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" name="workVisa" value="Yes" checked
-					       (click)="updateWorkVisaStatus(true)"> Yes 
-					<input type="radio" name="workVisa" value="No"
-					 			 (click)="updateWorkVisaStatus(false)"> No 
-				</dd>
-			</div>
-
-			<fwui-date-picker *ngIf="personalDetail.IsNzResident === false"
-											  [dateModel]="personalDetail.VisaExpiryDate" 
-												(dateModelChange)="updateProperty('VisaExpiryDate', $event)"
-				                label="Visa Expiry Date" placeHolder="DD/MM/YYYY">
-			</fwui-date-picker>
-
-			<fwui-date-picker *ngIf="personalDetail.IsNzResident === false"
-			   								[dateModel]="personalDetail.EntryDate" 
-												(dateModelChange)="updateProperty('EntryDate', $event)" 
-												label="Entry Date" placeHolder="DD/MM/YYYY">
-			</fwui-date-picker>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
-					<label>Driver Licence Type</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" name="driverLicenceType" value="Full" checked
-						     (click)="updateInputProperty('DriverLicenceType', $event)"> Full 
-					<input type="radio" name="driverLicenceType" value="Restricted"
-								 (click)="updateInputProperty('DriverLicenceType', $event)"> Restricted 
-					<input type="radio" name="driverLicenceType" value="Learners"
-					       (click)="updateInputProperty('DriverLicenceType', $event)"> Learners 
-					<input type="radio" name="driverLicenceType" value="Overseas"
-					       (click)="updateInputProperty('DriverLicenceType', $event)"> Overseas 
-				</dd>
-			</div>
-
-			<div *ngIf="personalDetail.DriverLicenceType === 'Overseas'" class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Overseas Licence</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="OverseasDiversLicence" placeholder="Overseas sDivers Licence" [value]="personalDetail.OverseasDiversLicence"
-				(blur)="updateInputProperty('OverseasDiversLicence', $event)">
-				</dd>
-			</div>
-
-			<div *ngIf="personalDetail.IsNzResident === true" class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Licence No. (5A)</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="licenceNumber" placeholder="Licence Number" [value]="personalDetail.LicenceNumber"
-				(blur)="updateInputProperty('LicenceNumber', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Licence No. (5B)</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="licenceVersion" placeholder="Licence Version" 
-					 			 [value]="personalDetail.LicenceVersion"
-								 (blur)="updateInputProperty('LicenceVersion', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Mobile</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="mobile" placeholder="Mobile" 
-								 [value]="personalDetail.CellNumber" 
-								 (blur)="updateInputProperty('CellNumber', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Business Phone</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="businessPhone" placeholder="Business Phone" 
-					       [value]="personalDetail.PhoneNumberBusiness"
-							   (blur)="updateInputProperty('PhoneNumberBusiness', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Personal Email</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="personalEmail" placeholder="Personal Email" 
-								 [value]="personalDetail.PersonalEmail"
-								 (blur)="updateInputProperty('PersonalEmail', $event)">
-				</dd>
-			</div>
-
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Business Email</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="businessEmail" placeholder="Business Email" 
-								 [value]="personalDetail.BusinessEmail"
-								 (blur)="updateInputProperty('BusinessEmail', $event)">
-				</dd>
-			</div>
-
-		</dl>
+		</div>
 	</div>
-
 </div>
