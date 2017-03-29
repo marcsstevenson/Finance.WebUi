@@ -8,7 +8,7 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor",    
+    "e2e": "protractor",
     "build:nodeserver": "ng build && cp node-server/* dist",
     "build:nodeserver-prod": "ng build -prod && cp node-server/* dist",
     "serve-build": "npm run build:nodeserver",
@@ -57,7 +57,9 @@
     "webdriver-manager": "10.2.5",
     "zone.js": "^0.7.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@angular/cli": "^1.0.0"
+  },
   "engines": {
     "node": "6.9.5",
     "npm": "3.10.10"
