@@ -7,7 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./date-picker.component.scss']
 })
 export class FinanceWebUiDatePickerComponent implements OnInit {
-
   @Input()
   dateModel: Date;
 
@@ -31,11 +30,16 @@ export class FinanceWebUiDatePickerComponent implements OnInit {
   }
 
   updateValue(event) {
+    console.log(event);
     this.showDatepicker = false;
     this.dateModel = event;
     if (event) {
-      this.dateModelChange.emit(event);
+      this.emitChange(event);
     }
+  }
+
+  public emitChange(newValue: any){
+      this.dateModelChange.emit(newValue);
   }
 
   constructor() { }
@@ -43,4 +47,9 @@ export class FinanceWebUiDatePickerComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Clear the model
+  public clear() {
+    this.dateModel = null;
+    this.emitChange(this.dateModel);
+  }
 }

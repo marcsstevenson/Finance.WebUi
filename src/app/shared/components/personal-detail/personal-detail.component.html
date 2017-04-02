@@ -10,11 +10,6 @@
 			</div>
 		</div>
 		<div class="personal-detail">
-			<!--<div class="row">
-				<input #searchInput class="controls search full-length" type="text" placeholder="type the address here to search" [(ngModel)]="fullName"
-					(ngModelChange)="searchAddress()">
-			</div>-->
-
 			<div *ngIf="expanded">
 				<dl>
 					<div class="row">
@@ -227,7 +222,12 @@
 
 					<div class="address">
 						<div class="row">
-							<h4 class="col-xs-12">Current Address Details</h4>
+							<dt class="col-xs-4 controls">
+								<span class="subTitle">Current Address Details</span>
+							</dt>
+							<dd class="col-xs-8">
+								<button class="btn btn-default" (click)="copyCurrentAddress()" *ngIf="showCopyFrom()">copy</button>
+							</dd>
 						</div>
 						<div class="row">
 							<dt class="col-xs-4 controls">Residential Type: (select)</dt>
@@ -244,11 +244,13 @@
 						<div class="row" *ngIf="personalDetail.CurrentAddressType === 'Other'">
 							<dt class="col-xs-4 controls">Other:</dt>
 							<dd class="col-xs-8 pr-2">
-								<input class="controls full-length" type="text" name="region" placeholder="Current Address Type Other" [value]="personalDetail.CurrentAddressOther"
+								<input class="controls full-length" type="text" name="region" placeholder="Current Address Type Other" 
+								[value]="personalDetail.CurrentAddressOther"
 								 (blur)="updateInputProperty('CurrentAddressOther', $event)">
 							</dd>
 						</div>
-						<fwui-address-finder [addressDetail]="personalDetail.CurrentAddress" (blur)="updateInputProperty('CurrentAddress', $event)"></fwui-address-finder>
+						<fwui-address-finder [addressDetail]="personalDetail.CurrentAddress" 
+							(changed)="currentAddressChanged($event)"></fwui-address-finder>
 					</div>
 
 					<div class="row">

@@ -19,5 +19,7 @@ export * from './personal-financial-details';
 export * from './transport-financial-details';
 export * from './vendor-detail';
 export * from './personal-reference-detail';
+export * from './personal-references';
 export * from './personal-account-reference-detail';
+export * from './personal-account-references';
 

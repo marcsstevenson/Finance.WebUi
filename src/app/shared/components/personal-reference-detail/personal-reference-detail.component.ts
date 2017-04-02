@@ -7,11 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FinanceWebUiPersonalReferenceDetailComponent implements OnInit {
 
-  @Input()
-  referenceDetail;
+  @Input() referenceDetail;
 
-  @Output()
-  referenceDetailChange = new EventEmitter();
+  @Output() changed = new EventEmitter();
 
   constructor() { }
 
@@ -19,8 +17,7 @@ export class FinanceWebUiPersonalReferenceDetailComponent implements OnInit {
   }
   
   update() {
-    console.log('I am sending update to parent');
-    this.referenceDetailChange.emit(
+    this.changed.emit(
       this.referenceDetail
     );
   }

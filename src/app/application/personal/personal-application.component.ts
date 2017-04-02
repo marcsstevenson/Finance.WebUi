@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AddressDetails } from "app/application";
 import { PersonalApplication } from "app/application/personal/personal-application";
 
-
 @Component({
   selector: 'app-application',
   templateUrl: './personal-application.component.html',
@@ -37,8 +36,17 @@ export class PersonalApplicationComponent implements OnInit {
   }
 
   updateApplicantDetails($event) {
-    console.log('The event received in parent is: ', $event);
+    
   }
+
+  updateApplicantReferences($event) {    
+    
+  }
+
+  updateApplicantAccountReferences($event) {    
+    
+  }
+
   updateCurrentAddress($event) {
 
   }

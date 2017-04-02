@@ -6,12 +6,17 @@
     </dt>
 
     <dd class="col-xs-8 p-x-0 picker-content">
-      <input class="controls full-length" [(ngModel)]="dateModel" 
-             (focus)="showPopup()" (blur)="hidePopup()" placeholder="{{placeHolder}}" />
-             
-      <datepicker class="popup" *ngIf="showDatepicker" [(ngModel)]="dateModel" 
+      <!--Changed to inline as selectionDone is not being fired in popup mode-->
+      <!--(focus)="showPopup()" (blur)="hidePopup()"-->
+      <!--<input class="controls full-length" [(ngModel)]="dateModel" 
+             placeholder="{{placeHolder}}" />-->
+
+      <span>{{ dateModel | date: 'yMMMd'}}</span>
+      <span *ngIf="dateModel" (click)="clear()" class="btn btn-link">Clear</span>
+      <!--class="popup" *ngIf="showDatepicker"-->       
+      <datepicker       
+      [(ngModel)]="dateModel" 
                   [showWeeks]="true" (selectionDone)="updateValue($event)"></datepicker>
     </dd>
   </div>
-
 </div>

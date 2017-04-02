@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {PersonalAccountReferenceDetail} from 'app/shared'
 
 @Component({
   selector: 'fwui-personal-account-reference-detail',
@@ -7,15 +8,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FinanceWebUiPersonalAccountReferenceDetailComponent implements OnInit {
 
-  @Input()
-  accountReferenceDetail = {};
+  @Input() personalAccountReferenceDetail: PersonalAccountReferenceDetail = null;
 
-  @Output()
-  accountReferenceDetailChange = new EventEmitter();
+  @Output() changed = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
+  updated(){
+    this.changed.emit(this.personalAccountReferenceDetail);
   }
 
+  ngOnInit() {
+  }
 }

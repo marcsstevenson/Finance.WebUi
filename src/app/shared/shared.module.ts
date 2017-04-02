@@ -6,32 +6,34 @@ import { DatepickerModule } from 'ng2-bootstrap/datepicker';
 import { TinyEditor } from './directives/index';
 
 import {
-        //  FinanceWebUiFooterComponent,
-        //  FinanceWebUiHeaderComponent,
-        //  FinanceWebUiNavigationComponent,
-         FinanceWebUiSelectComponent,
-         FinanceWebUiTimeLineComponent,
-         FinanceWebUiAddressFinderComponent,
-         FinanceWebUiPersonalDetailComponent,
-         FinanceWebUiTradeVehicleDetailComponent,
-         FinanceWebUiFinancingMarineDetailComponent,
-         FinanceWebUTradeMarineDetailComponent,
-         FinanceWebUiDatePickerComponent,
-         FinanceWebUiPersonalOccupationComponent,
-         FinanceWebUiPersonalFinancialDetailsComponent,
-         FinanceWebUiFinancingVehicleDetailComponent,
-         FinanceWebUiFinancingMotorcycleDetailComponent,
-         FinanceWebUiTransportFinancialDetailsComponent,
-         FinanceWebUiTradeMotorcycleDetailComponent,
-         FinanceWebUiVendorDetailComponent,
-         FinanceWebUiFinancingMarineMotorDetailComponent,
-         FinanceWebUiFinancingMarineTrailerDetailComponent,
-         FinanceWebUiPersonalAccountReferenceDetailComponent,
-         FinanceWebUiPersonalReferenceDetailComponent
-        } from './components/index';
+  //  FinanceWebUiFooterComponent,
+  //  FinanceWebUiHeaderComponent,
+  //  FinanceWebUiNavigationComponent,
+  FinanceWebUiSelectComponent,
+  FinanceWebUiTimeLineComponent,
+  FinanceWebUiAddressFinderComponent,
+  FinanceWebUiPersonalDetailComponent,
+  FinanceWebUiTradeVehicleDetailComponent,
+  FinanceWebUiFinancingMarineDetailComponent,
+  FinanceWebUTradeMarineDetailComponent,
+  FinanceWebUiDatePickerComponent,
+  FinanceWebUiPersonalOccupationComponent,
+  FinanceWebUiPersonalFinancialDetailsComponent,
+  FinanceWebUiFinancingVehicleDetailComponent,
+  FinanceWebUiFinancingMotorcycleDetailComponent,
+  FinanceWebUiTransportFinancialDetailsComponent,
+  FinanceWebUiTradeMotorcycleDetailComponent,
+  FinanceWebUiVendorDetailComponent,
+  FinanceWebUiFinancingMarineMotorDetailComponent,
+  FinanceWebUiFinancingMarineTrailerDetailComponent,
+  FinanceWebUiPersonalAccountReferenceDetailComponent,
+  FinanceWebUiPersonalAccountReferencesComponent,
+  FinanceWebUiPersonalReferenceDetailComponent,
+  FinanceWebUiPersonalReferencesComponent
+} from './components/index';
 
 @NgModule({
-  imports:      [ CommonModule, FormsModule, DatepickerModule],
+  imports: [CommonModule, FormsModule, DatepickerModule],
   declarations: [
     FinanceWebUiSelectComponent,
     FinanceWebUiTimeLineComponent,
@@ -52,9 +54,11 @@ import {
     FinanceWebUiFinancingMarineMotorDetailComponent,
     FinanceWebUiFinancingMarineTrailerDetailComponent,
     FinanceWebUiPersonalAccountReferenceDetailComponent,
-    FinanceWebUiPersonalReferenceDetailComponent
-    ],
-  exports:      [
+    FinanceWebUiPersonalAccountReferencesComponent,
+    FinanceWebUiPersonalReferenceDetailComponent,
+    FinanceWebUiPersonalReferencesComponent
+  ],
+  exports: [
     FinanceWebUiSelectComponent,
     FinanceWebUiTimeLineComponent,
     FinanceWebUiAddressFinderComponent,
@@ -74,7 +78,9 @@ import {
     FinanceWebUiFinancingMarineMotorDetailComponent,
     FinanceWebUiFinancingMarineTrailerDetailComponent,
     FinanceWebUiPersonalAccountReferenceDetailComponent,
-    FinanceWebUiPersonalReferenceDetailComponent
-    ],
+    FinanceWebUiPersonalAccountReferencesComponent,
+    FinanceWebUiPersonalReferenceDetailComponent,
+    FinanceWebUiPersonalReferencesComponent
+  ],
 })
 export class SharedModule { }

@@ -30,47 +30,39 @@
 					<div class="row">
 						<label class="col-xs-4 controls">Client/Company Name</label>
 						<dd class="col-xs-8">
-							<input class="controls full-length" type="text" name="clientName" placeholder="Client Name" 
-							 	[(ngModel)]="personalApplication.ClientName">
+							<input class="controls full-length" type="text" name="clientName" placeholder="Client Name" [(ngModel)]="personalApplication.ClientName">
 						</dd>
 					</div>
 				</div>
 			</div>
 
-			<fwui-personal-detail [title]="'Applicant\'s Personal Details'" [personalDetail]="personalApplication.Applicant" 
-				(personalDetailChange)="updateApplicantDetails($event)">
+			<fwui-personal-detail [title]="'Applicant\'s Personal Details'" [personalDetail]="personalApplication.Applicant" (personalDetailChange)="updateApplicantDetails($event)">
 			</fwui-personal-detail>
 
-			<fwui-personal-detail *ngIf="spouceDisplayed()" [title]="'Spouse\'s Personal Details'" 
-				[personalDetail]="personalApplication.Spouse" (personalDetailChange)="updateApplicantDetails($event)">
+			<fwui-personal-detail *ngIf="spouceDisplayed()" [title]="'Spouse\'s Personal Details'" [personalDetail]="personalApplication.Spouse"
+			 (personalDetailChange)="updateApplicantDetails($event)" copyFrom="personalApplication.Applicant">
 			</fwui-personal-detail>
+
+			<fwui-personal-references [(personalReferences)]="personalApplication.PersonalReferences" (changed)="updateApplicantReferences(i, $event)">
+			</fwui-personal-references>
+
+			<fwui-personal-account-references [(personalAccountReferences)]="personalApplication.PersonalAccountReferences" (changed)="updateApplicantAccountReferences(i, $event)">
+			</fwui-personal-account-references>
 
 			<div class="card">
 				<div class="card-block">
-					<!--todo: add button to add more references-->
-					<div class="personal-reference">
-							<h4 class="row col-xs-12 blue-light">References</h4>
-							<div *ngFor="let reference of personalApplication.Applicant.References; let i = index;">
-							<fwui-personal-reference-detail [referenceDetail]="reference" 
-								(referenceDetailChange)="updateApplicantReference(i, $event)">
-							</fwui-personal-reference-detail>
-							</div>
+					<div class="row">
+						<div class="col-xs-10">
+							<h4 class="blue-light">Financials</h4>
+						</div>
+						<div class="col-xs-2">
+							<button class="btn btn-secondary" *ngIf="!expandedFinancials" (click)="toggleExpandedFinancials()">Show</button>
+							<button class="btn btn-secondary" *ngIf="expandedFinancials" (click)="toggleExpandedFinancials()">Hide</button>
+						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-block">
-					<!--todo: add button to add more account references-->
-					<div class="personal-account-reference">
-							<h4 class="row col-xs-12 blue-light">Account References</h4>
-							<div *ngFor="let accountReference of personalApplication.Applicant.AccountReferences; let i = index;">
-							<fwui-personal-account-reference-detail [accountReferenceDetail]="accountReference"
-								(accountReferenceDetailChange)="updateApplicantAccountReference(i, $event)">
-							</fwui-personal-account-reference-detail>
-							</div>
-					</div>
-
+					<fwui-personal-financial-details [assets]="personalApplication.Assets" [liabilities]="personalApplication.Liabilities" [income]="personalApplication.Income"
+					 [expenses]="personalApplication.Expenses" *ngIf="expandedFinancials">
+					</fwui-personal-financial-details>
 				</div>
 			</div>
 
@@ -85,12 +77,8 @@
 							<button class="btn btn-secondary" *ngIf="expandedFinancials" (click)="toggleExpandedFinancials()">Hide</button>
 						</div>
 					</div>
-					<fwui-personal-financial-details 
-						[assets]="personalApplication.Assets" 
-						[liabilities]="personalApplication.Liabilities" 
-						[income]="personalApplication.Income"
-						[expenses]="personalApplication.Expenses"
-						*ngIf="expandedFinancials">
+					<fwui-personal-financial-details [assets]="personalApplication.Assets" [liabilities]="personalApplication.Liabilities" [income]="personalApplication.Income"
+					 [expenses]="personalApplication.Expenses" *ngIf="expandedFinancials">
 					</fwui-personal-financial-details>
 				</div>
 			</div>

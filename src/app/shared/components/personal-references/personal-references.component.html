@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-block">
+		<div class="row">
+			<div class="col-xs-10">
+                <h4 class="blue-light">Personal References</h4>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-secondary" *ngIf="!expanded" (click)="toggleExpanded()">Show</button>
+				<button class="btn btn-secondary" *ngIf="expanded" (click)="toggleExpanded()">Hide</button>
+			</div>
+		</div>
+        <div class="personal-reference row" *ngIf="expanded">
+            <div class="col-xs-12">
+                <hr/>
+                <div>
+                    <div *ngFor="let reference of personalReferences; let i = index;">
+                        <span class="counter">#{{i + 1}}</span><button class="btn btn-link" *ngIf="i > 0" 
+                            (click)="DeletePersonalReference(i)">Delete</button>
+                        <fwui-personal-reference-detail [referenceDetail]="reference" 
+                            (changed)="personalReferenceDetailChanged(i, $event)">
+                        </fwui-personal-reference-detail>
+                    </div>
+                </div>
+                <button class="btn btn-default" (click)="AddPersonalReference()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

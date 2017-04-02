@@ -1,6 +1,8 @@
 import { AddressDetails } from "app/application";
 import { Address } from "app/application/address";
 import { ApplicationFinancialBuilder } from "app/application/personal/ApplicationFinancialBuilder";
+import { PersonalAccountReferenceDetail } from "app/shared";
+import { PersonalReferenceDetail } from "app/shared";
 
 export class PersonalApplication {
   constructor(
@@ -19,13 +21,35 @@ export class PersonalApplication {
   public ClientName: string = '';
   public Applicant: PersonalEntity = new PersonalEntity();
   public Spouse: PersonalEntity = new PersonalEntity();
-  public PersonalReferences: Array<PersonalReference> = [new PersonalReference()];
-  public AccountReferences: Array<AccountReference> = [new AccountReference()];
-
+  public PersonalReferences: Array<PersonalReferenceDetail> = [new PersonalReferenceDetail()];
+  public PersonalAccountReferences: Array<PersonalAccountReferenceDetail> = [new PersonalAccountReferenceDetail()];
+  
   public Assets: Array<ApplicationFinancial> = [];
   public Liabilities: Array<ApplicationFinancial> = [];
   public Income: Array<ApplicationFinancial> = [];
   public Expenses: Array<ApplicationFinancial> = [];
+  
+  public AddPersonalReference() {
+    this.PersonalReferences.push(new PersonalReferenceDetail());
+  }
+
+  public DeletePersonalReference(index) {
+    this.RemoveFromArray(index, this.PersonalReferences);
+  }
+  
+  public AddPersonalAccountReference() {
+    this.PersonalAccountReferences.push(new PersonalAccountReferenceDetail());
+  }
+
+  public DeletePersonalAccountReference(index) {
+    this.RemoveFromArray(index, this.PersonalReferences);
+  }
+
+  private RemoveFromArray(index, array) {
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+  }
 }
 
 export class Occupation {
@@ -43,19 +67,6 @@ export class ApplicationFinancial {
   public OptionName: string = '';
   public Value: number = 0;
   public Note: string = '';
-}
-
-export class PersonalReference {
-  public Name: string = '';
-  public Relationship: string = '';
-  public Phone: string = '';
-  public Address: Address = new Address();
-}
-
-export class AccountReference {
-  public Name: string = '';
-  public Type: string = '';
-  public Reference: string = '';
 }
 
 export class PersonalEntity {
