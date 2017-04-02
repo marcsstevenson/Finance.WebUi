@@ -69,17 +69,67 @@
 			<div class="card">
 				<div class="card-block">
 					<div class="row">
-						<div class="col-xs-10">
-							<h4 class="blue-light">Financials</h4>
-						</div>
-						<div class="col-xs-2">
-							<button class="btn btn-secondary" *ngIf="!expandedFinancials" (click)="toggleExpandedFinancials()">Show</button>
-							<button class="btn btn-secondary" *ngIf="expandedFinancials" (click)="toggleExpandedFinancials()">Hide</button>
+						<div class="col-xs-12">
+							<h4 class="blue-light">Disclaimer</h4>
+							<div class="bold">I/we understand and authorise that:</div>
+							<p>The information received from me/us will be securely held by the relevant fnancier
+(“Financier”). I/we may access and correct this information under the Privacy Act 1993.
+The information may be used by the Financier to: - consider my/our application for facilities,
+products or services or any future applications for facilities, products or services;
+- administer, manage and monitor any facilities, products or services provided to me/us; -
+conduct market research, data processing and statistical analysis; and
+- unless I/we disagree, provide me/us with information about other facilities, products or
+services including selected third party products or services.
+The Financier may disclose information about me/us to its related companies (as defned by
+the Companies Act 1993), agents or contractors for the above purposes.
+The Financier may disclose information about me/us to credit reference agencies for the
+purpose of obtaining a credit report on me/us. Those credit reference agencies may retain that
+information and provide it to their customers who use their credit reporting services. If I/we
+default in any obligations to the Financier then information about me/us may be disclosed to
+credit reference or debt recovery agencies and retained by them. Those agencies may provide
+that information to their customers who use their credit reporting services.
+The Financier may obtain information and make such enquiries about me/us as that Financier
+considers warranted from any source including from its related companies (as defned by the
+Companies Act 1993) and credit reference agencies for the above purposes.</p>
 						</div>
 					</div>
-					<fwui-personal-financial-details [assets]="personalApplication.Assets" [liabilities]="personalApplication.Liabilities" [income]="personalApplication.Income"
-					 [expenses]="personalApplication.Expenses" *ngIf="expandedFinancials">
-					</fwui-personal-financial-details>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-block">
+					<h4 class="blue-light">Signature{{ spouceDisplayed() ? 's' : '' }}</h4>
+					<div class="row">
+						<div class="col-xs-3">
+							<label class="controls">Applicant Signature</label>
+						</div>
+						<div class="col-xs-9">	
+							<div class="underLinedArea">&nbsp;</div>
+						</div>
+					</div>
+					<div class="row" *ngIf="spouceDisplayed()">
+						<div class="col-xs-3">
+							<label class="controls">Spouce Signature</label>
+						</div>
+						<div class="col-xs-9">	
+							<div class="underLinedArea">&nbsp;</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<label class="controls">Date</label>
+						</div>
+						<div class="col-xs-9">	
+							<div class="underLinedArea">&nbsp;</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="offset-xs-3 col-xs-9">	
+							<input type="checkbox"/> I/we allow authorisation for Platinum Finance Ltd. to request/
+complete a credit enquiry if application has been flled out on
+screen and submitted without signature/s.
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
