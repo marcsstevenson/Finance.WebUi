@@ -1,27 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-// import {   TableOptions,   SelectionType,   TableColumn,   ColumnMode } from
-// 'angular2-data-table';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import {DealershipData} from '../mockup-data';
-import { DealerService } from '../dealer.service';
-import { FormControl } from "@angular/forms";
+import { PersonalApplicationService } from "app/application/personal-application.service";
 
 const SORT_ASC = 'asc';
 
 @Component({
   //moduleId: module.id,
-  selector: 'app-dealers',
-  templateUrl: './dealers.component.html',
-  styleUrls: ['./dealers.component.scss'],
-  providers: [DealerService]
+  selector: 'fwui-PersonalApplications',
+  templateUrl: './personal-applications.component.html',
+  styleUrls: ['./personal-applications.component.scss'],
+  providers: [PersonalApplicationService]
 })
-export class DealersComponent implements OnInit {
-
+export class PersonalApplicationsComponent implements OnInit {
   public working: boolean = true;
-  public rows : Array < any > = [];
+  public rows: Array<any> = [];
   public selections = [];
+
   public selected = {};
   public searchTerm = new FormControl();
 
@@ -31,47 +28,52 @@ export class DealersComponent implements OnInit {
   private limit = 100;
   private loadNumOfPages = 3;
   private numOfReturnedResult = this.pageSize * this.loadNumOfPages;
-  private currentlyOrderBy = 'Name';
+  private currentlyOrderBy = 'Number';
   private sortAsc = true;
 
+  // public options = new TableOptions({
+  //   columnMode: ColumnMode.force,
+  //   headerHeight: 42,
+  //   footerHeight: 50,
+  //   limit: this.pageSize,
+  //   rowHeight: 'auto',
+  //   selectionType: SelectionType.multi,
+
+  // });
+
   public columns = [
-    { prop: 'Name', name: 'Dealer Name' },
-    { prop: 'ContactName', name: 'Contact Name' },
-    { prop: 'MobileNumber', name: 'Mobile' },
-    { prop: 'PhoneNumber', name: 'Phone Number' },
-    { prop: 'Email', name: 'Email Address' }
+    // { prop: 'Number', name: 'Customer Number' },
+    { prop: 'Number', name: 'Number' },
+    { prop: 'FirstName', name: 'First Name' },
+    { prop: 'LastName', name: 'Last Name' },
+    // { prop: 'MobileNumber', name: 'Mobile' },
+    // { prop: 'DriversLicenceNumber', name: 'Drivers Licence' },
   ];
 
-  private data : Array < any > = DealershipData;
+  constructor(
+    private router: Router,
+    private _personalApplicationService: PersonalApplicationService) { }
 
-  public constructor(private router: Router, private _dealershipService: DealerService) {
-    // this.length = this.data.length;
-  }
-
-  public ngOnInit() : void {
+  ngOnInit() {
     this.searchTerm.valueChanges
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(i => this.search());
 
-    // todo: uncomment the code below and change the base api url contant in the
-    // file, the api integration should just work this.loadDealership();
     this.search();
   }
 
-  public addDealership() {
-    this
-      .router
-      .navigate(['/dealership', 'new']);
+  addNew() {
+    this.router.navigate(['/personal-application', 'new']);
   }
 
-  public onSelect(event) {
-    this
-      .router
-      .navigate(['/dealership', event.selected[0].Id]);
+  onSelect(event) {
+    this.router.navigate(['/personal-application', event.selected[0].Id]);
   }
 
   public onSort(event) {
+    if (!this.rows) return;
+
     let sort = event.sorts[0];
     let dir = sort.dir;
     let sortedBy = sort.prop;
@@ -84,6 +86,8 @@ export class DealersComponent implements OnInit {
   }
 
   public onPage(pageOptions) {
+    if (!this.rows) return;
+
     //Update the offset
     this.offset = pageOptions.offset;
 
@@ -102,10 +106,11 @@ export class DealersComponent implements OnInit {
       PageSize: this.pageSize
     };
 
-    this._dealershipService.searchDealership(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-      this.working = false;
-    });
+    this._personalApplicationService.search(searchObj)
+      .then((response) => {
+        this.populateCurrentTablePage(response);
+        this.working = false;
+      });
   }
 
   private populateCurrentTablePage(data) {

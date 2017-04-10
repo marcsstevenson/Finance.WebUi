@@ -1,4 +1,22 @@
 <div class="container body-content fwui">
+
+  <h1>Personal Application</h1>
+	
+  <div class="card actions text-xs-right">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+      <i class="glyphicon glyphicon-align-left"></i> Delete
+    </button>
+    <button class="btn btn-link" type="button" (click)="back()">
+      <i class="glyphicon glyphicon-align-left"></i> Back
+    </button>
+    <button class="btn btn-success" type="button" (click)="save()">
+      <i class="glyphicon glyphicon-align-left"></i> Save
+    </button>
+    <button class="btn btn-danger" type="button" (click)="delete()"*ngIf="!isNew">
+      <i class="glyphicon glyphicon-align-left"></i> delete
+    </button>
+  </div>
+
 	<div class="row">
 		<div class="col-xs-12 center">
 			<div class="card">
@@ -28,7 +46,7 @@
 						</dd>
 					</div>
 					<div class="row">
-						<label class="col-xs-4 controls">Client/Company Name</label>
+						<label class="col-xs-4 pl-1 controls">Client/Company Name</label>
 						<dd class="col-xs-8">
 							<input class="controls full-length" type="text" name="clientName" placeholder="Client Name" [(ngModel)]="personalApplication.ClientName">
 						</dd>

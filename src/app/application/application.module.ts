@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Angular2DataTableModule } from 'angular2-data-table';
 import { DatepickerModule } from 'ng2-bootstrap/datepicker';
 
 import { SharedModule } from '../shared/shared.module';
 
 import {
+         PersonalApplicationsComponent,
          PersonalApplicationComponent,
          TransportationFormComponent,
          ApplicationService,
@@ -19,12 +20,14 @@ import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.compo
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     Angular2DataTableModule,
     DatepickerModule.forRoot(),
     ApplicationRoutingModule
   ],
   declarations: [
+    PersonalApplicationsComponent,
     PersonalApplicationComponent,
     TransportationFormComponent,
     VehicleFormComponent,
@@ -32,6 +35,7 @@ import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.compo
     MotorcycleFormComponent
   ],
   exports: [
+    PersonalApplicationsComponent,
     PersonalApplicationComponent,
     TransportationFormComponent
   ],

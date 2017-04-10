@@ -1,6 +1,6 @@
 import { AddressDetails } from "app/application";
 import { Address } from "app/application/address";
-import { ApplicationFinancialBuilder } from "app/application/personal/ApplicationFinancialBuilder";
+import { ApplicationFinancialBuilder } from "app/application/personal-application/ApplicationFinancialBuilder";
 import { PersonalAccountReferenceDetail } from "app/shared";
 import { PersonalReferenceDetail } from "app/shared";
 
@@ -16,6 +16,7 @@ export class PersonalApplication {
     this.Expenses = applicationFinancialBuilder.BuildExpenses();
   }
 
+  public Id: string = null;
   public ApplicationType: string = 'Single';
   public LoanType: string = 'Personal';
   public ClientName: string = '';

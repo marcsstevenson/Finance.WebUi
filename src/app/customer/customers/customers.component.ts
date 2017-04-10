@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 // import {
 //   TableOptions,
@@ -22,10 +23,10 @@ const SORT_ASC = 'asc';
   providers: [CustomerService]
 })
 export class CustomersComponent implements OnInit {
-
+  public working: boolean = true;
   public rows: Array<any> = [];
   public selections = [];
-  public searchQuery: string;
+  public searchTerm = new FormControl();
   public selected = {};
 
   private pageSize = 100;
@@ -62,7 +63,12 @@ export class CustomersComponent implements OnInit {
     private router: Router,
     private _customerService: CustomerService) { }
 
-    ngOnInit() {
+  ngOnInit() {
+    this.searchTerm.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(i => this.search());
+
     this.search();
   }
 
@@ -74,7 +80,7 @@ export class CustomersComponent implements OnInit {
     this.router.navigate(['/customer', event.selected[0].Id]);
   }
 
-//    this._customerService.getCustomers()
+  //    this._customerService.getCustomers()
 
   public onSort(event) {
     let sort = event.sorts[0];
@@ -96,9 +102,11 @@ export class CustomersComponent implements OnInit {
   }
 
   public search() {
+    this.working = true;
+
     //Build a search request for our current values
     let searchObj = {
-      SearchTerm: this.searchQuery,
+      SearchTerm: this.searchTerm.value,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
       CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
@@ -107,6 +115,7 @@ export class CustomersComponent implements OnInit {
 
     this._customerService.searchCustomer(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
+      this.working = false;
     });
   }
 

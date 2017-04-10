@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DatepickerModule } from 'ng2-bootstrap/datepicker';
 import { TinyEditor } from './directives/index';
@@ -29,11 +29,12 @@ import {
   FinanceWebUiPersonalAccountReferenceDetailComponent,
   FinanceWebUiPersonalAccountReferencesComponent,
   FinanceWebUiPersonalReferenceDetailComponent,
-  FinanceWebUiPersonalReferencesComponent
+  FinanceWebUiPersonalReferencesComponent,
+  FinanceWebUiWorkingDisplayComponent
 } from './components/index';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, DatepickerModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, DatepickerModule],
   declarations: [
     FinanceWebUiSelectComponent,
     FinanceWebUiTimeLineComponent,
@@ -56,7 +57,8 @@ import {
     FinanceWebUiPersonalAccountReferenceDetailComponent,
     FinanceWebUiPersonalAccountReferencesComponent,
     FinanceWebUiPersonalReferenceDetailComponent,
-    FinanceWebUiPersonalReferencesComponent
+    FinanceWebUiPersonalReferencesComponent,
+    FinanceWebUiWorkingDisplayComponent
   ],
   exports: [
     FinanceWebUiSelectComponent,
@@ -80,7 +82,8 @@ import {
     FinanceWebUiPersonalAccountReferenceDetailComponent,
     FinanceWebUiPersonalAccountReferencesComponent,
     FinanceWebUiPersonalReferenceDetailComponent,
-    FinanceWebUiPersonalReferencesComponent
+    FinanceWebUiPersonalReferencesComponent,
+    FinanceWebUiWorkingDisplayComponent
   ],
 })
 export class SharedModule { }

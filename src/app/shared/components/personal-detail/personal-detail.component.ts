@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { PersonalEntity } from "app/application/personal/personal-application";
+import { PersonalEntity } from "app/application/personal-application/personal-application";
 import { AddressDetails } from "app/application";
 
 @Component({

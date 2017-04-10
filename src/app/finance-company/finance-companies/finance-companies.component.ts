@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 // } from 'angular2-data-table';
 
 import { FinanceCompanyService } from '../finance-company.service';
+import { FormControl } from "@angular/forms";
 
 const SORT_ASC = 'asc';
 
@@ -22,9 +23,10 @@ const SORT_ASC = 'asc';
 
 export class FinanceCompaniesComponent implements OnInit {
 
+  public working: boolean = true;
   public rows: Array<any> = [];
   public selections = [];
-  public searchQuery: string;
+  public searchTerm = new FormControl();
 
   private pageSize = 100;
   private offset = 0;
@@ -37,9 +39,9 @@ export class FinanceCompaniesComponent implements OnInit {
 
 
   private columns = [
-      { prop: 'Name', name: 'Finance Company Name', comparator: this.sorter.bind(this) },
-      { prop: 'DateCreated', name: 'Date Created', comparator: this.sorter.bind(this) },
-      { prop: 'DateModified', name: 'Date Modified' , comparator: this.sorter.bind(this) },
+      { prop: 'Name', name: 'Finance Company Name' },
+      { prop: 'DateCreated', name: 'Date Created' },
+      { prop: 'DateModified', name: 'Date Modified' },
   ];
   // public options = new TableOptions({
   //   columnMode: ColumnMode.force,
@@ -62,8 +64,12 @@ export class FinanceCompaniesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchTerm.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(i => this.search());
 
-    this.loadFinanceCompanies();
+    this.search();
 
     // using this function to get pagination details
     // this.loadFinanceCompanysBySearch();
@@ -73,108 +79,65 @@ export class FinanceCompaniesComponent implements OnInit {
     this.router.navigate(['/finance-company', 'new']);
   }
 
-  sorter (rows, dirs, sortedBy?) {
-    console.log('sorting server side: ', rows, dirs);
-
-    this.currentlyOrderBy = sortedBy || dirs[0].prop;
-    this.sortAsc = dirs[0].dir === SORT_ASC;
-
-    let searchObj = {
-      SearchTerm: this.searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this.searchFinanceCompanyByOjb(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-    });
-  }
-
-  searchFinanceCompany (searchQuery: string) {
-    let searchObj = {
-      SearchTerm: searchQuery,
-      OrderBy: this.currentlyOrderBy,
-      OrderByAscending: this.sortAsc,
-      PageSize: this.numOfReturnedResult
-    };
-
-    this.searchFinanceCompanyByOjb(searchObj);
-  }
-
   onSelect(event) {
     this.router.navigate(['/finance-company', event.selected[0].Id]);
   }
 
-  onPage(pageOptions) {
+  public onSort(event) {
+    if (!this.rows) return;
+
+    let sort = event.sorts[0];
+    let dir = sort.dir;
+    let sortedBy = sort.prop;
+
+    //Update our sort properties
+    this.currentlyOrderBy = sortedBy;
+    this.sortAsc = dir === SORT_ASC;
+
+    this.search();
+  }
+
+  public onPage(pageOptions) {
+    if (!this.rows) return;
+
+    //Update the offset
+    this.offset = pageOptions.offset;
+
+    this.search();
+  }
+
+  public search() {
+    this.working = true;
+
+    //Build a search request for our current values
     let searchObj = {
-      SearchTerm: '',
+      SearchTerm: this.searchTerm.value,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
-      CurrentPage: pageOptions.offset + 1,
+      CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
       PageSize: this.pageSize
     };
 
-    this.searchFinanceCompanyByOjb(searchObj).then((response) => {
-      this.populateCurrentTablePage(response);
-    });
+    this._financeCompanyService.searchFinanceCompany(searchObj)
+      .then((response) => {
+        this.populateCurrentTablePage(response);
+        this.working = false;
+      });
   }
 
-  private loadFinanceCompanysBySearch () {
-    let searchObj = {
-      SearchTerm: '',
-      OrderBy: this.currentlyOrderBy,
-      PageSize: this.numOfReturnedResult
-    };
+  private populateCurrentTablePage(data) {
+    let start = this.offset * this.pageSize;
+    let end = start + data.SearchResults.length;
+    this.count = data.TotalResultCount;
+    this.rows = this.createEmtpyArray(data.SearchResults.length);
 
-    this.searchFinanceCompanyByOjb(searchObj).then((response) => {
-      this.count = response.TotalResultCount;
-      this.rows = this.createEmtpyArray(this.count, {});
-      this.populateCurrentTablePage(response);
-    });
+    // update the current page record
+    for (let i = start; i < end; i++) {
+      this.rows[i] = data.SearchResults[i - start];
+    }
   }
 
-  private populateCurrentTablePage (data) {
-      let start = this.offset * this.limit;
-      let end = start + data.SearchResults.length;
-
-      // update the current page record
-      for (let i = start; i < end; i++) {
-        this.rows[i] = data.SearchResults[i - start];
-      }
-  }
-
-
-  private searchFinanceCompanyByOjb (searchObj) {
-    console.log("The searchObj is: ", searchObj);
-
-    return this._financeCompanyService.searchFinanceCompany(searchObj)
-    .then((response) => {
-      console.log("The response is: ", response);
-      return response;
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
-  }
-
-  private loadFinanceCompanies () {
-    this._financeCompanyService.getFinanceCompanies()
-    .then((financeCompanies) => {
-      this.count = financeCompanies.length;
-      // this.rows = this.createEmtpyArray(this.count, {});
-      this.rows = financeCompanies;
-
-      console.log('rows: ', this.rows);
-    })
-    .catch((err) => {
-      //todo: show err message to users later
-      console.log(err);
-    });
-  }
-
-  private createEmtpyArray (length, obj) {
+  private createEmtpyArray(length) {
     let array = [];
 
     for (let i = 0; i < length; i++) {

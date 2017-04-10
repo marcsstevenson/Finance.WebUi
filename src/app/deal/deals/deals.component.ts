@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 // } from 'angular2-data-table';
 
 import { DealService } from '../deal.service';
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 const SORT_ASC = 'asc';
 
@@ -21,9 +22,10 @@ const SORT_ASC = 'asc';
 })
 export class DealsComponent implements OnInit {
 
+  public working: boolean = true;
   public rows: Array<any> = [];
   public selections = [];
-  public searchQuery: string;
+  public searchTerm = new FormControl();
 
   private pageSize = 100;
   private offset = 0;
@@ -61,7 +63,11 @@ export class DealsComponent implements OnInit {
     private router: Router,
     private _dealService: DealService) { }
 
-    ngOnInit() {
+  ngOnInit() {
+    this.searchTerm.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(i => this.search());
     this.search();
   }
 
@@ -93,9 +99,11 @@ export class DealsComponent implements OnInit {
   }
 
   public search() {
+    this.working = true;
+
     //Build a search request for our current values
     let searchObj = {
-      SearchTerm: this.searchQuery,
+      SearchTerm: this.searchTerm.value,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
       CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
@@ -104,6 +112,7 @@ export class DealsComponent implements OnInit {
 
     this._dealService.searchDeal(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
+      this.working = false;
     });
   }
 

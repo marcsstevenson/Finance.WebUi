@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { PersonalApplicationComponent } from './personal/personal-application.component';
+import { PersonalApplicationsComponent } from './personal-applications/personal-applications.component';
+import { PersonalApplicationComponent } from './personal-application/personal-application.component';
 import { TransportationFormComponent } from './transportation-form/transportation-form.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { MarineFormComponent } from './marine-form/marine-form.component';
@@ -10,6 +12,11 @@ import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.compo
 import { AuthorisationService } from '../shared/services/index';
 
 const applicationRoutes: Routes = [
+    {
+        path: 'personal-applications',
+        component: PersonalApplicationsComponent,
+        canActivate: [AuthorisationService]
+    },
     {
         path: 'personal-application',
         component: PersonalApplicationComponent,
@@ -65,7 +72,7 @@ const applicationRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forChild(applicationRoutes)
+        RouterModule.forChild(applicationRoutes), ReactiveFormsModule
     ],
     exports: [
         RouterModule

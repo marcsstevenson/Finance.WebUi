@@ -5,7 +5,8 @@ import {Router} from '@angular/router';
 // 'angular2-data-table';
 
 import {LeadOriginData} from '../mockup-data';
-import {LeadOriginService} from '../lead-origin.service';
+import { LeadOriginService } from '../lead-origin.service';
+import { FormControl } from "@angular/forms";
 
 const SORT_ASC = 'asc';
 
@@ -18,9 +19,10 @@ const SORT_ASC = 'asc';
 })
 export class LeadOriginsComponent implements OnInit {
 
+  public working: boolean = true;
   public rows : Array < any > = [];
   public selections = [];
-  public searchQuery : string;
+  public searchTerm = new FormControl();
   public selected = {};
 
   private pageSize = 100;
@@ -44,10 +46,11 @@ export class LeadOriginsComponent implements OnInit {
   }
 
   public ngOnInit() : void {
-    // this.onChangeTable(this.config); this.rows = this.data;
+    this.searchTerm.valueChanges
+      .debounceTime(400)
+      .distinctUntilChanged()
+      .subscribe(i => this.search());
 
-    // todo: uncomment the code below and change the base api url contant in the
-    // file, the api integration should just work this.loadLeadOrigin();
     this.search();
   }
 
@@ -83,9 +86,11 @@ export class LeadOriginsComponent implements OnInit {
   }
 
   public search() {
+    this.working = true;
+
     //Build a search request for our current values
     let searchObj = {
-      SearchTerm: this.searchQuery,
+      SearchTerm: this.searchTerm.value,
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
       CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0
@@ -94,6 +99,7 @@ export class LeadOriginsComponent implements OnInit {
 
     this._leadOriginService.searchLeadOrigin(searchObj).then((response) => {
       this.populateCurrentTablePage(response);
+      this.working = false;
     });
   }
 

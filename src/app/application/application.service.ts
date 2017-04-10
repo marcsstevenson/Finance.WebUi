@@ -39,6 +39,24 @@ export class ApplicationService {
     .catch((err: any) => this.handleError(err));
   }
 
+  savePersonalApplication (customer: any) {
+    console.log('the customer obj is: ', customer);
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/PersonalApplication', customer, options)
+    .map((response: Response) => response.json())
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  deletePersonalApplication (id: string) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.delete(BASE_API_URL + '/PersonalApplication?id=' + id , options)
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
   addOrSaveCustomerApplication (customer: any) {
     console.log('the customer obj is: ', customer);
     let options = new RequestOptions({ headers: this.headers });
@@ -53,6 +71,15 @@ export class ApplicationService {
     let options = new RequestOptions({ headers: this.headers });
 
     return this._http.delete(BASE_API_URL + '/Customer?id=' + id , options)
+    .toPromise()
+    .catch((err: any) => this.handleError(err));
+  }
+
+  search (searchObj: any) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.post(BASE_API_URL + '/PersonalApplicationSearch', searchObj,  options)
+    .map((response: Response) => response.json())
     .toPromise()
     .catch((err: any) => this.handleError(err));
   }

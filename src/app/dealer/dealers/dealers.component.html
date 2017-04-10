@@ -8,7 +8,7 @@
         <!--todo: make the search query only fires after 300 to 400 milliseconds-->
 
         <div class="search">
-          <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="search()" class="form-control" placeholder="customer number, name or mobile">
+          <input type="text" [formControl]="searchTerm" class="form-control" placeholder="customer number, name or mobile">
         </div>
 
         <div class="buttons text-md-right">
@@ -26,10 +26,11 @@
       </div>
     </div>
   </div>
+  <fwui-working-display *ngIf="working"></fwui-working-display>
 
 
 
-    <swui-datatable
+    <swui-datatable *ngIf="!working"
         class="material"
         [rows]="rows"
         [columns]="columns"

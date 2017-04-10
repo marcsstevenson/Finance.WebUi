@@ -20,7 +20,7 @@ export class AddressDetail {
     private State: string,
     private Country: string,
     private PostCode: string
-    ) {}
+  ) { }
 }
 
 @Component({
@@ -81,14 +81,14 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
 
   }
 
-  initAutocomplete() {    
+  initAutocomplete() {
     let that = this;
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     this.autocomplete = new google.maps.places.Autocomplete(
       this.searchInput.nativeElement,
       { types: ['geocode'] })
-    ;
+      ;
 
     this.getLocation();
 
@@ -120,7 +120,7 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
             this.addressDetail[addressDetailProp] = val;
           }
         }
-        
+
         this.searchInput.nativeElement.value = '';
 
         this.changed.emit(this.addressDetail);
@@ -130,7 +130,7 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
     });
   }
 
-  clearOldAddressDetails () {
+  clearOldAddressDetails() {
     for (let property in this.addressDetail) {
       if (this.addressDetail.hasOwnProperty(property)) {
         this.addressDetail[property] = '';
