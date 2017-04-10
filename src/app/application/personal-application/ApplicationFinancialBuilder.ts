@@ -1,5 +1,5 @@
 
-import { ApplicationFinancial } from "app/application/personal/personal-application";
+import { ApplicationFinancial } from "app/application/personal-application/personal-application";
 
 export class ApplicationFinancialBuilder {
   public BuildAssets() : Array < ApplicationFinancial >{
