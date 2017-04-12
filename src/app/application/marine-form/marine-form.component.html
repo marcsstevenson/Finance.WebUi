@@ -1,37 +1,49 @@
 <div class="container body-content fwui">
+  <h1>Marine Form</h1>
+
+  <div class="card actions text-xs-right">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+			<i class="glyphicon glyphicon-align-left"></i> Delete
+		</button>
+    <button class="btn btn-link" type="button" (click)="backToPersonalApplicaiton()">
+			<i class="glyphicon glyphicon-align-left"></i> Back
+		</button>
+    <button class="btn btn-success" type="button" (click)="save()">
+			<i class="glyphicon glyphicon-align-left"></i> Save
+		</button>
+  </div>
+
   <div class="row">
-    <div class="card">
-      <div class="card-block">
-        <fwui-vendor-detail [vendorDetail]="marineForm.Vendor" (vendorDetailChange)="updateMarineForm($event)">
-        </fwui-vendor-detail>
+    <div class="col-xs-12 center">
+      <div class="card">
+        <div class="card-block">
+          <fwui-vendor-detail [vendorDetail]="marineForm.Vendor" (vendorDetailChange)="updateMarineForm($event)">
+          </fwui-vendor-detail>
 
-        <div *ngFor="let financedMarine of marineForm.FiancedMarines; let i = index;">
-          <fwui-financing-marine-detail [marineDetail]="financedMarine" 
-                                        (marineDetailChange)="updateFinancedMarine($event)">
-          </fwui-financing-marine-detail>
+          <div *ngFor="let financedMarine of marineForm.FiancedMarines; let i = index;">
+            <fwui-financing-marine-detail [marineDetail]="financedMarine" (marineDetailChange)="updateFinancedMarine($event)">
+            </fwui-financing-marine-detail>
+          </div>
+
+          <div *ngFor="let financedMotor of marineForm.FinancedMotors; let i = index;">
+            <fwui-financing-marine-motor-detail [marineMotorDetail]="financedMotor" (marineMotorDetailChange)="updateMarineMotor($event)">
+            </fwui-financing-marine-motor-detail>
+          </div>
+
+          <div *ngFor="let fiancedTrailer of marineForm.FinancedTrailers; let i = index;">
+            <fwui-financing-marine-trailer-detail [marineTrailerDetail]="fiancedTrailer" (marineTrailerDetailChange)="updateMarineTrailer($event)">
+            </fwui-financing-marine-trailer-detail>
+          </div>
+
+          <div *ngFor="let tradeInMarine of marineForm.TradeInMarines; let i = index;">
+            <fwui-trade-marine-detail [tradeMarineDetail]="tradeInMarine" (tradeMarineChange)="updateTradeInMarine($event)">
+            </fwui-trade-marine-detail>
+          </div>
+
+          <fwui-transport-financial-details [financialDetail]="marineForm.FinancialDetail" (financialDetailChange)="updateMarineForm($event)">
+          </fwui-transport-financial-details>
+
         </div>
-
-        <div *ngFor="let financedMotor of marineForm.FinancedMotors; let i = index;">
-          <fwui-financing-marine-motor-detail [marineMotorDetail]="financedMotor" 
-                                              (marineMotorDetailChange)="updateMarineMotor($event)">
-          </fwui-financing-marine-motor-detail>
-        </div>
-
-        <div *ngFor="let fiancedTrailer of marineForm.FinancedTrailers; let i = index;">
-          <fwui-financing-marine-trailer-detail [marineTrailerDetail]="fiancedTrailer" 
-                                        (marineTrailerDetailChange)="updateMarineTrailer($event)">
-          </fwui-financing-marine-trailer-detail>
-        </div>
-
-        <div *ngFor="let tradeInMarine of marineForm.TradeInMarines; let i = index;">
-          <fwui-trade-marine-detail [tradeMarineDetail]="tradeInMarine" 
-                                   (tradeMarineChange)="updateTradeInMarine($event)">
-          </fwui-trade-marine-detail>
-        </div>
-
-        <fwui-transport-financial-details [financialDetail]="marineForm.FinancialDetail" (financialDetailChange)="updateMarineForm($event)">
-        </fwui-transport-financial-details>
-
       </div>
     </div>
   </div>

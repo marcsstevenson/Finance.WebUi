@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { GlobalVarables } from '../global-variables';
+import { PersonalApplication } from "app/application/personal-application/personal-application";
 
 const BASE_API_URL = GlobalVarables.BASE_API_URL + 'api';
 
@@ -30,10 +31,10 @@ export class PersonalApplicationService {
       .catch((err: any) => this.handleError(err));
   }
 
-  save(customer: any) {
+  save(personalApplication: PersonalApplication) {
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.post(BASE_API_URL + '/PersonalApplication', customer, options)
+    return this._http.post(BASE_API_URL + '/PersonalApplication', personalApplication, options)
       .map((response: Response) => response.json())
       .toPromise()
       .catch((err: any) => this.handleError(err));
@@ -42,7 +43,7 @@ export class PersonalApplicationService {
   delete(id: string) {
     let options = new RequestOptions({ headers: this.headers });
 
-    return this._http.delete(BASE_API_URL + '/Customer?id=' + id, options)
+    return this._http.delete(BASE_API_URL + '/PersonalApplication?id=' + id, options)
       .toPromise()
       .catch((err: any) => this.handleError(err));
   }

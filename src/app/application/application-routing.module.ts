@@ -33,12 +33,12 @@ const applicationRoutes: Routes = [
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application/:id/transportation-form',
+        path: 'personal-application/:id/transportation-form/:formId',
         component: TransportationFormComponent,
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application/:id/vehicle-form',
+        path: 'personal-application/:id/vehicle-form/:formId',
         component: VehicleFormComponent,
         canActivate: [AuthorisationService]
     },
@@ -48,7 +48,7 @@ const applicationRoutes: Routes = [
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application/:id/marine-form',
+        path: 'personal-application/:id/marine-form/:formId',
         component: MarineFormComponent,
         canActivate: [AuthorisationService]
     },
@@ -58,7 +58,7 @@ const applicationRoutes: Routes = [
         canActivate: [AuthorisationService]
     },
     {
-        path: 'application/:id/motorcycle-form',
+        path: 'personal-application/:id/motorcycle-form/:formId',
         component: MotorcycleFormComponent,
         canActivate: [AuthorisationService]
     },

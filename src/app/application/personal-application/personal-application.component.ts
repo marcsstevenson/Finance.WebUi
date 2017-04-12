@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AddressDetails } from "app/application";
 import { Router, ActivatedRoute } from '@angular/router';
-import { PersonalApplication } from "app/application/personal-application/personal-application";
+import { PersonalApplication, PersonalApplicationDetails, PersonalApplicationFormItem } from "app/application/personal-application/personal-application";
 import { PersonalApplicationService } from "app/application/personal-application.service";
+import { FormComponent } from "app/application/form-component";
+import { PersonalApplicationFormService } from "app/application/personal-application-forms/personal-application-form.service";
 
 @Component({
   selector: 'app-application',
@@ -10,16 +12,19 @@ import { PersonalApplicationService } from "app/application/personal-application
   styleUrls: ['./personal-application.component.scss'],
   providers: [PersonalApplicationService]
 })
-export class PersonalApplicationComponent implements OnInit {
+export class PersonalApplicationComponent extends FormComponent implements OnInit {
   private selectOptions: Array<any>;
-  private personalApplication: PersonalApplication;
+  private personalApplication: PersonalApplication = null;
+  private forms: Array<PersonalApplicationFormItem> = null;
   // private 
-  private isNew = false;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private _personalApplicationService: PersonalApplicationService) { }
+    route: ActivatedRoute,
+    router: Router,
+    private _personalApplicationService: PersonalApplicationService,
+    personalApplicationFormService: PersonalApplicationFormService) {
+    super(route, router, personalApplicationFormService)
+  }
 
   ngOnInit() {
     this.selectOptions = [
@@ -37,32 +42,99 @@ export class PersonalApplicationComponent implements OnInit {
       }
     ];
 
-    let id = this.route.snapshot.params['id'];
-    this.isNew = id === 'new';
+    this.init();
 
     if (!this.isNew) {
-      // this.load(customerId);
+      this.load(this.personalApplicationId);
     }
-    else
+    else{
       this.personalApplication = new PersonalApplication()
+      this.forms = [];
+    }
   }
 
   back() {
-        this.router.navigateByUrl('/personal-applications');
+    this.router.navigateByUrl('/personal-applications');
   }
 
-  save() {
-    this._personalApplicationService.save(this.personalApplication)
-      .then((response) => {
-        console.log('Saved successfully: ', response);
-        this.router.navigate(['/customer', response.CommittedId]);
-        this.personalApplication.Id = response.CommittedId;
-        
-        this.isNew = false;
+  private load(id: string) {
+    this._personalApplicationService.get(id)
+      .then((personalApplicationDetails: PersonalApplicationDetails) => {
+        this.personalApplication = personalApplicationDetails.JsonData;
+        this.forms = personalApplicationDetails.Forms;
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
       });
+  }
+
+  saveAndBack() {
+    this.save(null, null);
+  }
+
+  public getFormsOfType(formType: string) : Array<PersonalApplicationFormItem>{
+    let formsOfType = Array<PersonalApplicationFormItem>();
+
+    if(this.forms === null) return formsOfType;
+
+    for(var i = 0; i < this.forms.length; i++){
+      if(this.forms[i].FormType === formType)
+        formsOfType.push(this.forms[i]);
+    }
+
+    return formsOfType;
+  }
+
+  public formSelected(){
+
+  }
+
+  public marineFormUrl = 'marine-form';
+
+  addFormMarine() {
+    this.save(this.marineFormUrl, null);
+  }
+
+  viewFormMarine(formId: string) {
+    this.save(this.marineFormUrl, formId);
+  }
+
+  public motorcycleFormUrl = 'motorcycle-form';
+
+  addFormMotorcycle() {
+    this.save(this.motorcycleFormUrl, null);
+  }
+
+  viewFormMotorcycle(formId: string) {
+    this.save(this.motorcycleFormUrl, formId);
+  }
+
+  public vehicleFormUrl = 'vehicle-form';
+
+  addFormVehicle() {
+    this.save(this.vehicleFormUrl, null);
+  }
+
+  viewFormVehicle(formId: string) {
+    this.save(this.vehicleFormUrl, formId);
+  }
+
+  save(goToFormUrl: string, formId: string) {
+    this._personalApplicationService.save(this.personalApplication)
+      .then((response) => {
+        if (!goToFormUrl) this.back();
+
+        this.goToForm(goToFormUrl, response.CommittedId, formId);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  goToForm(formUrl: string, personalApplicationId: string, formId: string) {
+    var formIdValue = formId ? formId : 'new';
+
+    this.router.navigate(['personal-application/', personalApplicationId, formUrl, formIdValue]);
   }
 
   delete() {

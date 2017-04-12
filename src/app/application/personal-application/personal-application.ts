@@ -4,6 +4,16 @@ import { ApplicationFinancialBuilder } from "app/application/personal-applicatio
 import { PersonalAccountReferenceDetail } from "app/shared";
 import { PersonalReferenceDetail } from "app/shared";
 
+export class PersonalApplicationDetails{
+  public JsonData: any;
+  public Forms: Array<PersonalApplicationFormItem>;
+}
+
+export class PersonalApplicationFormItem {
+  public Id: string;
+  public FormType: string;
+}
+
 export class PersonalApplication {
   constructor(
   ) {
@@ -17,6 +27,7 @@ export class PersonalApplication {
   }
 
   public Id: string = null;
+  public SchemaVersion: string = '1.0';
   public ApplicationType: string = 'Single';
   public LoanType: string = 'Personal';
   public ClientName: string = '';

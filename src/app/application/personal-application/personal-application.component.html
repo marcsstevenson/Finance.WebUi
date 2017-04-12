@@ -1,23 +1,52 @@
 <div class="container body-content fwui">
 
-  <h1>Personal Application</h1>
-	
-  <div class="card actions text-xs-right">
-    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
-      <i class="glyphicon glyphicon-align-left"></i> Delete
-    </button>
-    <button class="btn btn-link" type="button" (click)="back()">
-      <i class="glyphicon glyphicon-align-left"></i> Back
-    </button>
-    <button class="btn btn-success" type="button" (click)="save()">
-      <i class="glyphicon glyphicon-align-left"></i> Save
-    </button>
-    <button class="btn btn-danger" type="button" (click)="delete()"*ngIf="!isNew">
-      <i class="glyphicon glyphicon-align-left"></i> delete
-    </button>
-  </div>
+	<h1>Personal Application</h1>
 
-	<div class="row">
+	<div class="card actions text-xs-right">
+		<button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+			<i class="glyphicon glyphicon-align-left"></i> Delete
+		</button>
+		<button class="btn btn-link" type="button" (click)="back()">
+			<i class="glyphicon glyphicon-align-left"></i> Back
+		</button>
+		<button class="btn btn-success" type="button" (click)="saveAndBack()">
+			<i class="glyphicon glyphicon-align-left"></i> Save
+		</button>
+	</div>
+
+	<div class="card actions">
+		<div>
+			<button class="btn btn-secondary" type="button" (click)="addFormMarine()">
+				<i class="glyphicon glyphicon-plus"></i> Add Marine Form
+			</button>
+			<button class="btn btn-secondary" type="button" (click)="addFormMotorcycle()">
+				<i class="glyphicon glyphicon-plus"></i> Add Motorcycle Form
+			</button>
+			<button class="btn btn-secondary" type="button" (click)="addFormVehicle()">
+				<i class="glyphicon glyphicon-plus"></i> Add Vehicle Form
+			</button>
+		</div>
+	</div>
+	<!--forms="getFormsOfType('Marine')"-->
+	<!--[forms]="forms"-->
+
+	<div class="row" *ngIf="forms !== null && forms.length > 0">
+		<div class="col-xs-12 center">
+			<div class="card">
+				<div class="card-block">					
+					<form-list *ngIf="getFormsOfType('Marine').length > 0" title="Marine Forms" [forms]="getFormsOfType('Marine')" (selected)="viewFormMarine($event)">
+					</form-list>
+					<form-list *ngIf="getFormsOfType('Motorcycle').length > 0" title="Motor Cycle Forms" [forms]="getFormsOfType('Motorcycle')"
+						(selected)="viewFormMotorcycle($event)">
+					</form-list>
+					<form-list *ngIf="getFormsOfType('Vehicle').length > 0" title="Vehicle Forms" [forms]="getFormsOfType('Vehicle')" (selected)="viewFormVehicle($event)">
+					</form-list>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" *ngIf="personalApplication">
 		<div class="col-xs-12 center">
 			<div class="card">
 				<div class="card-block">
@@ -90,25 +119,20 @@
 						<div class="col-xs-12">
 							<h4 class="blue-light">Disclaimer</h4>
 							<div class="bold">I/we understand and authorise that:</div>
-							<p>The information received from me/us will be securely held by the relevant fnancier
-(“Financier”). I/we may access and correct this information under the Privacy Act 1993.
-The information may be used by the Financier to: - consider my/our application for facilities,
-products or services or any future applications for facilities, products or services;
-- administer, manage and monitor any facilities, products or services provided to me/us; -
-conduct market research, data processing and statistical analysis; and
-- unless I/we disagree, provide me/us with information about other facilities, products or
-services including selected third party products or services.
-The Financier may disclose information about me/us to its related companies (as defned by
-the Companies Act 1993), agents or contractors for the above purposes.
-The Financier may disclose information about me/us to credit reference agencies for the
-purpose of obtaining a credit report on me/us. Those credit reference agencies may retain that
-information and provide it to their customers who use their credit reporting services. If I/we
-default in any obligations to the Financier then information about me/us may be disclosed to
-credit reference or debt recovery agencies and retained by them. Those agencies may provide
-that information to their customers who use their credit reporting services.
-The Financier may obtain information and make such enquiries about me/us as that Financier
-considers warranted from any source including from its related companies (as defned by the
-Companies Act 1993) and credit reference agencies for the above purposes.</p>
+							<p>The information received from me/us will be securely held by the relevant fnancier (“Financier”). I/we may access
+								and correct this information under the Privacy Act 1993. The information may be used by the Financier to: - consider
+								my/our application for facilities, products or services or any future applications for facilities, products or services;
+								- administer, manage and monitor any facilities, products or services provided to me/us; - conduct market research,
+								data processing and statistical analysis; and - unless I/we disagree, provide me/us with information about other
+								facilities, products or services including selected third party products or services. The Financier may disclose
+								information about me/us to its related companies (as defned by the Companies Act 1993), agents or contractors for
+								the above purposes. The Financier may disclose information about me/us to credit reference agencies for the purpose
+								of obtaining a credit report on me/us. Those credit reference agencies may retain that information and provide it
+								to their customers who use their credit reporting services. If I/we default in any obligations to the Financier then
+								information about me/us may be disclosed to credit reference or debt recovery agencies and retained by them. Those
+								agencies may provide that information to their customers who use their credit reporting services. The Financier may
+								obtain information and make such enquiries about me/us as that Financier considers warranted from any source including
+								from its related companies (as defned by the Companies Act 1993) and credit reference agencies for the above purposes.</p>
 						</div>
 					</div>
 				</div>
@@ -121,7 +145,7 @@ Companies Act 1993) and credit reference agencies for the above purposes.</p>
 						<div class="col-xs-3">
 							<label class="controls">Applicant Signature</label>
 						</div>
-						<div class="col-xs-9">	
+						<div class="col-xs-9">
 							<div class="underLinedArea">&nbsp;</div>
 						</div>
 					</div>
@@ -129,7 +153,7 @@ Companies Act 1993) and credit reference agencies for the above purposes.</p>
 						<div class="col-xs-3">
 							<label class="controls">Spouce Signature</label>
 						</div>
-						<div class="col-xs-9">	
+						<div class="col-xs-9">
 							<div class="underLinedArea">&nbsp;</div>
 						</div>
 					</div>
@@ -137,15 +161,14 @@ Companies Act 1993) and credit reference agencies for the above purposes.</p>
 						<div class="col-xs-3">
 							<label class="controls">Date</label>
 						</div>
-						<div class="col-xs-9">	
+						<div class="col-xs-9">
 							<div class="underLinedArea">&nbsp;</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="offset-xs-3 col-xs-9">	
-							<input type="checkbox"/> I/we allow authorisation for Platinum Finance Ltd. to request/
-complete a credit enquiry if application has been flled out on
-screen and submitted without signature/s.
+						<div class="offset-xs-3 col-xs-9">
+							<input type="checkbox" /> I/we allow authorisation for Platinum Finance Ltd. to request/ complete a credit enquiry
+							if application has been flled out on screen and submitted without signature/s.
 						</div>
 					</div>
 				</div>

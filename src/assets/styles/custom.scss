@@ -812,3 +812,8 @@ $pre-bg:                      #f7f7f9 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
+
+.actions {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background: #f7f7f9;
+}
