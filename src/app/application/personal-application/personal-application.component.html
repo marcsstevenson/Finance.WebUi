@@ -25,6 +25,9 @@
 			<button class="btn btn-secondary" type="button" (click)="addFormVehicle()">
 				<i class="glyphicon glyphicon-plus"></i> Add Vehicle Form
 			</button>
+			<button class="btn btn-secondary" type="button" (click)="addPrivateSaleAgreement()">
+				<i class="glyphicon glyphicon-plus"></i> Add Private Sale Agreement
+			</button>
 		</div>
 	</div>
 	<!--forms="getFormsOfType('Marine')"-->
@@ -40,6 +43,8 @@
 						(selected)="viewFormMotorcycle($event)">
 					</form-list>
 					<form-list *ngIf="getFormsOfType('Vehicle').length > 0" title="Vehicle Forms" [forms]="getFormsOfType('Vehicle')" (selected)="viewFormVehicle($event)">
+					</form-list>					
+					<form-list *ngIf="getFormsOfType('PrivateSaleAgreement').length > 0" title="Private Sale Agreements" [forms]="getFormsOfType('PrivateSaleAgreement')" (selected)="viewPrivateSaleAgreement($event)">
 					</form-list>					
 				</div>
 			</div>

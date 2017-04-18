@@ -10,6 +10,7 @@ import { MarineFormComponent } from './marine-form/marine-form.component';
 import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.component';
 
 import { AuthorisationService } from '../shared/services/index';
+import { PrivateSaleAgreementComponent } from "app/application/private-sale-agreement/private-sale-agreement.component";
 
 const applicationRoutes: Routes = [
     {
@@ -65,6 +66,16 @@ const applicationRoutes: Routes = [
     {
         path: 'motorcycle-form',
         component: MotorcycleFormComponent,
+        canActivate: [AuthorisationService]
+    },
+    {
+        path: 'personal-application/:id/private-sale-agreement/:formId',
+        component: PrivateSaleAgreementComponent,
+        canActivate: [AuthorisationService]
+    },
+    {
+        path: 'private-sale-agreement',
+        component: PrivateSaleAgreementComponent,
         canActivate: [AuthorisationService]
     }
 

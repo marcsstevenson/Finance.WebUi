@@ -119,6 +119,16 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
     this.save(this.vehicleFormUrl, formId);
   }
 
+  public privateSaleAgreementUrl = 'private-sale-agreement';
+
+  addPrivateSaleAgreement() {
+    this.save(this.privateSaleAgreementUrl, null);
+  }
+
+  viewPrivateSaleAgreement(formId: string) {
+    this.save(this.privateSaleAgreementUrl, formId);
+  }
+
   save(goToFormUrl: string, formId: string) {
     this._personalApplicationService.save(this.personalApplication)
       .then((response) => {

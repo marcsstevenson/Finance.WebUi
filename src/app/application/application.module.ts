@@ -16,6 +16,7 @@ import {
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { MarineFormComponent } from './marine-form/marine-form.component';
 import { MotorcycleFormComponent } from './motorcycle-form/motorcycle-form.component';
+import { PrivateSaleAgreementComponent } from './private-sale-agreement/private-sale-agreement.component';
 import { FormListComponent } from "app/application/personal-application";
 
 @NgModule({
@@ -35,7 +36,8 @@ import { FormListComponent } from "app/application/personal-application";
     TransportationFormComponent,
     VehicleFormComponent,
     MarineFormComponent,
-    MotorcycleFormComponent
+    MotorcycleFormComponent,
+    PrivateSaleAgreementComponent
   ],
   exports: [
     PersonalApplicationsComponent,
