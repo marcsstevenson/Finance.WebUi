@@ -13,13 +13,121 @@
 		</button>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 center">
-      <div class="card">
-        <div class="card-block">
-
-
+  <div class="card">
+    <div class="card-block">
+      <div class="private-sale-agreement">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="blue-light">Vendor Details</h3>
+          </div>
         </div>
+        <dl>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>First Name</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="text" name="firstNameVendor" placeholder="First Name" [(ngModel)]="form.VendorDetails.FirstName">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Last Name</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="text" name="lastNameVendor" placeholder="Last Name" [(ngModel)]="form.VendorDetails.LastName">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 p-x-0 controls">
+              <label>Home Phone</label>
+            </dt>
+            <dd class="col-xs-8 p-x-0">
+              <input class="controls full-length" type="text" name="homePhoneNumberVendor" placeholder="Home Phone No." [(ngModel)]="form.VendorDetails.HomePhoneNumber">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 p-x-0 controls">
+              <label>Mobile Phone</label>
+            </dt>
+            <dd class="col-xs-8 p-x-0">
+              <input class="controls full-length" type="text" name="mobilePhoneNumberVendor" placeholder="Mobile Phone No." [(ngModel)]="form.VendorDetails.MobilePhoneNumber">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 p-x-0 controls">
+              <label>Bank Account Number</label>
+            </dt>
+            <dd class="col-xs-8 p-x-0">
+              <input class="controls full-length" type="text" name="bankAccountNumberVendor" placeholder="Bank Account No." [(ngModel)]="form.VendorDetails.BankAccountNumber">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Account Name</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="text" name="accountNameVendor" placeholder="Account Name" [(ngModel)]="form.VendorDetails.AccountName">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-12 controls">
+              <span class="subTitle">Address</span>
+            </dt>
+          </div>
+          <fwui-address-finder [addressDetail]="form.VendorDetails.Address" (changed)="vendorAddressChanged($event)"></fwui-address-finder>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="private-sale-agreement">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="blue-light">Purchaser Details</h3>
+          </div>
+        </div>
+        <dl>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>First Name</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="text" name="firstNamePurchaser" placeholder="First Name" [(ngModel)]="form.PurchaserDetails.FirstName">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Last Name</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="text" name="lastNamePurchaser" placeholder="Last Name" [(ngModel)]="form.PurchaserDetails.LastName">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 p-x-0 controls">
+              <label>Home Phone</label>
+            </dt>
+            <dd class="col-xs-8 p-x-0">
+              <input class="controls full-length" type="text" name="homePhoneNumberPurchaser" placeholder="Home Phone No." [(ngModel)]="form.PurchaserDetails.HomePhoneNumber">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 p-x-0 controls">
+              <label>Mobile Phone</label>
+            </dt>
+            <dd class="col-xs-8 p-x-0">
+              <input class="controls full-length" type="text" name="mobilePhoneNumberPurchaser" placeholder="Mobile Phone No." [(ngModel)]="form.PurchaserDetails.MobilePhoneNumber">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-12 controls">
+              <span class="subTitle">Address</span>
+            </dt>
+          </div>
+          <fwui-address-finder [addressDetail]="form.PurchaserDetails.Address" (changed)="vendorAddressChanged($event)"></fwui-address-finder>
+        </dl>
       </div>
     </div>
   </div>

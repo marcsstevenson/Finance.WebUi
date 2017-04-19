@@ -4,6 +4,7 @@ import { PersonalApplicationFormService } from "app/application";
 import { FormComponent } from "app/application/form-component";
 import { PrivateSaleAgreementFormPost } from "app/application/private-sale-agreement/private-sale-agreement-post";
 import { PrivateSalesAgreement } from "app/application/private-sale-agreement/private-sale-agreement";
+import { Address } from "app/application/address";
 
 @Component({
   //moduleId: module.id,
@@ -47,6 +48,10 @@ export class PrivateSaleAgreementComponent extends FormComponent implements OnIn
 
     //Let the super function take care of everything
     this.savePersonalApplicationForm(marineFormPost);
+  }
+
+  public vendorAddressChanged($event: Address){
+    this.form.VendorDetails.Address = $event;
   }
 
 }

@@ -1,71 +1,65 @@
 <div class="vendor-detail">
-	<div class="">
-		<h3 class="row blue-light">Vendor Details</h3>
-		<dl>
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Purchase Type</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-						<input type="radio" class="controls" name="dealerType" value="dealer" 
-									(change)="updateInputProperty('VendorType', $event)"
-									checked /> Dealer 
-					
-						<input type="radio" class="controls" name="dealerType" value="private" 
-									(change)="updateInputProperty('VendorType', $event)" /> Private 
-				
-				</dd>
-			</div>
+	<h3 class="row blue-light">Vendor Details</h3>
+	<dl>
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Purchase Type</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input type="radio" class="controls" name="dealerType" value="dealer" (change)="updateInputProperty('VendorType', $event)"
+				 checked /> Dealer
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>First Name</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="firstName" placeholder="First Name" 
-								 [value]="vendorDetail.FirstName" (blur)="updateInputProperty('FirstName', $event)">
-				</dd>
-			</div>
+				<input type="radio" class="controls" name="dealerType" value="private" (change)="updateInputProperty('VendorType', $event)"
+				/> Private
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Last Name</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="lastName" placeholder="Last Name"
-							   [value]="vendorDetail.LastName" (blur)="updateInputProperty('LastName', $event)">
-				</dd>
-			</div>
+			</dd>
+		</div>
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Phone</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="phone" placeholder="Phone No." 
-							   [value]="vendorDetail.PhoneNumber" (blur)="updateInputProperty('PhoneNumber', $event)">
-				</dd>
-			</div>
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>First Name</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="vendorDetail.FirstName"
+				 (blur)="updateInputProperty('FirstName', $event)">
+			</dd>
+		</div>
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Salesman</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="phone" placeholder="Salesman" 
-							   [value]="vendorDetail.Salesman" (blur)="updateInputProperty('Salesman', $event)">
-				</dd>
-			</div>
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Last Name</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="lastName" placeholder="Last Name" [value]="vendorDetail.LastName" (blur)="updateInputProperty('LastName', $event)">
+			</dd>
+		</div>
 
-			<div class="row">
-				<dt class="col-xs-4 p-x-0 controls">
-					<label>Trade Me Listing</label>
-				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="tradeMeUrl" placeholder="Url" 
-								 [value]="vendorDetail.TradeMeUrl" (blur)="updateInputProperty('TradeMeUrl', $event)">
-				</dd>
-			</div>
-		</dl>
-	</div>
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Phone</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="phone" placeholder="Phone No." [value]="vendorDetail.PhoneNumber" (blur)="updateInputProperty('PhoneNumber', $event)">
+			</dd>
+		</div>
+
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Salesman</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="phone" placeholder="Salesman" [value]="vendorDetail.Salesman" (blur)="updateInputProperty('Salesman', $event)">
+			</dd>
+		</div>
+
+		<div class="row">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Trade Me Listing</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="tradeMeUrl" placeholder="Url" [value]="vendorDetail.TradeMeUrl" (blur)="updateInputProperty('TradeMeUrl', $event)">
+			</dd>
+		</div>
+	</dl>
 	<hr>
+</div>
