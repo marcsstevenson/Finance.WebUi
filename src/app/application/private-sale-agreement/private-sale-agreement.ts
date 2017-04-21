@@ -12,22 +12,5 @@ export class PrivateSalesAgreement {
     public Transport: number = null;
     public Extras: number = null;
     public Deposit: number = null;
-
-    public getBalancePayable(): number {
-        var balance = 0;
-
-        if (this.AgreedSalePrice)
-            balance += this.AgreedSalePrice;
-
-        if (this.Transport)
-            balance += this.Transport;
-            
-        if (this.Extras)
-            balance += this.Extras;
-            
-        if (this.Deposit)
-            balance -= this.Deposit;
-
-        return balance;
-    }
+    public Balance: number = null;
 }

@@ -42,7 +42,12 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Not work yet on load from the API - TODO
+    // this.calculateTotalExpenses();
+    // this.calculateDisposableIncome();
+    // this.calculateNetWorth();
+  }
 
   updateAssetsInputProperty(property, $event) {
     this.assets[property] = $event.target.value;

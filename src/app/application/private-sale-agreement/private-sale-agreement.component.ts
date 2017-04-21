@@ -28,7 +28,7 @@ export class PrivateSaleAgreementComponent extends FormComponent implements OnIn
     if (!this.isNewForm) {
       this.load(this.formId);
     }
-    else{
+    else {
 
     }
   }
@@ -37,6 +37,7 @@ export class PrivateSaleAgreementComponent extends FormComponent implements OnIn
     this._personalApplicationFormService.get(id)
       .then((form) => {
         this.form = form;
+        this.updateBalancePayable();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -50,8 +51,26 @@ export class PrivateSaleAgreementComponent extends FormComponent implements OnIn
     this.savePersonalApplicationForm(marineFormPost);
   }
 
-  public vendorAddressChanged($event: Address){
+  public vendorAddressChanged($event: Address) {
     this.form.VendorDetails.Address = $event;
   }
 
+
+  public updateBalancePayable() {
+    var balance = 0;
+
+    if (this.form.AgreedSalePrice)
+      balance += +this.form.AgreedSalePrice;
+
+    if (this.form.Transport)
+      balance += +this.form.Transport;
+
+    if (this.form.Extras)
+      balance += +this.form.Extras;
+
+    if (this.form.Deposit)
+      balance -= +this.form.Deposit;
+
+    this.form.Balance = balance;
+  }
 }

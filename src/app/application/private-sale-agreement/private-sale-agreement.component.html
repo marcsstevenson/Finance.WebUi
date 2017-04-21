@@ -1,4 +1,4 @@
-<div class="container body-content fwui">
+<div class="container body-content fwui private-sale-agreement">
   <h1>Private Sale Agreement</h1>
 
   <div class="card actions text-xs-right">
@@ -15,7 +15,7 @@
 
   <div class="card">
     <div class="card-block">
-      <div class="private-sale-agreement">
+      <div class="private-sale-agreement-vendor">
         <div class="row">
           <div class="col-xs-12">
             <h3 class="blue-light">Vendor Details</h3>
@@ -82,7 +82,7 @@
   </div>
   <div class="card">
     <div class="card-block">
-      <div class="private-sale-agreement">
+      <div class="private-sale-agreement-purchaser">
         <div class="row">
           <div class="col-xs-12">
             <h3 class="blue-light">Purchaser Details</h3>
@@ -128,6 +128,57 @@
           </div>
           <fwui-address-finder [addressDetail]="form.PurchaserDetails.Address" (changed)="vendorAddressChanged($event)"></fwui-address-finder>
         </dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="private-sale-agreement-encumbrance">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="blue-light">Encumbrance</h3>
+          </div>
+        </div>
+        <dl>
+          <p>
+            I confrm that the above vehicle is unencumbered/the vehicle has an amount of $
+            <input class="controls encumbrance-amount" type="text" name="encumbranceAmount" placeholder="" [(ngModel)]="form.EncumbranceAmount">            owing to (confrmation attached)
+            <input class="controls encumbrance-to" type="text" name="encumbranceTo" placeholder="" [(ngModel)]="form.EncumbranceTo">            and I authorise financier (“Financier”) to pay the balance of the funds to this company to clear the encumbrance.
+          </p>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="blue-light">Signatures</h4>
+      <div class="row">
+        <div class="col-xs-3">
+          <label class="controls">Vendor Signature</label>
+        </div>
+        <div class="col-xs-6">
+          <div class="underLinedArea">&nbsp;</div>
+        </div>
+        <div class="col-xs-1">
+          <label class="controls">Date</label>
+        </div>
+        <div class="col-xs-2">
+          <div class="underLinedArea">&nbsp;</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <label class="controls">Purchaser Signature</label>
+        </div>
+        <div class="col-xs-6">
+          <div class="underLinedArea">&nbsp;</div>
+        </div>
+        <div class="col-xs-1">
+          <label class="controls">Date</label>
+        </div>
+        <div class="col-xs-2">
+          <div class="underLinedArea">&nbsp;</div>
+        </div>
       </div>
     </div>
   </div>
