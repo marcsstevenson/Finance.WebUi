@@ -67,8 +67,6 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
   ) {
 
   }
-  OnInit() {
-  }
 
   ngOnInit() {
     //2017.03.26 MS - this is throwing an exception on route change (eg, saving a file during dev)

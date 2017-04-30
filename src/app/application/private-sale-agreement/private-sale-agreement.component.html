@@ -133,6 +133,122 @@
   </div>
   <div class="card">
     <div class="card-block">
+      <div class="private-sale-agreement-purchaser">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="blue-light">Vehicle Details</h3>
+          </div>
+        </div>
+        <dl>
+          <div class="row">
+            <dt class="col-xs-1 controls">
+              <label>Year</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsYear" placeholder="Year" [(ngModel)]="form.VehicleDetails.Year">
+            </dd>
+            <dt class="col-xs-1 controls">
+              <label>Make</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsMake" placeholder="Make" [(ngModel)]="form.VehicleDetails.Make">
+            </dd>
+            <dt class="col-xs-1 controls">
+              <label>Model</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsModel" placeholder="Model" [(ngModel)]="form.VehicleDetails.Model">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-1 controls">
+              <label>Registration</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsRegistration" placeholder="Registration" [(ngModel)]="form.VehicleDetails.Registration">
+            </dd>
+            <dt class="col-xs-1 controls">
+              <label>Colour</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsColour" placeholder="Colour" [(ngModel)]="form.VehicleDetails.Colour">
+            </dd>
+            <dt class="col-xs-1 controls">
+              <label>Speedo</label>
+            </dt>
+            <dd class="col-xs-3">
+              <input class="controls full-length" type="text" name="vehicleDetailsSpeedo" placeholder="Speedo" [(ngModel)]="form.VehicleDetails.Speedo">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-1 controls">
+              <label>VIN/Chassis</label>
+            </dt>
+            <dd class="col-xs-11">
+              <input class="controls full-length" type="text" name="vehicleDetailsRegistration" placeholder="Registration" [(ngModel)]="form.VehicleDetails.Registration">
+            </dd>           
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="private-sale-agreement-purchaser">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="blue-light">Sale / Purchase Price</h3>
+          </div>
+        </div>
+        <dl>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Agreed Sale Price</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="number" name="agreedSalePrice" placeholder="Agreed Sale Price" (blur)="updateBalancePayable()"
+                [(ngModel)]="form.AgreedSalePrice">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Transport</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="number" name="transport" placeholder="Transport" (blur)="updateBalancePayable()"
+                [(ngModel)]="form.Transport">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Extras</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="number" name="extras" placeholder="Extras" (blur)="updateBalancePayable()" [(ngModel)]="form.Extras">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Deposit</label>
+            </dt>
+            <dd class="col-xs-8">
+              <input class="controls full-length" type="number" name="deposit" placeholder="Deposit" (blur)="updateBalancePayable()" [(ngModel)]="form.Deposit">
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="col-xs-4 controls">
+              <label>Balance Payable</label>
+            </dt>
+            <dd class="col-xs-8">
+              <span>{{form.Balance | currency:'USD':true}}</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
       <div class="private-sale-agreement-encumbrance">
         <div class="row">
           <div class="col-xs-12">

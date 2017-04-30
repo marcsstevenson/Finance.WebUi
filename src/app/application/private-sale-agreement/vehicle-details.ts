@@ -1,5 +1,5 @@
 export class VehicleDetails{
-  public Year: number = 0;
+  public Year: string = '';
   public Make: string = '';
   public Model: string = '';
   public Registration: string = '';

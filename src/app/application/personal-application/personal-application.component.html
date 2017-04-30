@@ -2,16 +2,26 @@
 
 	<h1>Personal Application</h1>
 
-	<div class="card actions text-xs-right">
-		<button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
-			<i class="glyphicon glyphicon-align-left"></i> Delete
-		</button>
-		<button class="btn btn-link" type="button" (click)="back()">
-			<i class="glyphicon glyphicon-align-left"></i> Back
-		</button>
-		<button class="btn btn-success" type="button" (click)="saveAndBack()">
-			<i class="glyphicon glyphicon-align-left"></i> Save
-		</button>
+	<div class="card actions">
+		<div class="col-xs-6">
+			<button class="btn btn-link" type="button" (click)="viewCustomer()" *ngIf="!isNew && customerId">
+				<i class="glyphicon glyphicon-user"></i> View Customer
+			</button>
+			<button class="btn btn-link" type="button" (click)="viewDeal()" *ngIf="!isNew && dealId">
+				<i class="glyphicon glyphicon-file-text"></i> View Deal
+			</button>
+		</div>
+		<div class="col-xs-6 text-xs-right">
+			<button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+				<i class="glyphicon glyphicon-align-left"></i> Delete
+			</button>
+			<button class="btn btn-link" type="button" (click)="back()">
+				<i class="glyphicon glyphicon-align-left"></i> Back
+			</button>
+			<button class="btn btn-success" type="button" (click)="saveAndBack()">
+				<i class="glyphicon glyphicon-align-left"></i> Save
+			</button>
+		</div>
 	</div>
 
 	<div class="card actions">
@@ -36,16 +46,17 @@
 	<div class="row" *ngIf="forms !== null && forms.length > 0">
 		<div class="col-xs-12 center">
 			<div class="card">
-				<div class="card-block">					
+				<div class="card-block">
 					<form-list *ngIf="getFormsOfType('Marine').length > 0" title="Marine Forms" [forms]="getFormsOfType('Marine')" (selected)="viewFormMarine($event)">
 					</form-list>
 					<form-list *ngIf="getFormsOfType('Motorcycle').length > 0" title="Motor Cycle Forms" [forms]="getFormsOfType('Motorcycle')"
-						(selected)="viewFormMotorcycle($event)">
+					 (selected)="viewFormMotorcycle($event)">
 					</form-list>
 					<form-list *ngIf="getFormsOfType('Vehicle').length > 0" title="Vehicle Forms" [forms]="getFormsOfType('Vehicle')" (selected)="viewFormVehicle($event)">
-					</form-list>					
-					<form-list *ngIf="getFormsOfType('PrivateSaleAgreement').length > 0" title="Private Sale Agreements" [forms]="getFormsOfType('PrivateSaleAgreement')" (selected)="viewPrivateSaleAgreement($event)">
-					</form-list>					
+					</form-list>
+					<form-list *ngIf="getFormsOfType('PrivateSaleAgreement').length > 0" title="Private Sale Agreements" [forms]="getFormsOfType('PrivateSaleAgreement')"
+					 (selected)="viewPrivateSaleAgreement($event)">
+					</form-list>
 				</div>
 			</div>
 		</div>
@@ -55,6 +66,15 @@
 		<div class="col-xs-12 center">
 			<div class="card">
 				<div class="card-block">
+					<div class="row">
+						<label class="col-xs-4 controls">Status: </label>
+						<dd class="col-xs-8">
+							<select name="role" class="" [(ngModel)]="personalApplication.Status">
+  								<option *ngFor="let personalApplicationStatusOption of personalApplicationStatusOptions" 
+								  [ngValue]="personalApplicationStatusOption.Value">{{personalApplicationStatusOption.Description}}</option>
+							</select>
+						</dd>
+					</div>
 					<div class="row">
 						<label class="col-xs-4 controls">Type of Application: </label>
 						<dd class="col-xs-8">

@@ -5,8 +5,10 @@ import { PersonalAccountReferenceDetail } from "app/shared";
 import { PersonalReferenceDetail } from "app/shared";
 
 export class PersonalApplicationDetails{
+  public CustomerId: string;
+  public DealId: string;
   public JsonData: any;
-  public Forms: Array<PersonalApplicationFormItem>;
+  public Forms: Array<PersonalApplicationFormItem>;  
 }
 
 export class PersonalApplicationFormItem {
@@ -27,6 +29,7 @@ export class PersonalApplication {
   }
 
   public Id: string = null;
+  public Status: number = 0;
   public SchemaVersion: string = '1.0';
   public ApplicationType: string = 'Single';
   public LoanType: string = 'Personal';

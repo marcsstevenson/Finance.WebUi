@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { PersonalApplicationService } from "app/application/personal-application.service";
+import { PersonalApplicationStatusOption } from "app/application/PersonalApplicationStatusOption";
 
 const SORT_ASC = 'asc';
 
@@ -21,6 +22,8 @@ export class PersonalApplicationsComponent implements OnInit {
 
   public selected = {};
   public searchTerm = new FormControl();
+  private personalApplicationStatusOptionValue: number = null;
+  private personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>;
 
   private pageSize = 100;
   private offset = 0;
@@ -44,6 +47,7 @@ export class PersonalApplicationsComponent implements OnInit {
   public columns = [
     // { prop: 'Number', name: 'Customer Number' },
     { prop: 'Number', name: 'Number' },
+    { prop: 'StatusDescription', name: 'Status' },
     { prop: 'FirstName', name: 'First Name' },
     { prop: 'LastName', name: 'Last Name' },
     // { prop: 'MobileNumber', name: 'Mobile' },
@@ -60,7 +64,7 @@ export class PersonalApplicationsComponent implements OnInit {
       .distinctUntilChanged()
       .subscribe(i => this.search());
 
-    this.search();
+      this.load();
   }
 
   addNew() {
@@ -69,6 +73,21 @@ export class PersonalApplicationsComponent implements OnInit {
 
   onSelect(event) {
     this.router.navigate(['/personal-application', event.selected[0].Id]);
+  }
+
+
+  private load() {
+    //Ensure that we have personalApplicationStatusOptions
+    this._personalApplicationService.getPersonalApplicationStatusOptions()
+      .then((personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>) => {
+        this.personalApplicationStatusOptions = personalApplicationStatusOptions;
+
+        this.search();
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+        return null;
+      });
   }
 
   public onSort(event) {
@@ -100,6 +119,7 @@ export class PersonalApplicationsComponent implements OnInit {
     //Build a search request for our current values
     let searchObj = {
       SearchTerm: this.searchTerm.value,
+      StatusFilters: this.personalApplicationStatusOptionValue !== null ? [this.personalApplicationStatusOptionValue] : [],
       OrderBy: this.currentlyOrderBy,
       OrderByAscending: this.sortAsc,
       CurrentPage: this.offset + 1, //the API starts paging at 1 rather than 0

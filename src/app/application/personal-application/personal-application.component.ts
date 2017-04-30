@@ -5,6 +5,7 @@ import { PersonalApplication, PersonalApplicationDetails, PersonalApplicationFor
 import { PersonalApplicationService } from "app/application/personal-application.service";
 import { FormComponent } from "app/application/form-component";
 import { PersonalApplicationFormService } from "app/application/personal-application-forms/personal-application-form.service";
+import { PersonalApplicationStatusOption } from "app/application/PersonalApplicationStatusOption";
 
 @Component({
   selector: 'app-application',
@@ -16,6 +17,10 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
   private selectOptions: Array<any>;
   private personalApplication: PersonalApplication = null;
   private forms: Array<PersonalApplicationFormItem> = null;
+  private customerId: string = null;
+  private dealId: string = null;
+
+  private personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>;
   // private 
 
   constructor(
@@ -47,7 +52,7 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
     if (!this.isNew) {
       this.load(this.personalApplicationId);
     }
-    else{
+    else {
       this.personalApplication = new PersonalApplication()
       this.forms = [];
     }
@@ -58,34 +63,57 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
   }
 
   private load(id: string) {
-    this._personalApplicationService.get(id)
-      .then((personalApplicationDetails: PersonalApplicationDetails) => {
-        this.personalApplication = personalApplicationDetails.JsonData;
-        this.forms = personalApplicationDetails.Forms;
+    //Ensure that we have personalApplicationStatusOptions
+    this._personalApplicationService.getPersonalApplicationStatusOptions()
+      .then((personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>) => {
+        this.personalApplicationStatusOptions = personalApplicationStatusOptions;
+
+        //Now load our model
+        this._personalApplicationService.get(id)
+          .then((personalApplicationDetails: PersonalApplicationDetails) => {
+            this.personalApplication = personalApplicationDetails.JsonData;
+            this.forms = personalApplicationDetails.Forms;
+
+            this.customerId = personalApplicationDetails.CustomerId;
+            this.dealId = personalApplicationDetails.DealId;
+          })
+          .catch((err) => {
+            console.log(err); //todo: show the user a nice message
+          });
+
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
+        return null;
       });
+  }
+
+  public viewCustomer(){    
+    this.router.navigate(['/customer', this.customerId]);
+  }
+
+  public viewDeal(){    
+    this.router.navigate(['/deal', this.dealId]);
   }
 
   saveAndBack() {
     this.save(null, null);
   }
 
-  public getFormsOfType(formType: string) : Array<PersonalApplicationFormItem>{
+  public getFormsOfType(formType: string): Array<PersonalApplicationFormItem> {
     let formsOfType = Array<PersonalApplicationFormItem>();
 
-    if(this.forms === null) return formsOfType;
+    if (this.forms === null) return formsOfType;
 
-    for(var i = 0; i < this.forms.length; i++){
-      if(this.forms[i].FormType === formType)
+    for (var i = 0; i < this.forms.length; i++) {
+      if (this.forms[i].FormType === formType)
         formsOfType.push(this.forms[i]);
     }
 
     return formsOfType;
   }
 
-  public formSelected(){
+  public formSelected() {
 
   }
 
