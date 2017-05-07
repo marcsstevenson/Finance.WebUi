@@ -105,6 +105,7 @@ export class PersonalEntity {
   public MobilePhoneNumber: string = '';
   public HomePhoneNumber: string = '';
   public BusinessPhoneNumber: string = '';
+  public ShowAddress: boolean = true;
   public CurrentAddressType: string = '';
   public CurrentAddressOther: string = '';
   public CurrentAddress: AddressDetails = new AddressDetails();
@@ -113,6 +114,7 @@ export class PersonalEntity {
   public PreviousAddress: AddressDetails = new AddressDetails();
   public PreviousAddressYears: number = 0;
   public PreviousAddressMonths: number = 0;
+  public ShowOccupation: boolean = true;
   public CurrentOccupation: Occupation = new Occupation();
   public PreviousOccupation: Occupation = new Occupation();
   public PersonalEmail: string = '';

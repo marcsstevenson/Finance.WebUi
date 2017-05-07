@@ -4,25 +4,24 @@
 		<h3 class="row blue-light">Marine Details</h3>
 		<dl>
 			<div class="row">
-				<dt class="col-xs-4 p-x-0 radio-line">
+				<dt class="col-xs-4 p-x-0 controls">
 					<label>Marine Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" class="controls" name="marineType" value="Boat" 
-								 (change)="updateInputProperty('MarineType', $event)"
-								 checked> Boat
-					<input type="radio" class="controls" name="marineType" value="Jetski" 
-								 (change)="updateInputProperty('MarineType', $event)"> Jetski
+				<dd class="col-xs-8 p-x-0">
+					<span *ngFor="let option of marineTypes">
+						<input type="radio" class="controls" name="marineType" [(ngModel)]="marineDetail.MarineType" 
+						[value]="option.value">
+						{{option.display}}					
+					</span>
 				</dd>
 			</div>
-			
+
 			<div class="row">
 				<dt class="col-xs-4 p-x-0 controls">
 					<label>Price</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="price" placeholder="$" 
-							   [value]="marineDetail.Price" (blur)="updateInputProperty('Price', $event)">
+					<input class="controls full-length" type="text" name="price" placeholder="$" [value]="marineDetail.Price" (blur)="updateInputProperty('Price', $event)">
 				</dd>
 			</div>
 
@@ -31,11 +30,11 @@
 					<label>Condition</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input type="radio" class="controls" name="marineCondition" value="New" 
-								 (change)="updateInputProperty('Condition', $event)"
-								 checked> New
-					<input type="radio" class="controls" name="marineCondition" value="Used" 
-								 (change)="updateInputProperty('Condition', $event)"> Used
+					<span *ngFor="let option of conditionOptions">
+						<input type="radio" class="controls" name="marineCondition" [(ngModel)]="marineDetail.Condition" 
+						[value]="option.value">
+						{{option.display}}					
+					</span>
 				</dd>
 			</div>
 
@@ -44,8 +43,7 @@
 					<label>Year</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="number" name="year" placeholder="Year" 
-							   [value]="marineDetail.Year" (blur)="updateInputProperty('Year', $event)">
+					<input class="controls full-length" type="number" name="year" placeholder="Year" [value]="marineDetail.Year" (blur)="updateInputProperty('Year', $event)">
 				</dd>
 			</div>
 
@@ -54,8 +52,7 @@
 					<label>Make</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="make" placeholder="Make" 
-							   [value]="marineDetail.Make" (blur)="updateInputProperty('Make', $event)">
+					<input class="controls full-length" type="text" name="make" placeholder="Make" [value]="marineDetail.Make" (blur)="updateInputProperty('Make', $event)">
 				</dd>
 			</div>
 
@@ -64,8 +61,7 @@
 					<label>Model</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="model" placeholder="Model" 
-							   [value]="marineDetail.Model" (blur)="updateInputProperty('Model', $event)">
+					<input class="controls full-length" type="text" name="model" placeholder="Model" [value]="marineDetail.Model" (blur)="updateInputProperty('Model', $event)">
 				</dd>
 			</div>
 
@@ -74,8 +70,8 @@
 					<label>Hull Serial No.</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input class="controls full-length" type="text" name="hullSerialNumber" placeholder="Hull Serial Number" 
-							   [value]="marineDetail.HullSerialNumber" (blur)="updateInputProperty('HullSerialNumber', $event)">
+					<input class="controls full-length" type="text" name="hullSerialNumber" placeholder="Hull Serial Number" [value]="marineDetail.HullSerialNumber"
+					 (blur)="updateInputProperty('HullSerialNumber', $event)">
 				</dd>
 			</div>
 

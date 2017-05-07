@@ -26,6 +26,7 @@ export class FinanceWebUiFinancingMarineMotorDetailComponent implements OnInit {
   }
 
   updateInputProperty(property, $event) {
+    //console.log('here');
     this.marineMotorDetail[property] = $event.target.value;
     this.update();
   }

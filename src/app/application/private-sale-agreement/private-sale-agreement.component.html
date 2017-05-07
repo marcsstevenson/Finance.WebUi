@@ -2,7 +2,7 @@
   <h1>Private Sale Agreement</h1>
 
   <div class="card actions text-xs-right">
-    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNewForm">
 			<i class="glyphicon glyphicon-align-left"></i> Delete
 		</button>
     <button class="btn btn-link" type="button" (click)="backToPersonalApplicaiton()">
@@ -185,7 +185,7 @@
               <label>VIN/Chassis</label>
             </dt>
             <dd class="col-xs-11">
-              <input class="controls full-length" type="text" name="vehicleDetailsRegistration" placeholder="Registration" [(ngModel)]="form.VehicleDetails.Registration">
+              <input class="controls full-length" type="text" name="vehicleDetailsRegistration" placeholder="Registration" [(ngModel)]="form.VehicleDetails.Vin">
             </dd>           
           </div>
         </dl>

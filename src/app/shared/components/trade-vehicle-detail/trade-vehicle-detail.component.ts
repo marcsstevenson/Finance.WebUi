@@ -19,6 +19,24 @@ export class FinanceWebUiTradeVehicleDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  public setNetValue(){
+    var netValue = 0;
+
+    if(!this.tradeVehicleDetail) return;
+
+    if(this.tradeVehicleDetail.Value)
+      netValue += +this.tradeVehicleDetail.Value;
+
+    if(this.tradeVehicleDetail.Balance)
+      netValue -= +this.tradeVehicleDetail.Balance;
+
+    console.log(netValue);
+
+    this.tradeVehicleDetail.NetValue = netValue;
+
+    console.log(this.tradeVehicleDetail.NetValue);
+  }
+
   update() {
     console.log('I am sending update to parent');
     this.tradeVehicleDetailChange.emit(

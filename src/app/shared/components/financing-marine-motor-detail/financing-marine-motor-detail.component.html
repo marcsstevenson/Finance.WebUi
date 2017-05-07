@@ -9,7 +9,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="TrailerPrice" placeholder="Motor Price" 
-							   [value]="marineMotorDetail.Price" (blur)="updateMotorInputProperty('Price', $event)">
+							   [value]="marineMotorDetail.Price" (blur)="updateInputProperty('Price', $event)">
 				</dd>
 			</div>
 
@@ -18,11 +18,11 @@
 					<label>Condition</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input type="radio" class="controls" name="motorCondition" value="New" 
-								 (change)="updateMotorInputProperty('Condition', $event)"
-								 checked> New
-					<input type="radio" class="controls" name="motorCondition" value="Used" 
-								 (change)="updateMotorInputProperty('Condition', $event)"> Used
+					<span *ngFor="let option of ['New', 'Used']">
+						<input type="radio" class="controls" name="motorCondition" [(ngModel)]="marineMotorDetail.Condition" 
+						[value]="option">
+						{{option}}					
+					</span>
 				</dd>
 			</div>
 
@@ -31,11 +31,11 @@
 					<label>Type</label>
 				</dt>
 				<dd class="col-xs-8 p-x-0">
-					<input type="radio" class="controls" name="motorType" value="Outboard" 
-								 (change)="updateMotorInputProperty('Type', $event)"
-								 checked> Outboard
-					<input type="radio" class="controls" name="motorType" value="Sterndrive" 
-								 (change)="updateMotorInputProperty('Type', $event)"> Sterndrive
+					<span *ngFor="let option of ['Outboard', 'Sterndrive']">
+						<input type="radio" class="controls" name="motorType" [(ngModel)]="marineMotorDetail.Type" 
+						[value]="option">
+						{{option}}					
+					</span>
 				</dd>
 			</div>
 
@@ -45,7 +45,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorYear" placeholder="Year" 
-							   [value]="marineMotorDetail.Year" (blur)="updateMotorInputProperty('Year', $event)">
+							   [value]="marineMotorDetail.Year" (blur)="updateInputProperty('Year', $event)">
 				</dd>
 			</div>
 
@@ -55,7 +55,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorMake" placeholder="Motor Make" 
-							   [value]="marineMotorDetail.Make" (blur)="updateMotorInputProperty('Make', $event)">
+							   [value]="marineMotorDetail.Make" (blur)="updateInputProperty('Make', $event)">
 				</dd>
 			</div>
 
@@ -65,7 +65,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorModel" placeholder="Motor Model" 
-							   [value]="marineMotorDetail.Model" (blur)="updateMotorInputProperty('Model', $event)">
+							   [value]="marineMotorDetail.Model" (blur)="updateInputProperty('Model', $event)">
 				</dd>
 			</div>
 
@@ -75,7 +75,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorEngineSize" placeholder="Engine Size" 
-							   [value]="marineMotorDetail.EngineSize" (blur)="updateMotorInputProperty('EngineSize', $event)">
+							   [value]="marineMotorDetail.EngineSize" (blur)="updateInputProperty('EngineSize', $event)">
 				</dd>
 			</div>
 
@@ -85,7 +85,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="motorEngineSerialNumber" placeholder="Engine Serial Number" 
-							   [value]="marineMotorDetail.EngineSerialNumber" (blur)="updateMotorInputProperty('EngineSerialNumber', $event)">
+							   [value]="marineMotorDetail.EngineSerialNumber" (blur)="updateInputProperty('EngineSerialNumber', $event)">
 				</dd>
 			</div>
 

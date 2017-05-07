@@ -18,4 +18,16 @@ export class FinanceWebUiFinancingMarineTrailerDetailComponent implements OnInit
   ngOnInit() {
   }
 
+  update() {
+    console.log('I am sending update to parent');
+    this.marineTrailerDetailChange.emit(
+      this.marineTrailerDetail
+    );
+  }
+
+  updateInputProperty(property, $event) {
+    this.marineTrailerDetail[property] = $event.target.value;
+    this.update();
+  }
+
 }

@@ -5,32 +5,43 @@
 			<dt class="col-xs-4 p-x-0 controls">
 				<label>Purchase Type</label>
 			</dt>
+
 			<dd class="col-xs-8 p-x-0">
-				<input type="radio" class="controls" name="dealerType" value="dealer" (change)="updateInputProperty('VendorType', $event)"
-				 checked /> Dealer
-
-				<input type="radio" class="controls" name="dealerType" value="private" (change)="updateInputProperty('VendorType', $event)"
-				/> Private
-
+				<span *ngFor="let vendorType of vendorTypes">
+						<input type="radio" class="controls" name="vendorDetailPurchaseType" [(ngModel)]="vendorDetail.VendorType" 
+						[value]="vendorType.value">
+						{{vendorType.display}}					
+				</span>
 			</dd>
 		</div>
 
-		<div class="row">
+		<div class="row" *ngIf="isPrivate()">
 			<dt class="col-xs-4 p-x-0 controls">
 				<label>First Name</label>
 			</dt>
 			<dd class="col-xs-8 p-x-0">
-				<input class="controls full-length" type="text" name="firstName" placeholder="First Name" [value]="vendorDetail.FirstName"
+				<input class="controls full-length" type="text" name="vendorDetailFirstName" placeholder="First Name" [value]="vendorDetail.FirstName"
 				 (blur)="updateInputProperty('FirstName', $event)">
 			</dd>
 		</div>
 
-		<div class="row">
+		<div class="row" *ngIf="isPrivate()">
 			<dt class="col-xs-4 p-x-0 controls">
 				<label>Last Name</label>
 			</dt>
 			<dd class="col-xs-8 p-x-0">
-				<input class="controls full-length" type="text" name="lastName" placeholder="Last Name" [value]="vendorDetail.LastName" (blur)="updateInputProperty('LastName', $event)">
+				<input class="controls full-length" type="text" name="vendorDetailLastName" placeholder="Last Name" [value]="vendorDetail.LastName" (blur)="updateInputProperty('LastName', $event)">
+			</dd>
+		</div>
+
+		<div class="row" *ngIf="!isPrivate()">
+			<dt class="col-xs-4 p-x-0 controls">
+				<label>Dealership</label>
+			</dt>
+			<dd class="col-xs-8 p-x-0">
+				<input class="controls full-length" type="text" name="vendorDetailDealership" placeholder="Dealership" 
+				[value]="vendorDetail.Dealership"
+				 (blur)="updateInputProperty('Dealership', $event)">
 			</dd>
 		</div>
 
@@ -39,7 +50,8 @@
 				<label>Phone</label>
 			</dt>
 			<dd class="col-xs-8 p-x-0">
-				<input class="controls full-length" type="text" name="phone" placeholder="Phone No." [value]="vendorDetail.PhoneNumber" (blur)="updateInputProperty('PhoneNumber', $event)">
+				<input class="controls full-length" type="text" name="vendorDetailPhone" placeholder="Phone No." [value]="vendorDetail.PhoneNumber" 
+				(blur)="updateInputProperty('PhoneNumber', $event)">
 			</dd>
 		</div>
 
@@ -48,7 +60,7 @@
 				<label>Salesman</label>
 			</dt>
 			<dd class="col-xs-8 p-x-0">
-				<input class="controls full-length" type="text" name="phone" placeholder="Salesman" [value]="vendorDetail.Salesman" (blur)="updateInputProperty('Salesman', $event)">
+				<input class="controls full-length" type="text" name="vendorDetailSalesman" placeholder="Salesman" [value]="vendorDetail.Salesman" (blur)="updateInputProperty('Salesman', $event)">
 			</dd>
 		</div>
 
@@ -57,7 +69,7 @@
 				<label>Trade Me Listing</label>
 			</dt>
 			<dd class="col-xs-8 p-x-0">
-				<input class="controls full-length" type="text" name="tradeMeUrl" placeholder="Url" [value]="vendorDetail.TradeMeUrl" (blur)="updateInputProperty('TradeMeUrl', $event)">
+				<input class="controls full-length" type="text" name="vendorDetailTradeMeUrl" placeholder="Url" [value]="vendorDetail.TradeMeUrl" (blur)="updateInputProperty('TradeMeUrl', $event)">
 			</dd>
 		</div>
 	</dl>

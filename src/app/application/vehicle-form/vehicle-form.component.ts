@@ -3,6 +3,8 @@ import { FormComponent } from "app/application/form-component";
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonalApplicationFormService } from "app/application/personal-application-forms/personal-application-form.service";
 import { VehicleFormPost } from "app/application/vehicle-form/vehicle-form-post";
+import { FinancialDetail } from "app/application/financial-detail";
+import { VehicleVendorDetails } from "app/shared/components/vendor-detail/vehicle-vendor-detail";
 
 @Component({
   selector: 'app-vehicle-form',
@@ -12,14 +14,7 @@ import { VehicleFormPost } from "app/application/vehicle-form/vehicle-form-post"
 export class VehicleFormComponent extends FormComponent implements OnInit {
 
   private vehicleForm = {
-    Vendor: {
-      VendorType: '',
-      FirstName: '',
-      LastName: '',
-      PhoneNumber: '',
-      Salesman: '',
-      TradeMeUrl: ''
-    },
+    Vendor: new VehicleVendorDetails(),
     FiancedVehicles: [
       {
         PurchaseType: '',
@@ -53,9 +48,7 @@ export class VehicleFormComponent extends FormComponent implements OnInit {
         NetValue: ''
       }
     ],
-    FinancialDetail: {
-
-    }
+    FinancialDetail: new FinancialDetail()
   };
 
   constructor(
@@ -65,14 +58,14 @@ export class VehicleFormComponent extends FormComponent implements OnInit {
     super(route, router, personalApplicationFormService);
   }
 
-  
+
   ngOnInit() {
     this.init();
 
     if (!this.isNewForm) {
       this.load(this.formId);
     }
-    else{
+    else {
 
       // this.personalApplication = new PersonalApplication()      
     }
@@ -100,16 +93,16 @@ export class VehicleFormComponent extends FormComponent implements OnInit {
     console.log('Current Vendor details', this.vehicleForm.Vendor);
   }
 
-  updateFinancedVehicle (receivedValue) {
+  updateFinancedVehicle(receivedValue) {
     // this.vehicleForm.
     console.log('Finance Vehicle received value', receivedValue);
   }
 
-  updateTradeInVehicle (receivedValue) {
+  updateTradeInVehicle(receivedValue) {
     console.log('Trade In Vehicle received value', receivedValue);
   }
 
-  updateFinanceDetails (receivedValue) {
+  updateFinanceDetails(receivedValue) {
     console.log('Trade In Vehicle received value', receivedValue);
   }
 }

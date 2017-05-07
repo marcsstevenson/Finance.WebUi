@@ -87,6 +87,10 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       .push({OptionName: 'Asset Name', Value: 0, Note: ''});
   }
 
+  removeAsset(index) {
+    this.assets.splice(index, 1);
+  }
+
   assetOnKeypress(event: any){
     if(event && event.code === 'Enter')
       this.addAsset();
@@ -96,6 +100,10 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
     this
       .liabilities
       .push({OptionName: 'Liability Name', Value: 0, Note: ''});
+  }
+
+  removeLiability(index) {
+    this.liabilities.splice(index, 1);
   }
 
   liabilityOnKeypress(event: any){
@@ -109,6 +117,10 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
       .push({OptionName: 'Income Name', Value: 0, Note: ''});
   }
 
+  removeIncome(index) {
+    this.income.splice(index, 1);
+  }
+
   incomeOnKeypress(event: any){
     if(event && event.code === 'Enter')
       this.addIncome();
@@ -118,6 +130,10 @@ export class FinanceWebUiPersonalFinancialDetailsComponent implements OnInit {
     this
       .expenses
       .push({OptionName: 'Expense Name', Value: 0, Note: ''});
+  }
+
+  removeExpense(index) {
+    this.expenses.splice(index, 1);
   }
 
   expensesOnKeypress(event: any){

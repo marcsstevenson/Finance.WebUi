@@ -3,6 +3,8 @@ import { FormComponent } from "app/application/form-component";
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonalApplicationFormService } from "app/application/personal-application-forms/personal-application-form.service";
 import { MarineFormPost } from "app/application/marine-form/marine-form-post";
+import { FinancialDetail } from "app/application/financial-detail";
+import { VehicleVendorDetails } from "app/shared/components/vendor-detail/vehicle-vendor-detail";
 
 @Component({
   selector: 'app-marine-form',
@@ -12,14 +14,7 @@ import { MarineFormPost } from "app/application/marine-form/marine-form-post";
 export class MarineFormComponent extends FormComponent implements OnInit {
 
   private marineForm = {
-    Vendor: {
-      VendorType: '',
-      FirstName: '',
-      LastName: '',
-      PhoneNumber: '',
-      Salesman: '',
-      TradeMeUrl: ''
-    },
+    Vendor: new VehicleVendorDetails(),
     FiancedMarines: [
       {
         MarineType: '',
@@ -60,6 +55,7 @@ export class MarineFormComponent extends FormComponent implements OnInit {
         Make: '',
         Model: '',
         Registration: '',
+        EngineType: '',
         EngineSize: '',
         SettlementTo: '',
         Balance: '',
@@ -67,9 +63,7 @@ export class MarineFormComponent extends FormComponent implements OnInit {
         NetTradeValue: ''
       }
     ],
-    FinancialDetail: {
-
-    }
+    FinancialDetail: new FinancialDetail()
   };
   constructor(
     route: ActivatedRoute,
@@ -83,10 +77,6 @@ export class MarineFormComponent extends FormComponent implements OnInit {
 
     if (!this.isNewForm) {
       this.load(this.formId);
-    }
-    else{
-
-      // this.personalApplication = new PersonalApplication()      
     }
   }
 
@@ -106,25 +96,29 @@ export class MarineFormComponent extends FormComponent implements OnInit {
     //Let the super function take care of everything
     this.savePersonalApplicationForm(marineFormPost);
   }
-
+  
   updateFinancedMarine(receivedValue) {
     this.marineForm.Vendor = receivedValue;
     console.log('Current Vendor details', this.marineForm.Vendor);
   }
 
   updateTradeInMarine(receivedValue) {
-    this.marineForm.TradeInMarines = receivedValue;
-    console.log('Current Vendor details', this.marineForm.TradeInMarines);
+    // this.marineForm.TradeInMarines = receivedValue;
+    // console.log('Current Vendor details', this.marineForm.TradeInMarines);
+  }
+
+  updateMarineMotor(receivedValue) {
+    // this.marineForm.FinancedMotors = receivedValue;
+    // console.log('Current Vendor details', this.marineForm.FinancedMotors);
   }
 
   updateMarineTrailer(receivedValue) {
-    this.marineForm.FinancedTrailers = receivedValue;
-    console.log('Current Vendor details', this.marineForm.FinancedTrailers);
+    // this.marineForm.FinancedTrailers = receivedValue;
+    // console.log('Current Vendor details', this.marineForm.FinancedTrailers);
   }
 
   updateMarineForm(receivedValue) {
-    this.marineForm.FinancialDetail = receivedValue;
-    console.log('Current Vendor details', this.marineForm.Vendor);
+    // this.marineForm.FinancialDetail = receivedValue;
+    // console.log('Current Vendor details', this.marineForm.Vendor);
   }
-
 }

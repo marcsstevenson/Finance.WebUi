@@ -2,7 +2,7 @@
   <h1>Motorcycle Form</h1>
 
   <div class="card actions text-xs-right">
-    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNewForm">
 			<i class="glyphicon glyphicon-align-left"></i> Delete
 		</button>
     <button class="btn btn-link" type="button" (click)="backToPersonalApplicaiton()">
@@ -17,20 +17,20 @@
     <div class="col-xs-12 center">
       <div class="card">
         <div class="card-block">
-          <fwui-vendor-detail [vendorDetail]="motorcycleForm.Vendor" (vendorDetailChange)="updateMotorcycleForm($event)">
+          <fwui-vendor-detail [vendorDetail]="motorcycleForm.Vendor">
           </fwui-vendor-detail>
 
           <div *ngFor="let financedMotorcycle of motorcycleForm.FiancedMotorcycles; let i = index;">
-            <fwui-financing-motorcycle-detail [motorcycleDetail]="financedMotorcycle" (motorcycleDetailChange)="updateFinancedMotorcycle($event)">
+            <fwui-financing-motorcycle-detail [motorcycleDetail]="financedMotorcycle">
             </fwui-financing-motorcycle-detail>
           </div>
 
           <div *ngFor="let tradeInMotorcycle of motorcycleForm.TradeInMotorcycles; let i = index;">
-            <fwui-trade-motorcycle-detail [tradeMotorcycleDetail]="tradeInMotorcycle" (tradeMotorcycleDetailChange)="updateTradeInMotorcycle($event)">
+            <fwui-trade-motorcycle-detail [tradeMotorcycleDetail]="tradeInMotorcycle">
             </fwui-trade-motorcycle-detail>
           </div>
 
-          <fwui-transport-financial-details [financialDetail]="motorcycleForm.FinancialDetail" (financialDetailChange)="updateFinanceDetails($event)">
+          <fwui-transport-financial-details [financialDetail]="motorcycleForm.FinancialDetail">
           </fwui-transport-financial-details>
         </div>
       </div>

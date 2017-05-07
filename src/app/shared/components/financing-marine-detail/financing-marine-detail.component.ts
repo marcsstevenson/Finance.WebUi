@@ -19,6 +19,21 @@ export class FinanceWebUiFinancingMarineDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  public showDealershipVendorDetails(): boolean{
+    // return this.marineDetail.
+    return true;
+  }
+
+  public marineTypes = [
+      { value: 'Boat', display: 'Boat' },
+      { value: 'Jetski', display: 'Jetski' }
+  ];
+
+  public conditionOptions = [
+      { value: 'New', display: 'New' },
+      { value: 'Used', display: 'Used' }
+  ];
+
   update() {
     console.log('I am sending update to parent');
     this.marineDetailChange.emit(

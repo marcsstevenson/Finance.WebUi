@@ -1,8 +1,8 @@
 <div class="container body-content fwui">
-    <h1>Vehicle Form</h1>
+  <h1>Vehicle Form</h1>
 
   <div class="card actions text-xs-right">
-    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNew">
+    <button class="btn btn-outline-danger" type="button" (click)="delete()" *ngIf="!isNewForm">
 			<i class="glyphicon glyphicon-align-left"></i> Delete
 		</button>
     <button class="btn btn-link" type="button" (click)="backToPersonalApplicaiton()">
@@ -12,26 +12,32 @@
 			<i class="glyphicon glyphicon-align-left"></i> Save
 		</button>
   </div>
-  
+
   <div class="row">
-    <div class="card">
-      <div class="card-block">
-        <fwui-vendor-detail [vendorDetail]="vehicleForm.Vendor" (vendorDetailChange)="updateVendor($event)">
-        </fwui-vendor-detail>
+    <div class="col-xs-12 center">
+      <div class="card">
+        <div class="card-block">
+          <!--Vendor Details-->
+          <fwui-vendor-detail [vendorDetail]="vehicleForm.Vendor" (vendorDetailChange)="updateVendor($event)">
+          </fwui-vendor-detail>
 
-        <div *ngFor="let financedVehicle of vehicleForm.FiancedVehicles; let i = index;">
-          <fwui-financing-vehicle-detail [vehicleDetail]="financedVehicle" (vehicleDetailChange)="updateFinancedVehicle($event)">
-          </fwui-financing-vehicle-detail>
+          <!--Vehicle Details-->
+          <div *ngFor="let financedVehicle of vehicleForm.FiancedVehicles; let i = index;">
+            <fwui-financing-vehicle-detail [vehicleDetail]="financedVehicle" (vehicleDetailChange)="updateFinancedVehicle($event)">
+            </fwui-financing-vehicle-detail>
+          </div>
+
+          <!--Trade In Vehicle Details-->
+          <div *ngFor="let tradeInVehicle of vehicleForm.TradeInVehicles; let i = index;">
+            <fwui-trade-vehicle-detail [tradeVehicleDetail]="tradeInVehicle" (tradeVehicleDetailChange)="updateTradeInVehicle($event)">
+            </fwui-trade-vehicle-detail>
+          </div>
+
+          <!--Financial Details-->
+          <fwui-transport-financial-details [financialDetail]="vehicleForm.FinancialDetail" (financialDetailChange)="updateFinanceDetails($event)">
+          </fwui-transport-financial-details>
+
         </div>
-
-        <div *ngFor="let tradeInVehicle of vehicleForm.TradeInVehicles; let i = index;">
-          <fwui-trade-vehicle-detail [tradeVehicleDetail]="tradeInVehicle" (tradeVehicleDetailChange)="updateTradeInVehicle($event)">
-          </fwui-trade-vehicle-detail>
-        </div>
-
-        <fwui-transport-financial-details [financialDetail]="vehicleForm.FinancialDetail" (financialDetailChange)="updateFinanceDetails($event)">
-        </fwui-transport-financial-details>
-
       </div>
     </div>
   </div>

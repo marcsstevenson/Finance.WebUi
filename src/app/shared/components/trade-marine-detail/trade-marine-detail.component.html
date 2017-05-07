@@ -5,52 +5,64 @@
     <dl>
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">
-          <label>Trade In Year</label>
+          <label>Year</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="text" name="tradeInYear" placeholder="Year" [value]="tradeMarineDetail.Year"
-            (blur)="updateTradeInInputProperty('Year', $event)">
+            (blur)="updateInputProperty('Year', $event)">
         </dd>
       </div>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">
-          <label>Trade In Make</label>
+          <label>Make</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="text" name="tradeInMake" placeholder="Make" [value]="tradeMarineDetail.Make"
-            (blur)="updateTradeInInputProperty('Make', $event)">
+            (blur)="updateInputProperty('Make', $event)">
         </dd>
       </div>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">
-          <label>Trade In Model</label>
+          <label>Model</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="text" name="tradeInModel" placeholder="Model" [value]="tradeMarineDetail.Model"
-            (blur)="updateTradeInInputProperty('Model', $event)">
+            (blur)="updateInputProperty('Model', $event)">
         </dd>
       </div>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">
-          <label>Trade In Registration</label>
+          <label>Registration</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="text" name="tradeInRegistration" placeholder="Registration" [value]="tradeMarineDetail.Registration"
-            (blur)="updateTradeInInputProperty('Registration', $event)">
+            (blur)="updateInputProperty('Registration', $event)">
         </dd>
       </div>
 
       <div class="row">
         <dt class="col-xs-4 p-x-0 controls">
-          <label>Trade In Engine Size</label>
+          <label>Engine Type</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
-          <input type="radio" class="controls" name="tradeInEngineSize" value="Outboard" (change)="updateTradeInInputProperty('EngineSize', $event)"
-            checked> Outboard
-          <input type="radio" class="controls" name="tradeInEngineSize" value="Sterndrive" (change)="updateTradeInInputProperty('EngineSize', $event)">          Sterndrive
+					<span *ngFor="let option of ['Outboard', 'Sterndrive']">
+						<input type="radio" class="controls" name="engineType" [(ngModel)]="tradeMarineDetail.EngineType" 
+						[value]="option">
+						{{option}}					
+					</span>
+        </dd>
+      </div>
+
+      <div class="row">
+        <dt class="col-xs-4 p-x-0 controls">
+          <label>Engine Size</label>
+        </dt>
+        <dd class="col-xs-8 p-x-0">
+          <input class="controls full-length" type="number" name="engineSize" placeholder="Engine Size" [value]="tradeMarineDetail.EngineSize"
+            (blur)="updateInputProperty('EngineSize', $event)">
         </dd>
       </div>
 
@@ -60,7 +72,7 @@
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="number" name="tradeInValue" placeholder="$" [value]="tradeMarineDetail.Value"
-            (blur)="updateTradeInInputProperty('Value', $event)">
+            (blur)="updateInputProperty('Value', $event)">
         </dd>
       </div>
 
@@ -70,7 +82,7 @@
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="number" name="settlementValue" placeholder="$" [value]="tradeMarineDetail.SettlementValue"
-            (blur)="updateTradeInInputProperty('SettlementValue', $event)">
+            (blur)="updateInputProperty('SettlementValue', $event)">
         </dd>
       </div>
 
@@ -79,7 +91,7 @@
           <label>Balance</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="number" name="balance" placeholder="$" [value]="tradeMarineDetail.Blance" (blur)="updateTradeInInputProperty('Balance', $event)">
+          <input class="controls full-length" type="number" name="balance" placeholder="$" [value]="tradeMarineDetail.Blance" (blur)="updateInputProperty('Balance', $event)">
         </dd>
       </div>
 
@@ -88,7 +100,7 @@
           <label>Valid To</label>
         </dt>
         <dd class="col-xs-8 p-x-0">
-          <input class="controls full-length" type="number" name="validTo" placeholder="$" [value]="tradeMarineDetail.ValidTo" (blur)="updateTradeInInputProperty('ValidTo', $event)">
+          <input class="controls full-length" type="number" name="validTo" placeholder="$" [value]="tradeMarineDetail.ValidTo" (blur)="updateInputProperty('ValidTo', $event)">
         </dd>
       </div>
 
@@ -98,7 +110,7 @@
         </dt>
         <dd class="col-xs-8 p-x-0">
           <input class="controls full-length" type="number" name="netValue" placeholder="$" [value]="tradeMarineDetail.NetValue"
-            (blur)="updateTradeInInputProperty('NetValue', $event)">
+            (blur)="updateInputProperty('NetValue', $event)">
         </dd>
       </div>
 

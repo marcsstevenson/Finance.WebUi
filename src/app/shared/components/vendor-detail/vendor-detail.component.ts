@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { VehicleVendorDetails } from "app/shared/components/vendor-detail/vehicle-vendor-detail";
 
 @Component({
   //moduleId: module.id,
@@ -9,7 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FinanceWebUiVendorDetailComponent implements OnInit {
 
   @Input()
-  vendorDetail;
+  vendorDetail: VehicleVendorDetails;
 
   @Output()
   vendorDetailChange = new EventEmitter();
@@ -19,8 +20,12 @@ export class FinanceWebUiVendorDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  public vendorTypes = [
+      { value: 'dealer', display: 'Dealer' },
+      { value: 'private', display: 'Private' }
+  ];
+
   update() {
-    console.log('I am sending update to parent');
     this.vendorDetailChange.emit(
       this.vendorDetail
     );
@@ -29,5 +34,9 @@ export class FinanceWebUiVendorDetailComponent implements OnInit {
   updateInputProperty(property, $event) {
     this.vendorDetail[property] = $event.target.value;
     this.update();
+  }
+
+  public isPrivate(): boolean{
+    return this.vendorDetail && this.vendorDetail.VendorType === 'private';
   }
 }

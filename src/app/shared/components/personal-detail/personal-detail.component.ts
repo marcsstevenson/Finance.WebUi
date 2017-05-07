@@ -84,5 +84,19 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
     to.Years = from.Years;
   }
 
+  public displayPreviousAddress(): boolean{
+    if(this.personalDetail && this.personalDetail.CurrentAddressYears && this.personalDetail.CurrentAddressYears >= 3)
+      return false;
+    else
+      return true;
+  }
+
+  public displayPreviousOccupation(): boolean{
+    if(this.personalDetail && this.personalDetail.CurrentOccupation && this.personalDetail.CurrentOccupation.Years >= 3)
+      return false;
+    else
+      return true;
+  }
+
   constructor() { }
 }

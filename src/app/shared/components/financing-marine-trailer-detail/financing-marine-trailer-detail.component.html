@@ -7,12 +7,12 @@
 				<dt class="col-xs-4 p-x-0 radio-line">
 					<label>Trailer For:</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0 radio-line">
-					<input type="radio" class="controls" name="TrailerMarineType" value="Boat" 
-								 (change)="updateTrailerInputProperty('MarineType', $event)"
-								 checked> Boat
-					<input type="radio" class="controls" name="TrailerMarineType" value="Jetski" 
-								 (change)="updateTrailerInputProperty('MarineType', $event)"> Jetski
+				<dd class="col-xs-8 p-x-0 radio-line">								 						 
+					<span *ngFor="let option of ['Boat', 'Jetski']">
+						<input type="radio" class="controls" name="TrailerMarineType" [(ngModel)]="marineTrailerDetail.MarineType" 
+						[value]="option">
+						{{option}}					
+					</span>
 				</dd>
 			</div>
 
@@ -22,7 +22,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="number" name="trailerPrice" placeholder="$" 
-							   [value]="marineTrailerDetail.Price" (blur)="updateTrailerInputProperty('Price', $event)">
+							   [value]="marineTrailerDetail.Price" (blur)="updateInputProperty('Price', $event)">
 				</dd>
 			</div>
 
@@ -30,12 +30,12 @@
 				<dt class="col-xs-4 p-x-0 controls">
 					<label>Trailer Type</label>
 				</dt>
-				<dd class="col-xs-8 p-x-0">
-					<input type="radio" class="controls" name="trailerType" value="SingleAxle" 
-								 (change)="updateTrailerInputProperty('Type', $event)"
-								 checked> Single Axle
-					<input type="radio" class="controls" name="trailerType" value="TandemAxle" 
-								 (change)="updateTrailerInputProperty('Type', $event)"> Tandem Axle
+				<dd class="col-xs-8 p-x-0">								 						 
+					<span *ngFor="let option of ['Single Axle', 'Tandem Axle']">
+						<input type="radio" class="controls" name="trailerType" [(ngModel)]="marineTrailerDetail.Type" 
+						[value]="option">
+						{{option}}					
+					</span>
 				</dd>
 			</div>
 
@@ -45,7 +45,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="TrailerYear" placeholder="Year" 
-							   [value]="marineTrailerDetail.Year" (blur)="updateTrailerInputProperty('Year', $event)">
+							   [value]="marineTrailerDetail.Year" (blur)="updateInputProperty('Year', $event)">
 				</dd>
 			</div>
 
@@ -55,7 +55,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="trailerRegistration" placeholder="Trailer Registration" 
-							   [value]="marineTrailerDetail.Registration" (blur)="updateTrailerInputProperty('Registration', $event)">
+							   [value]="marineTrailerDetail.Registration" (blur)="updateInputProperty('Registration', $event)">
 				</dd>
 			</div>
 
@@ -65,7 +65,7 @@
 				</dt>
 				<dd class="col-xs-8 p-x-0">
 					<input class="controls full-length" type="text" name="trailerSerialNumber" placeholder="Trailer Serial Number" 
-							   [value]="marineTrailerDetail.TrailerSerialNumber" (blur)="updateTrailerInputProperty('TrailerSerialNumber', $event)">
+							   [value]="marineTrailerDetail.TrailerSerialNumber" (blur)="updateInputProperty('TrailerSerialNumber', $event)">
 				</dd>
 			</div>
 

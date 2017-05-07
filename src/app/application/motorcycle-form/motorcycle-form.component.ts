@@ -3,6 +3,8 @@ import { FormComponent } from "app/application/form-component";
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonalApplicationFormService } from "app/application/personal-application-forms/personal-application-form.service";
 import { MotorcycleFormPost } from "app/application/motorcycle-form/motorcycle-form-post";
+import { FinancialDetail } from "app/application/financial-detail";
+import { VehicleVendorDetails } from "app/shared/components/vendor-detail/vehicle-vendor-detail";
 
 @Component({
   selector: 'app-motorcycle-form',
@@ -12,14 +14,7 @@ import { MotorcycleFormPost } from "app/application/motorcycle-form/motorcycle-f
 export class MotorcycleFormComponent extends FormComponent implements OnInit {
 
   private motorcycleForm = {
-    Vendor: {
-      VendorType: '',
-      FirstName: '',
-      LastName: '',
-      PhoneNumber: '',
-      Salesman: '',
-      TradeMeUrl: ''
-    },
+    Vendor: new VehicleVendorDetails(),
     FiancedMotorcycles: [
       {
         PurchaseType: '',
@@ -53,9 +48,7 @@ export class MotorcycleFormComponent extends FormComponent implements OnInit {
         NetValue: ''
       }
     ],
-    FinancialDetail: {
-
-    }
+    FinancialDetail: new FinancialDetail()
   };
 
   constructor(
@@ -93,17 +86,4 @@ export class MotorcycleFormComponent extends FormComponent implements OnInit {
     //Let the super function take care of everything
     this.savePersonalApplicationForm(marineFormPost);
   }
-
-  updateFinancedMotorcycle(receivedValue) {
-
-  }
-
-  updateTradeInMotorcycle(receivedValue) {
-
-  }
-
-  updateFinanceDetails(receivedValue) {
-
-  }
-
 }
