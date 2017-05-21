@@ -24,6 +24,7 @@ import { LeadOriginModule } from './lead-origin/lead-origin.module';
 import { HomeModule } from './home/home.module';
 import { ApplicationModule } from './application/application.module';
 import { LoginModule } from './login/login.module';
+import { ReportingModule } from "app/reporting/reporting.module";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { LoginModule } from './login/login.module';
     ApplicationModule,
     FinanceCompanyModule,
     LeadOriginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReportingModule
     ],
   providers: [
     appRoutingProviders

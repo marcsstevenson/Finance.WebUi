@@ -4,9 +4,6 @@
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
-
-        <!--todo: make the search query only fires after 300 to 400 milliseconds-->
-
         <div class="search">
           <input type="text" [formControl]="searchTerm" class="form-control" placeholder="customer number, name or mobile">
         </div>
@@ -19,17 +16,10 @@
             <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Add dealership
           </button>
         </div>
-
-        <!--<span class="input-group-btn">
-          <button class="btn btn-default" type="button" >Search</button>
-        </span>-->
       </div>
     </div>
   </div>
   <fwui-working-display *ngIf="working"></fwui-working-display>
-
-
-
     <swui-datatable *ngIf="!working"
         class="material"
         [rows]="rows"
