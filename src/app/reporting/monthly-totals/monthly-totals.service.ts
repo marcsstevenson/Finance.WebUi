@@ -15,11 +15,19 @@ export class MonthlyTotalsService {
     this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('accessToken'));
   }
 
-
   DealershipProfitReport(monthValue: number, yearValue: number) {
     let options = new RequestOptions({ headers: this.headers });
 
     return this._http.get(BASE_API_URL + '/DealershipProfitReport?monthValue=' + monthValue + "&yearValue=" + yearValue, options)
+      .map((response: Response) => response.json())
+      .toPromise()
+      .catch((err: any) => this.handleError(err));
+  }
+
+  FinanceCompanyProfitReport(monthValue: number, yearValue: number) {
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this._http.get(BASE_API_URL + '/FinanceCompanyProfitReport?monthValue=' + monthValue + "&yearValue=" + yearValue, options)
       .map((response: Response) => response.json())
       .toPromise()
       .catch((err: any) => this.handleError(err));

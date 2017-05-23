@@ -18,6 +18,7 @@ export class MonthlyTotalsComponent implements OnInit {
   private selectedMonthValue: number;
   private selectedYearValue: number = moment().year();
   private DealershipProfitReport: any = null;
+  private FinanceCompanyProfitReport: any = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,14 +29,19 @@ export class MonthlyTotalsComponent implements OnInit {
   ngOnInit() {
     this.months = Array.apply(0, Array(12)).map(function (_, i) { return { value: i + 1, name: moment().month(i).format('MMMM') } });
     this.selectedMonthValue = this.months[moment().month()].value;
-    console.log(this.selectedMonthValue);
+
+    this.runReport ();
   }
 
   runReport () {
     this._MonthlyTotalsService.DealershipProfitReport(this.selectedMonthValue, this.selectedYearValue)
-    .then((response) => {
-      this.DealershipProfitReport = response;
-      console.log(this.DealershipProfitReport);
+      .then((response) => {
+        this.DealershipProfitReport = response;
+    });
+
+    this._MonthlyTotalsService.FinanceCompanyProfitReport(this.selectedMonthValue, this.selectedYearValue)
+      .then((response) => {
+        this.FinanceCompanyProfitReport = response;
     });
   }
 }

@@ -49,7 +49,8 @@
     <button class="btn btn-success" (click)="runReport()">Run Report</button>
   </div>
   <hr/>
-  <div *ngIf="DealershipProfitReport">
+  <h3>Customer Source</h3>
+  <div class="card p-1" *ngIf="DealershipProfitReport">
     <table class="material" style="width: 100%">
       <tr>
         <th>Customer</th>
@@ -61,7 +62,9 @@
         <th>MBI</th>
         <th>Insurance</th>
         <th>Other</th>
-        <th>Dealership Com</th>
+        <th>Gross</th>
+        <th>Deal' Com'</th>
+        <th>Net</th>
       </tr>
       <tr *ngFor="let item of DealershipProfitReport">
         <td>{{item.DealershipName}}</td>
@@ -73,7 +76,37 @@
         <td>{{item.MechanicalBreakDownInsurance | currency:'USD':true}}</td>
         <td>{{item.Insurance | currency:'USD':true}}</td>
         <td>{{item.Other | currency:'USD':true}}</td>
+        <td>{{item.Gross | currency:'USD':true}}</td>
         <td>{{item.DealershipCommission | currency:'USD':true}}</td>
+        <td>{{item.Net | currency:'USD':true}}</td>
+      </tr>
+    </table>
+  </div>
+  <hr/>
+  <h3>Finance Companies</h3>
+  <div class="card p-1" *ngIf="FinanceCompanyProfitReport">    
+    <table class="material" style="width: 100%">
+      <tr>
+        <th>Customer</th>
+        <th>Amount</th>
+        <th>Commission</th>
+        <th>Doc Fee</th>
+        <th>P.P.P</th>
+        <th>GAP</th>
+        <th>MBI</th>
+        <th>Insurance</th>
+        <th>Other</th>
+      </tr>
+      <tr *ngFor="let item of FinanceCompanyProfitReport">
+        <td>{{item.FinanceCompanyName}}</td>
+        <td>{{item.FinanceVolume | currency:'USD':true}}</td>
+        <td>{{item.Commission | currency:'USD':true}}</td>
+        <td>{{item.DocumentationFee | currency:'USD':true}}</td>
+        <td>{{item.PaymentProtectionInsurance | currency:'USD':true}}</td>
+        <td>{{item.GuaranteedAssetProtection | currency:'USD':true}}</td>
+        <td>{{item.MechanicalBreakDownInsurance | currency:'USD':true}}</td>
+        <td>{{item.Insurance | currency:'USD':true}}</td>
+        <td>{{item.Other | currency:'USD':true}}</td>
       </tr>
     </table>
   </div>
