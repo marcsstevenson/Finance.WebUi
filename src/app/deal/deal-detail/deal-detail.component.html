@@ -34,7 +34,7 @@
                        (ngModelChange)="basicInfoChanged = true"
                        placeholder="Customer Id" type="text" required>
 
-                <a class="controls m-x-1" *ngIf="deal.CustomerId" [routerLink]="['/customer', deal.CustomerId]">{{customerName}}</a>
+                <a class="controls" *ngIf="deal.CustomerId" [routerLink]="['/customer', deal.CustomerId]">{{customerName}}</a>
               </dd>
             </div>
 
@@ -49,12 +49,9 @@
             </div>
 
             <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Date Created</dt>
-              <dd class="col-xs-8">
-                <input [(ngModel)]="deal.DateCreated" 
-                       (ngModelChange)="basicInfoChanged = true"
-                       placeholder="Date created" 
-                       type="text" class="controls">
+              <dt class="col-xs-4 p-x-0 controls">Settlement Date</dt>
+              <dd class="col-xs-8 controls">
+                <span class="ml-1">{{deal.DateCreated | date: 'medium'}}</span>
               </dd>
             </div>
 

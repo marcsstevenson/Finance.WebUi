@@ -1,4 +1,4 @@
-<div class="card">
+<form class="card" action="">
 	<div class="card-block">
 		<div class="row">
 			<div class="col-xs-10">
@@ -57,8 +57,8 @@
 							<label>Gender</label>
 						</dt>
 						<dd class="col-xs-8 radio-line">
-							<input type="radio" class="controls" name="gender" value="male" checked (change)="updateInputProperty('Gender', $event)">							Male
-							<input type="radio" class="controls" name="gender" value="female" (change)="updateInputProperty('Gender', $event)">							Female
+							<input type="radio" class="controls" name="gender" value="male" [(ngModel)]="personalDetail.Gender"> <span (click)="personalDetail.Gender='male'">Male</span>
+							<input type="radio" class="controls" name="gender" value="female" [(ngModel)]="personalDetail.Gender"> <span (click)="personalDetail.Gender='female'">Female</span>
 						</dd>
 					</div>
 
@@ -80,8 +80,8 @@
 							<label>NZ Resident</label>
 						</dt>
 						<dd class="col-xs-8 radio-line">
-							<input type="radio" value="true" name="nzResident" [checked]="personalDetail.IsNzResident === true" (click)="updateResidency(true)">							Yes
-							<input type="radio" value="false" name="nzResident" [checked]="personalDetail.IsNzResident === false" (click)="updateResidency(false)">							No
+							<input type="radio" value="true" name="nzResident" [(ngModel)]="personalDetail.IsNzResident"> <span (click)="personalDetail.IsNzResident='true'">Yes</span>
+							<input type="radio" value="false" name="nzResident" [(ngModel)]="personalDetail.IsNzResident"> <span (click)="personalDetail.IsNzResident='false'">No</span>
 						</dd>
 					</div>
 
@@ -90,8 +90,8 @@
 							<label>Work Visa</label>
 						</dt>
 						<dd class="col-xs-8 radio-line">
-							<input type="radio" name="workVisa" value="Yes" checked (click)="updateWorkVisaStatus(true)"> Yes
-							<input type="radio" name="workVisa" value="No" (click)="updateWorkVisaStatus(false)"> No
+							<input type="radio" name="workVisa" value="Yes" [(ngModel)]="personalDetail.IsWorkVisa"> <span (click)="personalDetail.IsNzResident='Yes'">Yes</span>
+							<input type="radio" name="workVisa" value="No" [(ngModel)]="personalDetail.IsWorkVisa"> <span (click)="personalDetail.IsNzResident='No'">No</span>
 						</dd>
 					</div>
 
@@ -108,10 +108,10 @@
 							<label>Driver Licence Type</label>
 						</dt>
 						<dd class="col-xs-8 radio-line">
-							<input type="radio" name="driverLicenceType" value="Full" checked (click)="updateInputProperty('DriverLicenceType', $event)">							Full
-							<input type="radio" name="driverLicenceType" value="Restricted" (click)="updateInputProperty('DriverLicenceType', $event)">							Restricted
-							<input type="radio" name="driverLicenceType" value="Learners" (click)="updateInputProperty('DriverLicenceType', $event)">							Learners
-							<input type="radio" name="driverLicenceType" value="Overseas" (click)="updateInputProperty('DriverLicenceType', $event)">							Overseas
+							<input type="radio" name="driverLicenceType" [(ngModel)]="personalDetail.DriverLicenceType" value="Full"> <span (click)="personalDetail.DriverLicenceType='Full'">Full</span>
+							<input type="radio" name="driverLicenceType" [(ngModel)]="personalDetail.DriverLicenceType" value="Restricted"> <span (click)="personalDetail.DriverLicenceType='Restricted'">Restricted</span>
+							<input type="radio" name="driverLicenceType" [(ngModel)]="personalDetail.DriverLicenceType" value="Learners"> <span (click)="personalDetail.DriverLicenceType='Learners'">Learners</span>
+							<input type="radio" name="driverLicenceType" [(ngModel)]="personalDetail.DriverLicenceType" value="Overseas"> <span (click)="personalDetail.DriverLicenceType='Overseas'">Overseas</span>
 						</dd>
 					</div>
 
@@ -150,8 +150,7 @@
 							<label>Marital Status</label>
 						</dt>
 						<dd class="col-xs-8">
-							<select name="maritalStatus" class="controls full-length" [value]="personalDetail.MaritalStatus" 
-								(blur)="updateInputProperty('MaritalStatus', $event)">
+							<select name="maritalStatus" class="controls full-length" [value]="personalDetail.MaritalStatus" (blur)="updateInputProperty('MaritalStatus', $event)">
 								<option value="Single">Single</option>
 								<option value="Married">Married</option>
 								<option value="Defacto">Defacto</option>
@@ -247,13 +246,11 @@
 						<div class="row" *ngIf="personalDetail.ShowAddress && personalDetail.CurrentAddressType === 'Other'">
 							<dt class="col-xs-4 controls">Other:</dt>
 							<dd class="col-xs-8 pr-2">
-								<input class="controls full-length" type="text" name="region" placeholder="Current Address Type Other" 
-								[value]="personalDetail.CurrentAddressOther"
+								<input class="controls full-length" type="text" name="region" placeholder="Current Address Type Other" [value]="personalDetail.CurrentAddressOther"
 								 (blur)="updateInputProperty('CurrentAddressOther', $event)">
 							</dd>
 						</div>
-						<fwui-address-finder [addressDetail]="personalDetail.CurrentAddress" *ngIf="personalDetail.ShowAddress"
-							(changed)="currentAddressChanged($event)"></fwui-address-finder>
+						<fwui-address-finder [addressDetail]="personalDetail.CurrentAddress" *ngIf="personalDetail.ShowAddress" (changed)="currentAddressChanged($event)"></fwui-address-finder>
 					</div>
 
 					<div class="row" *ngIf="personalDetail.ShowAddress">
@@ -312,9 +309,7 @@
 								<button class="btn btn-default" (click)="personalDetail.ShowOccupation = true" *ngIf="!personalDetail.ShowOccupation">Show</button>
 							</dd>
 						</div>
-						<fwui-personal-occupation *ngIf="personalDetail.ShowOccupation"
-							[occupationDetail]="personalDetail.CurrentOccupation" 
-							(blur)="updateInputProperty('CurrentOccupation', $event)"></fwui-personal-occupation>
+						<fwui-personal-occupation *ngIf="personalDetail.ShowOccupation" [occupationDetail]="personalDetail.CurrentOccupation" (blur)="updateInputProperty('CurrentOccupation', $event)"></fwui-personal-occupation>
 					</div>
 
 					<div class="previous occupation" *ngIf="personalDetail.ShowOccupation && displayPreviousOccupation()">
@@ -326,4 +321,4 @@
 
 		</div>
 	</div>
-</div>
+</form>

@@ -40,8 +40,6 @@
 			</button>
 		</div>
 	</div>
-	<!--forms="getFormsOfType('Marine')"-->
-	<!--[forms]="forms"-->
 
 	<div class="row" *ngIf="forms !== null && forms.length > 0">
 		<div class="col-xs-12 center">
@@ -83,6 +81,12 @@
 								<option value="Joint">Joint</option>
 								<option value="Coporate">Coporate</option>
 							</select>
+						</dd>
+					</div>
+					<div class="row" *ngIf="!isNew">
+						<label class="col-xs-4 controls">Date Created</label>
+						<dd class="col-xs-8 controls">
+							<span class="ml-1">{{dateCreated | date: 'medium'}}</span>
 						</dd>
 					</div>
 				</div>

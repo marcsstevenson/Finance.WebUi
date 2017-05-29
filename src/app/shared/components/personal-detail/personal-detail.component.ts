@@ -21,7 +21,7 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   expanded: boolean = true;
 
   public toggleExpanded(): void {
-    this.expanded = !this.expanded;
+     this.expanded = !this.expanded;
   }
 
   ngOnInit() {
@@ -35,24 +35,19 @@ export class FinanceWebUiPersonalDetailComponent implements OnInit {
   }
 
   update() {
-    console.log('I am sending update to parent');
     this.personalDetailChange.emit(
       this.personalDetail
     );
   }
 
-  updateResidency(isNzResident: boolean) {
-    this.personalDetail['IsNzResident'] = isNzResident;
-    this.update();
-  }
-
-  updateWorkVisaStatus(isWorkVisa: boolean) {
-    this.personalDetail['IsWorkVisa'] = isWorkVisa;
-    this.update();
-  }
-
   updateInputProperty(property, $event) {
+    // console.log(this.personalDetail.Gender);
+
     this.personalDetail[property] = $event.target.value;
+
+    // console.log(this.personalDetail.FirstName);
+    // console.log(this.personalDetail.Gender);
+
     this.update();
   }
 

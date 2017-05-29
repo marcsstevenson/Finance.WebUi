@@ -19,6 +19,7 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
   private forms: Array<PersonalApplicationFormItem> = null;
   private customerId: string = null;
   private dealId: string = null;
+  private dateCreated: Date = null;
 
   private personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>;
   // private 
@@ -55,6 +56,7 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
     else {
       this.personalApplication = new PersonalApplication()
       this.forms = [];
+      this.loadPersonalApplicationStatusOptions(null);
     }
   }
 
@@ -63,24 +65,17 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
   }
 
   private load(id: string) {
+    //Load our model after getting the status options
+    this.loadPersonalApplicationStatusOptions(this.loadPersonalApplication(id));
+  }
+
+  public loadPersonalApplicationStatusOptions = function (then) {
     //Ensure that we have personalApplicationStatusOptions
     this._personalApplicationService.getPersonalApplicationStatusOptions()
       .then((personalApplicationStatusOptions: Array<PersonalApplicationStatusOption>) => {
         this.personalApplicationStatusOptions = personalApplicationStatusOptions;
 
-        //Now load our model
-        this._personalApplicationService.get(id)
-          .then((personalApplicationDetails: PersonalApplicationDetails) => {
-            this.personalApplication = personalApplicationDetails.JsonData;
-            this.forms = personalApplicationDetails.Forms;
-
-            this.customerId = personalApplicationDetails.CustomerId;
-            this.dealId = personalApplicationDetails.DealId;
-          })
-          .catch((err) => {
-            console.log(err); //todo: show the user a nice message
-          });
-
+        if (then) then();
       })
       .catch((err) => {
         console.log(err); //todo: show the user a nice message
@@ -88,11 +83,29 @@ export class PersonalApplicationComponent extends FormComponent implements OnIni
       });
   }
 
-  public viewCustomer(){    
+  public loadPersonalApplication = function (id) {
+    this._personalApplicationService.get(id)
+      .then((personalApplicationDetails: PersonalApplicationDetails) => {
+        this.personalApplication = personalApplicationDetails.JsonData;
+        this.forms = personalApplicationDetails.Forms;
+
+        this.customerId = personalApplicationDetails.CustomerId;
+        this.dealId = personalApplicationDetails.DealId;
+
+        this.dateCreated = personalApplicationDetails.DateCreated;
+        
+        console.log(this.dateCreated);
+      })
+      .catch((err) => {
+        console.log(err); //todo: show the user a nice message
+      });
+  }
+
+  public viewCustomer() {
     this.router.navigate(['/customer', this.customerId]);
   }
 
-  public viewDeal(){    
+  public viewDeal() {
     this.router.navigate(['/deal', this.dealId]);
   }
 

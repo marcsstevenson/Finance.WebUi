@@ -9,6 +9,7 @@ export class PersonalApplicationDetails{
   public DealId: string;
   public JsonData: any;
   public Forms: Array<PersonalApplicationFormItem>;  
+  public DateCreated: Date;
 }
 
 export class PersonalApplicationFormItem {
