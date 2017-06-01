@@ -72,7 +72,7 @@ export class FinanceWebUiAddressFinderComponent implements OnInit {
     //2017.03.26 MS - this is throwing an exception on route change (eg, saving a file during dev)
     //It appears to be a race condition whereby the google API is initialised before this is called when the page is loaded from scratch
     //but the google API is not initialised on route change. Commented out so that I can work on the form
-    // this.initAutocomplete();
+    this.initAutocomplete();
   }
 
   searchAddress() {
