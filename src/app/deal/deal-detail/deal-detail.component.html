@@ -27,7 +27,6 @@
         <div class="card-block">
           <dl>
             <div class="row">
-              <!--todo: (Name in future)-->
               <dt class="col-xs-4 p-x-0 controls">Customer *</dt>
               <dd class="col-xs-8 p-x-0 controls">
                 <input *ngIf="!deal.CustomerId" class="controls" [(ngModel)]="deal.CustomerId" 
@@ -37,7 +36,15 @@
                 <a class="controls" *ngIf="deal.CustomerId" [routerLink]="['/customer', deal.CustomerId]">{{customerName}}</a>
               </dd>
             </div>
+            
+            <div class="row" *ngIf="!isNew">
+              <dt class="col-xs-4 p-x-0 controls">Number</dt>
+              <dd class="col-xs-8 controls">
+                <span class="ml-1">{{deal.Number}}</span>
+              </dd>
+            </div>
 
+<!--
             <div class="row">
               <dt class="col-xs-4 p-x-0 controls">Loan Number *</dt>
               <dd class="col-xs-8">
@@ -46,19 +53,26 @@
                        placeholder="Loan Number" 
                        type="text" class="controls" required>
               </dd>
-            </div>
+            </div>-->
 
-            <div class="row">
-              <dt class="col-xs-4 p-x-0 controls">Settlement Date</dt>
+            <div class="row" *ngIf="!isNew">
+              <dt class="col-xs-4 p-x-0 controls">Created Date</dt>
               <dd class="col-xs-8 controls">
                 <span class="ml-1">{{deal.DateCreated | date: 'medium'}}</span>
               </dd>
             </div>
 
+            <div class="row" *ngIf="!isNew">
+              <dt class="col-xs-4 p-x-0 controls">Settlement Date</dt>
+              <dd class="col-xs-8 controls">
+                <span class="ml-1">{{deal.SettlementDate | date: 'medium'}}</span>
+              </dd>
+            </div>
+
           </dl>
         </div>
-
-        <div *ngIf="basicInfoChanged" class="actions text-xs-center">
+<!--*ngIf="basicInfoChanged"-->
+        <div class="actions text-xs-center" *ngIf="isNew">
           <button type="button" class="btn btn-success" (click)="save()">Save</button>
           <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </div>

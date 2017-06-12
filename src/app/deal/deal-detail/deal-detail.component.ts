@@ -40,20 +40,20 @@ export class DealDetailComponent implements OnInit {
   //todo: add this to database
   private DealStatusSelections = [
     {
-      Id: 0,
-      Name: 'Settled /Paid'
-    },
-    {
-      Id: 1,
-      Name: 'Settled Awaiting Commission'
-    },
-    {
       Id: 2,
       Name: 'Pending Sign Up'
     },
     {
       Id: 3,
       Name: 'Pending Payout'
+    },
+    {
+      Id: 4,
+      Name: 'Settled /Paid'
+    },
+    {
+      Id: 5,
+      Name: 'Settled Awaiting Commission'
     }
   ];
   constructor(
@@ -106,13 +106,22 @@ export class DealDetailComponent implements OnInit {
 
     this._dealService.addOrSaveDeal(this.deal)
       .then((response) => {
-        console.log('Saved successfully: ', response.CommittedId);
 
         // if (this.customerId != null) {
         //   this.router.navigate(['/customer', this.customerId]);
         // }
         //We need the deal id if this is new        
         this.deal.Id = response.CommittedId;
+
+        //Update as needed
+
+        console.log(response.Data);
+
+        if(response.Data){
+          this.deal.Number = response.Data.Number;
+          this.deal.SettlementDate = response.Data.SettlementDate;
+        }
+
         this.currentDealId = this.deal.Id; //This appears to be unneeded duplication
         this.router.navigate(['/deal', response.CommittedId]);
         this.copyDeal = Object.assign({}, this.deal);
@@ -255,7 +264,6 @@ export class DealDetailComponent implements OnInit {
       .then((deal) => {
         this.deal = deal;
         this.copyDeal = Object.assign({}, deal);
-        console.log(this.deal);
 
         return deal;
       })

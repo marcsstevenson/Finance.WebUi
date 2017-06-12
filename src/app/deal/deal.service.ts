@@ -51,7 +51,6 @@ export class DealService {
   addOrSaveDeal(deal: any) {
     let options = new RequestOptions({ headers: this.headers });
 
-    console.log('the deal obj is: ', deal);
     return this._http.post(BASE_API_URL + '/Deal', deal, options)
       .map((response: Response) => response.json())
       .toPromise()
